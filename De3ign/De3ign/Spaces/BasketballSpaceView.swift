@@ -13,7 +13,7 @@ struct BasketballSpaceView: View {
     var body: some View {
         RealityView { content in
             // Add the initial RealityKit content
-            if let immersiveContentEntity = try? await Entity(named: "Jovita_scene", in: realityKitContentBundle) {
+            if let immersiveContentEntity = try? await Entity(named: "JovitaScene", in: realityKitContentBundle) {
                 content.add(immersiveContentEntity)
                 
                 // Put skybox here.  See example in World project available at

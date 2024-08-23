@@ -13,7 +13,7 @@ struct JovitaSpaceView: View {
     var body: some View {
         RealityView { content in
             // Add the initial RealityKit content
-            if let immersiveContentEntity = try? await Entity(named: "Jovita_scene", in: realityKitContentBundle) {
+            if let immersiveContentEntity = try? await Entity(named: "JovitaScene", in: realityKitContentBundle) {
                 immersiveContentEntity.scale = SIMD3<Float>(repeating: 0.3)
                 immersiveContentEntity.position = [0, 1, -1.5]
                 content.add(immersiveContentEntity)

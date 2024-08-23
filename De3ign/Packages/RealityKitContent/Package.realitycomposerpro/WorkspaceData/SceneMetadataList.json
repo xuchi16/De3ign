@@ -11,6 +11,57 @@
       }
     ]
   },
+  "3082B688-6591-43F6-917F-EE9BCED444D5" : {
+    "objectMetadataList" : [
+      [
+        "3082B688-6591-43F6-917F-EE9BCED444D5",
+        "Root"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      }
+    ]
+  },
+  "3E764B9E-92E9-42B7-9872-C9E4AA92BBE7" : {
+    "objectMetadataList" : [
+      [
+        "3E764B9E-92E9-42B7-9872-C9E4AA92BBE7",
+        "Root"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "3E764B9E-92E9-42B7-9872-C9E4AA92BBE7",
+        "Root",
+        "Wall"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "3E764B9E-92E9-42B7-9872-C9E4AA92BBE7",
+        "Root",
+        "GridMaterial"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "3E764B9E-92E9-42B7-9872-C9E4AA92BBE7",
+        "Root",
+        "Column"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      }
+    ]
+  },
   "65F6F990-A780-4474-B78B-572E0E4E273D" : {
     "objectMetadataList" : [
       [
