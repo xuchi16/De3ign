@@ -8,6 +8,10 @@
 import Foundation
 
 struct DSpace {
-    var name: String
+    var id: String
     var volumeName: String
+    
+    var name: String
+    var description: String
+    
 }

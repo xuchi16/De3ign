@@ -26,21 +26,34 @@ struct ContentView: View {
             ScrollView(.horizontal, showsIndicators: true) {
                 HStack(spacing: 20) {
                     ForEach(0 ..< appModel.spaces.count, id: \.self) { index in
-                        VStack {
-                            Image(appModel.spaces[index].name)
-                                .resizable()
-                                .scaledToFit()
-                                .cornerRadius(30)
-                            
-                            Text(appModel.spaces[index].name)
-                                .font(.title)
-                        }
-                        .padding()
-                        .glassBackgroundEffect()
-                        .onTapGesture {
+                        Button {
                             self.appModel.selectedSpace = appModel.spaces[index]
                             openWindow(id: appModel.spaces[index].volumeName)
+                        } label: {
+                            VStack {
+                                Image(appModel.spaces[index].id)
+                                    .resizable()
+//                                    .scaledToFit()
+                                    .frame(width: 300, height: 200)
+                                    .cornerRadius(10)
+                                
+                                VStack(alignment: .leading) {
+                                    Text(appModel.spaces[index].name)
+                                        .font(.title)
+                                    
+                                    Text(appModel.spaces[index].description)
+                                        .font(.headline)
+                                    
+                                }
+                                .padding(cardPadding)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                            }
+                            .background(.ultraThinMaterial)
+                            .hoverEffect()
+                            .frame(width: 300)
+                            .clipShape(.rect(cornerRadius: 10.0))
                         }
+                        .buttonStyle(.borderless)
                     }
                 }
             }
