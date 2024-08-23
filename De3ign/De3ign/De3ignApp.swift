@@ -42,12 +42,12 @@ struct De3ignApp: App {
         }
         .windowStyle(.volumetric)
         
-        WindowGroup(id: superBrainSpace) {
+        WindowGroup(id: superBrainVolume) {
             SuperBrainVolumeView()
         }
         .windowStyle(.volumetric)
         
-        WindowGroup(id: templeSpace) {
+        WindowGroup(id: templeVolume) {
             TempleVolumeView()
         }
         .windowStyle(.volumetric)
