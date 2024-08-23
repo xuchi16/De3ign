@@ -10,15 +10,38 @@ import RealityKit
 import RealityKitContent
 
 struct ContentView: View {
-
+    
+    @Environment(\.openWindow) var openWindow
+    
     var body: some View {
         VStack {
-            Model3D(named: "Scene", bundle: realityKitContentBundle)
-                .padding(.bottom, 50)
-
-            Text("Hello, world!")
-
-            ToggleImmersiveSpaceButton()
+            Text("De3ign")
+                .font(.title)
+            
+            HStack {
+                VStack {
+                    Text("JovitaSpace")
+                    Button("Enter") {
+                        openWindow(id: jovitaVolume)
+                    }
+                }
+                
+                VStack {
+                    Text("BasketballSpace")
+                    ToggleImmersiveSpaceButton(name: basketballSpace)
+                }
+                
+                VStack {
+                    Text("SuperBrainSpace")
+                    ToggleImmersiveSpaceButton(name: superBrainSpace)
+                }
+                
+                VStack {
+                    Text("MythSpace")
+                    ToggleImmersiveSpaceButton(name: templeSpace)
+                }
+            }
+            
         }
         .padding()
     }

@@ -14,6 +14,12 @@ struct ToggleImmersiveSpaceButton: View {
     @Environment(\.dismissImmersiveSpace) private var dismissImmersiveSpace
     @Environment(\.openImmersiveSpace) private var openImmersiveSpace
 
+    private var spaceId: String
+    
+    init(name: String) {
+        spaceId = name
+    }
+    
     var body: some View {
         Button {
             Task { @MainActor in
@@ -27,7 +33,7 @@ struct ToggleImmersiveSpaceButton: View {
 
                     case .closed:
                         appModel.immersiveSpaceState = .inTransition
-                        switch await openImmersiveSpace(id: appModel.immersiveSpaceID) {
+                        switch await openImmersiveSpace(id: spaceId) {
                             case .opened:
                                 // Don't set immersiveSpaceState to .open because there
                                 // may be multiple paths to ImmersiveView.onAppear().
@@ -49,7 +55,7 @@ struct ToggleImmersiveSpaceButton: View {
                 }
             }
         } label: {
-            Text(appModel.immersiveSpaceState == .open ? "Hide Immersive Space" : "Show Immersive Space")
+            Text(appModel.immersiveSpaceState == .open ? "Leave" : "Enter")
         }
         .disabled(appModel.immersiveSpaceState == .inTransition)
         .animation(.none, value: 0)
