@@ -51,7 +51,7 @@ struct De3ignApp: App {
         .windowStyle(.volumetric)
         
         WindowGroup(id: superBrainVolume) {
-            SuperBrainSpaceView()
+            SuperBrainSpaceView(scale: 0.001, position: [0, 0.3, 0.3])
                 .ornament(attachmentAnchor: .scene(.bottomFront)) {
                     OrnamentView(spaceId: superBrainSpace)
                         .environment(appModel)
@@ -82,7 +82,7 @@ struct De3ignApp: App {
         .immersionStyle(selection: .constant(.mixed), in: .mixed)
         
         ImmersiveSpace(id: basketballSpace) {
-            ImmersiveView()
+            BasketballSpaceView()
                 .environment(appModel)
                 .onAppear {
                     appModel.immersiveSpaceState = .open
@@ -94,7 +94,7 @@ struct De3ignApp: App {
         .immersionStyle(selection: .constant(.mixed), in: .mixed)
         
         ImmersiveSpace(id: superBrainSpace) {
-            ImmersiveView()
+            SuperBrainSpaceView()
                 .environment(appModel)
                 .onAppear {
                     appModel.immersiveSpaceState = .open
@@ -106,7 +106,7 @@ struct De3ignApp: App {
         .immersionStyle(selection: .constant(.mixed), in: .mixed)
         
         ImmersiveSpace(id: templeSpace) {
-            ImmersiveView()
+            TempleSpaceView()
                 .environment(appModel)
                 .onAppear {
                     appModel.immersiveSpaceState = .open
