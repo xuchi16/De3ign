@@ -29,6 +29,15 @@
       {
         "isExpanded" : true,
         "isLocked" : false
+      },
+      [
+        "3082B688-6591-43F6-917F-EE9BCED444D5",
+        "Root",
+        "Carvaan_Music_Player"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
       }
     ]
   },
@@ -54,7 +63,7 @@
       [
         "3E764B9E-92E9-42B7-9872-C9E4AA92BBE7",
         "Root",
-        "GridMaterial"
+        "Column"
       ],
       {
         "isExpanded" : true,
@@ -63,7 +72,7 @@
       [
         "3E764B9E-92E9-42B7-9872-C9E4AA92BBE7",
         "Root",
-        "Column"
+        "GridMaterial"
       ],
       {
         "isExpanded" : true,
@@ -73,15 +82,6 @@
   },
   "51FDB1EE-406C-406E-9818-5D0BED8FF27A" : {
     "objectMetadataList" : [
-      [
-        "51FDB1EE-406C-406E-9818-5D0BED8FF27A",
-        "Root",
-        "CupCoffee"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
       [
         "51FDB1EE-406C-406E-9818-5D0BED8FF27A",
         "Root",
@@ -95,6 +95,15 @@
       [
         "51FDB1EE-406C-406E-9818-5D0BED8FF27A",
         "Root"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "51FDB1EE-406C-406E-9818-5D0BED8FF27A",
+        "Root",
+        "CupCoffee"
       ],
       {
         "isExpanded" : true,
@@ -130,8 +139,7 @@
     "objectMetadataList" : [
       [
         "AF09ED6F-1707-48FD-8720-65B998362C09",
-        "Root",
-        "Sphere_Right"
+        "Root"
       ],
       {
         "isExpanded" : true,
@@ -148,7 +156,8 @@
       },
       [
         "AF09ED6F-1707-48FD-8720-65B998362C09",
-        "Root"
+        "Root",
+        "Sphere_Right"
       ],
       {
         "isExpanded" : true,
@@ -186,9 +195,7 @@
     "objectMetadataList" : [
       [
         "D66134B1-3681-4A8E-AFE5-29F257229F3B",
-        "Root",
-        "GridMaterial",
-        "GridMaterial"
+        "Root"
       ],
       {
         "isExpanded" : true,
@@ -196,7 +203,9 @@
       },
       [
         "D66134B1-3681-4A8E-AFE5-29F257229F3B",
-        "Root"
+        "Root",
+        "GridMaterial",
+        "GridMaterial"
       ],
       {
         "isExpanded" : true,

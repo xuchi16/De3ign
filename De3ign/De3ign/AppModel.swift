@@ -21,6 +21,7 @@ class AppModel {
     
     var selectedSpace: DSpace?
     var spaces: [DSpace] = []
+    var songs: [Song] = []
 
     init() {
         spaces = [
@@ -28,6 +29,10 @@ class AppModel {
             DSpace(id: "basketball", volumeName: basketballVolume, name: "Basketball World", description: "篮球就是热血！这里不仅可以玩篮球，还能带你去真正的篮球世界"),
             DSpace(id: "superbrain", volumeName: superBrainVolume, name: "超脑 AI", description: "想了解我们在超脑 AI 的旅程吗？看过来！"),
             DSpace(id: "temple", volumeName: templeVolume, name: "Myth Zone", description: "这里你可以获得平静，平静和平静")
+        ]
+        
+        songs = [
+            Song(name: "Jovita")
         ]
     }
 }

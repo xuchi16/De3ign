@@ -23,6 +23,8 @@
 		C2B362CF2C78348A003AEDA9 /* TempleSpaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B362CE2C78348A003AEDA9 /* TempleSpaceView.swift */; };
 		C2B362DB2C78418B003AEDA9 /* Space.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B362DA2C78418B003AEDA9 /* Space.swift */; };
 		C2B363662C785C72003AEDA9 /* OrnamentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B363652C785C72003AEDA9 /* OrnamentView.swift */; };
+		C2F294142C78748E00A98088 /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F294132C78748E00A98088 /* Song.swift */; };
+		C2F294172C787B1500A98088 /* Jovita.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C2F294162C787B1500A98088 /* Jovita.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +57,8 @@
 		C2B362CE2C78348A003AEDA9 /* TempleSpaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempleSpaceView.swift; sourceTree = "<group>"; };
 		C2B362DA2C78418B003AEDA9 /* Space.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Space.swift; sourceTree = "<group>"; };
 		C2B363652C785C72003AEDA9 /* OrnamentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrnamentView.swift; sourceTree = "<group>"; };
+		C2F294132C78748E00A98088 /* Song.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
+		C2F294162C787B1500A98088 /* Jovita.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Jovita.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +83,7 @@
 		C2B362932C772A19003AEDA9 = {
 			isa = PBXGroup;
 			children = (
+				C2F294152C787B0C00A98088 /* Resources */,
 				C2B3629E2C772A19003AEDA9 /* De3ign */,
 				C2B3629F2C772A19003AEDA9 /* Packages */,
 				C2B362BA2C772A1C003AEDA9 /* De3ignTests */,
@@ -110,6 +115,7 @@
 				C2B362AD2C772A1B003AEDA9 /* Assets.xcassets */,
 				C2B362B22C772A1B003AEDA9 /* Info.plist */,
 				C2B362AF2C772A1B003AEDA9 /* Preview Content */,
+				C2F294132C78748E00A98088 /* Song.swift */,
 			);
 			path = De3ign;
 			sourceTree = "<group>";
@@ -147,6 +153,14 @@
 				C2B362CE2C78348A003AEDA9 /* TempleSpaceView.swift */,
 			);
 			path = Spaces;
+			sourceTree = "<group>";
+		};
+		C2F294152C787B0C00A98088 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				C2F294162C787B1500A98088 /* Jovita.mp3 */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -234,6 +248,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C2B362B12C772A1B003AEDA9 /* Preview Assets.xcassets in Resources */,
+				C2F294172C787B1500A98088 /* Jovita.mp3 in Resources */,
 				C2B362AE2C772A1B003AEDA9 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -263,6 +278,7 @@
 				C2B362CF2C78348A003AEDA9 /* TempleSpaceView.swift in Sources */,
 				C2B362A82C772A19003AEDA9 /* AppModel.swift in Sources */,
 				C2B362A42C772A19003AEDA9 /* De3ignApp.swift in Sources */,
+				C2F294142C78748E00A98088 /* Song.swift in Sources */,
 				C2B362DB2C78418B003AEDA9 /* Space.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
