@@ -12,35 +12,39 @@ import RealityKitContent
 struct ContentView: View {
     
     @Environment(\.openWindow) var openWindow
+    @Environment(AppModel.self) var appModel
     
     var body: some View {
         VStack {
             Text("De3ign")
-                .font(.title)
+                .font(.system(size: 70, weight: .thin))
+                .shadow(color: .blue, radius: 5)
+                .shadow(color: .blue, radius: 5)
+                .shadow(color: .blue, radius: 50)
             
-            HStack {
-                VStack {
-                    Text("JovitaSpace")
-                    Button("Enter") {
-                        openWindow(id: jovitaVolume)
+            // === Volumes ===
+            ScrollView(.horizontal, showsIndicators: true) {
+                HStack(spacing: 20) {
+                    ForEach(0 ..< appModel.spaces.count, id: \.self) { index in
+                        VStack {
+                            Image(appModel.spaces[index].name)
+                                .resizable()
+                                .scaledToFit()
+                                .cornerRadius(30)
+                            
+                            Text(appModel.spaces[index].name)
+                                .font(.title)
+                        }
+                        .padding()
+                        .glassBackgroundEffect()
+                        .onTapGesture {
+                            self.appModel.selectedSpace = appModel.spaces[index]
+                            openWindow(id: appModel.spaces[index].volumeName)
+                        }
                     }
                 }
-                
-                VStack {
-                    Text("BasketballSpace")
-                    ToggleImmersiveSpaceButton(name: basketballSpace)
-                }
-                
-                VStack {
-                    Text("SuperBrainSpace")
-                    ToggleImmersiveSpaceButton(name: superBrainSpace)
-                }
-                
-                VStack {
-                    Text("MythSpace")
-                    ToggleImmersiveSpaceButton(name: templeSpace)
-                }
             }
+            .frame(height: 350)
             
         }
         .padding()

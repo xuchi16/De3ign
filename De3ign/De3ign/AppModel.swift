@@ -18,4 +18,16 @@ class AppModel {
         case open
     }
     var immersiveSpaceState = ImmersiveSpaceState.closed
+    
+    var selectedSpace: DSpace?
+    var spaces: [DSpace] = []
+
+    init() {
+        spaces = [
+            DSpace(name: "jovita", volumeName: jovitaVolume),
+            DSpace(name: "basketball", volumeName: basketballVolume),
+            DSpace(name: "superbrain", volumeName: superBrainVolume),
+            DSpace(name: "temple", volumeName: templeVolume)
+        ]
+    }
 }
