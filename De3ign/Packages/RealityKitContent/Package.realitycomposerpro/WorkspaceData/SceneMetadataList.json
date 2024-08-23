@@ -20,6 +20,15 @@
       {
         "isExpanded" : true,
         "isLocked" : false
+      },
+      [
+        "3082B688-6591-43F6-917F-EE9BCED444D5",
+        "Root",
+        "Cube_Wall_groop"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
       }
     ]
   },
@@ -55,6 +64,37 @@
         "3E764B9E-92E9-42B7-9872-C9E4AA92BBE7",
         "Root",
         "Column"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      }
+    ]
+  },
+  "51FDB1EE-406C-406E-9818-5D0BED8FF27A" : {
+    "objectMetadataList" : [
+      [
+        "51FDB1EE-406C-406E-9818-5D0BED8FF27A",
+        "Root",
+        "CupCoffee"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "51FDB1EE-406C-406E-9818-5D0BED8FF27A",
+        "Root",
+        "CupCoffee",
+        "CupCoffeeSurface_Animated"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "51FDB1EE-406C-406E-9818-5D0BED8FF27A",
+        "Root"
       ],
       {
         "isExpanded" : true,

@@ -33,7 +33,6 @@ struct ContentView: View {
                             VStack {
                                 Image(appModel.spaces[index].id)
                                     .resizable()
-//                                    .scaledToFit()
                                     .frame(width: 300, height: 200)
                                     .cornerRadius(10)
                                 

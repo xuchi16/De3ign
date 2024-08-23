@@ -33,22 +33,22 @@ struct De3ignApp: App {
         // ========================= Volumes =========================
         
         WindowGroup(id: jovitaVolume) {
-            JovitaVolumeView()
+            JovitaSpaceView(scale: 0.15, position: [0, 0, 0])
         }
         .windowStyle(.volumetric)
         
         WindowGroup(id: basketballVolume) {
-            BasketballVolumeView()
+            BasketballSpaceView()
         }
         .windowStyle(.volumetric)
         
         WindowGroup(id: superBrainVolume) {
-            SuperBrainVolumeView()
+            SuperBrainSpaceView()
         }
         .windowStyle(.volumetric)
         
         WindowGroup(id: templeVolume) {
-            TempleVolumeView()
+            TempleSpaceView()
         }
         .windowStyle(.volumetric)
         

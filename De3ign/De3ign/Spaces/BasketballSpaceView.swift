@@ -10,10 +10,16 @@ import RealityKit
 import RealityKitContent
 
 struct BasketballSpaceView: View {
+    // Volume: 0.15, Space: 0.3
+    var scale: Float = 0.3
+    var position: SIMD3<Float> = [0, 1, -1.5]
+    
     var body: some View {
         RealityView { content in
             // Add the initial RealityKit content
             if let immersiveContentEntity = try? await Entity(named: "JovitaScene", in: realityKitContentBundle) {
+                immersiveContentEntity.scale = SIMD3<Float>(repeating: scale)
+                immersiveContentEntity.position = position
                 content.add(immersiveContentEntity)
                 
                 // Put skybox here.  See example in World project available at

@@ -20,11 +20,8 @@
 		C2B362C82C782591003AEDA9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B362C72C782591003AEDA9 /* Constants.swift */; };
 		C2B362CB2C783475003AEDA9 /* BasketballSpaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B362CA2C783475003AEDA9 /* BasketballSpaceView.swift */; };
 		C2B362CD2C78347E003AEDA9 /* SuperBrainSpaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B362CC2C78347E003AEDA9 /* SuperBrainSpaceView.swift */; };
-		C2B362CF2C78348A003AEDA9 /* TempleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B362CE2C78348A003AEDA9 /* TempleView.swift */; };
-		C2B362D22C783BFF003AEDA9 /* JovitaVolumeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B362D12C783BFF003AEDA9 /* JovitaVolumeView.swift */; };
-		C2B362D42C783C8E003AEDA9 /* BasketballVolumeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B362D32C783C8E003AEDA9 /* BasketballVolumeView.swift */; };
-		C2B362D62C783C9A003AEDA9 /* SuperBrainVolumeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B362D52C783C9A003AEDA9 /* SuperBrainVolumeView.swift */; };
-		C2B362D82C783CA2003AEDA9 /* TempleVolumeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B362D72C783CA2003AEDA9 /* TempleVolumeView.swift */; };
+		C2B362CF2C78348A003AEDA9 /* TempleSpaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B362CE2C78348A003AEDA9 /* TempleSpaceView.swift */; };
+		C2B362DB2C78418B003AEDA9 /* Space.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B362DA2C78418B003AEDA9 /* Space.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,11 +51,8 @@
 		C2B362C72C782591003AEDA9 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		C2B362CA2C783475003AEDA9 /* BasketballSpaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketballSpaceView.swift; sourceTree = "<group>"; };
 		C2B362CC2C78347E003AEDA9 /* SuperBrainSpaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperBrainSpaceView.swift; sourceTree = "<group>"; };
-		C2B362CE2C78348A003AEDA9 /* TempleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempleView.swift; sourceTree = "<group>"; };
-		C2B362D12C783BFF003AEDA9 /* JovitaVolumeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JovitaVolumeView.swift; sourceTree = "<group>"; };
-		C2B362D32C783C8E003AEDA9 /* BasketballVolumeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketballVolumeView.swift; sourceTree = "<group>"; };
-		C2B362D52C783C9A003AEDA9 /* SuperBrainVolumeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperBrainVolumeView.swift; sourceTree = "<group>"; };
-		C2B362D72C783CA2003AEDA9 /* TempleVolumeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempleVolumeView.swift; sourceTree = "<group>"; };
+		C2B362CE2C78348A003AEDA9 /* TempleSpaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempleSpaceView.swift; sourceTree = "<group>"; };
+		C2B362DA2C78418B003AEDA9 /* Space.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Space.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,7 +96,7 @@
 		C2B3629E2C772A19003AEDA9 /* De3ign */ = {
 			isa = PBXGroup;
 			children = (
-				C2B362D02C783BD9003AEDA9 /* Volumes */,
+				C2B362DA2C78418B003AEDA9 /* Space.swift */,
 				C2B362C92C783465003AEDA9 /* Spaces */,
 				C2B362C72C782591003AEDA9 /* Constants.swift */,
 				C2B362A32C772A19003AEDA9 /* De3ignApp.swift */,
@@ -147,20 +141,9 @@
 				C2B362C52C7733CE003AEDA9 /* JovitaSpaceView.swift */,
 				C2B362CA2C783475003AEDA9 /* BasketballSpaceView.swift */,
 				C2B362CC2C78347E003AEDA9 /* SuperBrainSpaceView.swift */,
-				C2B362CE2C78348A003AEDA9 /* TempleView.swift */,
+				C2B362CE2C78348A003AEDA9 /* TempleSpaceView.swift */,
 			);
 			path = Spaces;
-			sourceTree = "<group>";
-		};
-		C2B362D02C783BD9003AEDA9 /* Volumes */ = {
-			isa = PBXGroup;
-			children = (
-				C2B362D12C783BFF003AEDA9 /* JovitaVolumeView.swift */,
-				C2B362D32C783C8E003AEDA9 /* BasketballVolumeView.swift */,
-				C2B362D52C783C9A003AEDA9 /* SuperBrainVolumeView.swift */,
-				C2B362D72C783CA2003AEDA9 /* TempleVolumeView.swift */,
-			);
-			path = Volumes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -270,16 +253,13 @@
 				C2B362AA2C772A19003AEDA9 /* ToggleImmersiveSpaceButton.swift in Sources */,
 				C2B362A62C772A19003AEDA9 /* ContentView.swift in Sources */,
 				C2B362AC2C772A19003AEDA9 /* ImmersiveView.swift in Sources */,
-				C2B362D22C783BFF003AEDA9 /* JovitaVolumeView.swift in Sources */,
 				C2B362C62C7733CE003AEDA9 /* JovitaSpaceView.swift in Sources */,
-				C2B362D62C783C9A003AEDA9 /* SuperBrainVolumeView.swift in Sources */,
 				C2B362C82C782591003AEDA9 /* Constants.swift in Sources */,
-				C2B362D42C783C8E003AEDA9 /* BasketballVolumeView.swift in Sources */,
-				C2B362D82C783CA2003AEDA9 /* TempleVolumeView.swift in Sources */,
 				C2B362CD2C78347E003AEDA9 /* SuperBrainSpaceView.swift in Sources */,
-				C2B362CF2C78348A003AEDA9 /* TempleView.swift in Sources */,
+				C2B362CF2C78348A003AEDA9 /* TempleSpaceView.swift in Sources */,
 				C2B362A82C772A19003AEDA9 /* AppModel.swift in Sources */,
 				C2B362A42C772A19003AEDA9 /* De3ignApp.swift in Sources */,
+				C2B362DB2C78418B003AEDA9 /* Space.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
