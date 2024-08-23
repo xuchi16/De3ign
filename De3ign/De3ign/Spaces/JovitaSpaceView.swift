@@ -13,7 +13,7 @@ struct JovitaSpaceView: View {
     
     // Volume: 0.15, Space: 0.3
     var scale: Float = 0.3
-    var position: SIMD3<Float> = [0, 1, -1.5]
+    var position: SIMD3<Float> = [0, -1, -1.5]
     
     var body: some View {
         RealityView { content in

@@ -9,7 +9,7 @@ import SwiftUI
 
 @main
 struct De3ignApp: App {
-
+    
     @State private var appModel = AppModel()
     
     var body: some Scene {
@@ -17,7 +17,7 @@ struct De3ignApp: App {
             ContentView()
                 .environment(appModel)
         }
-
+        
         ImmersiveSpace(id: appModel.immersiveSpaceID) {
             ImmersiveView()
                 .environment(appModel)
@@ -30,31 +30,47 @@ struct De3ignApp: App {
         }
         .immersionStyle(selection: .constant(.mixed), in: .mixed)
         
-        // ========================= Volumes =========================
+        // ====== Volumes ======
         
         WindowGroup(id: jovitaVolume) {
-            JovitaSpaceView(scale: 0.15, position: [0, 0, 0])
+            JovitaSpaceView(scale: 0.15, position: [0, -0.4, 0.3])
+                .ornament(attachmentAnchor: .scene(.bottomFront)) {
+                    OrnamentView(spaceId: jovitaSpace)
+                        .environment(appModel)
+                }
         }
         .windowStyle(.volumetric)
         
         WindowGroup(id: basketballVolume) {
             BasketballSpaceView()
+                .ornament(attachmentAnchor: .scene(.bottomFront)) {
+                    OrnamentView(spaceId: basketballSpace)
+                        .environment(appModel)
+                }
         }
         .windowStyle(.volumetric)
         
         WindowGroup(id: superBrainVolume) {
             SuperBrainSpaceView()
+                .ornament(attachmentAnchor: .scene(.bottomFront)) {
+                    OrnamentView(spaceId: superBrainSpace)
+                        .environment(appModel)
+                }
         }
         .windowStyle(.volumetric)
         
         WindowGroup(id: templeVolume) {
             TempleSpaceView()
+                .ornament(attachmentAnchor: .scene(.bottomFront)) {
+                    OrnamentView(spaceId: templeSpace)
+                        .environment(appModel)
+                }
         }
         .windowStyle(.volumetric)
         
-        // ========================= Spaces =========================
+        // ====== Spaces ======
         ImmersiveSpace(id: jovitaSpace) {
-            JovitaSpaceView()
+            JovitaSpaceView(scale: 2)
                 .environment(appModel)
                 .onAppear {
                     appModel.immersiveSpaceState = .open
@@ -100,5 +116,5 @@ struct De3ignApp: App {
                 }
         }
         .immersionStyle(selection: .constant(.mixed), in: .mixed)
-     }
+    }
 }

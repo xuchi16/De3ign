@@ -22,6 +22,7 @@
 		C2B362CD2C78347E003AEDA9 /* SuperBrainSpaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B362CC2C78347E003AEDA9 /* SuperBrainSpaceView.swift */; };
 		C2B362CF2C78348A003AEDA9 /* TempleSpaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B362CE2C78348A003AEDA9 /* TempleSpaceView.swift */; };
 		C2B362DB2C78418B003AEDA9 /* Space.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B362DA2C78418B003AEDA9 /* Space.swift */; };
+		C2B363662C785C72003AEDA9 /* OrnamentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B363652C785C72003AEDA9 /* OrnamentView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		C2B362CC2C78347E003AEDA9 /* SuperBrainSpaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperBrainSpaceView.swift; sourceTree = "<group>"; };
 		C2B362CE2C78348A003AEDA9 /* TempleSpaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempleSpaceView.swift; sourceTree = "<group>"; };
 		C2B362DA2C78418B003AEDA9 /* Space.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Space.swift; sourceTree = "<group>"; };
+		C2B363652C785C72003AEDA9 /* OrnamentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrnamentView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 				C2B362A72C772A19003AEDA9 /* AppModel.swift */,
 				C2B362A92C772A19003AEDA9 /* ToggleImmersiveSpaceButton.swift */,
 				C2B362AB2C772A19003AEDA9 /* ImmersiveView.swift */,
+				C2B363652C785C72003AEDA9 /* OrnamentView.swift */,
 				C2B362AD2C772A1B003AEDA9 /* Assets.xcassets */,
 				C2B362B22C772A1B003AEDA9 /* Info.plist */,
 				C2B362AF2C772A1B003AEDA9 /* Preview Content */,
@@ -251,6 +254,7 @@
 			files = (
 				C2B362CB2C783475003AEDA9 /* BasketballSpaceView.swift in Sources */,
 				C2B362AA2C772A19003AEDA9 /* ToggleImmersiveSpaceButton.swift in Sources */,
+				C2B363662C785C72003AEDA9 /* OrnamentView.swift in Sources */,
 				C2B362A62C772A19003AEDA9 /* ContentView.swift in Sources */,
 				C2B362AC2C772A19003AEDA9 /* ImmersiveView.swift in Sources */,
 				C2B362C62C7733CE003AEDA9 /* JovitaSpaceView.swift in Sources */,
