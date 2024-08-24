@@ -17,6 +17,7 @@ struct De3ignApp: App {
             ContentView()
                 .environment(appModel)
         }
+        .windowStyle(.plain)
         
         ImmersiveSpace(id: appModel.immersiveSpaceID) {
             ImmersiveView()
@@ -42,7 +43,7 @@ struct De3ignApp: App {
         .windowStyle(.volumetric)
         
         WindowGroup(id: basketballVolume) {
-            BasketballSpaceView()
+            BasketballSpaceView(scale: 0.15, position: [0, -0.4, 0.3])
                 .ornament(attachmentAnchor: .scene(.bottomFront)) {
                     OrnamentView(spaceId: basketballSpace)
                         .environment(appModel)

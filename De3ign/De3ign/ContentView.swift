@@ -16,11 +16,18 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
-            Text("De3ign")
-                .font(.system(size: 70, weight: .thin))
-                .shadow(color: .blue, radius: 5)
-                .shadow(color: .blue, radius: 5)
-                .shadow(color: .blue, radius: 50)
+            VStack {
+                Text("博吾馆")
+                    .font(.system(size: 70, weight: .thin))
+                    .shadow(color: .blue, radius: 5)
+                    .shadow(color: .blue, radius: 5)
+                    .shadow(color: .blue, radius: 50)
+                Text("Realmefy")
+                    .font(.system(size: 40, weight: .thin))
+                    .shadow(color: .red, radius: 5)
+                    .shadow(color: .red, radius: 5)
+                    .shadow(color: .red, radius: 50)
+            }
             
             // === Volumes ===
             ScrollView(.horizontal, showsIndicators: true) {
@@ -57,6 +64,8 @@ struct ContentView: View {
                 }
             }
             .frame(height: 350)
+            .padding()
+            .glassBackgroundEffect()
             
         }
         .padding()

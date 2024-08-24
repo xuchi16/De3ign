@@ -127,10 +127,10 @@
 				C2B362A92C772A19003AEDA9 /* ToggleImmersiveSpaceButton.swift */,
 				C2B362AB2C772A19003AEDA9 /* ImmersiveView.swift */,
 				C2B363652C785C72003AEDA9 /* OrnamentView.swift */,
+				C2F294132C78748E00A98088 /* Song.swift */,
 				C2B362AD2C772A1B003AEDA9 /* Assets.xcassets */,
 				C2B362B22C772A1B003AEDA9 /* Info.plist */,
 				C2B362AF2C772A1B003AEDA9 /* Preview Content */,
-				C2F294132C78748E00A98088 /* Song.swift */,
 			);
 			path = De3ign;
 			sourceTree = "<group>";

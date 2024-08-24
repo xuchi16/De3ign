@@ -1,0 +1,65 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "Reality Composer Pro Version 1.0 (409.100.15)"
+    }
+    defaultPrim = "____"
+    metersPerUnit = 1
+    upAxis = "Y"
+)
+
+def Xform "____"
+{
+    quatf xformOp:orient = (1, 0, 0, 0)
+    float3 xformOp:scale = (1, 1, 1)
+    float3 xformOp:translate = (0, 0, 0)
+    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+    def "New_Scene_with_Objects" (
+        active = true
+        prepend references = @New Scene with Objects.usda@
+    )
+    {
+        float3 xformOp:scale = (1, 1, 1)
+
+        over "Root"
+        {
+            over "Cube_1"
+            {
+                over "DefaultMaterial"
+                {
+                    over "DefaultSurfaceShader"
+                    {
+                        delete color3f inputs:diffuseColor.connect = </____/New_Scene_with_Objects/Root/Cube_1/DefaultMaterial/diffuseColor.outputs:rgb>
+                        prepend color3f inputs:diffuseColor.connect = </____/New_Scene_with_Objects/Root/Cube_1/DefaultMaterial/diffuseColor.outputs:rgb>
+                    }
+
+                    over "diffuseColor"
+                    {
+                        uniform token info:id = "UsdUVTexture"
+                        asset inputs:file = @OIP-C.1WYz-TOaUIpWOHgg6LRGxQHaEo.jpeg@
+                    }
+                }
+            }
+
+            over "Cube_2"
+            {
+                over "DefaultMaterial"
+                {
+                    over "DefaultSurfaceShader"
+                    {
+                        delete color3f inputs:diffuseColor.connect = </____/New_Scene_with_Objects/Root/Cube_2/DefaultMaterial/diffuseColor.outputs:rgb>
+                        prepend color3f inputs:diffuseColor.connect = </____/New_Scene_with_Objects/Root/Cube_2/DefaultMaterial/diffuseColor.outputs:rgb>
+                    }
+
+                    over "diffuseColor"
+                    {
+                        uniform token info:id = "UsdUVTexture"
+                        asset inputs:file = @OIP-C.1WYz-TOaUIpWOHgg6LRGxQHaEo.jpeg@
+                    }
+                }
+            }
+        }
+    }
+}
+

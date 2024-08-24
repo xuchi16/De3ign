@@ -11,13 +11,13 @@ import RealityKitContent
 
 struct BasketballSpaceView: View {
     // Volume: 0.15, Space: 0.3
-    var scale: Float = 0.3
-    var position: SIMD3<Float> = [0, 1, -1.5]
+    var scale: Float = 2
+    var position: SIMD3<Float> = [0, 0, -1.5]
     
     var body: some View {
         RealityView { content in
             // Add the initial RealityKit content
-            if let immersiveContentEntity = try? await Entity(named: "JovitaScene", in: realityKitContentBundle) {
+            if let immersiveContentEntity = try? await Entity(named: "BasketballScene", in: realityKitContentBundle) {
                 immersiveContentEntity.scale = SIMD3<Float>(repeating: scale)
                 immersiveContentEntity.position = position
                 content.add(immersiveContentEntity)

@@ -118,7 +118,7 @@ def Xform "Root" (
         customData = {
             float3 rotationEulerHint = (-3.1415925, 0, 3.1415923)
         }
-        prepend references = @Notebook.usdz@
+        references = @Notebook.usdz@
     )
     {
         quatf xformOp:orient = (-2.3547747e-15, -4.371139e-8, 1, 4.371139e-8)
@@ -190,7 +190,7 @@ def Xform "Root" (
         customData = {
             float3 rotationEulerHint = (0, 4.0142574, 0)
         }
-        prepend references = @Tyrannosarus_rex_Free_model.usdz@
+        references = @Tyrannosarus_rex_Free_model.usdz@
     )
     {
         quatf xformOp:orient = (-0.42261833, 0, 0.90630776, 0)
@@ -373,9 +373,10 @@ def Xform "Root" (
         customData = {
             float3 rotationEulerHint = (0, 3.1415925, 0)
         }
-        prepend references = @Carvaan_Music_Player.usdz@
+        references = @Carvaan_Music_Player.usdz@
     )
     {
+        reorder nameChildren = ["Materials", "Meshes", "Collider", "InputTarget", "ParticleEmitter"]
         quatf xformOp:orient = (-4.371139e-8, 0, 1, 0)
         float3 xformOp:scale = (0.001, 0.001, 0.001)
         float3 xformOp:translate = (-0.7, 0.85, 0.7)
@@ -403,6 +404,46 @@ def Xform "Root" (
         def RealityKitComponent "InputTarget"
         {
             uniform token info:id = "RealityKit.InputTarget"
+        }
+
+        def Xform "ParticleEmitter"
+        {
+            float2 ui:nodegraph:node:pos = (20, 20)
+            int ui:nodegraph:node:stackingOrder = 1
+            quatf xformOp:orient = (1, 0, 0.00008511543, 0)
+            float3 xformOp:scale = (999.99994, 999.99994, 999.99994)
+            float3 xformOp:translate = (0, 145.58319, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            def RealityKitComponent "VFXEmitter"
+            {
+                token info:id = "RealityKit.VFXEmitter"
+
+                def RealityKitStruct "currentState"
+                {
+                    double emissionDuration = 1
+                    float particleSpeed = 0.1
+                    float3 shapeSize = (0.1, 0.1, 0.1)
+                    float spawnVelocityFactor = 1
+
+                    def RealityKitStruct "mainEmitter"
+                    {
+                        float birthRate = 20
+                        float4 endColorA = (0.9999908, 1, 1, 1)
+                        token opacityOverLife = "QuickFadeInOut"
+                        asset particleImage = @YinFu_F.png@
+                        float particleSize = 0.03
+                        float4 startColorA = (0.9999908, 1, 1, 1)
+                        bool useEndColor = 0
+                        bool useEndColorRange = 0
+                        bool useStartColorRange = 0
+                    }
+
+                    def RealityKitStruct "spawnedEmitter"
+                    {
+                    }
+                }
+            }
         }
     }
 
@@ -440,13 +481,129 @@ def Xform "Root" (
         customData = {
             float3 rotationEulerHint = (0, 3.1415925, 0)
         }
-        prepend references = @Arknights_Originite_Prime.usdz@
+        references = @Arknights_Originite_Prime.usdz@
     )
     {
         quatf xformOp:orient = (-4.371139e-8, 0, 1, 0)
         float3 xformOp:scale = (0.0007266718, 0.0007266718, 0.0007266718)
         float3 xformOp:translate = (-1.7, 0.8, 0.7)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def Xform "Transform"
+    {
+        def Xform "SpotLight" (
+            customData = {
+                float3 rotationEulerHint = (-1.5702474, -5.9604638e-8, 5.9571935e-8)
+            }
+        )
+        {
+            quatf xformOp:orient = (0.7073008, -0.7069127, -4.2135284e-8, -1.2557294e-15)
+            float3 xformOp:scale = (1, 0.99999994, 0.99999994)
+            float3 xformOp:translate = (2.364976, 2.967889, 0.92296743)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            def RealityKitComponent "SpotLight"
+            {
+                token info:id = "RealityKit.SpotLight"
+
+                def RealityKitStruct "Shadow"
+                {
+                }
+            }
+        }
+
+        def Xform "SpotLight_1" (
+            customData = {
+                float3 rotationEulerHint = (-1.5702474, -5.9604638e-8, 5.9571935e-8)
+            }
+        )
+        {
+            float2 ui:nodegraph:node:pos = (20, 20)
+            int ui:nodegraph:node:stackingOrder = 1
+            quatf xformOp:orient = (0.7073008, -0.70691276, -4.2126867e-8, 1.8760596e-12)
+            float3 xformOp:scale = (1.0000001, 1, 0.99999994)
+            float3 xformOp:translate = (1.4818562, 2.967889, 0.9231193)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            def RealityKitComponent "SpotLight"
+            {
+                token info:id = "RealityKit.SpotLight"
+
+                def RealityKitStruct "Shadow"
+                {
+                }
+            }
+        }
+
+        def Xform "SpotLight_2" (
+            customData = {
+                float3 rotationEulerHint = (-1.5702474, -5.9604638e-8, 5.9571935e-8)
+            }
+        )
+        {
+            float2 ui:nodegraph:node:pos = (20, 20)
+            int ui:nodegraph:node:stackingOrder = 1
+            quatf xformOp:orient = (0.7073008, -0.70691276, -4.2126867e-8, 1.8760596e-12)
+            float3 xformOp:scale = (1.0000001, 1, 0.99999994)
+            float3 xformOp:translate = (-0.57825714, 2.967889, 0.923473)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            def RealityKitComponent "SpotLight"
+            {
+                token info:id = "RealityKit.SpotLight"
+
+                def RealityKitStruct "Shadow"
+                {
+                }
+            }
+        }
+
+        def Xform "SpotLight_3" (
+            customData = {
+                float3 rotationEulerHint = (-1.5702474, -5.9604638e-8, 5.9571935e-8)
+            }
+        )
+        {
+            float2 ui:nodegraph:node:pos = (20, 20)
+            int ui:nodegraph:node:stackingOrder = 1
+            quatf xformOp:orient = (0.7073008, -0.70691276, -4.2126867e-8, 1.8760596e-12)
+            float3 xformOp:scale = (1.0000001, 1, 0.99999994)
+            float3 xformOp:translate = (-1.6268286, 2.967889, 0.9236504)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            def RealityKitComponent "SpotLight"
+            {
+                token info:id = "RealityKit.SpotLight"
+
+                def RealityKitStruct "Shadow"
+                {
+                }
+            }
+        }
+
+        def Xform "SpotLight_4" (
+            customData = {
+                float3 rotationEulerHint = (-1.5702474, -5.9604638e-8, 5.9571935e-8)
+            }
+        )
+        {
+            float2 ui:nodegraph:node:pos = (40, 40)
+            int ui:nodegraph:node:stackingOrder = 2
+            quatf xformOp:orient = (0.7073008, -0.70691276, -4.2115822e-8, 1.1412069e-11)
+            float3 xformOp:scale = (1.0000002, 1, 0.99999994)
+            float3 xformOp:translate = (0.35391334, 2.967889, 0.92331606)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            def RealityKitComponent "SpotLight"
+            {
+                token info:id = "RealityKit.SpotLight"
+
+                def RealityKitStruct "Shadow"
+                {
+                }
+            }
+        }
     }
 }
 

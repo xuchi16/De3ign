@@ -1,0 +1,544 @@
+#usda 1.0
+(
+    defaultPrim = "Root"
+    metersPerUnit = 1
+    upAxis = "Y"
+)
+
+def Xform "Root" (
+    customData = {
+        float3 rotationEulerHint = (0, 1.5707963, 0)
+    }
+)
+{
+    reorder nameChildren = ["Sphere_Left", "Sphere_Right", "GridMaterial"]
+    quatf xformOp:orient = (0.7053958, 0, 0.7088136, 0)
+    float3 xformOp:scale = (1, 1, 1)
+    float3 xformOp:translate = (0, 0, 0)
+    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+    def "GridMaterial" (
+        active = true
+        prepend references = @Materials/GridMaterial.usda@
+    )
+    {
+        float3 xformOp:scale = (1, 1, 1)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        over "GridMaterial"
+        {
+            float2 ui:nodegraph:realitykit:subgraphOutputs:size = (181.5, 99)
+
+            over "MaterialXPreviewSurface"
+            {
+                float2 ui:nodegraph:node:size = (207.5, 307)
+            }
+
+            over "Remap"
+            {
+                float2 ui:nodegraph:node:size = (94, 181)
+            }
+
+            over "Fractional"
+            {
+                float2 ui:nodegraph:node:size = (154.5, 109)
+            }
+
+            over "Multiply"
+            {
+                float2 ui:nodegraph:node:size = (60, 36)
+            }
+
+            over "Combine3"
+            {
+                float2 ui:nodegraph:node:size = (145, 54)
+            }
+
+            over "Subtract"
+            {
+                float2 ui:nodegraph:node:size = (61.5, 36)
+            }
+
+            over "Absval"
+            {
+                float2 ui:nodegraph:node:size = (121.5, 53)
+            }
+
+            over "BaseColor"
+            {
+                float2 ui:nodegraph:node:size = (151, 53)
+            }
+
+            over "LineColor"
+            {
+                float2 ui:nodegraph:node:size = (151, 53)
+            }
+
+            over "Texcoord"
+            {
+                float2 ui:nodegraph:node:size = (180.5, 53)
+            }
+
+            over "LineCounts"
+            {
+                float2 ui:nodegraph:node:size = (151.5, 53)
+            }
+
+            over "LineWidths"
+            {
+                float2 ui:nodegraph:node:size = (150, 53)
+            }
+
+            over "Separate2"
+            {
+                float2 ui:nodegraph:node:size = (115, 127)
+            }
+
+            over "Min"
+            {
+                float2 ui:nodegraph:node:size = (113, 40)
+            }
+
+            over "Range"
+            {
+                float2 ui:nodegraph:node:size = (98, 217)
+            }
+        }
+    }
+
+    def Cube "Cube" (
+        active = true
+        prepend apiSchemas = ["MaterialBindingAPI"]
+    )
+    {
+        rel material:binding = </Root/Cube/DefaultMaterial> (
+            bindMaterialAs = "weakerThanDescendants"
+        )
+        double size = 0.2
+        float3 xformOp:scale = (10, 0.1, 30)
+        float3 xformOp:translate = (0, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Material "DefaultMaterial"
+        {
+            token inputs:frame:stPrimvarName = "st"
+            token outputs:mtlx:surface
+            token outputs:realitykit:vertex
+            prepend token outputs:surface.connect = </Root/Cube/DefaultMaterial/DefaultSurfaceShader.outputs:surface>
+
+            def Shader "DefaultSurfaceShader"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.18, 0.18, 0.18)
+                color3f inputs:diffuseColor.connect = </Root/Cube/DefaultMaterial/diffuseColor.outputs:rgb>
+                float inputs:roughness = 1
+                token outputs:surface
+            }
+
+            def Shader "diffuseColor"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @R-C.a44cc98d07b87f0cf6c09a4e0b390c2d.jpeg@
+                float2 inputs:st.connect = </Root/Cube/DefaultMaterial/diffuseColor/TexCoordReader.outputs:result>
+                color3f outputs:rgb
+
+                def Shader "TexCoordReader"
+                {
+                    uniform token info:id = "UsdPrimvarReader_float2"
+                    token inputs:varname.connect = </Root/Cube/DefaultMaterial/DefaultSurfaceShader.inputs:frame:stPrimvarName>
+                    float2 outputs:result
+                }
+            }
+        }
+    }
+
+    def Cube "Cube_1" (
+        active = true
+        prepend apiSchemas = ["MaterialBindingAPI"]
+    )
+    {
+        rel material:binding = </Root/Cube_1/DefaultMaterial>
+        double size = 0.2
+        float3 xformOp:scale = (0.05, 10, 30)
+        float3 xformOp:translate = (1.0035862, 1.0008528, 0.0009229183)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Material "DefaultMaterial"
+        {
+            token inputs:frame:stPrimvarName = "st"
+            token outputs:mtlx:surface
+            token outputs:realitykit:vertex
+            prepend token outputs:surface.connect = </Root/Cube_1/DefaultMaterial/DefaultSurfaceShader.outputs:surface>
+
+            def Shader "DefaultSurfaceShader"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0, 0.9914394, 1) (
+                    colorSpace = "srgb_texture"
+                )
+                color3f inputs:diffuseColor.connect = </Root/Cube_1/DefaultMaterial/diffuseColor.outputs:rgb>
+                float inputs:roughness = 0.75
+                token outputs:surface
+            }
+
+            def Shader "diffuseColor"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @OIP-C.1WYz-TOaUIpWOHgg6LRGxQHaEo.jpeg@
+                float2 inputs:st.connect = </Root/Cube_1/DefaultMaterial/diffuseColor/TexCoordReader.outputs:result>
+                color3f outputs:rgb
+
+                def Shader "TexCoordReader"
+                {
+                    uniform token info:id = "UsdPrimvarReader_float2"
+                    token inputs:varname.connect = </Root/Cube_1/DefaultMaterial/DefaultSurfaceShader.inputs:frame:stPrimvarName>
+                    float2 outputs:result
+                }
+            }
+        }
+    }
+
+    def Cube "Cube_2" (
+        active = true
+        prepend apiSchemas = ["MaterialBindingAPI"]
+    )
+    {
+        rel material:binding = </Root/Cube_2/DefaultMaterial>
+        double size = 0.2
+        float3 xformOp:scale = (10, 10, 0.05)
+        float3 xformOp:translate = (0.0015496612, 1.0006611, -3.0069468)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Material "DefaultMaterial"
+        {
+            token inputs:frame:stPrimvarName = "st"
+            token outputs:mtlx:surface
+            token outputs:realitykit:vertex
+            prepend token outputs:surface.connect = </Root/Cube_2/DefaultMaterial/DefaultSurfaceShader.outputs:surface>
+
+            def Shader "DefaultSurfaceShader"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (1, 1, 1)
+                color3f inputs:diffuseColor.connect = </Root/Cube_2/DefaultMaterial/diffuseColor.outputs:rgb>
+                float inputs:roughness = 0.75
+                token outputs:surface
+            }
+
+            def Shader "diffuseColor"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @OIP-C.1WYz-TOaUIpWOHgg6LRGxQHaEo.jpeg@
+                float2 inputs:st.connect = </Root/Cube_2/DefaultMaterial/diffuseColor/TexCoordReader.outputs:result>
+                color3f outputs:rgb
+
+                def Shader "TexCoordReader"
+                {
+                    uniform token info:id = "UsdPrimvarReader_float2"
+                    token inputs:varname.connect = </Root/Cube_2/DefaultMaterial/DefaultSurfaceShader.inputs:frame:stPrimvarName>
+                    float2 outputs:result
+                }
+            }
+        }
+    }
+
+    def "LowPoly_bonfire" (
+        active = true
+        prepend references = @Materials/New Folder/LowPoly_bonfire.usdz@
+    )
+    {
+        float3 xformOp:scale = (0.001, 0.001, 0.001)
+        float3 xformOp:translate = (-0.08916006, 0.029836223, 0.7788331)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        over "Materials"
+        {
+            over "lambert1_002"
+            {
+                token outputs:mtlx:surface
+                token outputs:realitykit:vertex
+            }
+        }
+    }
+
+    def Cube "Cube_3" (
+        active = true
+        prepend apiSchemas = ["MaterialBindingAPI"]
+        customData = {
+            float3 rotationEulerHint = (0, -0.0069721797, 0)
+        }
+    )
+    {
+        rel material:binding = </Root/Material_1> (
+            bindMaterialAs = "weakerThanDescendants"
+        )
+        double size = 0.2
+        quatf xformOp:orient = (0.9999939, 0, -0.003486083, 0)
+        float3 xformOp:scale = (0.1, 5, 3)
+        float3 xformOp:translate = (0.9903317, 0.97316766, -1.978404)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def Cube "Cube_4" (
+        active = true
+        prepend apiSchemas = ["MaterialBindingAPI"]
+        customData = {
+            float3 rotationEulerHint = (0, -0.0069721797, 0)
+        }
+    )
+    {
+        rel material:binding = </Root/Cube_4/DefaultMaterial>
+        double size = 0.2
+        quatf xformOp:orient = (0.9999939, 0, -0.00348702, 0)
+        float3 xformOp:scale = (0.07999999, 4, 6.6666665)
+        float3 xformOp:translate = (0.9751357, 0.9924916, 1.9828019)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Material "DefaultMaterial"
+        {
+            token inputs:frame:stPrimvarName = "st"
+            token outputs:mtlx:surface
+            token outputs:realitykit:vertex
+            token outputs:surface.connect = </Root/Cube_4/DefaultMaterial/DefaultSurfaceShader.outputs:surface>
+
+            def Shader "DefaultSurfaceShader"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (1, 1, 1)
+                color3f inputs:diffuseColor.connect = </Root/Cube_4/DefaultMaterial/diffuseColor.outputs:rgb>
+                float inputs:roughness = 0.75
+                token outputs:surface
+            }
+
+            def Shader "diffuseColor"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @@@015fa55b117f2fa801202e60106a69.jpg@2o.jpg@@@
+                float2 inputs:st.connect = </Root/Cube_4/DefaultMaterial/diffuseColor/TexCoordReader.outputs:result>
+                color3f outputs:rgb
+
+                def Shader "TexCoordReader"
+                {
+                    uniform token info:id = "UsdPrimvarReader_float2"
+                    token inputs:varname.connect = </Root/Cube_4/DefaultMaterial/DefaultSurfaceShader.inputs:frame:stPrimvarName>
+                    float2 outputs:result
+                }
+            }
+        }
+    }
+
+    def "Box_Aquarium" (
+        active = true
+        customData = {
+            float3 rotationEulerHint = (-1.4795709, 1.4528632e-7, 0.034802232)
+        }
+        prepend references = @Materials/Box_Aquarium.usdz@
+    )
+    {
+        quatf xformOp:orient = (0.7385014, -0.6740274, -0.011729959, 0.012852095)
+        float3 xformOp:scale = (0.001, 0.002, 0.002)
+        float3 xformOp:translate = (-0.06627898, 0.42276073, -1.9898424)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def Material "Material"
+    {
+        token inputs:frame:stPrimvarName = "st"
+        token outputs:mtlx:surface
+        token outputs:realitykit:vertex
+        prepend token outputs:surface.connect = </Root/Material/UsdPreviewSurface.outputs:surface>
+
+        def Shader "UsdPreviewSurface"
+        {
+            uniform token info:id = "UsdPreviewSurface"
+            color3f inputs:diffuseColor = (0.18, 0.18, 0.18)
+            color3f inputs:diffuseColor.connect = </Root/Material/diffuseColor.outputs:rgb>
+            token outputs:surface
+        }
+
+        def Shader "diffuseColor"
+        {
+            uniform token info:id = "UsdUVTexture"
+            asset inputs:file = @Materials/007Df4Zqgy1hqw8b8v3o4j30ow0yv7ic.jpg@
+            float2 inputs:st.connect = </Root/Material/diffuseColor/TexCoordReader.outputs:result>
+            color3f outputs:rgb
+
+            def Shader "TexCoordReader"
+            {
+                uniform token info:id = "UsdPrimvarReader_float2"
+                token inputs:varname.connect = </Root/Material/UsdPreviewSurface.inputs:frame:stPrimvarName>
+                float2 outputs:result
+            }
+        }
+    }
+
+    def Material "Material_1"
+    {
+        token inputs:frame:stPrimvarName = "st"
+        token outputs:mtlx:surface
+        token outputs:realitykit:vertex
+        prepend token outputs:surface.connect = </Root/Material_1/UsdPreviewSurface.outputs:surface>
+
+        def Shader "UsdPreviewSurface"
+        {
+            uniform token info:id = "UsdPreviewSurface"
+            color3f inputs:diffuseColor = (0.18, 0.18, 0.18)
+            color3f inputs:diffuseColor.connect = </Root/Material_1/diffuseColor.outputs:rgb>
+            token outputs:surface
+        }
+
+        def Shader "diffuseColor"
+        {
+            uniform token info:id = "UsdUVTexture"
+            asset inputs:file = @202310242200323686.jpg@
+            float2 inputs:st.connect = </Root/Material_1/diffuseColor/TexCoordReader.outputs:result>
+            color3f outputs:rgb
+
+            def Shader "TexCoordReader"
+            {
+                uniform token info:id = "UsdPrimvarReader_float2"
+                token inputs:varname.connect = </Root/Material_1/UsdPreviewSurface.inputs:frame:stPrimvarName>
+                float2 outputs:result
+            }
+        }
+    }
+
+    def "BasketballHoop" (
+        active = true
+        customData = {
+            float3 rotationEulerHint = (0.014962642, -1.5707963, 0)
+        }
+        prepend references = @Materials/BasketballHoop.usdz@
+    )
+    {
+        quatf xformOp:orient = (0.703461, -0.005262916, -0.71069527, -0.005209343)
+        float3 xformOp:scale = (0.004, 0.005, 0.004)
+        float3 xformOp:translate = (-0.029546157, 0.89588696, -2.397113)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def Cube "Cube_5" (
+        active = true
+        prepend apiSchemas = ["MaterialBindingAPI"]
+        customData = {
+            float3 rotationEulerHint = (0, -0.006974054, 0)
+        }
+    )
+    {
+        rel material:binding = </Root/Material> (
+            bindMaterialAs = "weakerThanDescendants"
+        )
+        double size = 0.2
+        quatf xformOp:orient = (0.9999939, 0, -0.00348702, 0)
+        float3 xformOp:scale = (0.1, 5, 3)
+        float3 xformOp:translate = (0.9581288, 0.9840526, 0.62299764)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def "Iron_Man_Mark_7Subsurf" (
+        active = true
+        prepend references = @Materials/Iron_Man_Mark-7Subsurf.usdz@
+    )
+    {
+        float3 xformOp:scale = (0.004, 0.004, 0.004)
+        float3 xformOp:translate = (-0.485196, -0.0046983957, -2.8566682)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def "Film_watching_place" (
+        active = true
+        customData = {
+            float3 rotationEulerHint = (0.014064264, -1.5707963, 0)
+        }
+        prepend references = @Materials/Film-watching_place.usdz@
+    )
+    {
+        quatf xformOp:orient = (0.7050941, -0.0049583963, -0.7090949, -0.001454953)
+        float3 xformOp:scale = (0.002, 0.002, 0.002)
+        float3 xformOp:translate = (-0.071103334, 0.17776638, 1.4873483)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def "Witchs_Retreat" (
+        active = true
+        prepend references = @Materials/Witchs_Retreat.usdz@
+    )
+    {
+        float3 xformOp:scale = (0.001, 0.001, 0.001)
+        float3 xformOp:translate = (-0.046735913, -1.1920929e-7, -0.6129389)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def "Sunset_Treasure_Chest" (
+        active = true
+        customData = {
+            float3 rotationEulerHint = (-0.00004339218, -3.0774286, 0.00067925453)
+        }
+        prepend references = @Materials/Sunset_Treasure_Chest.usdz@
+    )
+    {
+        quatf xformOp:orient = (-0.032076314, -0.00033871198, 0.9994854, 0.00001087013)
+        float3 xformOp:scale = (0.002, 0.002, 0.002)
+        float3 xformOp:translate = (0.7443308, 0.061541125, -0.41959226)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def "Area_Rug_Color_3D_Scan" (
+        active = true
+        prepend references = @Materials/Area_Rug_Color_3D_Scan.usdz@
+    )
+    {
+        float3 xformOp:scale = (2.220446e-16, 2.220446e-16, 2.220446e-16)
+        float3 xformOp:translate = (1.7357507, 0, 1.6559665)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def Cube "Cube_6" (
+        active = true
+        prepend apiSchemas = ["MaterialBindingAPI"]
+        customData = {
+            float3 rotationEulerHint = (0, -0.0069721797, 0)
+        }
+    )
+    {
+        rel material:binding = </Root/Cube_6/DefaultMaterial>
+        double size = 0.2
+        quatf xformOp:orient = (0.9999939, 0, -0.0034870207, 0)
+        float3 xformOp:scale = (0.07999999, 4, 6.6666665)
+        float3 xformOp:translate = (0.9942276, 0.95789355, -0.7524851)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Material "DefaultMaterial"
+        {
+            token inputs:frame:stPrimvarName = "st"
+            token outputs:mtlx:surface
+            token outputs:realitykit:vertex
+            token outputs:surface.connect = </Root/Cube_6/DefaultMaterial/DefaultSurfaceShader.outputs:surface>
+
+            def Shader "DefaultSurfaceShader"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (1, 1, 1)
+                color3f inputs:diffuseColor.connect = </Root/Cube_6/DefaultMaterial/diffuseColor.outputs:rgb>
+                float inputs:roughness = 0.75
+                token outputs:surface
+            }
+
+            def Shader "diffuseColor"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @Materials/eada7cd6fbe1e8aef9fc99047d42af33d6acda57.jpg@
+                float2 inputs:st.connect = </Root/Cube_6/DefaultMaterial/diffuseColor/TexCoordReader.outputs:result>
+                color3f outputs:rgb
+
+                def Shader "TexCoordReader"
+                {
+                    uniform token info:id = "UsdPrimvarReader_float2"
+                    token inputs:varname.connect = </Root/Cube_6/DefaultMaterial/DefaultSurfaceShader.inputs:frame:stPrimvarName>
+                    float2 outputs:result
+                }
+            }
+        }
+    }
+}
+
