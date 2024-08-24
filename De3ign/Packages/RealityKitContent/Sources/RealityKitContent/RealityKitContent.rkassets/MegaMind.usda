@@ -1,0 +1,3051 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "Reality Composer Pro Version 1.0 (409.100.15)"
+    }
+    defaultPrim = "Root"
+    metersPerUnit = 1
+    upAxis = "Y"
+)
+
+def Xform "Root"
+{
+    reorder nameChildren = ["floor", "wall", "wall_1", "_4000_x_1200", "Office_Chair_2", "Office_Chair_3", "Office_Chair_4", "Office_Chair_5", "Office_Chair_6", "Office_Chair_7", "Office_Chair_8", "Office_Chair_9", "Office_Chair_11", "Office_Chair_12", "Office_Chair_13", "Office_Chair_14", "Apple_Vision_Pro", "Apple_Vision_Pro_1", "Office_Chair_15", "Office_Chair_16", "MacBook_Pro_2021", "Macbook_Pro_13_inch_2020", "Macbook", "MacBook_Pro_2022", "projector", "Cube", "Macbook_1", "Light"]
+    def Cube "floor" (
+        active = true
+        prepend apiSchemas = ["MaterialBindingAPI"]
+    )
+    {
+        rel material:binding = </Root/floor/DefaultMaterial>
+        double size = 0.2
+        float3 xformOp:scale = (55, 0.1, 30)
+        float3 xformOp:translate = (-0.06117475, -1.1239593, 0.7490125)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Material "DefaultMaterial"
+        {
+            token inputs:frame:stPrimvarName = "st"
+            token outputs:mtlx:surface
+            token outputs:realitykit:vertex
+            prepend token outputs:surface.connect = </Root/floor/DefaultMaterial/DefaultSurfaceShader.outputs:surface>
+
+            def Shader "DefaultSurfaceShader"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (1, 1, 1)
+                color3f inputs:diffuseColor.connect = </Root/floor/DefaultMaterial/diffuseColor.outputs:rgb>
+                float inputs:roughness = 0.75
+                token outputs:surface
+            }
+
+            def Shader "diffuseColor"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @20200509161043_5eb6658361d83.jpg@
+                float2 inputs:st.connect = </Root/floor/DefaultMaterial/diffuseColor/TexCoordReader.outputs:result>
+                color3f outputs:rgb
+
+                def Shader "TexCoordReader"
+                {
+                    uniform token info:id = "UsdPrimvarReader_float2"
+                    token inputs:varname.connect = </Root/floor/DefaultMaterial/DefaultSurfaceShader.inputs:frame:stPrimvarName>
+                    float2 outputs:result
+                }
+            }
+        }
+    }
+
+    def Cube "wall" (
+        active = true
+        prepend apiSchemas = ["MaterialBindingAPI"]
+    )
+    {
+        rel material:binding = </Root/wall/DefaultMaterial>
+        double size = 0.2
+        quatf xformOp:orient = (1, 0, 0, 0)
+        float3 xformOp:scale = (55, 15, 0.1)
+        float3 xformOp:translate = (-0.07771683, 0.36762726, -2.2392902)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Material "DefaultMaterial"
+        {
+            token outputs:mtlx:surface
+            token outputs:realitykit:vertex
+            token outputs:surface.connect = </Root/wall/DefaultMaterial/DefaultSurfaceShader.outputs:surface>
+
+            def Shader "DefaultSurfaceShader"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.91177773, 0.91177773, 0.91177773) (
+                    colorSpace = "lin_srgb"
+                )
+                float inputs:roughness = 0.75
+                token outputs:surface
+            }
+        }
+    }
+
+    def Cube "wall_1" (
+        active = true
+        prepend apiSchemas = ["MaterialBindingAPI"]
+    )
+    {
+        rel material:binding = </Root/wall_1/DefaultMaterial>
+        double size = 0.2
+        quatf xformOp:orient = (1, 0, 0, 0)
+        float3 xformOp:scale = (0.1, 15, 30)
+        float3 xformOp:translate = (5.429864, 0.36499053, 0.7482567)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Material "DefaultMaterial"
+        {
+            token inputs:frame:stPrimvarName = "st"
+            token outputs:mtlx:surface
+            token outputs:realitykit:vertex
+            token outputs:surface.connect = </Root/wall_1/DefaultMaterial/DefaultSurfaceShader.outputs:surface>
+
+            def Shader "DefaultSurfaceShader"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.9520049, 0.9614307, 0.9614307) (
+                    colorSpace = "srgb_displayp3"
+                )
+                color3f inputs:diffuseColor.connect = </Root/wall_1/DefaultMaterial/diffuseColor.outputs:rgb>
+                float inputs:roughness = 0.75
+                token outputs:surface
+            }
+
+            def Shader "diffuseColor"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @DSC00655_AF.jpg@
+                float2 inputs:st.connect = </Root/wall_1/DefaultMaterial/diffuseColor/TexCoordReader.outputs:result>
+                color3f outputs:rgb
+
+                def Shader "TexCoordReader"
+                {
+                    uniform token info:id = "UsdPrimvarReader_float2"
+                    token inputs:varname.connect = </Root/wall_1/DefaultMaterial/DefaultSurfaceShader.inputs:frame:stPrimvarName>
+                    float2 outputs:result
+                }
+            }
+        }
+    }
+
+    def "_4000_x_1200" (
+        active = true
+        references = @4000_x_1200.usdz@
+    )
+    {
+        float3 xformOp:scale = (0.005, 0.003, 0.005)
+        float3 xformOp:translate = (-3.2947488, -1.1556234, 2.0953317)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def "Office_Chair_2" (
+        active = true
+        customData = {
+            float3 rotationEulerHint = (0, -3.072511, 0)
+        }
+        references = @Office_Chair-2.usdz@
+    )
+    {
+        quatf xformOp:orient = (-0.034533877, 0, 0.99940354, 0)
+        float3 xformOp:scale = (0.01, 0.009999995, 0.009999998)
+        float3 xformOp:translate = (1.9837949, -1.145711, 2.3336887)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def "Office_Chair_3" (
+        active = true
+        customData = {
+            float3 rotationEulerHint = (0, -3.4477441, 0)
+        }
+        references = @Office_Chair-2.usdz@
+    )
+    {
+        quatf xformOp:orient = (0.1524784, 0, 0.9883068, 0)
+        float3 xformOp:scale = (0.009999997, 0.009999997, 0.009999997)
+        float3 xformOp:translate = (1.2037051, -1.1457105, 2.412985)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        over "Materials"
+        {
+            over "Material"
+            {
+                token outputs:surface.connect = </Root/Office_Chair_3/Materials/Material/pbr_shader.outputs:surface>
+
+                over "pbr_shader"
+                {
+                    float inputs:metallic.connect = </Root/Office_Chair_3/Materials/Material/tex_metallic.outputs:r>
+                    normal3f inputs:normal.connect = </Root/Office_Chair_3/Materials/Material/tex_normal.outputs:rgb>
+                    float inputs:roughness.connect = </Root/Office_Chair_3/Materials/Material/tex_roughness.outputs:r>
+                }
+
+                over "tex_metallic"
+                {
+                    float2 inputs:st.connect = </Root/Office_Chair_3/Materials/Material/uvset0.outputs:result>
+                }
+
+                over "tex_roughness"
+                {
+                    float2 inputs:st.connect = </Root/Office_Chair_3/Materials/Material/uvset0.outputs:result>
+                }
+
+                over "tex_normal"
+                {
+                    float2 inputs:st.connect = </Root/Office_Chair_3/Materials/Material/uvset0.outputs:result>
+                }
+            }
+
+            over "Material_001"
+            {
+                token outputs:surface.connect = </Root/Office_Chair_3/Materials/Material_001/pbr_shader.outputs:surface>
+
+                over "pbr_shader"
+                {
+                    normal3f inputs:normal.connect = </Root/Office_Chair_3/Materials/Material_001/tex_normal.outputs:rgb>
+                }
+
+                over "tex_normal"
+                {
+                    float2 inputs:st.connect = </Root/Office_Chair_3/Materials/Material_001/uvset0.outputs:result>
+                }
+            }
+
+            over "Material_002"
+            {
+                token outputs:surface.connect = </Root/Office_Chair_3/Materials/Material_002/pbr_shader.outputs:surface>
+            }
+
+            over "Material_003"
+            {
+                token outputs:surface.connect = </Root/Office_Chair_3/Materials/Material_003/pbr_shader.outputs:surface>
+            }
+        }
+    }
+
+    def "Office_Chair_4" (
+        active = true
+        customData = {
+            float3 rotationEulerHint = (0, -2.68249, 0)
+        }
+        references = @Office_Chair-2.usdz@
+    )
+    {
+        quatf xformOp:orient = (-0.22754052, 0, 0.9737686, 0)
+        float3 xformOp:scale = (0.01, 0.009999998, 0.01)
+        float3 xformOp:translate = (0.28390133, -1.1457112, 2.8793378)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        over "Materials"
+        {
+            over "Material"
+            {
+                token outputs:surface.connect = </Root/Office_Chair_4/Materials/Material/pbr_shader.outputs:surface>
+
+                over "pbr_shader"
+                {
+                    float inputs:metallic.connect = </Root/Office_Chair_4/Materials/Material/tex_metallic.outputs:r>
+                    normal3f inputs:normal.connect = </Root/Office_Chair_4/Materials/Material/tex_normal.outputs:rgb>
+                    float inputs:roughness.connect = </Root/Office_Chair_4/Materials/Material/tex_roughness.outputs:r>
+                }
+
+                over "tex_metallic"
+                {
+                    float2 inputs:st.connect = </Root/Office_Chair_4/Materials/Material/uvset0.outputs:result>
+                }
+
+                over "tex_roughness"
+                {
+                    float2 inputs:st.connect = </Root/Office_Chair_4/Materials/Material/uvset0.outputs:result>
+                }
+
+                over "tex_normal"
+                {
+                    float2 inputs:st.connect = </Root/Office_Chair_4/Materials/Material/uvset0.outputs:result>
+                }
+            }
+
+            over "Material_001"
+            {
+                token outputs:surface.connect = </Root/Office_Chair_4/Materials/Material_001/pbr_shader.outputs:surface>
+
+                over "pbr_shader"
+                {
+                    normal3f inputs:normal.connect = </Root/Office_Chair_4/Materials/Material_001/tex_normal.outputs:rgb>
+                }
+
+                over "tex_normal"
+                {
+                    float2 inputs:st.connect = </Root/Office_Chair_4/Materials/Material_001/uvset0.outputs:result>
+                }
+            }
+
+            over "Material_002"
+            {
+                token outputs:surface.connect = </Root/Office_Chair_4/Materials/Material_002/pbr_shader.outputs:surface>
+            }
+
+            over "Material_003"
+            {
+                token outputs:surface.connect = </Root/Office_Chair_4/Materials/Material_003/pbr_shader.outputs:surface>
+            }
+        }
+    }
+
+    def "Office_Chair_5" (
+        active = true
+        customData = {
+            float3 rotationEulerHint = (0, -3.488817, 0)
+        }
+        references = @Office_Chair-2.usdz@
+    )
+    {
+        quatf xformOp:orient = (0.1727419, 0, 0.9849671, 0)
+        float3 xformOp:scale = (0.009999998, 0.009999997, 0.009999998)
+        float3 xformOp:translate = (-2.6137972, -1.120352, 2.3758075)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        over "Materials"
+        {
+            over "Material"
+            {
+                token outputs:surface.connect = </Root/Office_Chair_5/Materials/Material/pbr_shader.outputs:surface>
+
+                over "pbr_shader"
+                {
+                    float inputs:metallic.connect = </Root/Office_Chair_5/Materials/Material/tex_metallic.outputs:r>
+                    normal3f inputs:normal.connect = </Root/Office_Chair_5/Materials/Material/tex_normal.outputs:rgb>
+                    float inputs:roughness.connect = </Root/Office_Chair_5/Materials/Material/tex_roughness.outputs:r>
+                }
+
+                over "tex_metallic"
+                {
+                    float2 inputs:st.connect = </Root/Office_Chair_5/Materials/Material/uvset0.outputs:result>
+                }
+
+                over "tex_roughness"
+                {
+                    float2 inputs:st.connect = </Root/Office_Chair_5/Materials/Material/uvset0.outputs:result>
+                }
+
+                over "tex_normal"
+                {
+                    float2 inputs:st.connect = </Root/Office_Chair_5/Materials/Material/uvset0.outputs:result>
+                }
+            }
+
+            over "Material_001"
+            {
+                token outputs:surface.connect = </Root/Office_Chair_5/Materials/Material_001/pbr_shader.outputs:surface>
+
+                over "pbr_shader"
+                {
+                    normal3f inputs:normal.connect = </Root/Office_Chair_5/Materials/Material_001/tex_normal.outputs:rgb>
+                }
+
+                over "tex_normal"
+                {
+                    float2 inputs:st.connect = </Root/Office_Chair_5/Materials/Material_001/uvset0.outputs:result>
+                }
+            }
+
+            over "Material_002"
+            {
+                token outputs:surface.connect = </Root/Office_Chair_5/Materials/Material_002/pbr_shader.outputs:surface>
+            }
+
+            over "Material_003"
+            {
+                token outputs:surface.connect = </Root/Office_Chair_5/Materials/Material_003/pbr_shader.outputs:surface>
+            }
+        }
+    }
+
+    def "Office_Chair_6" (
+        active = true
+        customData = {
+            float3 rotationEulerHint = (0, -4.712389, 0)
+        }
+        references = @Office_Chair-2.usdz@
+    )
+    {
+        quatf xformOp:orient = (0.7018633, 0, 0.7123117, 0)
+        float3 xformOp:scale = (0.009999998, 0.009999997, 0.009999998)
+        float3 xformOp:translate = (-3.81406, -1.1216688, 1.1156788)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        over "Materials"
+        {
+            over "Material"
+            {
+                token outputs:surface.connect = </Root/Office_Chair_6/Materials/Material/pbr_shader.outputs:surface>
+
+                over "pbr_shader"
+                {
+                    float inputs:metallic.connect = </Root/Office_Chair_6/Materials/Material/tex_metallic.outputs:r>
+                    normal3f inputs:normal.connect = </Root/Office_Chair_6/Materials/Material/tex_normal.outputs:rgb>
+                    float inputs:roughness.connect = </Root/Office_Chair_6/Materials/Material/tex_roughness.outputs:r>
+                }
+
+                over "tex_metallic"
+                {
+                    float2 inputs:st.connect = </Root/Office_Chair_6/Materials/Material/uvset0.outputs:result>
+                }
+
+                over "tex_roughness"
+                {
+                    float2 inputs:st.connect = </Root/Office_Chair_6/Materials/Material/uvset0.outputs:result>
+                }
+
+                over "tex_normal"
+                {
+                    float2 inputs:st.connect = </Root/Office_Chair_6/Materials/Material/uvset0.outputs:result>
+                }
+            }
+
+            over "Material_001"
+            {
+                token outputs:surface.connect = </Root/Office_Chair_6/Materials/Material_001/pbr_shader.outputs:surface>
+
+                over "pbr_shader"
+                {
+                    normal3f inputs:normal.connect = </Root/Office_Chair_6/Materials/Material_001/tex_normal.outputs:rgb>
+                }
+
+                over "tex_normal"
+                {
+                    float2 inputs:st.connect = </Root/Office_Chair_6/Materials/Material_001/uvset0.outputs:result>
+                }
+            }
+
+            over "Material_002"
+            {
+                token outputs:surface.connect = </Root/Office_Chair_6/Materials/Material_002/pbr_shader.outputs:surface>
+            }
+
+            over "Material_003"
+            {
+                token outputs:surface.connect = </Root/Office_Chair_6/Materials/Material_003/pbr_shader.outputs:surface>
+            }
+        }
+    }
+
+    def "Office_Chair_7" (
+        active = true
+        customData = {
+            float3 rotationEulerHint = (0, -2.9150822, 0)
+        }
+        references = @Office_Chair-2.usdz@
+    )
+    {
+        quatf xformOp:orient = (-0.11301317, 0, 0.9935935, 0)
+        float3 xformOp:scale = (0.009999999, 0.009999997, 0.009999998)
+        float3 xformOp:translate = (-1.8788416, -1.1137636, 2.4421093)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        over "Materials"
+        {
+            over "Material"
+            {
+                token outputs:surface.connect = </Root/Office_Chair_7/Materials/Material/pbr_shader.outputs:surface>
+
+                over "pbr_shader"
+                {
+                    float inputs:metallic.connect = </Root/Office_Chair_7/Materials/Material/tex_metallic.outputs:r>
+                    normal3f inputs:normal.connect = </Root/Office_Chair_7/Materials/Material/tex_normal.outputs:rgb>
+                    float inputs:roughness.connect = </Root/Office_Chair_7/Materials/Material/tex_roughness.outputs:r>
+                }
+
+                over "tex_metallic"
+                {
+                    float2 inputs:st.connect = </Root/Office_Chair_7/Materials/Material/uvset0.outputs:result>
+                }
+
+                over "tex_roughness"
+                {
+                    float2 inputs:st.connect = </Root/Office_Chair_7/Materials/Material/uvset0.outputs:result>
+                }
+
+                over "tex_normal"
+                {
+                    float2 inputs:st.connect = </Root/Office_Chair_7/Materials/Material/uvset0.outputs:result>
+                }
+            }
+
+            over "Material_001"
+            {
+                token outputs:surface.connect = </Root/Office_Chair_7/Materials/Material_001/pbr_shader.outputs:surface>
+
+                over "pbr_shader"
+                {
+                    normal3f inputs:normal.connect = </Root/Office_Chair_7/Materials/Material_001/tex_normal.outputs:rgb>
+                }
+
+                over "tex_normal"
+                {
+                    float2 inputs:st.connect = </Root/Office_Chair_7/Materials/Material_001/uvset0.outputs:result>
+                }
+            }
+
+            over "Material_002"
+            {
+                token outputs:surface.connect = </Root/Office_Chair_7/Materials/Material_002/pbr_shader.outputs:surface>
+            }
+
+            over "Material_003"
+            {
+                token outputs:surface.connect = </Root/Office_Chair_7/Materials/Material_003/pbr_shader.outputs:surface>
+            }
+        }
+    }
+
+    def "Office_Chair_8" (
+        active = true
+        customData = {
+            float3 rotationEulerHint = (0, -3.1151435, 0)
+        }
+        references = @Office_Chair-2.usdz@
+    )
+    {
+        quatf xformOp:orient = (-0.013223934, 0, 0.99991256, 0)
+        float3 xformOp:scale = (0.009999999, 0.009999997, 0.009999999)
+        float3 xformOp:translate = (-1.0112696, -1.124438, 2.42799)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        over "Materials"
+        {
+            over "Material"
+            {
+                token outputs:surface.connect = </Root/Office_Chair_8/Materials/Material/pbr_shader.outputs:surface>
+
+                over "pbr_shader"
+                {
+                    float inputs:metallic.connect = </Root/Office_Chair_8/Materials/Material/tex_metallic.outputs:r>
+                    normal3f inputs:normal.connect = </Root/Office_Chair_8/Materials/Material/tex_normal.outputs:rgb>
+                    float inputs:roughness.connect = </Root/Office_Chair_8/Materials/Material/tex_roughness.outputs:r>
+                }
+
+                over "tex_metallic"
+                {
+                    float2 inputs:st.connect = </Root/Office_Chair_8/Materials/Material/uvset0.outputs:result>
+                }
+
+                over "tex_roughness"
+                {
+                    float2 inputs:st.connect = </Root/Office_Chair_8/Materials/Material/uvset0.outputs:result>
+                }
+
+                over "tex_normal"
+                {
+                    float2 inputs:st.connect = </Root/Office_Chair_8/Materials/Material/uvset0.outputs:result>
+                }
+            }
+
+            over "Material_001"
+            {
+                token outputs:surface.connect = </Root/Office_Chair_8/Materials/Material_001/pbr_shader.outputs:surface>
+
+                over "pbr_shader"
+                {
+                    normal3f inputs:normal.connect = </Root/Office_Chair_8/Materials/Material_001/tex_normal.outputs:rgb>
+                }
+
+                over "tex_normal"
+                {
+                    float2 inputs:st.connect = </Root/Office_Chair_8/Materials/Material_001/uvset0.outputs:result>
+                }
+            }
+
+            over "Material_002"
+            {
+                token outputs:surface.connect = </Root/Office_Chair_8/Materials/Material_002/pbr_shader.outputs:surface>
+            }
+
+            over "Material_003"
+            {
+                token outputs:surface.connect = </Root/Office_Chair_8/Materials/Material_003/pbr_shader.outputs:surface>
+            }
+        }
+    }
+
+    def "Office_Chair_9" (
+        active = true
+        customData = {
+            float3 rotationEulerHint = (0, -6.0669575, 0)
+        }
+        references = @Office_Chair-2.usdz@
+    )
+    {
+        quatf xformOp:orient = (0.99416137, 0, 0.107903294, 0)
+        float3 xformOp:scale = (0.009999997, 0.009999995, 0.009999997)
+        float3 xformOp:translate = (-2.3613133, -1.1154277, -0.35608414)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        over "Materials"
+        {
+            over "Material"
+            {
+                token outputs:surface.connect = </Root/Office_Chair_9/Materials/Material/pbr_shader.outputs:surface>
+
+                over "pbr_shader"
+                {
+                    float inputs:metallic.connect = </Root/Office_Chair_9/Materials/Material/tex_metallic.outputs:r>
+                    normal3f inputs:normal.connect = </Root/Office_Chair_9/Materials/Material/tex_normal.outputs:rgb>
+                    float inputs:roughness.connect = </Root/Office_Chair_9/Materials/Material/tex_roughness.outputs:r>
+                }
+
+                over "tex_metallic"
+                {
+                    float2 inputs:st.connect = </Root/Office_Chair_9/Materials/Material/uvset0.outputs:result>
+                }
+
+                over "tex_roughness"
+                {
+                    float2 inputs:st.connect = </Root/Office_Chair_9/Materials/Material/uvset0.outputs:result>
+                }
+
+                over "tex_normal"
+                {
+                    float2 inputs:st.connect = </Root/Office_Chair_9/Materials/Material/uvset0.outputs:result>
+                }
+            }
+
+            over "Material_001"
+            {
+                token outputs:surface.connect = </Root/Office_Chair_9/Materials/Material_001/pbr_shader.outputs:surface>
+
+                over "pbr_shader"
+                {
+                    normal3f inputs:normal.connect = </Root/Office_Chair_9/Materials/Material_001/tex_normal.outputs:rgb>
+                }
+
+                over "tex_normal"
+                {
+                    float2 inputs:st.connect = </Root/Office_Chair_9/Materials/Material_001/uvset0.outputs:result>
+                }
+            }
+
+            over "Material_002"
+            {
+                token outputs:surface.connect = </Root/Office_Chair_9/Materials/Material_002/pbr_shader.outputs:surface>
+            }
+
+            over "Material_003"
+            {
+                token outputs:surface.connect = </Root/Office_Chair_9/Materials/Material_003/pbr_shader.outputs:surface>
+            }
+        }
+    }
+
+    def "Office_Chair_11" (
+        active = true
+        customData = {
+            float3 rotationEulerHint = (0, -6.3139277, 0)
+        }
+        references = @Office_Chair-2.usdz@
+    )
+    {
+        quatf xformOp:orient = (0.99988186, 0, -0.015370809, 0)
+        float3 xformOp:scale = (0.009999997, 0.009999995, 0.009999997)
+        float3 xformOp:translate = (-1.2317199, -1.1154277, -0.34519008)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        over "Materials"
+        {
+            over "Material"
+            {
+                token outputs:surface.connect = </Root/Office_Chair_11/Materials/Material/pbr_shader.outputs:surface>
+
+                over "pbr_shader"
+                {
+                    float inputs:metallic.connect = </Root/Office_Chair_11/Materials/Material/tex_metallic.outputs:r>
+                    normal3f inputs:normal.connect = </Root/Office_Chair_11/Materials/Material/tex_normal.outputs:rgb>
+                    float inputs:roughness.connect = </Root/Office_Chair_11/Materials/Material/tex_roughness.outputs:r>
+                }
+
+                over "tex_metallic"
+                {
+                    float2 inputs:st.connect = </Root/Office_Chair_11/Materials/Material/uvset0.outputs:result>
+                }
+
+                over "tex_roughness"
+                {
+                    float2 inputs:st.connect = </Root/Office_Chair_11/Materials/Material/uvset0.outputs:result>
+                }
+
+                over "tex_normal"
+                {
+                    float2 inputs:st.connect = </Root/Office_Chair_11/Materials/Material/uvset0.outputs:result>
+                }
+            }
+
+            over "Material_001"
+            {
+                token outputs:surface.connect = </Root/Office_Chair_11/Materials/Material_001/pbr_shader.outputs:surface>
+
+                over "pbr_shader"
+                {
+                    normal3f inputs:normal.connect = </Root/Office_Chair_11/Materials/Material_001/tex_normal.outputs:rgb>
+                }
+
+                over "tex_normal"
+                {
+                    float2 inputs:st.connect = </Root/Office_Chair_11/Materials/Material_001/uvset0.outputs:result>
+                }
+            }
+
+            over "Material_002"
+            {
+                token outputs:surface.connect = </Root/Office_Chair_11/Materials/Material_002/pbr_shader.outputs:surface>
+            }
+
+            over "Material_003"
+            {
+                token outputs:surface.connect = </Root/Office_Chair_11/Materials/Material_003/pbr_shader.outputs:surface>
+            }
+        }
+    }
+
+    def "Office_Chair_12" (
+        active = true
+        customData = {
+            float3 rotationEulerHint = (0, -7.628186, 0)
+        }
+        references = @Office_Chair-2.usdz@
+    )
+    {
+        quatf xformOp:orient = (0.7822663, 0, -0.62294406, 0)
+        float3 xformOp:scale = (0.009999997, 0.009999995, 0.009999997)
+        float3 xformOp:translate = (0.37380567, -1.1154276, -0.2643115)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        over "Materials"
+        {
+            over "Material"
+            {
+                token outputs:surface.connect = </Root/Office_Chair_12/Materials/Material/pbr_shader.outputs:surface>
+
+                over "pbr_shader"
+                {
+                    float inputs:metallic.connect = </Root/Office_Chair_12/Materials/Material/tex_metallic.outputs:r>
+                    normal3f inputs:normal.connect = </Root/Office_Chair_12/Materials/Material/tex_normal.outputs:rgb>
+                    float inputs:roughness.connect = </Root/Office_Chair_12/Materials/Material/tex_roughness.outputs:r>
+                }
+
+                over "tex_metallic"
+                {
+                    float2 inputs:st.connect = </Root/Office_Chair_12/Materials/Material/uvset0.outputs:result>
+                }
+
+                over "tex_roughness"
+                {
+                    float2 inputs:st.connect = </Root/Office_Chair_12/Materials/Material/uvset0.outputs:result>
+                }
+
+                over "tex_normal"
+                {
+                    float2 inputs:st.connect = </Root/Office_Chair_12/Materials/Material/uvset0.outputs:result>
+                }
+            }
+
+            over "Material_001"
+            {
+                token outputs:surface.connect = </Root/Office_Chair_12/Materials/Material_001/pbr_shader.outputs:surface>
+
+                over "pbr_shader"
+                {
+                    normal3f inputs:normal.connect = </Root/Office_Chair_12/Materials/Material_001/tex_normal.outputs:rgb>
+                }
+
+                over "tex_normal"
+                {
+                    float2 inputs:st.connect = </Root/Office_Chair_12/Materials/Material_001/uvset0.outputs:result>
+                }
+            }
+
+            over "Material_002"
+            {
+                token outputs:surface.connect = </Root/Office_Chair_12/Materials/Material_002/pbr_shader.outputs:surface>
+            }
+
+            over "Material_003"
+            {
+                token outputs:surface.connect = </Root/Office_Chair_12/Materials/Material_003/pbr_shader.outputs:surface>
+            }
+        }
+    }
+
+    def "Office_Chair_13" (
+        active = true
+        customData = {
+            float3 rotationEulerHint = (0, -6.0669575, 0)
+        }
+        references = @Office_Chair-2.usdz@
+    )
+    {
+        quatf xformOp:orient = (0.99416137, 0, 0.107903294, 0)
+        float3 xformOp:scale = (0.009999997, 0.009999995, 0.009999997)
+        float3 xformOp:translate = (1.2938502, -1.1154276, -0.3237431)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        over "Materials"
+        {
+            over "Material"
+            {
+                token outputs:surface.connect = </Root/Office_Chair_13/Materials/Material/pbr_shader.outputs:surface>
+
+                over "pbr_shader"
+                {
+                    float inputs:metallic.connect = </Root/Office_Chair_13/Materials/Material/tex_metallic.outputs:r>
+                    normal3f inputs:normal.connect = </Root/Office_Chair_13/Materials/Material/tex_normal.outputs:rgb>
+                    float inputs:roughness.connect = </Root/Office_Chair_13/Materials/Material/tex_roughness.outputs:r>
+                }
+
+                over "tex_metallic"
+                {
+                    float2 inputs:st.connect = </Root/Office_Chair_13/Materials/Material/uvset0.outputs:result>
+                }
+
+                over "tex_roughness"
+                {
+                    float2 inputs:st.connect = </Root/Office_Chair_13/Materials/Material/uvset0.outputs:result>
+                }
+
+                over "tex_normal"
+                {
+                    float2 inputs:st.connect = </Root/Office_Chair_13/Materials/Material/uvset0.outputs:result>
+                }
+            }
+
+            over "Material_001"
+            {
+                token outputs:surface.connect = </Root/Office_Chair_13/Materials/Material_001/pbr_shader.outputs:surface>
+
+                over "pbr_shader"
+                {
+                    normal3f inputs:normal.connect = </Root/Office_Chair_13/Materials/Material_001/tex_normal.outputs:rgb>
+                }
+
+                over "tex_normal"
+                {
+                    float2 inputs:st.connect = </Root/Office_Chair_13/Materials/Material_001/uvset0.outputs:result>
+                }
+            }
+
+            over "Material_002"
+            {
+                token outputs:surface.connect = </Root/Office_Chair_13/Materials/Material_002/pbr_shader.outputs:surface>
+            }
+
+            over "Material_003"
+            {
+                token outputs:surface.connect = </Root/Office_Chair_13/Materials/Material_003/pbr_shader.outputs:surface>
+            }
+        }
+    }
+
+    def "Office_Chair_14" (
+        active = true
+        customData = {
+            float3 rotationEulerHint = (0, -6.5907674, 0)
+        }
+        references = @Office_Chair-2.usdz@
+    )
+    {
+        quatf xformOp:orient = (0.9881974, 0, -0.15318564, 0)
+        float3 xformOp:scale = (0.009999999, 0.009999995, 0.009999998)
+        float3 xformOp:translate = (2.4708633, -1.1154275, -0.36310014)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        over "Materials"
+        {
+            over "Material"
+            {
+                token outputs:surface.connect = </Root/Office_Chair_14/Materials/Material/pbr_shader.outputs:surface>
+
+                over "pbr_shader"
+                {
+                    float inputs:metallic.connect = </Root/Office_Chair_14/Materials/Material/tex_metallic.outputs:r>
+                    normal3f inputs:normal.connect = </Root/Office_Chair_14/Materials/Material/tex_normal.outputs:rgb>
+                    float inputs:roughness.connect = </Root/Office_Chair_14/Materials/Material/tex_roughness.outputs:r>
+                }
+
+                over "tex_metallic"
+                {
+                    float2 inputs:st.connect = </Root/Office_Chair_14/Materials/Material/uvset0.outputs:result>
+                }
+
+                over "tex_roughness"
+                {
+                    float2 inputs:st.connect = </Root/Office_Chair_14/Materials/Material/uvset0.outputs:result>
+                }
+
+                over "tex_normal"
+                {
+                    float2 inputs:st.connect = </Root/Office_Chair_14/Materials/Material/uvset0.outputs:result>
+                }
+            }
+
+            over "Material_001"
+            {
+                token outputs:surface.connect = </Root/Office_Chair_14/Materials/Material_001/pbr_shader.outputs:surface>
+
+                over "pbr_shader"
+                {
+                    normal3f inputs:normal.connect = </Root/Office_Chair_14/Materials/Material_001/tex_normal.outputs:rgb>
+                }
+
+                over "tex_normal"
+                {
+                    float2 inputs:st.connect = </Root/Office_Chair_14/Materials/Material_001/uvset0.outputs:result>
+                }
+            }
+
+            over "Material_002"
+            {
+                token outputs:surface.connect = </Root/Office_Chair_14/Materials/Material_002/pbr_shader.outputs:surface>
+            }
+
+            over "Material_003"
+            {
+                token outputs:surface.connect = </Root/Office_Chair_14/Materials/Material_003/pbr_shader.outputs:surface>
+            }
+        }
+    }
+
+    def "Apple_Vision_Pro" (
+        active = true
+        customData = {
+            float3 rotationEulerHint = (0, -1.7190408, 0)
+        }
+        references = @Apple_Vision_Pro.usdz@
+    )
+    {
+        quatf xformOp:orient = (0.65280074, 0, -0.7575297, 0)
+        float3 xformOp:scale = (0.01, 0.01, 0.01)
+        float3 xformOp:translate = (0.8981826, -0.38752723, 1.7142498)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def "Apple_Vision_Pro_1" (
+        active = true
+        customData = {
+            float3 rotationEulerHint = (0, -0.2157872, 0)
+        }
+        references = @Apple_Vision_Pro.usdz@
+    )
+    {
+        quatf xformOp:orient = (0.9941851, 0, -0.10768438, 0)
+        float3 xformOp:scale = (0.010000001, 0.01, 0.01)
+        float3 xformOp:translate = (-0.6930268, -0.38752726, 0.38595152)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        over "Materials"
+        {
+            over "cfENkBJbuidhJQR"
+            {
+                token outputs:surface.connect = </Root/Apple_Vision_Pro_1/Materials/cfENkBJbuidhJQR/pbr_shader.outputs:surface>
+
+                over "pbr_shader"
+                {
+                    color3f inputs:diffuseColor.connect = </Root/Apple_Vision_Pro_1/Materials/cfENkBJbuidhJQR/tex_base.outputs:rgb>
+                    float inputs:metallic.connect = </Root/Apple_Vision_Pro_1/Materials/cfENkBJbuidhJQR/tex_metallic.outputs:r>
+                    normal3f inputs:normal.connect = </Root/Apple_Vision_Pro_1/Materials/cfENkBJbuidhJQR/tex_normal.outputs:rgb>
+                    float inputs:roughness.connect = </Root/Apple_Vision_Pro_1/Materials/cfENkBJbuidhJQR/tex_roughness.outputs:r>
+                }
+
+                over "tex_base"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/cfENkBJbuidhJQR/uvset0.outputs:result>
+                }
+
+                over "tex_metallic"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/cfENkBJbuidhJQR/uvset0.outputs:result>
+                }
+
+                over "tex_roughness"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/cfENkBJbuidhJQR/uvset0.outputs:result>
+                }
+
+                over "tex_normal"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/cfENkBJbuidhJQR/uvset0.outputs:result>
+                }
+            }
+
+            over "oTqiLbrwcjsRgMt"
+            {
+                token outputs:surface.connect = </Root/Apple_Vision_Pro_1/Materials/oTqiLbrwcjsRgMt/pbr_shader.outputs:surface>
+
+                over "pbr_shader"
+                {
+                    color3f inputs:diffuseColor.connect = </Root/Apple_Vision_Pro_1/Materials/oTqiLbrwcjsRgMt/tex_base.outputs:rgb>
+                    normal3f inputs:normal.connect = </Root/Apple_Vision_Pro_1/Materials/oTqiLbrwcjsRgMt/tex_normal.outputs:rgb>
+                }
+
+                over "tex_base"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/oTqiLbrwcjsRgMt/uvset0.outputs:result>
+                }
+
+                over "tex_normal"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/oTqiLbrwcjsRgMt/uvset0.outputs:result>
+                }
+            }
+
+            over "VphdCyWbkVqOTZM"
+            {
+                token outputs:surface.connect = </Root/Apple_Vision_Pro_1/Materials/VphdCyWbkVqOTZM/pbr_shader.outputs:surface>
+
+                over "pbr_shader"
+                {
+                    color3f inputs:diffuseColor.connect = </Root/Apple_Vision_Pro_1/Materials/VphdCyWbkVqOTZM/tex_base.outputs:rgb>
+                    float inputs:metallic.connect = </Root/Apple_Vision_Pro_1/Materials/VphdCyWbkVqOTZM/tex_metallic.outputs:r>
+                    normal3f inputs:normal.connect = </Root/Apple_Vision_Pro_1/Materials/VphdCyWbkVqOTZM/tex_normal.outputs:rgb>
+                    float inputs:roughness.connect = </Root/Apple_Vision_Pro_1/Materials/VphdCyWbkVqOTZM/tex_roughness.outputs:r>
+                }
+
+                over "tex_base"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/VphdCyWbkVqOTZM/uvset0.outputs:result>
+                }
+
+                over "tex_metallic"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/VphdCyWbkVqOTZM/uvset0.outputs:result>
+                }
+
+                over "tex_roughness"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/VphdCyWbkVqOTZM/uvset0.outputs:result>
+                }
+
+                over "tex_normal"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/VphdCyWbkVqOTZM/uvset0.outputs:result>
+                }
+            }
+
+            over "ZOxfklNhssATaVX"
+            {
+                token outputs:surface.connect = </Root/Apple_Vision_Pro_1/Materials/ZOxfklNhssATaVX/pbr_shader.outputs:surface>
+
+                over "pbr_shader"
+                {
+                    float inputs:metallic.connect = </Root/Apple_Vision_Pro_1/Materials/ZOxfklNhssATaVX/tex_metallic.outputs:r>
+                    float inputs:occlusion.connect = </Root/Apple_Vision_Pro_1/Materials/ZOxfklNhssATaVX/tex_occlusion.outputs:r>
+                    float inputs:roughness.connect = </Root/Apple_Vision_Pro_1/Materials/ZOxfklNhssATaVX/tex_roughness.outputs:r>
+                }
+
+                over "tex_metallic"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/ZOxfklNhssATaVX/uvset0.outputs:result>
+                }
+
+                over "tex_roughness"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/ZOxfklNhssATaVX/uvset0.outputs:result>
+                }
+
+                over "tex_occlusion"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/ZOxfklNhssATaVX/uvset0.outputs:result>
+                }
+            }
+
+            over "qDOcIjVpElQVnfu"
+            {
+                token outputs:surface.connect = </Root/Apple_Vision_Pro_1/Materials/qDOcIjVpElQVnfu/pbr_shader.outputs:surface>
+            }
+
+            over "AAfeebOMlIFREnV"
+            {
+                token outputs:surface.connect = </Root/Apple_Vision_Pro_1/Materials/AAfeebOMlIFREnV/pbr_shader.outputs:surface>
+
+                over "pbr_shader"
+                {
+                    float inputs:metallic.connect = </Root/Apple_Vision_Pro_1/Materials/AAfeebOMlIFREnV/tex_metallic.outputs:r>
+                    float inputs:occlusion.connect = </Root/Apple_Vision_Pro_1/Materials/AAfeebOMlIFREnV/tex_occlusion.outputs:r>
+                    float inputs:roughness.connect = </Root/Apple_Vision_Pro_1/Materials/AAfeebOMlIFREnV/tex_roughness.outputs:r>
+                }
+
+                over "tex_metallic"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/AAfeebOMlIFREnV/uvset0.outputs:result>
+                }
+
+                over "tex_roughness"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/AAfeebOMlIFREnV/uvset0.outputs:result>
+                }
+
+                over "tex_occlusion"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/AAfeebOMlIFREnV/uvset0.outputs:result>
+                }
+            }
+
+            over "MQCEVrylLIUQrVK"
+            {
+                token outputs:surface.connect = </Root/Apple_Vision_Pro_1/Materials/MQCEVrylLIUQrVK/pbr_shader.outputs:surface>
+
+                over "pbr_shader"
+                {
+                    float inputs:metallic.connect = </Root/Apple_Vision_Pro_1/Materials/MQCEVrylLIUQrVK/tex_metallic.outputs:r>
+                    float inputs:occlusion.connect = </Root/Apple_Vision_Pro_1/Materials/MQCEVrylLIUQrVK/tex_occlusion.outputs:r>
+                    float inputs:roughness.connect = </Root/Apple_Vision_Pro_1/Materials/MQCEVrylLIUQrVK/tex_roughness.outputs:r>
+                }
+
+                over "tex_metallic"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/MQCEVrylLIUQrVK/uvset0.outputs:result>
+                }
+
+                over "tex_roughness"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/MQCEVrylLIUQrVK/uvset0.outputs:result>
+                }
+
+                over "tex_occlusion"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/MQCEVrylLIUQrVK/uvset0.outputs:result>
+                }
+            }
+
+            over "euiQmuWDHAWaTrM"
+            {
+                token outputs:surface.connect = </Root/Apple_Vision_Pro_1/Materials/euiQmuWDHAWaTrM/pbr_shader.outputs:surface>
+
+                over "pbr_shader"
+                {
+                    color3f inputs:diffuseColor.connect = </Root/Apple_Vision_Pro_1/Materials/euiQmuWDHAWaTrM/tex_base.outputs:rgb>
+                }
+
+                over "tex_base"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/euiQmuWDHAWaTrM/uvset0.outputs:result>
+                }
+            }
+
+            over "WSSwRvibmqaLYZi"
+            {
+                token outputs:surface.connect = </Root/Apple_Vision_Pro_1/Materials/WSSwRvibmqaLYZi/pbr_shader.outputs:surface>
+
+                over "pbr_shader"
+                {
+                    color3f inputs:diffuseColor.connect = </Root/Apple_Vision_Pro_1/Materials/WSSwRvibmqaLYZi/tex_base.outputs:rgb>
+                    color3f inputs:emissiveColor.connect = </Root/Apple_Vision_Pro_1/Materials/WSSwRvibmqaLYZi/tex_emissive.outputs:rgb>
+                    normal3f inputs:normal.connect = </Root/Apple_Vision_Pro_1/Materials/WSSwRvibmqaLYZi/tex_normal.outputs:rgb>
+                }
+
+                over "tex_base"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/WSSwRvibmqaLYZi/uvset0.outputs:result>
+                }
+
+                over "tex_normal"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/WSSwRvibmqaLYZi/uvset0.outputs:result>
+                }
+
+                over "tex_emissive"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/WSSwRvibmqaLYZi/uvset0.outputs:result>
+                }
+            }
+
+            over "qJCgguKxFcHIxWa"
+            {
+                token outputs:surface.connect = </Root/Apple_Vision_Pro_1/Materials/qJCgguKxFcHIxWa/pbr_shader.outputs:surface>
+
+                over "pbr_shader"
+                {
+                    color3f inputs:diffuseColor.connect = </Root/Apple_Vision_Pro_1/Materials/qJCgguKxFcHIxWa/tex_base.outputs:rgb>
+                }
+
+                over "tex_base"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/qJCgguKxFcHIxWa/uvset0.outputs:result>
+                }
+            }
+
+            over "YfKnpdtpUYsluRm"
+            {
+                token outputs:surface.connect = </Root/Apple_Vision_Pro_1/Materials/YfKnpdtpUYsluRm/pbr_shader.outputs:surface>
+
+                over "pbr_shader"
+                {
+                    color3f inputs:diffuseColor.connect = </Root/Apple_Vision_Pro_1/Materials/YfKnpdtpUYsluRm/tex_base.outputs:rgb>
+                    color3f inputs:emissiveColor.connect = </Root/Apple_Vision_Pro_1/Materials/YfKnpdtpUYsluRm/tex_emissive.outputs:rgb>
+                    normal3f inputs:normal.connect = </Root/Apple_Vision_Pro_1/Materials/YfKnpdtpUYsluRm/tex_normal.outputs:rgb>
+                }
+
+                over "tex_base"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/YfKnpdtpUYsluRm/uvset0.outputs:result>
+                }
+
+                over "tex_normal"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/YfKnpdtpUYsluRm/uvset0.outputs:result>
+                }
+
+                over "tex_emissive"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/YfKnpdtpUYsluRm/uvset0.outputs:result>
+                }
+            }
+
+            over "BCKXYWKgOWAMzzp"
+            {
+                token outputs:surface.connect = </Root/Apple_Vision_Pro_1/Materials/BCKXYWKgOWAMzzp/pbr_shader.outputs:surface>
+
+                over "pbr_shader"
+                {
+                    color3f inputs:diffuseColor.connect = </Root/Apple_Vision_Pro_1/Materials/BCKXYWKgOWAMzzp/tex_base.outputs:rgb>
+                    normal3f inputs:normal.connect = </Root/Apple_Vision_Pro_1/Materials/BCKXYWKgOWAMzzp/tex_normal.outputs:rgb>
+                }
+
+                over "tex_base"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/BCKXYWKgOWAMzzp/uvset0.outputs:result>
+                }
+
+                over "tex_normal"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/BCKXYWKgOWAMzzp/uvset0.outputs:result>
+                }
+            }
+
+            over "XKlUGvPEIYYLEPM"
+            {
+                token outputs:surface.connect = </Root/Apple_Vision_Pro_1/Materials/XKlUGvPEIYYLEPM/pbr_shader.outputs:surface>
+
+                over "pbr_shader"
+                {
+                    color3f inputs:diffuseColor.connect = </Root/Apple_Vision_Pro_1/Materials/XKlUGvPEIYYLEPM/tex_base.outputs:rgb>
+                    float inputs:metallic.connect = </Root/Apple_Vision_Pro_1/Materials/XKlUGvPEIYYLEPM/tex_metallic.outputs:r>
+                    normal3f inputs:normal.connect = </Root/Apple_Vision_Pro_1/Materials/XKlUGvPEIYYLEPM/tex_normal.outputs:rgb>
+                    float inputs:roughness.connect = </Root/Apple_Vision_Pro_1/Materials/XKlUGvPEIYYLEPM/tex_roughness.outputs:r>
+                }
+
+                over "tex_base"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/XKlUGvPEIYYLEPM/uvset0.outputs:result>
+                }
+
+                over "tex_metallic"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/XKlUGvPEIYYLEPM/uvset0.outputs:result>
+                }
+
+                over "tex_roughness"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/XKlUGvPEIYYLEPM/uvset0.outputs:result>
+                }
+
+                over "tex_normal"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/XKlUGvPEIYYLEPM/uvset0.outputs:result>
+                }
+            }
+
+            over "ucekphvVRyoLWgE"
+            {
+                token outputs:surface.connect = </Root/Apple_Vision_Pro_1/Materials/ucekphvVRyoLWgE/pbr_shader.outputs:surface>
+
+                over "pbr_shader"
+                {
+                    color3f inputs:diffuseColor.connect = </Root/Apple_Vision_Pro_1/Materials/ucekphvVRyoLWgE/tex_base.outputs:rgb>
+                    float inputs:metallic.connect = </Root/Apple_Vision_Pro_1/Materials/ucekphvVRyoLWgE/tex_metallic.outputs:r>
+                    normal3f inputs:normal.connect = </Root/Apple_Vision_Pro_1/Materials/ucekphvVRyoLWgE/tex_normal.outputs:rgb>
+                    float inputs:occlusion.connect = </Root/Apple_Vision_Pro_1/Materials/ucekphvVRyoLWgE/tex_occlusion.outputs:r>
+                    float inputs:roughness.connect = </Root/Apple_Vision_Pro_1/Materials/ucekphvVRyoLWgE/tex_roughness.outputs:r>
+                }
+
+                over "tex_base"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/ucekphvVRyoLWgE/uvset0.outputs:result>
+                }
+
+                over "tex_metallic"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/ucekphvVRyoLWgE/uvset0.outputs:result>
+                }
+
+                over "tex_roughness"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/ucekphvVRyoLWgE/uvset0.outputs:result>
+                }
+
+                over "tex_normal"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/ucekphvVRyoLWgE/uvset0.outputs:result>
+                }
+
+                over "tex_occlusion"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/ucekphvVRyoLWgE/uvset0.outputs:result>
+                }
+            }
+
+            over "jOkVLpNIDGFLUJe"
+            {
+                token outputs:surface.connect = </Root/Apple_Vision_Pro_1/Materials/jOkVLpNIDGFLUJe/pbr_shader.outputs:surface>
+
+                over "pbr_shader"
+                {
+                    color3f inputs:diffuseColor.connect = </Root/Apple_Vision_Pro_1/Materials/jOkVLpNIDGFLUJe/tex_base.outputs:rgb>
+                    float inputs:metallic.connect = </Root/Apple_Vision_Pro_1/Materials/jOkVLpNIDGFLUJe/tex_metallic.outputs:r>
+                    normal3f inputs:normal.connect = </Root/Apple_Vision_Pro_1/Materials/jOkVLpNIDGFLUJe/tex_normal.outputs:rgb>
+                    float inputs:occlusion.connect = </Root/Apple_Vision_Pro_1/Materials/jOkVLpNIDGFLUJe/tex_occlusion.outputs:r>
+                    float inputs:opacity.connect = </Root/Apple_Vision_Pro_1/Materials/jOkVLpNIDGFLUJe/tex_base.outputs:a>
+                    float inputs:roughness.connect = </Root/Apple_Vision_Pro_1/Materials/jOkVLpNIDGFLUJe/tex_roughness.outputs:r>
+                }
+
+                over "tex_base"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/jOkVLpNIDGFLUJe/uvset0.outputs:result>
+                }
+
+                over "tex_metallic"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/jOkVLpNIDGFLUJe/uvset0.outputs:result>
+                }
+
+                over "tex_roughness"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/jOkVLpNIDGFLUJe/uvset0.outputs:result>
+                }
+
+                over "tex_normal"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/jOkVLpNIDGFLUJe/uvset0.outputs:result>
+                }
+
+                over "tex_occlusion"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/jOkVLpNIDGFLUJe/uvset0.outputs:result>
+                }
+            }
+
+            over "eFnCMDGzSpQJEdf"
+            {
+                token outputs:surface.connect = </Root/Apple_Vision_Pro_1/Materials/eFnCMDGzSpQJEdf/pbr_shader.outputs:surface>
+
+                over "pbr_shader"
+                {
+                    color3f inputs:diffuseColor.connect = </Root/Apple_Vision_Pro_1/Materials/eFnCMDGzSpQJEdf/tex_base.outputs:rgb>
+                    float inputs:metallic.connect = </Root/Apple_Vision_Pro_1/Materials/eFnCMDGzSpQJEdf/tex_metallic.outputs:r>
+                    normal3f inputs:normal.connect = </Root/Apple_Vision_Pro_1/Materials/eFnCMDGzSpQJEdf/tex_normal.outputs:rgb>
+                    float inputs:roughness.connect = </Root/Apple_Vision_Pro_1/Materials/eFnCMDGzSpQJEdf/tex_roughness.outputs:r>
+                }
+
+                over "tex_base"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/eFnCMDGzSpQJEdf/uvset0.outputs:result>
+                }
+
+                over "tex_metallic"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/eFnCMDGzSpQJEdf/uvset0.outputs:result>
+                }
+
+                over "tex_roughness"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/eFnCMDGzSpQJEdf/uvset0.outputs:result>
+                }
+
+                over "tex_normal"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/eFnCMDGzSpQJEdf/uvset0.outputs:result>
+                }
+            }
+
+            over "schaJKIVUmSWLQA"
+            {
+                token outputs:surface.connect = </Root/Apple_Vision_Pro_1/Materials/schaJKIVUmSWLQA/pbr_shader.outputs:surface>
+
+                over "pbr_shader"
+                {
+                    color3f inputs:diffuseColor.connect = </Root/Apple_Vision_Pro_1/Materials/schaJKIVUmSWLQA/tex_base.outputs:rgb>
+                    float inputs:metallic.connect = </Root/Apple_Vision_Pro_1/Materials/schaJKIVUmSWLQA/tex_metallic.outputs:r>
+                    normal3f inputs:normal.connect = </Root/Apple_Vision_Pro_1/Materials/schaJKIVUmSWLQA/tex_normal.outputs:rgb>
+                    float inputs:roughness.connect = </Root/Apple_Vision_Pro_1/Materials/schaJKIVUmSWLQA/tex_roughness.outputs:r>
+                }
+
+                over "tex_base"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/schaJKIVUmSWLQA/uvset0.outputs:result>
+                }
+
+                over "tex_metallic"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/schaJKIVUmSWLQA/uvset0.outputs:result>
+                }
+
+                over "tex_roughness"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/schaJKIVUmSWLQA/uvset0.outputs:result>
+                }
+
+                over "tex_normal"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/schaJKIVUmSWLQA/uvset0.outputs:result>
+                }
+            }
+
+            over "uhSjoqjjxLxIJEp"
+            {
+                token outputs:surface.connect = </Root/Apple_Vision_Pro_1/Materials/uhSjoqjjxLxIJEp/pbr_shader.outputs:surface>
+
+                over "pbr_shader"
+                {
+                    float inputs:metallic.connect = </Root/Apple_Vision_Pro_1/Materials/uhSjoqjjxLxIJEp/tex_metallic.outputs:r>
+                    normal3f inputs:normal.connect = </Root/Apple_Vision_Pro_1/Materials/uhSjoqjjxLxIJEp/tex_normal.outputs:rgb>
+                    float inputs:roughness.connect = </Root/Apple_Vision_Pro_1/Materials/uhSjoqjjxLxIJEp/tex_roughness.outputs:r>
+                }
+
+                over "tex_metallic"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/uhSjoqjjxLxIJEp/uvset0.outputs:result>
+                }
+
+                over "tex_roughness"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/uhSjoqjjxLxIJEp/uvset0.outputs:result>
+                }
+
+                over "tex_normal"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/uhSjoqjjxLxIJEp/uvset0.outputs:result>
+                }
+            }
+
+            over "xjMjLzeClXxPZiL"
+            {
+                token outputs:surface.connect = </Root/Apple_Vision_Pro_1/Materials/xjMjLzeClXxPZiL/pbr_shader.outputs:surface>
+
+                over "pbr_shader"
+                {
+                    float inputs:metallic.connect = </Root/Apple_Vision_Pro_1/Materials/xjMjLzeClXxPZiL/tex_metallic.outputs:r>
+                    float inputs:occlusion.connect = </Root/Apple_Vision_Pro_1/Materials/xjMjLzeClXxPZiL/tex_occlusion.outputs:r>
+                    float inputs:roughness.connect = </Root/Apple_Vision_Pro_1/Materials/xjMjLzeClXxPZiL/tex_roughness.outputs:r>
+                }
+
+                over "tex_metallic"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/xjMjLzeClXxPZiL/uvset0.outputs:result>
+                }
+
+                over "tex_roughness"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/xjMjLzeClXxPZiL/uvset0.outputs:result>
+                }
+
+                over "tex_occlusion"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/xjMjLzeClXxPZiL/uvset0.outputs:result>
+                }
+            }
+
+            over "aAXWAJGJAtUuAVC"
+            {
+                token outputs:surface.connect = </Root/Apple_Vision_Pro_1/Materials/aAXWAJGJAtUuAVC/pbr_shader.outputs:surface>
+
+                over "pbr_shader"
+                {
+                    float inputs:metallic.connect = </Root/Apple_Vision_Pro_1/Materials/aAXWAJGJAtUuAVC/tex_metallic.outputs:r>
+                    float inputs:occlusion.connect = </Root/Apple_Vision_Pro_1/Materials/aAXWAJGJAtUuAVC/tex_occlusion.outputs:r>
+                    float inputs:roughness.connect = </Root/Apple_Vision_Pro_1/Materials/aAXWAJGJAtUuAVC/tex_roughness.outputs:r>
+                }
+
+                over "tex_metallic"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/aAXWAJGJAtUuAVC/uvset0.outputs:result>
+                }
+
+                over "tex_roughness"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/aAXWAJGJAtUuAVC/uvset0.outputs:result>
+                }
+
+                over "tex_occlusion"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/aAXWAJGJAtUuAVC/uvset0.outputs:result>
+                }
+            }
+
+            over "pqksKtWbSqRTkqv"
+            {
+                token outputs:surface.connect = </Root/Apple_Vision_Pro_1/Materials/pqksKtWbSqRTkqv/pbr_shader.outputs:surface>
+
+                over "pbr_shader"
+                {
+                    color3f inputs:diffuseColor.connect = </Root/Apple_Vision_Pro_1/Materials/pqksKtWbSqRTkqv/tex_base.outputs:rgb>
+                    normal3f inputs:normal.connect = </Root/Apple_Vision_Pro_1/Materials/pqksKtWbSqRTkqv/tex_normal.outputs:rgb>
+                }
+
+                over "tex_base"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/pqksKtWbSqRTkqv/uvset0.outputs:result>
+                }
+
+                over "tex_normal"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/pqksKtWbSqRTkqv/uvset0.outputs:result>
+                }
+            }
+
+            over "movFhSaNkSrNKyM"
+            {
+                token outputs:surface.connect = </Root/Apple_Vision_Pro_1/Materials/movFhSaNkSrNKyM/pbr_shader.outputs:surface>
+
+                over "pbr_shader"
+                {
+                    float inputs:metallic.connect = </Root/Apple_Vision_Pro_1/Materials/movFhSaNkSrNKyM/tex_metallic.outputs:r>
+                    float inputs:occlusion.connect = </Root/Apple_Vision_Pro_1/Materials/movFhSaNkSrNKyM/tex_occlusion.outputs:r>
+                    float inputs:roughness.connect = </Root/Apple_Vision_Pro_1/Materials/movFhSaNkSrNKyM/tex_roughness.outputs:r>
+                }
+
+                over "tex_metallic"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/movFhSaNkSrNKyM/uvset0.outputs:result>
+                }
+
+                over "tex_roughness"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/movFhSaNkSrNKyM/uvset0.outputs:result>
+                }
+
+                over "tex_occlusion"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/movFhSaNkSrNKyM/uvset0.outputs:result>
+                }
+            }
+
+            over "cgOiivtAxUoeEfW"
+            {
+                token outputs:surface.connect = </Root/Apple_Vision_Pro_1/Materials/cgOiivtAxUoeEfW/pbr_shader.outputs:surface>
+
+                over "pbr_shader"
+                {
+                    float inputs:metallic.connect = </Root/Apple_Vision_Pro_1/Materials/cgOiivtAxUoeEfW/tex_metallic.outputs:r>
+                    float inputs:occlusion.connect = </Root/Apple_Vision_Pro_1/Materials/cgOiivtAxUoeEfW/tex_occlusion.outputs:r>
+                    float inputs:roughness.connect = </Root/Apple_Vision_Pro_1/Materials/cgOiivtAxUoeEfW/tex_roughness.outputs:r>
+                }
+
+                over "tex_metallic"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/cgOiivtAxUoeEfW/uvset0.outputs:result>
+                }
+
+                over "tex_roughness"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/cgOiivtAxUoeEfW/uvset0.outputs:result>
+                }
+
+                over "tex_occlusion"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/cgOiivtAxUoeEfW/uvset0.outputs:result>
+                }
+            }
+
+            over "lMzofmcJBoknbil"
+            {
+                token outputs:surface.connect = </Root/Apple_Vision_Pro_1/Materials/lMzofmcJBoknbil/pbr_shader.outputs:surface>
+
+                over "pbr_shader"
+                {
+                    float inputs:metallic.connect = </Root/Apple_Vision_Pro_1/Materials/lMzofmcJBoknbil/tex_metallic.outputs:r>
+                    normal3f inputs:normal.connect = </Root/Apple_Vision_Pro_1/Materials/lMzofmcJBoknbil/tex_normal.outputs:rgb>
+                    float inputs:roughness.connect = </Root/Apple_Vision_Pro_1/Materials/lMzofmcJBoknbil/tex_roughness.outputs:r>
+                }
+
+                over "tex_metallic"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/lMzofmcJBoknbil/uvset0.outputs:result>
+                }
+
+                over "tex_roughness"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/lMzofmcJBoknbil/uvset0.outputs:result>
+                }
+
+                over "tex_normal"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/lMzofmcJBoknbil/uvset0.outputs:result>
+                }
+            }
+
+            over "JMJEizFSpcnBLBu"
+            {
+                token outputs:surface.connect = </Root/Apple_Vision_Pro_1/Materials/JMJEizFSpcnBLBu/pbr_shader.outputs:surface>
+
+                over "pbr_shader"
+                {
+                    color3f inputs:diffuseColor.connect = </Root/Apple_Vision_Pro_1/Materials/JMJEizFSpcnBLBu/tex_base.outputs:rgb>
+                    float inputs:metallic.connect = </Root/Apple_Vision_Pro_1/Materials/JMJEizFSpcnBLBu/tex_metallic.outputs:r>
+                    normal3f inputs:normal.connect = </Root/Apple_Vision_Pro_1/Materials/JMJEizFSpcnBLBu/tex_normal.outputs:rgb>
+                    float inputs:occlusion.connect = </Root/Apple_Vision_Pro_1/Materials/JMJEizFSpcnBLBu/tex_occlusion.outputs:r>
+                    float inputs:roughness.connect = </Root/Apple_Vision_Pro_1/Materials/JMJEizFSpcnBLBu/tex_roughness.outputs:r>
+                }
+
+                over "tex_base"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/JMJEizFSpcnBLBu/uvset0.outputs:result>
+                }
+
+                over "tex_metallic"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/JMJEizFSpcnBLBu/uvset0.outputs:result>
+                }
+
+                over "tex_roughness"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/JMJEizFSpcnBLBu/uvset0.outputs:result>
+                }
+
+                over "tex_normal"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/JMJEizFSpcnBLBu/uvset0.outputs:result>
+                }
+
+                over "tex_occlusion"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/JMJEizFSpcnBLBu/uvset0.outputs:result>
+                }
+            }
+
+            over "MyWTkmNpPcgwehb"
+            {
+                token outputs:surface.connect = </Root/Apple_Vision_Pro_1/Materials/MyWTkmNpPcgwehb/pbr_shader.outputs:surface>
+
+                over "pbr_shader"
+                {
+                    float inputs:metallic.connect = </Root/Apple_Vision_Pro_1/Materials/MyWTkmNpPcgwehb/tex_metallic.outputs:r>
+                    normal3f inputs:normal.connect = </Root/Apple_Vision_Pro_1/Materials/MyWTkmNpPcgwehb/tex_normal.outputs:rgb>
+                    float inputs:roughness.connect = </Root/Apple_Vision_Pro_1/Materials/MyWTkmNpPcgwehb/tex_roughness.outputs:r>
+                }
+
+                over "tex_metallic"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/MyWTkmNpPcgwehb/uvset0.outputs:result>
+                }
+
+                over "tex_roughness"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/MyWTkmNpPcgwehb/uvset0.outputs:result>
+                }
+
+                over "tex_normal"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/MyWTkmNpPcgwehb/uvset0.outputs:result>
+                }
+            }
+
+            over "IyRtefachzKUcBb"
+            {
+                token outputs:surface.connect = </Root/Apple_Vision_Pro_1/Materials/IyRtefachzKUcBb/pbr_shader.outputs:surface>
+
+                over "pbr_shader"
+                {
+                    float inputs:metallic.connect = </Root/Apple_Vision_Pro_1/Materials/IyRtefachzKUcBb/tex_metallic.outputs:r>
+                    float inputs:occlusion.connect = </Root/Apple_Vision_Pro_1/Materials/IyRtefachzKUcBb/tex_occlusion.outputs:r>
+                    float inputs:roughness.connect = </Root/Apple_Vision_Pro_1/Materials/IyRtefachzKUcBb/tex_roughness.outputs:r>
+                }
+
+                over "tex_metallic"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/IyRtefachzKUcBb/uvset0.outputs:result>
+                }
+
+                over "tex_roughness"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/IyRtefachzKUcBb/uvset0.outputs:result>
+                }
+
+                over "tex_occlusion"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/IyRtefachzKUcBb/uvset0.outputs:result>
+                }
+            }
+
+            over "dULQkYmOHsuNGwk"
+            {
+                token outputs:surface.connect = </Root/Apple_Vision_Pro_1/Materials/dULQkYmOHsuNGwk/pbr_shader.outputs:surface>
+
+                over "pbr_shader"
+                {
+                    float inputs:metallic.connect = </Root/Apple_Vision_Pro_1/Materials/dULQkYmOHsuNGwk/tex_metallic.outputs:r>
+                    float inputs:occlusion.connect = </Root/Apple_Vision_Pro_1/Materials/dULQkYmOHsuNGwk/tex_occlusion.outputs:r>
+                    float inputs:roughness.connect = </Root/Apple_Vision_Pro_1/Materials/dULQkYmOHsuNGwk/tex_roughness.outputs:r>
+                }
+
+                over "tex_metallic"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/dULQkYmOHsuNGwk/uvset0.outputs:result>
+                }
+
+                over "tex_roughness"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/dULQkYmOHsuNGwk/uvset0.outputs:result>
+                }
+
+                over "tex_occlusion"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/dULQkYmOHsuNGwk/uvset0.outputs:result>
+                }
+            }
+
+            over "kgpBHanvuTGSAYr"
+            {
+                token outputs:surface.connect = </Root/Apple_Vision_Pro_1/Materials/kgpBHanvuTGSAYr/pbr_shader.outputs:surface>
+
+                over "pbr_shader"
+                {
+                    float inputs:metallic.connect = </Root/Apple_Vision_Pro_1/Materials/kgpBHanvuTGSAYr/tex_metallic.outputs:r>
+                    float inputs:occlusion.connect = </Root/Apple_Vision_Pro_1/Materials/kgpBHanvuTGSAYr/tex_occlusion.outputs:r>
+                    float inputs:roughness.connect = </Root/Apple_Vision_Pro_1/Materials/kgpBHanvuTGSAYr/tex_roughness.outputs:r>
+                }
+
+                over "tex_metallic"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/kgpBHanvuTGSAYr/uvset0.outputs:result>
+                }
+
+                over "tex_roughness"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/kgpBHanvuTGSAYr/uvset0.outputs:result>
+                }
+
+                over "tex_occlusion"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/kgpBHanvuTGSAYr/uvset0.outputs:result>
+                }
+            }
+
+            over "gMuXNdoZqzJLAvR"
+            {
+                token outputs:surface.connect = </Root/Apple_Vision_Pro_1/Materials/gMuXNdoZqzJLAvR/pbr_shader.outputs:surface>
+
+                over "pbr_shader"
+                {
+                    float inputs:metallic.connect = </Root/Apple_Vision_Pro_1/Materials/gMuXNdoZqzJLAvR/tex_metallic.outputs:r>
+                    float inputs:occlusion.connect = </Root/Apple_Vision_Pro_1/Materials/gMuXNdoZqzJLAvR/tex_occlusion.outputs:r>
+                    float inputs:roughness.connect = </Root/Apple_Vision_Pro_1/Materials/gMuXNdoZqzJLAvR/tex_roughness.outputs:r>
+                }
+
+                over "tex_metallic"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/gMuXNdoZqzJLAvR/uvset0.outputs:result>
+                }
+
+                over "tex_roughness"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/gMuXNdoZqzJLAvR/uvset0.outputs:result>
+                }
+
+                over "tex_occlusion"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/gMuXNdoZqzJLAvR/uvset0.outputs:result>
+                }
+            }
+
+            over "ILBWplikIEjpQFu"
+            {
+                token outputs:surface.connect = </Root/Apple_Vision_Pro_1/Materials/ILBWplikIEjpQFu/pbr_shader.outputs:surface>
+
+                over "pbr_shader"
+                {
+                    float inputs:metallic.connect = </Root/Apple_Vision_Pro_1/Materials/ILBWplikIEjpQFu/tex_metallic.outputs:r>
+                    normal3f inputs:normal.connect = </Root/Apple_Vision_Pro_1/Materials/ILBWplikIEjpQFu/tex_normal.outputs:rgb>
+                    float inputs:roughness.connect = </Root/Apple_Vision_Pro_1/Materials/ILBWplikIEjpQFu/tex_roughness.outputs:r>
+                }
+
+                over "tex_metallic"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/ILBWplikIEjpQFu/uvset0.outputs:result>
+                }
+
+                over "tex_roughness"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/ILBWplikIEjpQFu/uvset0.outputs:result>
+                }
+
+                over "tex_normal"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/ILBWplikIEjpQFu/uvset0.outputs:result>
+                }
+            }
+
+            over "JEqrlnZSfFxzXyR"
+            {
+                token outputs:surface.connect = </Root/Apple_Vision_Pro_1/Materials/JEqrlnZSfFxzXyR/pbr_shader.outputs:surface>
+
+                over "pbr_shader"
+                {
+                    color3f inputs:diffuseColor.connect = </Root/Apple_Vision_Pro_1/Materials/JEqrlnZSfFxzXyR/tex_base.outputs:rgb>
+                    normal3f inputs:normal.connect = </Root/Apple_Vision_Pro_1/Materials/JEqrlnZSfFxzXyR/tex_normal.outputs:rgb>
+                }
+
+                over "tex_base"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/JEqrlnZSfFxzXyR/uvset0.outputs:result>
+                }
+
+                over "tex_normal"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/JEqrlnZSfFxzXyR/uvset0.outputs:result>
+                }
+            }
+
+            over "axobLmsfiYAnCsP"
+            {
+                token outputs:surface.connect = </Root/Apple_Vision_Pro_1/Materials/axobLmsfiYAnCsP/pbr_shader.outputs:surface>
+            }
+
+            over "ANqxLmGmmZDkKZr"
+            {
+                token outputs:surface.connect = </Root/Apple_Vision_Pro_1/Materials/ANqxLmGmmZDkKZr/pbr_shader.outputs:surface>
+            }
+
+            over "JkJKKnxTIntgQHC"
+            {
+                token outputs:surface.connect = </Root/Apple_Vision_Pro_1/Materials/JkJKKnxTIntgQHC/pbr_shader.outputs:surface>
+
+                over "pbr_shader"
+                {
+                    color3f inputs:emissiveColor.connect = </Root/Apple_Vision_Pro_1/Materials/JkJKKnxTIntgQHC/tex_emissive.outputs:rgb>
+                }
+
+                over "tex_emissive"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/JkJKKnxTIntgQHC/uvset0.outputs:result>
+                }
+            }
+
+            over "CLxgtuDKMkHlfIs"
+            {
+                token outputs:surface.connect = </Root/Apple_Vision_Pro_1/Materials/CLxgtuDKMkHlfIs/pbr_shader.outputs:surface>
+
+                over "pbr_shader"
+                {
+                    float inputs:metallic.connect = </Root/Apple_Vision_Pro_1/Materials/CLxgtuDKMkHlfIs/tex_metallic.outputs:r>
+                    float inputs:occlusion.connect = </Root/Apple_Vision_Pro_1/Materials/CLxgtuDKMkHlfIs/tex_occlusion.outputs:r>
+                    float inputs:roughness.connect = </Root/Apple_Vision_Pro_1/Materials/CLxgtuDKMkHlfIs/tex_roughness.outputs:r>
+                }
+
+                over "tex_metallic"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/CLxgtuDKMkHlfIs/uvset0.outputs:result>
+                }
+
+                over "tex_roughness"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/CLxgtuDKMkHlfIs/uvset0.outputs:result>
+                }
+
+                over "tex_occlusion"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/CLxgtuDKMkHlfIs/uvset0.outputs:result>
+                }
+            }
+
+            over "wHLUdvjLSAdAzpD"
+            {
+                token outputs:surface.connect = </Root/Apple_Vision_Pro_1/Materials/wHLUdvjLSAdAzpD/pbr_shader.outputs:surface>
+            }
+
+            over "EgczyvedEqzqMFX"
+            {
+                token outputs:surface.connect = </Root/Apple_Vision_Pro_1/Materials/EgczyvedEqzqMFX/pbr_shader.outputs:surface>
+
+                over "pbr_shader"
+                {
+                    float inputs:metallic.connect = </Root/Apple_Vision_Pro_1/Materials/EgczyvedEqzqMFX/tex_metallic.outputs:r>
+                    float inputs:occlusion.connect = </Root/Apple_Vision_Pro_1/Materials/EgczyvedEqzqMFX/tex_occlusion.outputs:r>
+                    float inputs:roughness.connect = </Root/Apple_Vision_Pro_1/Materials/EgczyvedEqzqMFX/tex_roughness.outputs:r>
+                }
+
+                over "tex_metallic"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/EgczyvedEqzqMFX/uvset0.outputs:result>
+                }
+
+                over "tex_roughness"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/EgczyvedEqzqMFX/uvset0.outputs:result>
+                }
+
+                over "tex_occlusion"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/EgczyvedEqzqMFX/uvset0.outputs:result>
+                }
+            }
+
+            over "QTWCiCCGMSxWgbc"
+            {
+                token outputs:surface.connect = </Root/Apple_Vision_Pro_1/Materials/QTWCiCCGMSxWgbc/pbr_shader.outputs:surface>
+
+                over "pbr_shader"
+                {
+                    float inputs:metallic.connect = </Root/Apple_Vision_Pro_1/Materials/QTWCiCCGMSxWgbc/tex_metallic.outputs:r>
+                    float inputs:occlusion.connect = </Root/Apple_Vision_Pro_1/Materials/QTWCiCCGMSxWgbc/tex_occlusion.outputs:r>
+                    float inputs:roughness.connect = </Root/Apple_Vision_Pro_1/Materials/QTWCiCCGMSxWgbc/tex_roughness.outputs:r>
+                }
+
+                over "tex_metallic"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/QTWCiCCGMSxWgbc/uvset0.outputs:result>
+                }
+
+                over "tex_roughness"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/QTWCiCCGMSxWgbc/uvset0.outputs:result>
+                }
+
+                over "tex_occlusion"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/QTWCiCCGMSxWgbc/uvset0.outputs:result>
+                }
+            }
+
+            over "fwZBQTUFaZPSpvr"
+            {
+                token outputs:surface.connect = </Root/Apple_Vision_Pro_1/Materials/fwZBQTUFaZPSpvr/pbr_shader.outputs:surface>
+
+                over "pbr_shader"
+                {
+                    float inputs:metallic.connect = </Root/Apple_Vision_Pro_1/Materials/fwZBQTUFaZPSpvr/tex_metallic.outputs:r>
+                    normal3f inputs:normal.connect = </Root/Apple_Vision_Pro_1/Materials/fwZBQTUFaZPSpvr/tex_normal.outputs:rgb>
+                    float inputs:roughness.connect = </Root/Apple_Vision_Pro_1/Materials/fwZBQTUFaZPSpvr/tex_roughness.outputs:r>
+                }
+
+                over "tex_metallic"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/fwZBQTUFaZPSpvr/uvset0.outputs:result>
+                }
+
+                over "tex_roughness"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/fwZBQTUFaZPSpvr/uvset0.outputs:result>
+                }
+
+                over "tex_normal"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/fwZBQTUFaZPSpvr/uvset0.outputs:result>
+                }
+            }
+
+            over "gSPFLmkAjqDsDpN"
+            {
+                token outputs:surface.connect = </Root/Apple_Vision_Pro_1/Materials/gSPFLmkAjqDsDpN/pbr_shader.outputs:surface>
+
+                over "pbr_shader"
+                {
+                    color3f inputs:diffuseColor.connect = </Root/Apple_Vision_Pro_1/Materials/gSPFLmkAjqDsDpN/tex_base.outputs:rgb>
+                    float inputs:metallic.connect = </Root/Apple_Vision_Pro_1/Materials/gSPFLmkAjqDsDpN/tex_metallic.outputs:r>
+                    normal3f inputs:normal.connect = </Root/Apple_Vision_Pro_1/Materials/gSPFLmkAjqDsDpN/tex_normal.outputs:rgb>
+                    float inputs:occlusion.connect = </Root/Apple_Vision_Pro_1/Materials/gSPFLmkAjqDsDpN/tex_occlusion.outputs:r>
+                    float inputs:roughness.connect = </Root/Apple_Vision_Pro_1/Materials/gSPFLmkAjqDsDpN/tex_roughness.outputs:r>
+                }
+
+                over "tex_base"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/gSPFLmkAjqDsDpN/uvset0.outputs:result>
+                }
+
+                over "tex_metallic"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/gSPFLmkAjqDsDpN/uvset0.outputs:result>
+                }
+
+                over "tex_roughness"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/gSPFLmkAjqDsDpN/uvset0.outputs:result>
+                }
+
+                over "tex_normal"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/gSPFLmkAjqDsDpN/uvset0.outputs:result>
+                }
+
+                over "tex_occlusion"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/gSPFLmkAjqDsDpN/uvset0.outputs:result>
+                }
+            }
+
+            over "TOXCTGGcpkubhJV"
+            {
+                token outputs:surface.connect = </Root/Apple_Vision_Pro_1/Materials/TOXCTGGcpkubhJV/pbr_shader.outputs:surface>
+
+                over "pbr_shader"
+                {
+                    float inputs:metallic.connect = </Root/Apple_Vision_Pro_1/Materials/TOXCTGGcpkubhJV/tex_metallic.outputs:r>
+                    float inputs:occlusion.connect = </Root/Apple_Vision_Pro_1/Materials/TOXCTGGcpkubhJV/tex_occlusion.outputs:r>
+                    float inputs:roughness.connect = </Root/Apple_Vision_Pro_1/Materials/TOXCTGGcpkubhJV/tex_roughness.outputs:r>
+                }
+
+                over "tex_metallic"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/TOXCTGGcpkubhJV/uvset0.outputs:result>
+                }
+
+                over "tex_roughness"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/TOXCTGGcpkubhJV/uvset0.outputs:result>
+                }
+
+                over "tex_occlusion"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/TOXCTGGcpkubhJV/uvset0.outputs:result>
+                }
+            }
+
+            over "hOQFVPUkStlnLZL"
+            {
+                token outputs:surface.connect = </Root/Apple_Vision_Pro_1/Materials/hOQFVPUkStlnLZL/pbr_shader.outputs:surface>
+
+                over "pbr_shader"
+                {
+                    float inputs:metallic.connect = </Root/Apple_Vision_Pro_1/Materials/hOQFVPUkStlnLZL/tex_metallic.outputs:r>
+                    float inputs:occlusion.connect = </Root/Apple_Vision_Pro_1/Materials/hOQFVPUkStlnLZL/tex_occlusion.outputs:r>
+                    float inputs:roughness.connect = </Root/Apple_Vision_Pro_1/Materials/hOQFVPUkStlnLZL/tex_roughness.outputs:r>
+                }
+
+                over "tex_metallic"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/hOQFVPUkStlnLZL/uvset0.outputs:result>
+                }
+
+                over "tex_roughness"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/hOQFVPUkStlnLZL/uvset0.outputs:result>
+                }
+
+                over "tex_occlusion"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/hOQFVPUkStlnLZL/uvset0.outputs:result>
+                }
+            }
+
+            over "rtSfIyWixTDVpUY"
+            {
+                token outputs:surface.connect = </Root/Apple_Vision_Pro_1/Materials/rtSfIyWixTDVpUY/pbr_shader.outputs:surface>
+
+                over "pbr_shader"
+                {
+                    float inputs:metallic.connect = </Root/Apple_Vision_Pro_1/Materials/rtSfIyWixTDVpUY/tex_metallic.outputs:r>
+                    float inputs:occlusion.connect = </Root/Apple_Vision_Pro_1/Materials/rtSfIyWixTDVpUY/tex_occlusion.outputs:r>
+                    float inputs:roughness.connect = </Root/Apple_Vision_Pro_1/Materials/rtSfIyWixTDVpUY/tex_roughness.outputs:r>
+                }
+
+                over "tex_metallic"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/rtSfIyWixTDVpUY/uvset0.outputs:result>
+                }
+
+                over "tex_roughness"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/rtSfIyWixTDVpUY/uvset0.outputs:result>
+                }
+
+                over "tex_occlusion"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/rtSfIyWixTDVpUY/uvset0.outputs:result>
+                }
+            }
+
+            over "pQhxnNuPXoHfCWe"
+            {
+                token outputs:surface.connect = </Root/Apple_Vision_Pro_1/Materials/pQhxnNuPXoHfCWe/pbr_shader.outputs:surface>
+
+                over "pbr_shader"
+                {
+                    float inputs:metallic.connect = </Root/Apple_Vision_Pro_1/Materials/pQhxnNuPXoHfCWe/tex_metallic.outputs:r>
+                    float inputs:occlusion.connect = </Root/Apple_Vision_Pro_1/Materials/pQhxnNuPXoHfCWe/tex_occlusion.outputs:r>
+                    float inputs:roughness.connect = </Root/Apple_Vision_Pro_1/Materials/pQhxnNuPXoHfCWe/tex_roughness.outputs:r>
+                }
+
+                over "tex_metallic"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/pQhxnNuPXoHfCWe/uvset0.outputs:result>
+                }
+
+                over "tex_roughness"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/pQhxnNuPXoHfCWe/uvset0.outputs:result>
+                }
+
+                over "tex_occlusion"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/pQhxnNuPXoHfCWe/uvset0.outputs:result>
+                }
+            }
+
+            over "bxAqWBgABbIjzMY"
+            {
+                token outputs:surface.connect = </Root/Apple_Vision_Pro_1/Materials/bxAqWBgABbIjzMY/pbr_shader.outputs:surface>
+
+                over "pbr_shader"
+                {
+                    color3f inputs:emissiveColor.connect = </Root/Apple_Vision_Pro_1/Materials/bxAqWBgABbIjzMY/tex_emissive.outputs:rgb>
+                    float inputs:metallic.connect = </Root/Apple_Vision_Pro_1/Materials/bxAqWBgABbIjzMY/tex_metallic.outputs:r>
+                    float inputs:occlusion.connect = </Root/Apple_Vision_Pro_1/Materials/bxAqWBgABbIjzMY/tex_occlusion.outputs:r>
+                    float inputs:roughness.connect = </Root/Apple_Vision_Pro_1/Materials/bxAqWBgABbIjzMY/tex_roughness.outputs:r>
+                }
+
+                over "tex_metallic"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/bxAqWBgABbIjzMY/uvset0.outputs:result>
+                }
+
+                over "tex_roughness"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/bxAqWBgABbIjzMY/uvset0.outputs:result>
+                }
+
+                over "tex_emissive"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/bxAqWBgABbIjzMY/uvset0.outputs:result>
+                }
+
+                over "tex_occlusion"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/bxAqWBgABbIjzMY/uvset0.outputs:result>
+                }
+            }
+
+            over "jsQvjteHecACAeR"
+            {
+                token outputs:surface.connect = </Root/Apple_Vision_Pro_1/Materials/jsQvjteHecACAeR/pbr_shader.outputs:surface>
+
+                over "pbr_shader"
+                {
+                    color3f inputs:emissiveColor.connect = </Root/Apple_Vision_Pro_1/Materials/jsQvjteHecACAeR/tex_emissive.outputs:rgb>
+                    float inputs:metallic.connect = </Root/Apple_Vision_Pro_1/Materials/jsQvjteHecACAeR/tex_metallic.outputs:r>
+                    float inputs:occlusion.connect = </Root/Apple_Vision_Pro_1/Materials/jsQvjteHecACAeR/tex_occlusion.outputs:r>
+                    float inputs:roughness.connect = </Root/Apple_Vision_Pro_1/Materials/jsQvjteHecACAeR/tex_roughness.outputs:r>
+                }
+
+                over "tex_metallic"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/jsQvjteHecACAeR/uvset0.outputs:result>
+                }
+
+                over "tex_roughness"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/jsQvjteHecACAeR/uvset0.outputs:result>
+                }
+
+                over "tex_emissive"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/jsQvjteHecACAeR/uvset0.outputs:result>
+                }
+
+                over "tex_occlusion"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/jsQvjteHecACAeR/uvset0.outputs:result>
+                }
+            }
+
+            over "KEnlbNmQcpvdozb"
+            {
+                token outputs:surface.connect = </Root/Apple_Vision_Pro_1/Materials/KEnlbNmQcpvdozb/pbr_shader.outputs:surface>
+
+                over "pbr_shader"
+                {
+                    color3f inputs:diffuseColor.connect = </Root/Apple_Vision_Pro_1/Materials/KEnlbNmQcpvdozb/tex_base.outputs:rgb>
+                    float inputs:metallic.connect = </Root/Apple_Vision_Pro_1/Materials/KEnlbNmQcpvdozb/tex_metallic.outputs:r>
+                    float inputs:occlusion.connect = </Root/Apple_Vision_Pro_1/Materials/KEnlbNmQcpvdozb/tex_occlusion.outputs:r>
+                    float inputs:roughness.connect = </Root/Apple_Vision_Pro_1/Materials/KEnlbNmQcpvdozb/tex_roughness.outputs:r>
+                }
+
+                over "tex_base"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/KEnlbNmQcpvdozb/uvset0.outputs:result>
+                }
+
+                over "tex_metallic"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/KEnlbNmQcpvdozb/uvset0.outputs:result>
+                }
+
+                over "tex_roughness"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/KEnlbNmQcpvdozb/uvset0.outputs:result>
+                }
+
+                over "tex_occlusion"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/KEnlbNmQcpvdozb/uvset0.outputs:result>
+                }
+            }
+
+            over "ZwfmonZpLDaDbGy"
+            {
+                token outputs:surface.connect = </Root/Apple_Vision_Pro_1/Materials/ZwfmonZpLDaDbGy/pbr_shader.outputs:surface>
+
+                over "pbr_shader"
+                {
+                    color3f inputs:diffuseColor.connect = </Root/Apple_Vision_Pro_1/Materials/ZwfmonZpLDaDbGy/tex_base.outputs:rgb>
+                    float inputs:metallic.connect = </Root/Apple_Vision_Pro_1/Materials/ZwfmonZpLDaDbGy/tex_metallic.outputs:r>
+                    float inputs:occlusion.connect = </Root/Apple_Vision_Pro_1/Materials/ZwfmonZpLDaDbGy/tex_occlusion.outputs:r>
+                    float inputs:roughness.connect = </Root/Apple_Vision_Pro_1/Materials/ZwfmonZpLDaDbGy/tex_roughness.outputs:r>
+                }
+
+                over "tex_base"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/ZwfmonZpLDaDbGy/uvset0.outputs:result>
+                }
+
+                over "tex_metallic"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/ZwfmonZpLDaDbGy/uvset0.outputs:result>
+                }
+
+                over "tex_roughness"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/ZwfmonZpLDaDbGy/uvset0.outputs:result>
+                }
+
+                over "tex_occlusion"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/ZwfmonZpLDaDbGy/uvset0.outputs:result>
+                }
+            }
+
+            over "lciUnRZYuzqSpWr"
+            {
+                token outputs:surface.connect = </Root/Apple_Vision_Pro_1/Materials/lciUnRZYuzqSpWr/pbr_shader.outputs:surface>
+            }
+
+            over "dvmeoUrdxtrSUKH"
+            {
+                token outputs:surface.connect = </Root/Apple_Vision_Pro_1/Materials/dvmeoUrdxtrSUKH/pbr_shader.outputs:surface>
+            }
+
+            over "fmmGyvGJVnVViXe"
+            {
+                token outputs:surface.connect = </Root/Apple_Vision_Pro_1/Materials/fmmGyvGJVnVViXe/pbr_shader.outputs:surface>
+
+                over "pbr_shader"
+                {
+                    float inputs:metallic.connect = </Root/Apple_Vision_Pro_1/Materials/fmmGyvGJVnVViXe/tex_metallic.outputs:r>
+                    float inputs:occlusion.connect = </Root/Apple_Vision_Pro_1/Materials/fmmGyvGJVnVViXe/tex_occlusion.outputs:r>
+                    float inputs:roughness.connect = </Root/Apple_Vision_Pro_1/Materials/fmmGyvGJVnVViXe/tex_roughness.outputs:r>
+                }
+
+                over "tex_metallic"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/fmmGyvGJVnVViXe/uvset0.outputs:result>
+                }
+
+                over "tex_roughness"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/fmmGyvGJVnVViXe/uvset0.outputs:result>
+                }
+
+                over "tex_occlusion"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/fmmGyvGJVnVViXe/uvset0.outputs:result>
+                }
+            }
+
+            over "OthgPpktWeqGgKp"
+            {
+                token outputs:surface.connect = </Root/Apple_Vision_Pro_1/Materials/OthgPpktWeqGgKp/pbr_shader.outputs:surface>
+
+                over "pbr_shader"
+                {
+                    color3f inputs:diffuseColor.connect = </Root/Apple_Vision_Pro_1/Materials/OthgPpktWeqGgKp/tex_base.outputs:rgb>
+                    float inputs:metallic.connect = </Root/Apple_Vision_Pro_1/Materials/OthgPpktWeqGgKp/tex_metallic.outputs:r>
+                    normal3f inputs:normal.connect = </Root/Apple_Vision_Pro_1/Materials/OthgPpktWeqGgKp/tex_normal.outputs:rgb>
+                    float inputs:roughness.connect = </Root/Apple_Vision_Pro_1/Materials/OthgPpktWeqGgKp/tex_roughness.outputs:r>
+                }
+
+                over "tex_base"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/OthgPpktWeqGgKp/uvset0.outputs:result>
+                }
+
+                over "tex_metallic"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/OthgPpktWeqGgKp/uvset0.outputs:result>
+                }
+
+                over "tex_roughness"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/OthgPpktWeqGgKp/uvset0.outputs:result>
+                }
+
+                over "tex_normal"
+                {
+                    float2 inputs:st.connect = </Root/Apple_Vision_Pro_1/Materials/OthgPpktWeqGgKp/uvset0.outputs:result>
+                }
+            }
+        }
+    }
+
+    def "Office_Chair_15" (
+        active = true
+        customData = {
+            float3 rotationEulerHint = (0, -5.431305, 0)
+        }
+        references = @Office_Chair-2.usdz@
+    )
+    {
+        quatf xformOp:orient = (0.91065073, 0, 0.4131769, 0)
+        float3 xformOp:scale = (0.009999997, 0.009999995, 0.009999997)
+        float3 xformOp:translate = (1.6359107, -1.1154275, -1.4316635)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        over "Materials"
+        {
+            over "Material"
+            {
+                token outputs:surface.connect = </Root/Office_Chair_15/Materials/Material/pbr_shader.outputs:surface>
+
+                over "pbr_shader"
+                {
+                    float inputs:metallic.connect = </Root/Office_Chair_15/Materials/Material/tex_metallic.outputs:r>
+                    normal3f inputs:normal.connect = </Root/Office_Chair_15/Materials/Material/tex_normal.outputs:rgb>
+                    float inputs:roughness.connect = </Root/Office_Chair_15/Materials/Material/tex_roughness.outputs:r>
+                }
+
+                over "tex_metallic"
+                {
+                    float2 inputs:st.connect = </Root/Office_Chair_15/Materials/Material/uvset0.outputs:result>
+                }
+
+                over "tex_roughness"
+                {
+                    float2 inputs:st.connect = </Root/Office_Chair_15/Materials/Material/uvset0.outputs:result>
+                }
+
+                over "tex_normal"
+                {
+                    float2 inputs:st.connect = </Root/Office_Chair_15/Materials/Material/uvset0.outputs:result>
+                }
+            }
+
+            over "Material_001"
+            {
+                token outputs:surface.connect = </Root/Office_Chair_15/Materials/Material_001/pbr_shader.outputs:surface>
+
+                over "pbr_shader"
+                {
+                    normal3f inputs:normal.connect = </Root/Office_Chair_15/Materials/Material_001/tex_normal.outputs:rgb>
+                }
+
+                over "tex_normal"
+                {
+                    float2 inputs:st.connect = </Root/Office_Chair_15/Materials/Material_001/uvset0.outputs:result>
+                }
+            }
+
+            over "Material_002"
+            {
+                token outputs:surface.connect = </Root/Office_Chair_15/Materials/Material_002/pbr_shader.outputs:surface>
+            }
+
+            over "Material_003"
+            {
+                token outputs:surface.connect = </Root/Office_Chair_15/Materials/Material_003/pbr_shader.outputs:surface>
+            }
+        }
+    }
+
+    def "Office_Chair_16" (
+        active = true
+        customData = {
+            float3 rotationEulerHint = (0, -5.123124, 0)
+        }
+        references = @Office_Chair-2.usdz@
+    )
+    {
+        quatf xformOp:orient = (0.8364459, 0, 0.54804945, 0)
+        float3 xformOp:scale = (0.01, 0.009999995, 0.009999998)
+        float3 xformOp:translate = (-4.2388067, -1.1154276, -0.87515306)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        over "Materials"
+        {
+            over "Material"
+            {
+                token outputs:surface.connect = </Root/Office_Chair_16/Materials/Material/pbr_shader.outputs:surface>
+
+                over "pbr_shader"
+                {
+                    float inputs:metallic.connect = </Root/Office_Chair_16/Materials/Material/tex_metallic.outputs:r>
+                    normal3f inputs:normal.connect = </Root/Office_Chair_16/Materials/Material/tex_normal.outputs:rgb>
+                    float inputs:roughness.connect = </Root/Office_Chair_16/Materials/Material/tex_roughness.outputs:r>
+                }
+
+                over "tex_metallic"
+                {
+                    float2 inputs:st.connect = </Root/Office_Chair_16/Materials/Material/uvset0.outputs:result>
+                }
+
+                over "tex_roughness"
+                {
+                    float2 inputs:st.connect = </Root/Office_Chair_16/Materials/Material/uvset0.outputs:result>
+                }
+
+                over "tex_normal"
+                {
+                    float2 inputs:st.connect = </Root/Office_Chair_16/Materials/Material/uvset0.outputs:result>
+                }
+            }
+
+            over "Material_001"
+            {
+                token outputs:surface.connect = </Root/Office_Chair_16/Materials/Material_001/pbr_shader.outputs:surface>
+
+                over "pbr_shader"
+                {
+                    normal3f inputs:normal.connect = </Root/Office_Chair_16/Materials/Material_001/tex_normal.outputs:rgb>
+                }
+
+                over "tex_normal"
+                {
+                    float2 inputs:st.connect = </Root/Office_Chair_16/Materials/Material_001/uvset0.outputs:result>
+                }
+            }
+
+            over "Material_002"
+            {
+                token outputs:surface.connect = </Root/Office_Chair_16/Materials/Material_002/pbr_shader.outputs:surface>
+            }
+
+            over "Material_003"
+            {
+                token outputs:surface.connect = </Root/Office_Chair_16/Materials/Material_003/pbr_shader.outputs:surface>
+            }
+        }
+    }
+
+    def "MacBook_Pro_2021" (
+        active = true
+        customData = {
+            float3 rotationEulerHint = (0, -1.5707963, 0)
+        }
+        references = @MacBook_Pro_2021.usdz@
+    )
+    {
+        quatf xformOp:orient = (0.7228728, 0, -0.69098115, 0)
+        float3 xformOp:scale = (0.013, 0.012999999, 0.013)
+        float3 xformOp:translate = (-1.1710654, -0.4325782, 0.4149423)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def "Macbook_Pro_13_inch_2020" (
+        active = true
+        customData = {
+            float3 rotationEulerHint = (0, -0.18448795, 0)
+        }
+        references = @Macbook_Pro_13_inch_2020.usdz@
+    )
+    {
+        quatf xformOp:orient = (0.9957485, 0, -0.09211321, 0)
+        float3 xformOp:scale = (0.015, 0.015, 0.015)
+        float3 xformOp:translate = (-1.6473773, -0.4333119, 1.7178206)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def "Macbook" (
+        active = true
+        customData = {
+            float3 rotationEulerHint = (0, -0.45811686, 0)
+        }
+        references = @Macbook.usdz@
+    )
+    {
+        quatf xformOp:orient = (0.97388065, 0, -0.22706068, 0)
+        float3 xformOp:scale = (0.007, 0.007, 0.007)
+        float3 xformOp:translate = (1.3328718, -2.0529356, 1.7812611)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def "MacBook_Pro_2022" (
+        active = true
+        customData = {
+            float3 rotationEulerHint = (0, -4.957116, 0)
+        }
+        references = @MacBook_Pro_2021.usdz@
+    )
+    {
+        quatf xformOp:orient = (0.7881281, 0, 0.6155113, 0)
+        float3 xformOp:scale = (0.013000001, 0.012999999, 0.013000001)
+        float3 xformOp:translate = (2.1128795, -0.43257818, 1.7518747)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        over "Materials"
+        {
+            over "MacBookPro"
+            {
+                token outputs:surface.connect = </Root/MacBook_Pro_2022/Materials/MacBookPro/pbr_shader.outputs:surface>
+
+                over "pbr_shader"
+                {
+                    color3f inputs:diffuseColor.connect = </Root/MacBook_Pro_2022/Materials/MacBookPro/tex_base.outputs:rgb>
+                    color3f inputs:emissiveColor.connect = </Root/MacBook_Pro_2022/Materials/MacBookPro/tex_emissive.outputs:rgb>
+                    float inputs:metallic.connect = </Root/MacBook_Pro_2022/Materials/MacBookPro/tex_metallic.outputs:r>
+                    normal3f inputs:normal.connect = </Root/MacBook_Pro_2022/Materials/MacBookPro/tex_normal.outputs:rgb>
+                    float inputs:roughness.connect = </Root/MacBook_Pro_2022/Materials/MacBookPro/tex_roughness.outputs:r>
+                }
+
+                over "tex_base"
+                {
+                    float2 inputs:st.connect = </Root/MacBook_Pro_2022/Materials/MacBookPro/uvset0.outputs:result>
+                }
+
+                over "tex_metallic"
+                {
+                    float2 inputs:st.connect = </Root/MacBook_Pro_2022/Materials/MacBookPro/uvset0.outputs:result>
+                }
+
+                over "tex_roughness"
+                {
+                    float2 inputs:st.connect = </Root/MacBook_Pro_2022/Materials/MacBookPro/uvset0.outputs:result>
+                }
+
+                over "tex_normal"
+                {
+                    float2 inputs:st.connect = </Root/MacBook_Pro_2022/Materials/MacBookPro/uvset0.outputs:result>
+                }
+
+                over "tex_emissive"
+                {
+                    float2 inputs:st.connect = </Root/MacBook_Pro_2022/Materials/MacBookPro/uvset0.outputs:result>
+                }
+            }
+        }
+    }
+
+    def "projector" (
+        active = true
+        customData = {
+            float3 rotationEulerHint = (0, -4.712389, 0)
+        }
+        references = @projector.usdz@
+    )
+    {
+        quatf xformOp:orient = (0.6924281, 0, 0.7214869, 0)
+        float3 xformOp:scale = (0.002, 0.002, 0.002)
+        float3 xformOp:translate = (-0.14962763, -0.39101693, 0.44041407)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def Cube "Cube" (
+        active = true
+        prepend apiSchemas = ["MaterialBindingAPI"]
+        customData = {
+            float3 rotationEulerHint = (0, 0, 0)
+        }
+    )
+    {
+        rel material:binding = </Root/Cube/DefaultMaterial>
+        double size = 0.2
+        quatf xformOp:orient = (1, 0, 0, 0)
+        float3 xformOp:scale = (18, 10, 0.1)
+        float3 xformOp:translate = (0.034490645, 0.38739395, -2.2347767)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Material "DefaultMaterial"
+        {
+            token inputs:frame:stPrimvarName = "st"
+            token outputs:mtlx:surface
+            token outputs:realitykit:vertex
+            prepend token outputs:surface.connect = </Root/Cube/DefaultMaterial/DefaultSurfaceShader.outputs:surface>
+
+            def Shader "DefaultSurfaceShader"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (1, 1, 1)
+                color3f inputs:diffuseColor.connect = </Root/Cube/DefaultMaterial/diffuseColor.outputs:rgb>
+                float inputs:roughness = 1
+                token outputs:surface
+            }
+
+            def Shader "diffuseColor"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @img_v3_02e2_81721042-bca2-416e-8e7c-6adeadb70a1g.png@
+                float2 inputs:st.connect = </Root/Cube/DefaultMaterial/diffuseColor/TexCoordReader.outputs:result>
+                color3f outputs:rgb
+
+                def Shader "TexCoordReader"
+                {
+                    uniform token info:id = "UsdPrimvarReader_float2"
+                    token inputs:varname.connect = </Root/Cube/DefaultMaterial/DefaultSurfaceShader.inputs:frame:stPrimvarName>
+                    float2 outputs:result
+                }
+            }
+        }
+    }
+
+    def "Macbook_1" (
+        active = true
+        customData = {
+            float3 rotationEulerHint = (0, -0.11261827, 0)
+        }
+        references = @Macbook.usdz@
+    )
+    {
+        quatf xformOp:orient = (0.99841505, 0, -0.05627938, 0)
+        float3 xformOp:scale = (0.007000001, 0.007, 0.007000001)
+        float3 xformOp:translate = (-2.331522, -2.0529356, 1.6832596)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        over "Materials"
+        {
+            over "Macbook"
+            {
+                token outputs:surface.connect = </Root/Macbook_1/Materials/Macbook/pbr_shader.outputs:surface>
+
+                over "pbr_shader"
+                {
+                    color3f inputs:diffuseColor.connect = </Root/Macbook_1/Materials/Macbook/tex_base.outputs:rgb>
+                }
+
+                over "tex_base"
+                {
+                    float2 inputs:st.connect = </Root/Macbook_1/Materials/Macbook/uvset0.outputs:result>
+                }
+            }
+        }
+    }
+
+    def Xform "Light" (
+        active = true
+    )
+    {
+        reorder nameChildren = ["DirectionalLight", "SpotLight", "SpotLight_1", "SpotLight_2", "SpotLight_3"]
+        float3 xformOp:translate = (-0.18286836, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Xform "SpotLight" (
+            customData = {
+                float3 rotationEulerHint = (-1.5764685, -5.9603693e-8, 5.9942735e-8)
+            }
+        )
+        {
+            quatf xformOp:orient = (0.7050985, -0.70910937, -4.2266212e-8, 0)
+            float3 xformOp:scale = (1, 1, 1)
+            float3 xformOp:translate = (5.3240786, 2.4638586, -1.4990697)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            def RealityKitComponent "SpotLight"
+            {
+                token info:id = "RealityKit.SpotLight"
+                float intensity = 600
+
+                def RealityKitStruct "Shadow"
+                {
+                }
+            }
+        }
+
+        def Xform "SpotLight_1" (
+            customData = {
+                float3 rotationEulerHint = (-1.5764685, -5.9603693e-8, 5.9942735e-8)
+            }
+        )
+        {
+            float2 ui:nodegraph:node:pos = (20, 20)
+            int ui:nodegraph:node:stackingOrder = 1
+            quatf xformOp:orient = (0.7050985, -0.70910937, -4.2266212e-8, 0)
+            float3 xformOp:scale = (1, 1, 1)
+            float3 xformOp:translate = (5.3240786, 2.4727302, 0.065252304)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            def RealityKitComponent "SpotLight"
+            {
+                token info:id = "RealityKit.SpotLight"
+                float intensity = 600
+
+                def RealityKitStruct "Shadow"
+                {
+                }
+            }
+        }
+
+        def Xform "SpotLight_2" (
+            customData = {
+                float3 rotationEulerHint = (-1.5764685, -5.9603693e-8, 5.9942735e-8)
+            }
+        )
+        {
+            float2 ui:nodegraph:node:pos = (20, 20)
+            int ui:nodegraph:node:stackingOrder = 1
+            quatf xformOp:orient = (0.7050985, -0.70910937, -4.2266212e-8, 0)
+            float3 xformOp:scale = (1, 1, 1)
+            float3 xformOp:translate = (5.3240786, 2.4821644, 1.7273967)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            def RealityKitComponent "SpotLight"
+            {
+                token info:id = "RealityKit.SpotLight"
+                float intensity = 600
+
+                def RealityKitStruct "Shadow"
+                {
+                }
+            }
+        }
+
+        def Xform "SpotLight_3" (
+            customData = {
+                float3 rotationEulerHint = (-1.5764685, -5.9603693e-8, 5.9942735e-8)
+            }
+        )
+        {
+            float2 ui:nodegraph:node:pos = (20, 20)
+            int ui:nodegraph:node:stackingOrder = 1
+            quatf xformOp:orient = (0.7050985, -0.70910937, -4.2266212e-8, 0)
+            float3 xformOp:scale = (1, 1, 1)
+            float3 xformOp:translate = (5.3240786, 2.490347, 3.1715038)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            def RealityKitComponent "SpotLight"
+            {
+                token info:id = "RealityKit.SpotLight"
+                float intensity = 600
+
+                def RealityKitStruct "Shadow"
+                {
+                }
+            }
+        }
+    }
+
+    def Xform "Light_1" (
+        active = true
+    )
+    {
+        reorder nameChildren = ["DirectionalLight", "SpotLight", "SpotLight_1", "SpotLight_2", "SpotLight_3"]
+        float2 ui:nodegraph:node:pos = (20, 20)
+        int ui:nodegraph:node:stackingOrder = 1
+        quatf xformOp:orient = (1, 0, 0, 0)
+        float3 xformOp:scale = (1, 1, 1)
+        float3 xformOp:translate = (-3.2839925, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Xform "SpotLight" (
+            customData = {
+                float3 rotationEulerHint = (-1.5764685, -5.9603693e-8, 5.9942735e-8)
+            }
+        )
+        {
+            quatf xformOp:orient = (0.7050985, -0.70910937, -4.2266212e-8, 0)
+            float3 xformOp:scale = (1, 1, 1)
+            float3 xformOp:translate = (5.3240786, 2.4638586, -1.4990697)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            def RealityKitComponent "SpotLight"
+            {
+                token info:id = "RealityKit.SpotLight"
+                float intensity = 600
+
+                def RealityKitStruct "Shadow"
+                {
+                }
+            }
+        }
+
+        def Xform "SpotLight_1" (
+            customData = {
+                float3 rotationEulerHint = (-1.5764685, -5.9603693e-8, 5.9942735e-8)
+            }
+        )
+        {
+            float2 ui:nodegraph:node:pos = (20, 20)
+            int ui:nodegraph:node:stackingOrder = 1
+            quatf xformOp:orient = (0.7050985, -0.70910937, -4.2266212e-8, 0)
+            float3 xformOp:scale = (1, 1, 1)
+            float3 xformOp:translate = (5.3240786, 2.4727302, 0.065252304)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            def RealityKitComponent "SpotLight"
+            {
+                token info:id = "RealityKit.SpotLight"
+                float intensity = 600
+
+                def RealityKitStruct "Shadow"
+                {
+                }
+            }
+        }
+
+        def Xform "SpotLight_2" (
+            customData = {
+                float3 rotationEulerHint = (-1.5764685, -5.9603693e-8, 5.9942735e-8)
+            }
+        )
+        {
+            float2 ui:nodegraph:node:pos = (20, 20)
+            int ui:nodegraph:node:stackingOrder = 1
+            quatf xformOp:orient = (0.7050985, -0.70910937, -4.2266212e-8, 0)
+            float3 xformOp:scale = (1, 1, 1)
+            float3 xformOp:translate = (5.3240786, 2.4821644, 1.7273967)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            def RealityKitComponent "SpotLight"
+            {
+                token info:id = "RealityKit.SpotLight"
+                float intensity = 600
+
+                def RealityKitStruct "Shadow"
+                {
+                }
+            }
+        }
+
+        def Xform "SpotLight_3" (
+            customData = {
+                float3 rotationEulerHint = (-1.5764685, -5.9603693e-8, 5.9942735e-8)
+            }
+        )
+        {
+            float2 ui:nodegraph:node:pos = (20, 20)
+            int ui:nodegraph:node:stackingOrder = 1
+            quatf xformOp:orient = (0.7050985, -0.70910937, -4.2266212e-8, 0)
+            float3 xformOp:scale = (1, 1, 1)
+            float3 xformOp:translate = (5.3240786, 2.490347, 3.1715038)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            def RealityKitComponent "SpotLight"
+            {
+                token info:id = "RealityKit.SpotLight"
+                float intensity = 600
+
+                def RealityKitStruct "Shadow"
+                {
+                }
+            }
+        }
+    }
+
+    def Xform "Light_2" (
+        active = true
+    )
+    {
+        reorder nameChildren = ["DirectionalLight", "SpotLight", "SpotLight_1", "SpotLight_2", "SpotLight_3"]
+        float2 ui:nodegraph:node:pos = (20, 20)
+        int ui:nodegraph:node:stackingOrder = 1
+        quatf xformOp:orient = (1, 0, 0, 0)
+        float3 xformOp:scale = (1, 1, 1)
+        float3 xformOp:translate = (-7.012024, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Xform "SpotLight" (
+            customData = {
+                float3 rotationEulerHint = (-1.5764685, -5.9603693e-8, 5.9942735e-8)
+            }
+        )
+        {
+            quatf xformOp:orient = (0.7050985, -0.70910937, -4.2266212e-8, 0)
+            float3 xformOp:scale = (1, 1, 1)
+            float3 xformOp:translate = (5.3240786, 2.4638586, -1.4990697)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            def RealityKitComponent "SpotLight"
+            {
+                token info:id = "RealityKit.SpotLight"
+                float intensity = 600
+
+                def RealityKitStruct "Shadow"
+                {
+                }
+            }
+        }
+
+        def Xform "SpotLight_1" (
+            customData = {
+                float3 rotationEulerHint = (-1.5764685, -5.9603693e-8, 5.9942735e-8)
+            }
+        )
+        {
+            float2 ui:nodegraph:node:pos = (20, 20)
+            int ui:nodegraph:node:stackingOrder = 1
+            quatf xformOp:orient = (0.7050985, -0.70910937, -4.2266212e-8, 0)
+            float3 xformOp:scale = (1, 1, 1)
+            float3 xformOp:translate = (5.3240786, 2.4727302, 0.065252304)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            def RealityKitComponent "SpotLight"
+            {
+                token info:id = "RealityKit.SpotLight"
+                float intensity = 600
+
+                def RealityKitStruct "Shadow"
+                {
+                }
+            }
+        }
+
+        def Xform "SpotLight_2" (
+            customData = {
+                float3 rotationEulerHint = (-1.5764685, -5.9603693e-8, 5.9942735e-8)
+            }
+        )
+        {
+            float2 ui:nodegraph:node:pos = (20, 20)
+            int ui:nodegraph:node:stackingOrder = 1
+            quatf xformOp:orient = (0.7050985, -0.70910937, -4.2266212e-8, 0)
+            float3 xformOp:scale = (1, 1, 1)
+            float3 xformOp:translate = (5.3240786, 2.4821644, 1.7273967)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            def RealityKitComponent "SpotLight"
+            {
+                token info:id = "RealityKit.SpotLight"
+                float intensity = 600
+
+                def RealityKitStruct "Shadow"
+                {
+                }
+            }
+        }
+
+        def Xform "SpotLight_3" (
+            customData = {
+                float3 rotationEulerHint = (-1.5764685, -5.9603693e-8, 5.9942735e-8)
+            }
+        )
+        {
+            float2 ui:nodegraph:node:pos = (20, 20)
+            int ui:nodegraph:node:stackingOrder = 1
+            quatf xformOp:orient = (0.7050985, -0.70910937, -4.2266212e-8, 0)
+            float3 xformOp:scale = (1, 1, 1)
+            float3 xformOp:translate = (5.3240786, 2.490347, 3.1715038)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            def RealityKitComponent "SpotLight"
+            {
+                token info:id = "RealityKit.SpotLight"
+                float intensity = 600
+
+                def RealityKitStruct "Shadow"
+                {
+                }
+            }
+        }
+    }
+
+    def Xform "Light_3" (
+        active = true
+    )
+    {
+        reorder nameChildren = ["DirectionalLight", "SpotLight", "SpotLight_1", "SpotLight_2", "SpotLight_3"]
+        float2 ui:nodegraph:node:pos = (20, 20)
+        int ui:nodegraph:node:stackingOrder = 1
+        quatf xformOp:orient = (1, 0, 0, 0)
+        float3 xformOp:scale = (1, 1, 1)
+        float3 xformOp:translate = (-9.917492, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Xform "SpotLight" (
+            customData = {
+                float3 rotationEulerHint = (-1.5764685, -5.9603693e-8, 5.9942735e-8)
+            }
+        )
+        {
+            quatf xformOp:orient = (0.7050985, -0.70910937, -4.2266212e-8, 0)
+            float3 xformOp:scale = (1, 1, 1)
+            float3 xformOp:translate = (5.3240786, 2.4638586, -1.4990697)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            def RealityKitComponent "SpotLight"
+            {
+                token info:id = "RealityKit.SpotLight"
+                float intensity = 600
+
+                def RealityKitStruct "Shadow"
+                {
+                }
+            }
+        }
+
+        def Xform "SpotLight_1" (
+            customData = {
+                float3 rotationEulerHint = (-1.5764685, -5.9603693e-8, 5.9942735e-8)
+            }
+        )
+        {
+            float2 ui:nodegraph:node:pos = (20, 20)
+            int ui:nodegraph:node:stackingOrder = 1
+            quatf xformOp:orient = (0.7050985, -0.70910937, -4.2266212e-8, 0)
+            float3 xformOp:scale = (1, 1, 1)
+            float3 xformOp:translate = (5.3240786, 2.4727302, 0.065252304)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            def RealityKitComponent "SpotLight"
+            {
+                token info:id = "RealityKit.SpotLight"
+                float intensity = 600
+
+                def RealityKitStruct "Shadow"
+                {
+                }
+            }
+        }
+
+        def Xform "SpotLight_2" (
+            customData = {
+                float3 rotationEulerHint = (-1.5764685, -5.9603693e-8, 5.9942735e-8)
+            }
+        )
+        {
+            float2 ui:nodegraph:node:pos = (20, 20)
+            int ui:nodegraph:node:stackingOrder = 1
+            quatf xformOp:orient = (0.7050985, -0.70910937, -4.2266212e-8, 0)
+            float3 xformOp:scale = (1, 1, 1)
+            float3 xformOp:translate = (5.3240786, 2.4821644, 1.7273967)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            def RealityKitComponent "SpotLight"
+            {
+                token info:id = "RealityKit.SpotLight"
+                float intensity = 600
+
+                def RealityKitStruct "Shadow"
+                {
+                }
+            }
+        }
+
+        def Xform "SpotLight_3" (
+            customData = {
+                float3 rotationEulerHint = (-1.5764685, -5.9603693e-8, 5.9942735e-8)
+            }
+        )
+        {
+            float2 ui:nodegraph:node:pos = (20, 20)
+            int ui:nodegraph:node:stackingOrder = 1
+            quatf xformOp:orient = (0.7050985, -0.70910937, -4.2266212e-8, 0)
+            float3 xformOp:scale = (1, 1, 1)
+            float3 xformOp:translate = (5.3240786, 2.490347, 3.1715038)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            def RealityKitComponent "SpotLight"
+            {
+                token info:id = "RealityKit.SpotLight"
+                float intensity = 600
+
+                def RealityKitStruct "Shadow"
+                {
+                }
+            }
+        }
+    }
+}
+

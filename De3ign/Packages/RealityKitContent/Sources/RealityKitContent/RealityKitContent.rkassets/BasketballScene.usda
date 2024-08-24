@@ -11,7 +11,7 @@ def Xform "Root" (
     }
 )
 {
-    reorder nameChildren = ["Sphere_Left", "Sphere_Right", "GridMaterial"]
+    reorder nameChildren = ["GridMaterial", "Cube", "Cube_1", "Cube_2", "LowPoly_bonfire", "Cube_3", "Cube_4", "Box_Aquarium", "Material", "Material_1", "BasketballHoop", "Cube_5", "Iron_Man_Mark_7Subsurf", "Film_watching_place", "Witchs_Retreat", "Sunset_Treasure_Chest", "Area_Rug_Color_3D_Scan", "Cube_6", "Lights", "CampFire", "Transform"]
     quatf xformOp:orient = (0.7053958, 0, 0.7088136, 0)
     float3 xformOp:scale = (1, 1, 1)
     float3 xformOp:translate = (0, 0, 0)
@@ -19,7 +19,7 @@ def Xform "Root" (
 
     def "GridMaterial" (
         active = true
-        prepend references = @Materials/GridMaterial.usda@
+        references = @Materials/GridMaterial.usda@
     )
     {
         float3 xformOp:scale = (1, 1, 1)
@@ -244,7 +244,7 @@ def Xform "Root" (
 
     def "LowPoly_bonfire" (
         active = true
-        prepend references = @Materials/New Folder/LowPoly_bonfire.usdz@
+        references = @Materials/New Folder/LowPoly_bonfire.usdz@
     )
     {
         float3 xformOp:scale = (0.001, 0.001, 0.001)
@@ -332,7 +332,7 @@ def Xform "Root" (
         customData = {
             float3 rotationEulerHint = (-1.4795709, 1.4528632e-7, 0.034802232)
         }
-        prepend references = @Materials/Box_Aquarium.usdz@
+        references = @Materials/Box_Aquarium.usdz@
     )
     {
         quatf xformOp:orient = (0.7385014, -0.6740274, -0.011729959, 0.012852095)
@@ -408,7 +408,7 @@ def Xform "Root" (
         customData = {
             float3 rotationEulerHint = (0.014962642, -1.5707963, 0)
         }
-        prepend references = @Materials/BasketballHoop.usdz@
+        references = @Materials/BasketballHoop.usdz@
     )
     {
         quatf xformOp:orient = (0.703461, -0.005262916, -0.71069527, -0.005209343)
@@ -437,7 +437,7 @@ def Xform "Root" (
 
     def "Iron_Man_Mark_7Subsurf" (
         active = true
-        prepend references = @Materials/Iron_Man_Mark-7Subsurf.usdz@
+        references = @Materials/Iron_Man_Mark-7Subsurf.usdz@
     )
     {
         float3 xformOp:scale = (0.004, 0.004, 0.004)
@@ -445,23 +445,9 @@ def Xform "Root" (
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
     }
 
-    def "Film_watching_place" (
-        active = true
-        customData = {
-            float3 rotationEulerHint = (0.014064264, -1.5707963, 0)
-        }
-        prepend references = @Materials/Film-watching_place.usdz@
-    )
-    {
-        quatf xformOp:orient = (0.7050941, -0.0049583963, -0.7090949, -0.001454953)
-        float3 xformOp:scale = (0.002, 0.002, 0.002)
-        float3 xformOp:translate = (-0.071103334, 0.17776638, 1.4873483)
-        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
-    }
-
     def "Witchs_Retreat" (
         active = true
-        prepend references = @Materials/Witchs_Retreat.usdz@
+        references = @Materials/Witchs_Retreat.usdz@
     )
     {
         float3 xformOp:scale = (0.001, 0.001, 0.001)
@@ -474,7 +460,7 @@ def Xform "Root" (
         customData = {
             float3 rotationEulerHint = (-0.00004339218, -3.0774286, 0.00067925453)
         }
-        prepend references = @Materials/Sunset_Treasure_Chest.usdz@
+        references = @Materials/Sunset_Treasure_Chest.usdz@
     )
     {
         quatf xformOp:orient = (-0.032076314, -0.00033871198, 0.9994854, 0.00001087013)
@@ -485,7 +471,7 @@ def Xform "Root" (
 
     def "Area_Rug_Color_3D_Scan" (
         active = true
-        prepend references = @Materials/Area_Rug_Color_3D_Scan.usdz@
+        references = @Materials/Area_Rug_Color_3D_Scan.usdz@
     )
     {
         float3 xformOp:scale = (2.220446e-16, 2.220446e-16, 2.220446e-16)
@@ -539,6 +525,163 @@ def Xform "Root" (
                 }
             }
         }
+    }
+
+    def Xform "Lights" (
+        active = true
+    )
+    {
+        reorder nameChildren = ["SpotLight", "SpotLight_1", "SpotLight"]
+        def Xform "SpotLight" (
+            customData = {
+                float3 rotationEulerHint = (-1.5644795, 2.477895e-7, -2.2747746e-7)
+            }
+        )
+        {
+            float2 ui:nodegraph:node:pos = (20, 20)
+            int ui:nodegraph:node:stackingOrder = 1
+            quatf xformOp:orient = (0.7093365, -0.70487, 1.6605019e-7, 7.2656943e-9)
+            float3 xformOp:scale = (0.99999994, 0.9999998, 0.9999998)
+            float3 xformOp:translate = (8.4227906e-7, 3.1050365, 2.3354282)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            def RealityKitComponent "SpotLight"
+            {
+                float3 color = (1, 0.31395248, 0)
+                token info:id = "RealityKit.SpotLight"
+                float intensity = 3000
+
+                def RealityKitStruct "Shadow"
+                {
+                }
+            }
+        }
+
+        def Xform "SpotLight_1" (
+            customData = {
+                float3 rotationEulerHint = (-1.5644795, 2.477895e-7, -2.2747746e-7)
+            }
+        )
+        {
+            float2 ui:nodegraph:node:pos = (40, 40)
+            int ui:nodegraph:node:stackingOrder = 2
+            quatf xformOp:orient = (0.7093365, -0.70487005, 1.6632806e-7, 7.1904367e-9)
+            float3 xformOp:scale = (0.9999999, 0.99999976, 0.99999976)
+            float3 xformOp:translate = (3.7597152e-7, 3.117873, 0.30387017)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            def RealityKitComponent "SpotLight"
+            {
+                float3 color = (1, 0.31395248, 0)
+                token info:id = "RealityKit.SpotLight"
+                float intensity = 3000
+
+                def RealityKitStruct "Shadow"
+                {
+                }
+            }
+        }
+
+        def Xform "SpotLight_2" (
+            customData = {
+                float3 rotationEulerHint = (-1.3559171, 2.6876356e-7, -2.3066384e-7)
+            }
+        )
+        {
+            float2 ui:nodegraph:node:pos = (40, 40)
+            int ui:nodegraph:node:stackingOrder = 2
+            quatf xformOp:orient = (0.7788547, -0.6272043, 1.7700056e-7, -5.5419873e-9)
+            float3 xformOp:scale = (0.9999999, 0.99999976, 0.99999976)
+            float3 xformOp:translate = (-3.3134052e-7, 3.1309474, -1.7684319)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            def RealityKitComponent "SpotLight"
+            {
+                float3 color = (1, 0.31395248, 0)
+                token info:id = "RealityKit.SpotLight"
+                float intensity = 3000
+
+                def RealityKitStruct "Shadow"
+                {
+                }
+            }
+        }
+    }
+
+    def Xform "CampFire"
+    {
+        float2 ui:nodegraph:node:pos = (20, 20)
+        int ui:nodegraph:node:stackingOrder = 1
+        quatf xformOp:orient = (0.7053958, 0, -0.7088136, 0)
+        float3 xformOp:scale = (1, 1, 1)
+        float3 xformOp:translate = (0.9944152, 0.1681375, -0.39528337)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def RealityKitComponent "VFXEmitter"
+        {
+            token info:id = "RealityKit.VFXEmitter"
+
+            def RealityKitStruct "currentState"
+            {
+                token birthDirection = "Normal"
+                double emissionDuration = 1
+                token emitterShape = "Plane"
+                bool isLocal = 1
+                bool isLocalFields = 0
+                float particleSpeed = 0.01
+                float3 shapeSize = (0.04, 0.04, 0.04)
+                bool spawnInheritParentColor = 0
+
+                def RealityKitStruct "mainEmitter"
+                {
+                    token blendMode = "Alpha"
+                    float colorEvolutionPower = 1
+                    float4 endColorA = (0.96828645, 0.7533718, 0.01695968, 1)
+                    bool isLightingEnabled = 0
+                    float noiseAnimationSpeed = 0
+                    float noiseScale = 1
+                    float noiseStrength = 0.1
+                    token opacityOverLife = "EaseFadeOut"
+                    float particleAngle = 0
+                    double particleLifeSpan = 1.2
+                    float particleSize = 0.02
+                    float3 radialGravityCenter = (0, 1, 0)
+                    float radialGravityStrength = 0.2
+                    float4 startColorA = (1, 0.030250736, 0, 1)
+                    bool useEndColor = 1
+                    bool useEndColorRange = 0
+                    bool useStartColorRange = 0
+                }
+
+                def RealityKitStruct "spawnedEmitter"
+                {
+                }
+            }
+        }
+    }
+
+    def "shangxiang" (
+        active = true
+        prepend references = @shangxiang.usda@</Chinese_Incense_Burner_LowPory_Material_test>
+    )
+    {
+        quatf xformOp:orient = (0.7053958, 0, -0.7088136, 0)
+        float3 xformOp:scale = (0.1, 0.1, 0.1)
+        float3 xformOp:translate = (-0.39528036, 0.1906479, 1.4893823)
+    }
+
+    def "Film_watching_place" (
+        active = true
+        customData = {
+            float3 rotationEulerHint = (0.014064264, -1.5707963, 0)
+        }
+        references = @Materials/Film-watching_place.usdz@
+    )
+    {
+        quatf xformOp:orient = (0.7050941, -0.0049583963, -0.7090949, -0.001454953)
+        float3 xformOp:scale = (0.002, 0.002, 0.002)
+        float3 xformOp:translate = (-0.071103334, 0.17776638, 1.4873483)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
     }
 }
 

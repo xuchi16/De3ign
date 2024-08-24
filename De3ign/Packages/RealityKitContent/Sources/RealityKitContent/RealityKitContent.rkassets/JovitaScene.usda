@@ -429,12 +429,13 @@ def Xform "Root" (
                     def RealityKitStruct "mainEmitter"
                     {
                         float birthRate = 20
-                        float4 endColorA = (0.9999908, 1, 1, 1)
-                        token opacityOverLife = "QuickFadeInOut"
+                        token blendMode = "Opaque"
+                        float4 endColorA = (1, 0.0076329373, 1, 1)
+                        token opacityOverLife = "GradualFadeInOut"
                         asset particleImage = @YinFu_F.png@
                         float particleSize = 0.03
-                        float4 startColorA = (0.9999908, 1, 1, 1)
-                        bool useEndColor = 0
+                        float4 startColorA = (0, 1, 0.903683, 1)
+                        bool useEndColor = 1
                         bool useEndColorRange = 0
                         bool useStartColorRange = 0
                     }

@@ -52,7 +52,7 @@ struct De3ignApp: App {
         .windowStyle(.volumetric)
         
         WindowGroup(id: superBrainVolume) {
-            SuperBrainSpaceView(scale: 0.001, position: [0, 0.3, 0.3])
+            SuperBrainSpaceView(scale: 0.08, position: [-0.1, -0.3, 0])
                 .ornament(attachmentAnchor: .scene(.bottomFront)) {
                     OrnamentView(spaceId: superBrainSpace)
                         .environment(appModel)

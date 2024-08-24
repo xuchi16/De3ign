@@ -15,6 +15,8 @@ struct JovitaSpaceView: View {
     var scale: Float = 0.3
     var position: SIMD3<Float> = [0, -1, -1.5]
     let song = Song(name: "Jovita")
+    @State var particleEntity: Entity?
+    @State var particleEmitting = false
     
     var body: some View {
         RealityView { content in
@@ -27,7 +29,18 @@ struct JovitaSpaceView: View {
                 if let player = immersiveContentEntity.findEntity(named: "Carvaan_Music_Player") {
                     print("Player found!")
                     player.components.set(HoverEffectComponent())
+                    
+                    if let particleEntity = player.findEntity(named: "ParticleEmitter") {
+                        self.particleEntity = particleEntity
+                        
+                        if var particle = particleEntity.components[ParticleEmitterComponent.self] {
+                            particle.isEmitting = false
+                            particle.simulationState = .stop
+                            particleEntity.components.set(particle)
+                        }
+                    }
                 }
+                
                 // Put skybox here.  See example in World project available at
                 // https://developer.apple.com/
             }
@@ -37,6 +50,17 @@ struct JovitaSpaceView: View {
                 .targetedToAnyEntity()
                 .onEnded { value in
                     song.toggle()
+                    
+                    guard let particleEntity = self.particleEntity,
+                          var particle = particleEntity.components[ParticleEmitterComponent.self] else {
+                        print("No particle")
+                        return
+                    }
+                    
+                    particleEmitting.toggle()
+                    particle.isEmitting = particleEmitting
+                    particle.simulationState = particleEmitting ? .play : .stop
+                    particleEntity.components.set(particle)
                 }
         )
     }

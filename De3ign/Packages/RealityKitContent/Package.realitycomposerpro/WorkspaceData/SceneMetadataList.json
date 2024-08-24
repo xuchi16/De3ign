@@ -53,6 +53,54 @@
       }
     ]
   },
+  "343586E6-704D-481A-BD79-27FE572B6A3D" : {
+    "objectMetadataList" : [
+      [
+        "343586E6-704D-481A-BD79-27FE572B6A3D",
+        "Root",
+        "Light_3"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "343586E6-704D-481A-BD79-27FE572B6A3D",
+        "Root",
+        "Light_1"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "343586E6-704D-481A-BD79-27FE572B6A3D",
+        "Root",
+        "Light"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "343586E6-704D-481A-BD79-27FE572B6A3D",
+        "Root",
+        "Light_2"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "343586E6-704D-481A-BD79-27FE572B6A3D",
+        "Root"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      }
+    ]
+  },
   "3E764B9E-92E9-42B7-9872-C9E4AA92BBE7" : {
     "objectMetadataList" : [
       [
@@ -140,6 +188,70 @@
       [
         "66168B71-AB05-424E-8B6C-D33D6E61B08F",
         "Root"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      }
+    ]
+  },
+  "67CCEB35-5283-4A0D-AC53-DF56DD02667B" : {
+    "objectMetadataList" : [
+      [
+        "67CCEB35-5283-4A0D-AC53-DF56DD02667B",
+        "Root",
+        "shangxiang",
+        "Materials"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "67CCEB35-5283-4A0D-AC53-DF56DD02667B",
+        "Root",
+        "shangxiang",
+        "Meshes"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "67CCEB35-5283-4A0D-AC53-DF56DD02667B",
+        "Root",
+        "shangxiang",
+        "Meshes",
+        "Sketchfab_model",
+        "_c420dcf8f5b4e7ebe46e61183fd358a_fbx"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "67CCEB35-5283-4A0D-AC53-DF56DD02667B",
+        "Root",
+        "shangxiang"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "67CCEB35-5283-4A0D-AC53-DF56DD02667B",
+        "Root"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "67CCEB35-5283-4A0D-AC53-DF56DD02667B",
+        "Root",
+        "shangxiang",
+        "Meshes",
+        "Sketchfab_model"
       ],
       {
         "isExpanded" : true,
@@ -363,6 +475,73 @@
         "Root",
         "GridMaterial",
         "GridMaterial"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      }
+    ]
+  },
+  "E7195668-5E9A-474B-858A-C0B33B6D89A6" : {
+    "objectMetadataList" : [
+      [
+        "E7195668-5E9A-474B-858A-C0B33B6D89A6",
+        "Chinese_Incense_Burner_LowPory_Material_test",
+        "Meshes",
+        "Sketchfab_model",
+        "_c420dcf8f5b4e7ebe46e61183fd358a_fbx",
+        "RootNode",
+        "xianglu_low"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "E7195668-5E9A-474B-858A-C0B33B6D89A6",
+        "Chinese_Incense_Burner_LowPory_Material_test"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "E7195668-5E9A-474B-858A-C0B33B6D89A6",
+        "Chinese_Incense_Burner_LowPory_Material_test",
+        "Meshes",
+        "Sketchfab_model",
+        "_c420dcf8f5b4e7ebe46e61183fd358a_fbx"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "E7195668-5E9A-474B-858A-C0B33B6D89A6",
+        "Chinese_Incense_Burner_LowPory_Material_test",
+        "Meshes",
+        "Sketchfab_model"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "E7195668-5E9A-474B-858A-C0B33B6D89A6",
+        "Chinese_Incense_Burner_LowPory_Material_test",
+        "Meshes",
+        "Sketchfab_model",
+        "_c420dcf8f5b4e7ebe46e61183fd358a_fbx",
+        "RootNode"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "E7195668-5E9A-474B-858A-C0B33B6D89A6",
+        "Chinese_Incense_Burner_LowPory_Material_test",
+        "Meshes"
       ],
       {
         "isExpanded" : true,
