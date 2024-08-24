@@ -20,7 +20,11 @@ struct BasketballSpaceView: View {
     @State var chatEntity = Entity()
     @State var xianglu = Entity()
     @State var xiang = Entity()
+    @State var ball = Entity()
     
+    @State private var isDragging = false
+    @State private var dragStartPosition: SIMD3<Float> = [0, 0, 0]
+
     init(scale: Float = 2, position: SIMD3<Float> = [0, 0, -1.5]) {
         self.scale = scale
         self.position = position
@@ -48,6 +52,11 @@ struct BasketballSpaceView: View {
                     }
                 }
                 
+                if let basketball = immersiveContentEntity.findEntity(named: "basketball") {
+                    basketball.components.set(HoverEffectComponent())
+                    self.ball = basketball
+                }
+                
                 // Put skybox here.  See example in World project available at
                 // https://developer.apple.com/
             }
@@ -72,6 +81,37 @@ struct BasketballSpaceView: View {
                 .targetedToAnyEntity()
                 .onEnded { value in
                     xiang.isEnabled.toggle()
+                }
+        )
+        .simultaneousGesture(
+            DragGesture()
+                .targetedToAnyEntity()
+                .onChanged { value in
+                    if !isDragging {
+                        isDragging = true
+                        if var pbc = self.ball.components[PhysicsBodyComponent.self] {
+                            pbc.massProperties.mass = 0
+                            pbc.massProperties.inertia = [1, 1, 1]
+                            pbc.isAffectedByGravity = false
+                            self.ball.components[PhysicsBodyComponent.self] = pbc
+                        }
+                        dragStartPosition = ball.position
+                    }
+                    
+                    let translation3D = value.convert(value.gestureValue.translation3D, from: .local, to: .scene)
+                    
+                    let offset = SIMD3<Float>(x: translation3D.z, y: translation3D.y, z: translation3D.x)
+
+                    ball.position = dragStartPosition + offset
+                }
+                .onEnded { value in
+                    isDragging = false
+                    if var pbc = self.ball.components[PhysicsBodyComponent.self] {
+                        pbc.massProperties.mass = 1
+                        pbc.massProperties.inertia = [1, 1, 1]
+                        pbc.isAffectedByGravity = true
+                        self.ball.components[PhysicsBodyComponent.self] = pbc
+                    }
                 }
         )
     }

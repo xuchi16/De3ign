@@ -433,27 +433,6 @@
     "objectMetadataList" : [
       [
         "67CCEB35-5283-4A0D-AC53-DF56DD02667B",
-        "Root",
-        "shangxiang",
-        "Materials"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "67CCEB35-5283-4A0D-AC53-DF56DD02667B",
-        "Root",
-        "shangxiang",
-        "Meshes",
-        "Sketchfab_model"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "67CCEB35-5283-4A0D-AC53-DF56DD02667B",
         "Root"
       ],
       {
@@ -463,38 +442,7 @@
       [
         "67CCEB35-5283-4A0D-AC53-DF56DD02667B",
         "Root",
-        "cat"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "67CCEB35-5283-4A0D-AC53-DF56DD02667B",
-        "Root",
-        "shangxiang"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "67CCEB35-5283-4A0D-AC53-DF56DD02667B",
-        "Root",
-        "shangxiang",
-        "Meshes"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "67CCEB35-5283-4A0D-AC53-DF56DD02667B",
-        "Root",
-        "shangxiang",
-        "Meshes",
-        "Sketchfab_model",
-        "_c420dcf8f5b4e7ebe46e61183fd358a_fbx"
+        "Cube"
       ],
       {
         "isExpanded" : true,
