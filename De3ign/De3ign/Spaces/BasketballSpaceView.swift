@@ -18,6 +18,8 @@ struct BasketballSpaceView: View {
     private var speechSynthesizer = SpeechSynthesizer()
     @State private var isRecording = false
     @State var chatEntity = Entity()
+    @State var xianglu = Entity()
+    @State var xiang = Entity()
     
     init(scale: Float = 2, position: SIMD3<Float> = [0, 0, -1.5]) {
         self.scale = scale
@@ -34,6 +36,17 @@ struct BasketballSpaceView: View {
                 chatEntity = immersiveContentEntity.findEntity(named: "cat")!
                 chatEntity.components.set(InputTargetComponent())
                 chatEntity.components.set(HoverEffectComponent())
+                
+                if let xianglu = immersiveContentEntity.findEntity(named: "shangxiang") {
+                    xianglu.components.set(InputTargetComponent())
+                    xianglu.components.set(HoverEffectComponent())
+                    self.xianglu = xianglu
+                    
+                    if let xiang = xianglu.findEntity(named: "xiang_low") {
+                        self.xiang = xiang
+                        xiang.isEnabled = false
+                    }
+                }
                 
                 // Put skybox here.  See example in World project available at
                 // https://developer.apple.com/
@@ -54,6 +67,13 @@ struct BasketballSpaceView: View {
                         endRecognition()
                     }
                 })
+        .simultaneousGesture(
+            TapGesture()
+                .targetedToAnyEntity()
+                .onEnded { value in
+                    xiang.isEnabled.toggle()
+                }
+        )
     }
     
     private func startRecognition() {

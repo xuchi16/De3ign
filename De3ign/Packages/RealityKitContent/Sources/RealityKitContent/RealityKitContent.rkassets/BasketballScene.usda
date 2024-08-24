@@ -668,6 +668,25 @@ def Xform "Root" (
         quatf xformOp:orient = (0.7053958, 0, -0.7088136, 0)
         float3 xformOp:scale = (0.1, 0.1, 0.1)
         float3 xformOp:translate = (-0.39528036, 0.1906479, 1.4893823)
+
+        def RealityKitComponent "Collider"
+        {
+            uint group = 1
+            uniform token info:id = "RealityKit.Collider"
+            uint mask = 4294967295
+            token type = "Default"
+
+            def RealityKitStruct "Shape"
+            {
+                float3 extent = (1.9832509, 3.4815626, 2.6298456)
+                token shapeType = "Box"
+
+                def RealityKitStruct "pose"
+                {
+                    float3 position = (0, 1.7407846, -7.1525574e-7)
+                }
+            }
+        }
     }
 
     def "Film_watching_place" (
