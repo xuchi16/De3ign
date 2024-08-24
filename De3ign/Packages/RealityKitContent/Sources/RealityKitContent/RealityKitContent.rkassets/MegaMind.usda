@@ -10,7 +10,7 @@
 
 def Xform "Root"
 {
-    reorder nameChildren = ["floor", "wall", "wall_1", "_4000_x_1200", "Office_Chair_2", "Office_Chair_3", "Office_Chair_4", "Office_Chair_5", "Office_Chair_6", "Office_Chair_7", "Office_Chair_8", "Office_Chair_9", "Office_Chair_11", "Office_Chair_12", "Office_Chair_13", "Office_Chair_14", "Apple_Vision_Pro", "Apple_Vision_Pro_1", "Office_Chair_15", "Office_Chair_16", "MacBook_Pro_2021", "Macbook_Pro_13_inch_2020", "Macbook", "MacBook_Pro_2022", "projector", "Cube", "Macbook_1", "Light"]
+    reorder nameChildren = ["floor", "wall", "wall_1", "_4000_x_1200", "Office_Chair_2", "Office_Chair_3", "Office_Chair_4", "Office_Chair_5", "Office_Chair_6", "Office_Chair_7", "Office_Chair_8", "Office_Chair_9", "Office_Chair_11", "Office_Chair_12", "Office_Chair_13", "Office_Chair_14", "Apple_Vision_Pro", "Apple_Vision_Pro_1", "Office_Chair_15", "Office_Chair_16", "MacBook_Pro_2021", "Macbook_Pro_13_inch_2020", "Macbook", "MacBook_Pro_2022", "projector", "Cube", "Macbook_1", "Light", "Light_1", "Light_2", "Light_3", "robot"]
     def Cube "floor" (
         active = true
         prepend apiSchemas = ["MaterialBindingAPI"]
@@ -2600,6 +2600,7 @@ def Xform "Root"
         references = @Macbook.usdz@
     )
     {
+        reorder nameChildren = ["Cute_Home_Robot", "Materials", "Meshes"]
         quatf xformOp:orient = (0.99841505, 0, -0.05627938, 0)
         float3 xformOp:scale = (0.007000001, 0.007, 0.007000001)
         float3 xformOp:translate = (-2.331522, -2.0529356, 1.6832596)
@@ -3043,6 +3044,70 @@ def Xform "Root"
 
                 def RealityKitStruct "Shadow"
                 {
+                }
+            }
+        }
+    }
+
+    def "robot" (
+        active = true
+        customData = {
+            float3 rotationEulerHint = (-4.440892e-16, -0.78539807, -1.8716957e-23)
+        }
+        references = @Cute_Home_Robot.usdz@
+    )
+    {
+        quatf xformOp:orient = (0.92387956, -2.0514247e-16, -0.3826834, -8.497279e-17)
+        float3 xformOp:scale = (0.002, 0.0019999996, 0.002)
+        float3 xformOp:translate = (2.4781394, -0.4304133, 0.79278517)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        over "Meshes"
+        {
+            over "Sketchfab_model"
+            {
+                over "edca9fd234644d5480a540acc91ca584_fbx"
+                {
+                    over "Object_2"
+                    {
+                        over "RootNode"
+                        {
+                            over "Object_4"
+                            {
+                                over "Cylinder001"
+                                {
+                                    over "Cylinder001_M_Suelo_0"
+                                    {
+                                        over "Cylinder001_M_Suelo_0"
+                                        {
+                                            float3 xformOp:translate = (-0.00024414062, -0.00030517578, -94.49236)
+                                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        def RealityKitComponent "Collider"
+        {
+            uint group = 1
+            uniform token info:id = "RealityKit.Collider"
+            uint mask = 4294967295
+            token type = "Default"
+
+            def RealityKitStruct "Shape"
+            {
+                float3 extent = (911.39703, 827.2284, 908.8485)
+                float radius = 400
+                token shapeType = "Sphere"
+
+                def RealityKitStruct "pose"
+                {
+                    float3 position = (-0.6934509, -128.48926, -3.4584045)
                 }
             }
         }

@@ -11,7 +11,7 @@ def Xform "Root" (
     }
 )
 {
-    reorder nameChildren = ["GridMaterial", "Cube", "Cube_1", "Cube_2", "LowPoly_bonfire", "Cube_3", "Cube_4", "Box_Aquarium", "Material", "Material_1", "BasketballHoop", "Cube_5", "Iron_Man_Mark_7Subsurf", "Film_watching_place", "Witchs_Retreat", "Sunset_Treasure_Chest", "Area_Rug_Color_3D_Scan", "Cube_6", "Lights", "CampFire", "Transform"]
+    reorder nameChildren = ["GridMaterial", "Cube", "Cube_1", "Cube_2", "LowPoly_bonfire", "Cube_3", "Cube_4", "Box_Aquarium", "Material", "Material_1", "BasketballHoop", "Cube_5", "Iron_Man_Mark_7Subsurf", "Film_watching_place", "cat", "Witchs_Retreat", "Sunset_Treasure_Chest", "Area_Rug_Color_3D_Scan", "Cube_6", "Lights", "CampFire", "shangxiang"]
     quatf xformOp:orient = (0.7053958, 0, 0.7088136, 0)
     float3 xformOp:scale = (1, 1, 1)
     float3 xformOp:translate = (0, 0, 0)
@@ -662,7 +662,7 @@ def Xform "Root" (
 
     def "shangxiang" (
         active = true
-        prepend references = @shangxiang.usda@</Chinese_Incense_Burner_LowPory_Material_test>
+        references = @shangxiang.usda@</Chinese_Incense_Burner_LowPory_Material_test>
     )
     {
         quatf xformOp:orient = (0.7053958, 0, -0.7088136, 0)
@@ -682,6 +682,38 @@ def Xform "Root" (
         float3 xformOp:scale = (0.002, 0.002, 0.002)
         float3 xformOp:translate = (-0.071103334, 0.17776638, 1.4873483)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def "cat" (
+        active = true
+        references = @Cat_Murdered_Soul_Suspect.usdz@
+    )
+    {
+        quatf xformOp:orient = (0.7053958, 0, -0.7088136, 0)
+        float3 xformOp:scale = (0.003, 0.003, 0.003)
+        float3 xformOp:translate = (-0.046022724, 1.3668954, -1.9053117)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def RealityKitComponent "Collider"
+        {
+            uint group = 1
+            uniform token info:id = "RealityKit.Collider"
+            uint mask = 4294967295
+            token type = "Default"
+
+            def RealityKitStruct "Shape"
+            {
+                float3 extent = (256.17804, 45.67167, 123.30212)
+                float height = 45.67167
+                float radius = 128.08902
+                token shapeType = "Sphere"
+
+                def RealityKitStruct "pose"
+                {
+                    float3 position = (-43.622643, -0.00000667572, -61.614628)
+                }
+            }
+        }
     }
 }
 

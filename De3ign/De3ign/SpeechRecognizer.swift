@@ -32,9 +32,9 @@ actor SpeechRecognizer: ObservableObject {
             print(locale.language.languageCode!.identifier)
         }
 
-        recognizer = SFSpeechRecognizer()
+        // recognizer = SFSpeechRecognizer()
         print(SFSpeechRecognizer.supportedLocales())
-        // recognizer = SFSpeechRecognizer(locale: Locale(identifier: "zh"))
+        recognizer = SFSpeechRecognizer(locale: Locale(identifier: "zh"))
 
         guard recognizer != nil else {
             transcribe(RecognizerError.nilRecognizer)

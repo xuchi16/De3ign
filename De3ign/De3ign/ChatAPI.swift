@@ -9,13 +9,14 @@ import Foundation
 
 struct ChatRequest: Codable {
     let message: String
+    let personality: String
 }
 
 struct ChatResponse: Codable {
     let response: String
 }
 
-func sendChatMessage(message: String, completion: @escaping (String?) -> Void) {
+func sendChatMessage(message: String, personality: String = "", completion: @escaping (String?) -> Void) {
     // Prepare the URL
     guard let url = URL(string: "http://124.222.130.161:15551/chat") else {
         print("Invalid URL")
@@ -29,7 +30,7 @@ func sendChatMessage(message: String, completion: @escaping (String?) -> Void) {
     request.setValue("application/json", forHTTPHeaderField: "Content-Type")
 
     // Prepare the message
-    let chatRequest = ChatRequest(message: message)
+    let chatRequest = ChatRequest(message: message, personality: personality)
     
     do {
         let jsonData = try JSONEncoder().encode(chatRequest)
