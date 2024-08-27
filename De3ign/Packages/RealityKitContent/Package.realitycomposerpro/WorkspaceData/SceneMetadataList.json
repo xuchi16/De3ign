@@ -36,6 +36,15 @@
     "objectMetadataList" : [
       [
         "3082B688-6591-43F6-917F-EE9BCED444D5",
+        "Root",
+        "Transform"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "3082B688-6591-43F6-917F-EE9BCED444D5",
         "Root"
       ],
       {

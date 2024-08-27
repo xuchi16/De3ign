@@ -507,6 +507,7 @@ def Xform "Root" (
             def RealityKitComponent "SpotLight"
             {
                 token info:id = "RealityKit.SpotLight"
+                float intensity = 1000
 
                 def RealityKitStruct "Shadow"
                 {
@@ -530,6 +531,7 @@ def Xform "Root" (
             def RealityKitComponent "SpotLight"
             {
                 token info:id = "RealityKit.SpotLight"
+                float intensity = 1000
 
                 def RealityKitStruct "Shadow"
                 {
@@ -553,6 +555,7 @@ def Xform "Root" (
             def RealityKitComponent "SpotLight"
             {
                 token info:id = "RealityKit.SpotLight"
+                float intensity = 1000
 
                 def RealityKitStruct "Shadow"
                 {
@@ -576,6 +579,7 @@ def Xform "Root" (
             def RealityKitComponent "SpotLight"
             {
                 token info:id = "RealityKit.SpotLight"
+                float intensity = 1000
 
                 def RealityKitStruct "Shadow"
                 {
@@ -599,6 +603,7 @@ def Xform "Root" (
             def RealityKitComponent "SpotLight"
             {
                 token info:id = "RealityKit.SpotLight"
+                float intensity = 1000
 
                 def RealityKitStruct "Shadow"
                 {
