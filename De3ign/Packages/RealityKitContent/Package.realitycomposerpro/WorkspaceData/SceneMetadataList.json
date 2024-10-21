@@ -36,8 +36,7 @@
     "objectMetadataList" : [
       [
         "3082B688-6591-43F6-917F-EE9BCED444D5",
-        "Root",
-        "Transform"
+        "Root"
       ],
       {
         "isExpanded" : true,
@@ -45,7 +44,8 @@
       },
       [
         "3082B688-6591-43F6-917F-EE9BCED444D5",
-        "Root"
+        "Root",
+        "Transform"
       ],
       {
         "isExpanded" : true,
@@ -67,7 +67,13 @@
       [
         "343586E6-704D-481A-BD79-27FE572B6A3D",
         "Root",
-        "Light_3"
+        "robot",
+        "Meshes",
+        "Sketchfab_model",
+        "edca9fd234644d5480a540acc91ca584_fbx",
+        "Object_2",
+        "RootNode",
+        "Object_4"
       ],
       {
         "isExpanded" : true,
@@ -79,7 +85,12 @@
         "robot",
         "Meshes",
         "Sketchfab_model",
-        "edca9fd234644d5480a540acc91ca584_fbx"
+        "edca9fd234644d5480a540acc91ca584_fbx",
+        "Object_2",
+        "RootNode",
+        "Object_4",
+        "Cylinder001",
+        "Cylinder001_M_Suelo_0"
       ],
       {
         "isExpanded" : true,
@@ -97,9 +108,8 @@
       [
         "343586E6-704D-481A-BD79-27FE572B6A3D",
         "Root",
-        "robot",
-        "Meshes",
-        "Sketchfab_model"
+        "Cute_Home_Robot",
+        "Meshes"
       ],
       {
         "isExpanded" : true,
@@ -108,14 +118,7 @@
       [
         "343586E6-704D-481A-BD79-27FE572B6A3D",
         "Root",
-        "robot",
-        "Meshes",
-        "Sketchfab_model",
-        "edca9fd234644d5480a540acc91ca584_fbx",
-        "Object_2",
-        "RootNode",
-        "Object_4",
-        "Cylinder001"
+        "Light_2"
       ],
       {
         "isExpanded" : true,
@@ -154,7 +157,18 @@
         "Object_2",
         "RootNode",
         "Object_4",
-        "Cylinder001"
+        "Cylinder001",
+        "Cylinder001_M_Suelo_0"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "343586E6-704D-481A-BD79-27FE572B6A3D",
+        "Root",
+        "robot",
+        "Meshes"
       ],
       {
         "isExpanded" : true,
@@ -177,15 +191,21 @@
       [
         "343586E6-704D-481A-BD79-27FE572B6A3D",
         "Root",
-        "Cute_Home_Robot",
+        "Light_3"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "343586E6-704D-481A-BD79-27FE572B6A3D",
+        "Root",
+        "robot",
         "Meshes",
         "Sketchfab_model",
         "edca9fd234644d5480a540acc91ca584_fbx",
         "Object_2",
-        "RootNode",
-        "Object_4",
-        "Cylinder001",
-        "Cylinder001_M_Suelo_0"
+        "RootNode"
       ],
       {
         "isExpanded" : true,
@@ -207,8 +227,26 @@
       [
         "343586E6-704D-481A-BD79-27FE572B6A3D",
         "Root",
+        "Cute_Home_Robot",
+        "Meshes",
+        "Sketchfab_model",
+        "edca9fd234644d5480a540acc91ca584_fbx",
+        "Object_2",
+        "RootNode",
+        "Object_4",
+        "Cylinder001"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "343586E6-704D-481A-BD79-27FE572B6A3D",
+        "Root",
         "robot",
-        "Meshes"
+        "Meshes",
+        "Sketchfab_model",
+        "edca9fd234644d5480a540acc91ca584_fbx"
       ],
       {
         "isExpanded" : true,
@@ -222,7 +260,9 @@
         "Sketchfab_model",
         "edca9fd234644d5480a540acc91ca584_fbx",
         "Object_2",
-        "RootNode"
+        "RootNode",
+        "Object_4",
+        "Cylinder001"
       ],
       {
         "isExpanded" : true,
@@ -231,7 +271,42 @@
       [
         "343586E6-704D-481A-BD79-27FE572B6A3D",
         "Root",
-        "robot"
+        "Cute_Home_Robot",
+        "Meshes",
+        "Sketchfab_model",
+        "edca9fd234644d5480a540acc91ca584_fbx",
+        "Object_2"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "343586E6-704D-481A-BD79-27FE572B6A3D",
+        "Root",
+        "Cute_Home_Robot",
+        "Meshes",
+        "Sketchfab_model"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "343586E6-704D-481A-BD79-27FE572B6A3D",
+        "Root",
+        "robot",
+        "Meshes",
+        "Sketchfab_model"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "343586E6-704D-481A-BD79-27FE572B6A3D",
+        "Root",
+        "Macbook_1"
       ],
       {
         "isExpanded" : true,
@@ -252,73 +327,7 @@
       [
         "343586E6-704D-481A-BD79-27FE572B6A3D",
         "Root",
-        "robot",
-        "Meshes",
-        "Sketchfab_model",
-        "edca9fd234644d5480a540acc91ca584_fbx",
-        "Object_2",
-        "RootNode",
-        "Object_4"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "343586E6-704D-481A-BD79-27FE572B6A3D",
-        "Root",
-        "Light_2"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "343586E6-704D-481A-BD79-27FE572B6A3D",
-        "Root",
-        "Cute_Home_Robot",
-        "Meshes"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "343586E6-704D-481A-BD79-27FE572B6A3D",
-        "Root",
-        "robot",
-        "Meshes",
-        "Sketchfab_model",
-        "edca9fd234644d5480a540acc91ca584_fbx",
-        "Object_2",
-        "RootNode",
-        "Object_4",
-        "Cylinder001",
-        "Cylinder001_M_Suelo_0"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "343586E6-704D-481A-BD79-27FE572B6A3D",
-        "Root",
-        "Cute_Home_Robot",
-        "Meshes",
-        "Sketchfab_model",
-        "edca9fd234644d5480a540acc91ca584_fbx",
-        "Object_2"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "343586E6-704D-481A-BD79-27FE572B6A3D",
-        "Root",
-        "Cute_Home_Robot",
-        "Meshes",
-        "Sketchfab_model"
+        "robot"
       ],
       {
         "isExpanded" : true,
@@ -332,20 +341,19 @@
       {
         "isExpanded" : true,
         "isLocked" : false
-      },
-      [
-        "343586E6-704D-481A-BD79-27FE572B6A3D",
-        "Root",
-        "Macbook_1"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
       }
     ]
   },
   "3E764B9E-92E9-42B7-9872-C9E4AA92BBE7" : {
     "objectMetadataList" : [
+      [
+        "3E764B9E-92E9-42B7-9872-C9E4AA92BBE7",
+        "Root"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
       [
         "3E764B9E-92E9-42B7-9872-C9E4AA92BBE7",
         "Root",
@@ -359,14 +367,6 @@
         "3E764B9E-92E9-42B7-9872-C9E4AA92BBE7",
         "Root",
         "Column"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "3E764B9E-92E9-42B7-9872-C9E4AA92BBE7",
-        "Root"
       ],
       {
         "isExpanded" : true,
@@ -396,7 +396,9 @@
       },
       [
         "51FDB1EE-406C-406E-9818-5D0BED8FF27A",
-        "Root"
+        "Root",
+        "CupCoffee",
+        "CupCoffeeSurface_Animated"
       ],
       {
         "isExpanded" : true,
@@ -404,9 +406,7 @@
       },
       [
         "51FDB1EE-406C-406E-9818-5D0BED8FF27A",
-        "Root",
-        "CupCoffee",
-        "CupCoffeeSurface_Animated"
+        "Root"
       ],
       {
         "isExpanded" : true,
@@ -442,7 +442,8 @@
     "objectMetadataList" : [
       [
         "67CCEB35-5283-4A0D-AC53-DF56DD02667B",
-        "Root"
+        "Root",
+        "Cube"
       ],
       {
         "isExpanded" : true,
@@ -450,8 +451,28 @@
       },
       [
         "67CCEB35-5283-4A0D-AC53-DF56DD02667B",
+        "Root"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      }
+    ]
+  },
+  "A38FDD40-5BAC-4463-808C-770B8CD1AF3A" : {
+    "objectMetadataList" : [
+      [
+        "A38FDD40-5BAC-4463-808C-770B8CD1AF3A",
         "Root",
-        "Cube"
+        "wall_1"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "A38FDD40-5BAC-4463-808C-770B8CD1AF3A",
+        "Root"
       ],
       {
         "isExpanded" : true,
@@ -468,7 +489,50 @@
         "SkinnedMeshes",
         "Sketchfab_model",
         "cat_fbx",
-        "Object_2"
+        "Object_2",
+        "RootNode"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "AF09ED6F-1707-48FD-8720-65B998362C09",
+        "Root",
+        "Sphere_Right"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "AF09ED6F-1707-48FD-8720-65B998362C09",
+        "Root",
+        "cat",
+        "Materials"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "AF09ED6F-1707-48FD-8720-65B998362C09",
+        "Root",
+        "cat",
+        "SkinnedMeshes",
+        "Sketchfab_model"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "AF09ED6F-1707-48FD-8720-65B998362C09",
+        "Root",
+        "cat",
+        "SkinnedMeshes",
+        "Sketchfab_model",
+        "cat_fbx"
       ],
       {
         "isExpanded" : true,
@@ -498,7 +562,47 @@
         "Sketchfab_model",
         "cat_fbx",
         "Object_2",
-        "RootNode"
+        "RootNode",
+        "Object_4",
+        "_rootJoint",
+        "j_root_01",
+        "skin0"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "AF09ED6F-1707-48FD-8720-65B998362C09",
+        "Root",
+        "cat",
+        "SkinnedMeshes",
+        "Sketchfab_model",
+        "cat_fbx",
+        "Object_2",
+        "RootNode",
+        "Object_4",
+        "_rootJoint",
+        "j_root_01"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "AF09ED6F-1707-48FD-8720-65B998362C09",
+        "Root",
+        "cat"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "AF09ED6F-1707-48FD-8720-65B998362C09",
+        "Root",
+        "cat",
+        "SkinnedMeshes"
       ],
       {
         "isExpanded" : true,
@@ -530,44 +634,6 @@
       },
       [
         "AF09ED6F-1707-48FD-8720-65B998362C09",
-        "Root",
-        "Sphere_Right"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "AF09ED6F-1707-48FD-8720-65B998362C09",
-        "Root",
-        "cat",
-        "SkinnedMeshes",
-        "Sketchfab_model"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "AF09ED6F-1707-48FD-8720-65B998362C09",
-        "Root",
-        "cat",
-        "SkinnedMeshes",
-        "Sketchfab_model",
-        "cat_fbx",
-        "Object_2",
-        "RootNode",
-        "Object_4",
-        "_rootJoint",
-        "j_root_01",
-        "skin0"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "AF09ED6F-1707-48FD-8720-65B998362C09",
         "Root"
       ],
       {
@@ -580,53 +646,8 @@
         "cat",
         "SkinnedMeshes",
         "Sketchfab_model",
-        "cat_fbx"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "AF09ED6F-1707-48FD-8720-65B998362C09",
-        "Root",
-        "cat",
-        "Materials"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "AF09ED6F-1707-48FD-8720-65B998362C09",
-        "Root",
-        "cat",
-        "SkinnedMeshes",
-        "Sketchfab_model",
         "cat_fbx",
-        "Object_2",
-        "RootNode",
-        "Object_4",
-        "_rootJoint",
-        "j_root_01"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "AF09ED6F-1707-48FD-8720-65B998362C09",
-        "Root",
-        "cat",
-        "SkinnedMeshes"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "AF09ED6F-1707-48FD-8720-65B998362C09",
-        "Root",
-        "cat"
+        "Object_2"
       ],
       {
         "isExpanded" : true,
@@ -664,7 +685,9 @@
     "objectMetadataList" : [
       [
         "D66134B1-3681-4A8E-AFE5-29F257229F3B",
-        "Root"
+        "Root",
+        "GridMaterial",
+        "GridMaterial"
       ],
       {
         "isExpanded" : true,
@@ -672,9 +695,7 @@
       },
       [
         "D66134B1-3681-4A8E-AFE5-29F257229F3B",
-        "Root",
-        "GridMaterial",
-        "GridMaterial"
+        "Root"
       ],
       {
         "isExpanded" : true,
@@ -684,38 +705,6 @@
   },
   "E7195668-5E9A-474B-858A-C0B33B6D89A6" : {
     "objectMetadataList" : [
-      [
-        "E7195668-5E9A-474B-858A-C0B33B6D89A6",
-        "Chinese_Incense_Burner_LowPory_Material_test",
-        "Meshes",
-        "Sketchfab_model",
-        "_c420dcf8f5b4e7ebe46e61183fd358a_fbx",
-        "RootNode",
-        "xianglu_low"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "E7195668-5E9A-474B-858A-C0B33B6D89A6",
-        "Chinese_Incense_Burner_LowPory_Material_test"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "E7195668-5E9A-474B-858A-C0B33B6D89A6",
-        "Chinese_Incense_Burner_LowPory_Material_test",
-        "Meshes",
-        "Sketchfab_model",
-        "_c420dcf8f5b4e7ebe46e61183fd358a_fbx"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
       [
         "E7195668-5E9A-474B-858A-C0B33B6D89A6",
         "Chinese_Incense_Burner_LowPory_Material_test",
@@ -740,8 +729,40 @@
       },
       [
         "E7195668-5E9A-474B-858A-C0B33B6D89A6",
+        "Chinese_Incense_Burner_LowPory_Material_test"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "E7195668-5E9A-474B-858A-C0B33B6D89A6",
         "Chinese_Incense_Burner_LowPory_Material_test",
         "Meshes"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "E7195668-5E9A-474B-858A-C0B33B6D89A6",
+        "Chinese_Incense_Burner_LowPory_Material_test",
+        "Meshes",
+        "Sketchfab_model",
+        "_c420dcf8f5b4e7ebe46e61183fd358a_fbx",
+        "RootNode",
+        "xianglu_low"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "E7195668-5E9A-474B-858A-C0B33B6D89A6",
+        "Chinese_Incense_Burner_LowPory_Material_test",
+        "Meshes",
+        "Sketchfab_model",
+        "_c420dcf8f5b4e7ebe46e61183fd358a_fbx"
       ],
       {
         "isExpanded" : true,

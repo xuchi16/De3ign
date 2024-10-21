@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9CB593A82CBA894700F19431 /* EditableSpaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB593A72CBA893500F19431 /* EditableSpaceView.swift */; };
+		9CC9F72B2CB978BE0016BD85 /* ModelLibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC9F72A2CB978B40016BD85 /* ModelLibraryView.swift */; };
+		9CC9F72D2CB97AF40016BD85 /* LibraryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC9F72C2CB97AD80016BD85 /* LibraryModel.swift */; };
 		C2B362A22C772A19003AEDA9 /* RealityKitContent in Frameworks */ = {isa = PBXBuildFile; productRef = C2B362A12C772A19003AEDA9 /* RealityKitContent */; };
 		C2B362A42C772A19003AEDA9 /* De3ignApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B362A32C772A19003AEDA9 /* De3ignApp.swift */; };
 		C2B362A62C772A19003AEDA9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B362A52C772A19003AEDA9 /* ContentView.swift */; };
@@ -43,6 +46,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9CB593A72CBA893500F19431 /* EditableSpaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableSpaceView.swift; sourceTree = "<group>"; };
+		9CC9F72A2CB978B40016BD85 /* ModelLibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelLibraryView.swift; sourceTree = "<group>"; };
+		9CC9F72C2CB97AD80016BD85 /* LibraryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryModel.swift; sourceTree = "<group>"; };
 		C2B3629C2C772A19003AEDA9 /* De3ign.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = De3ign.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2B362A02C772A19003AEDA9 /* RealityKitContent */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = RealityKitContent; sourceTree = "<group>"; };
 		C2B362A32C772A19003AEDA9 /* De3ignApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = De3ignApp.swift; sourceTree = "<group>"; };
@@ -113,6 +119,8 @@
 		C2B3629E2C772A19003AEDA9 /* De3ign */ = {
 			isa = PBXGroup;
 			children = (
+				9CC9F72C2CB97AD80016BD85 /* LibraryModel.swift */,
+				9CC9F72A2CB978B40016BD85 /* ModelLibraryView.swift */,
 				C2F294202C787F6900A98088 /* marskybox.jpg */,
 				C2F2941E2C787DC600A98088 /* ImageBasedLighting.skybox */,
 				C2F2941C2C787D4A00A98088 /* ChatAPI.swift */,
@@ -162,6 +170,7 @@
 		C2B362C92C783465003AEDA9 /* Spaces */ = {
 			isa = PBXGroup;
 			children = (
+				9CB593A72CBA893500F19431 /* EditableSpaceView.swift */,
 				C2B362C52C7733CE003AEDA9 /* JovitaSpaceView.swift */,
 				C2B362CA2C783475003AEDA9 /* BasketballSpaceView.swift */,
 				C2B362CC2C78347E003AEDA9 /* SuperBrainSpaceView.swift */,
@@ -292,12 +301,15 @@
 				C2B362AC2C772A19003AEDA9 /* ImmersiveView.swift in Sources */,
 				C2B362C62C7733CE003AEDA9 /* JovitaSpaceView.swift in Sources */,
 				C2B362C82C782591003AEDA9 /* Constants.swift in Sources */,
+				9CC9F72B2CB978BE0016BD85 /* ModelLibraryView.swift in Sources */,
 				C2B362CD2C78347E003AEDA9 /* SuperBrainSpaceView.swift in Sources */,
 				C2B362CF2C78348A003AEDA9 /* TempleSpaceView.swift in Sources */,
 				C2B362A82C772A19003AEDA9 /* AppModel.swift in Sources */,
 				C2B362A42C772A19003AEDA9 /* De3ignApp.swift in Sources */,
+				9CC9F72D2CB97AF40016BD85 /* LibraryModel.swift in Sources */,
 				C2F2941A2C787D4000A98088 /* SpeechRecognizer.swift in Sources */,
 				C2F2941B2C787D4000A98088 /* SpeechSynthesizer.swift in Sources */,
+				9CB593A82CBA894700F19431 /* EditableSpaceView.swift in Sources */,
 				C2F294142C78748E00A98088 /* Song.swift in Sources */,
 				C2B362DB2C78418B003AEDA9 /* Space.swift in Sources */,
 			);

@@ -7,7 +7,9 @@
 
 import Foundation
 
+let modelLibrary = "modelLibrary"
 
+let editableVolume = "EditableVolume"
 let jovitaVolume = "jovitaVolume"
 let basketballVolume = "basketballVolume"
 let superBrainVolume = "superBrainVolume"

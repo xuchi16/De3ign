@@ -31,7 +31,19 @@ struct De3ignApp: App {
         }
         .immersionStyle(selection: .constant(.mixed), in: .mixed)
         
+        // ====== Windows ======
+        WindowGroup(id: modelLibrary) {
+            ModelLibraryView()
+                .environment(appModel)
+        }
+        .windowStyle(.plain)
+        
         // ====== Volumes ======
+        WindowGroup(id: editableVolume) {
+            EditableSpaceView(scale: 0.15, position: [-0.1, -0.3, 0])
+                .environment(appModel)
+        }
+        .windowStyle(.volumetric)
         
         WindowGroup(id: jovitaVolume) {
             JovitaSpaceView(scale: 0.15, position: [0, -0.4, 0.3])
