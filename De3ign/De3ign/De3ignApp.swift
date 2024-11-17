@@ -41,6 +41,10 @@ struct De3ignApp: App {
         // ====== Volumes ======
         WindowGroup(id: editableVolume) {
             EditableSpaceView(scale: 0.15, position: [-0.1, -0.3, 0])
+                .ornament(attachmentAnchor: .scene(.bottomFront)) {
+                    OrnamentView(spaceId: editableVolume)
+                        .environment(appModel)
+                }
                 .environment(appModel)
         }
         .windowStyle(.volumetric)

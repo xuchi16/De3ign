@@ -16,7 +16,8 @@ struct EditableSpaceView: View {
     var scale: Float = 2
     var position: SIMD3<Float> = [0, 0, -1.5]
     
-    let libraryModels = Entity()
+    let libraryModelWrapper = Entity()
+    @State var models: [Entity] = []
     
     init(scale: Float = 2, position: SIMD3<Float> = [0, 0, -1.5]) {
         self.scale = scale
@@ -30,32 +31,41 @@ struct EditableSpaceView: View {
             scene.position = position
             
             content.add(scene)
-            content.add(libraryModels)
+            content.add(libraryModelWrapper)
             
-            placeLibraryModels(appModel.sceneLibraryModelList)
+            placeLibraryModels(appModel.libraryEntities)
             
-            appModel.sceneLibraryModelListChangedCallback = { value in
-                placeLibraryModels(appModel.sceneLibraryModelList)
+            appModel.libraryEntitiesChangedCallback = { value in
+                placeLibraryModels(appModel.libraryEntities)
             }
         }
         .simultaneousGesture(
             DragGesture()
                 .targetedToAnyEntity()
                 .onChanged { event in
-                    event.entity.position = event.convert(event.location3D, from: .local, to: event.entity.parent!)
+                    if let target = event.entity.progenitor {
+                        target.position = event.convert(event.location3D, from: .local, to: target.parent!)
+                    }
                 }
+        )
+        .gesture(
+            TapGesture()
+                .targetedToAnyEntity()
+                .onEnded({ event in
+                    if let callback = event.entity.progenitor?.interaction?.gesture.tap {
+                        callback(event)
+                    }
+                })
         )
     }
     
-    func placeLibraryModels(_ models: [SceneLibraryModel]) {
-        libraryModels.children.forEach { child in
+    func placeLibraryModels(_ models: [Entity]) {
+        self.models = models
+        libraryModelWrapper.children.forEach { child in
             child.removeFromParent()
         }
         for item in models {
-            libraryModels.addChild(item.entity)
-            item.entity.components.set(HoverEffectComponent())
-            item.entity.components.set(InputTargetComponent())
-            item.entity.generateCollisionShapes(recursive: true)
+            libraryModelWrapper.addChild(item)
         }
     }
 }

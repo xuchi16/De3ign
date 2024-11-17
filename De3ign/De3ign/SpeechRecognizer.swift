@@ -28,13 +28,8 @@ actor SpeechRecognizer: ObservableObject {
     private let recognizer: SFSpeechRecognizer?
     
     init() {
-        for locale in SFSpeechRecognizer.supportedLocales() {
-            print(locale.language.languageCode!.identifier)
-        }
-
-        // recognizer = SFSpeechRecognizer()
-        print(SFSpeechRecognizer.supportedLocales())
-        recognizer = SFSpeechRecognizer(locale: Locale(identifier: "zh"))
+        //recognizer = SFSpeechRecognizer()
+        recognizer = SFSpeechRecognizer(locale: Locale(identifier: "zh-CN"))
 
         guard recognizer != nil else {
             transcribe(RecognizerError.nilRecognizer)

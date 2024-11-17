@@ -29,11 +29,6 @@ struct ContentView: View {
                     .shadow(color: .red, radius: 50)
             }
             
-            Button {
-                openWindow(id: modelLibrary)
-            } label: {
-                Text("Open Model Library")
-            }
             // === Volumes ===
             ScrollView(.horizontal, showsIndicators: true) {
                 HStack(spacing: 20) {

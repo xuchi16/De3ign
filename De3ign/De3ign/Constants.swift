@@ -9,6 +9,14 @@ import Foundation
 
 let modelLibrary = "modelLibrary"
 
+enum InteractionName: String {
+    case none = "None"
+    case disappear = "Disappear"
+    case song = "Song"
+    case chat = "Chat"
+    case zoom = "Zoom"
+}
+
 let editableVolume = "EditableVolume"
 let jovitaVolume = "jovitaVolume"
 let basketballVolume = "basketballVolume"

@@ -1,9 +1,7 @@
 {
   "advancedEditorSelectedIdentifier" : "ProjectBrowser",
   "openSceneRelativePaths" : [
-    "Editable.usda",
-    "MegaMind.usda",
-    "BasketballScene.usda"
+    "Editable.usda"
   ],
   "recentIdentifiers" : {
     "A38FDD40-5BAC-4463-808C-770B8CD1AF3A" : [
@@ -11,6 +9,30 @@
     ]
   },
   "sceneCameraHistory" : {
+    "2CDB39D7-DD11-4856-965F-F41D28198282" : [
+      {
+        "date" : 753094988.081782,
+        "title" : "Untitled",
+        "transform" : [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0.7071069,
+          -0.70710677,
+          0,
+          0,
+          0.70710677,
+          0.7071069,
+          0,
+          0,
+          7.907806,
+          7.907807,
+          1
+        ]
+      }
+    ],
     "343586E6-704D-481A-BD79-27FE572B6A3D" : [
       {
         "date" : 750422252.181211,
@@ -207,6 +229,30 @@
           -1.5281074,
           0.3069905,
           3.3505895,
+          1
+        ]
+      }
+    ],
+    "67CCEB35-5283-4A0D-AC53-DF56DD02667B" : [
+      {
+        "date" : 753094979.249742,
+        "title" : "Untitled",
+        "transform" : [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0.7071069,
+          -0.70710677,
+          0,
+          0,
+          0.70710677,
+          0.7071069,
+          0,
+          -0.72615814,
+          2.7081804,
+          0.9494004,
           1
         ]
       }
@@ -437,5 +483,5 @@
   "sceneViewportBackgroundColors" : {
 
   },
-  "selectedSceneRelativePath" : "BasketballScene.usda"
+  "selectedSceneRelativePath" : "Editable.usda"
 }
