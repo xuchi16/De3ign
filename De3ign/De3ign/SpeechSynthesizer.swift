@@ -12,7 +12,6 @@ struct SpeechSynthesizer {
     
     func readText(text: String) {
         let utterance = AVSpeechUtterance(string: text)
-        print(AVSpeechSynthesisVoice.speechVoices())
         utterance.voice = AVSpeechSynthesisVoice(language: "zh_Hans")
         
         synthesizer.speak(utterance)

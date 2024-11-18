@@ -7,7 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9C21AED12CDD29E300500A43 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C21AED02CDD29E300500A43 /* Assets.xcassets */; };
+		9C21AED22CDD29E300500A43 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C21AED02CDD29E300500A43 /* Assets.xcassets */; };
+		9C4099912CE95DCD003FACFA /* Chatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4099902CE95DBF003FACFA /* Chatter.swift */; };
+		9C4099932CE96D65003FACFA /* senpai.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9C4099922CE96D65003FACFA /* senpai.mp3 */; };
 		9CB593A82CBA894700F19431 /* EditableSpaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB593A72CBA893500F19431 /* EditableSpaceView.swift */; };
+		9CC2D8002CDD018F000C380C /* LibraryInteraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC2D7FF2CDD0184000C380C /* LibraryInteraction.swift */; };
+		9CC2D8022CDD01CF000C380C /* InteractionLibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC2D8012CDD01BF000C380C /* InteractionLibraryView.swift */; };
 		9CC9F72B2CB978BE0016BD85 /* ModelLibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC9F72A2CB978B40016BD85 /* ModelLibraryView.swift */; };
 		9CC9F72D2CB97AF40016BD85 /* LibraryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC9F72C2CB97AD80016BD85 /* LibraryModel.swift */; };
 		C2B362A22C772A19003AEDA9 /* RealityKitContent in Frameworks */ = {isa = PBXBuildFile; productRef = C2B362A12C772A19003AEDA9 /* RealityKitContent */; };
@@ -16,7 +22,6 @@
 		C2B362A82C772A19003AEDA9 /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B362A72C772A19003AEDA9 /* AppModel.swift */; };
 		C2B362AA2C772A19003AEDA9 /* ToggleImmersiveSpaceButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B362A92C772A19003AEDA9 /* ToggleImmersiveSpaceButton.swift */; };
 		C2B362AC2C772A19003AEDA9 /* ImmersiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B362AB2C772A19003AEDA9 /* ImmersiveView.swift */; };
-		C2B362AE2C772A1B003AEDA9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C2B362AD2C772A1B003AEDA9 /* Assets.xcassets */; };
 		C2B362B12C772A1B003AEDA9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C2B362B02C772A1B003AEDA9 /* Preview Assets.xcassets */; };
 		C2B362BC2C772A1C003AEDA9 /* De3ignTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B362BB2C772A1C003AEDA9 /* De3ignTests.swift */; };
 		C2B362C62C7733CE003AEDA9 /* JovitaSpaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B362C52C7733CE003AEDA9 /* JovitaSpaceView.swift */; };
@@ -46,7 +51,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9C21AED02CDD29E300500A43 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		9C4099902CE95DBF003FACFA /* Chatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chatter.swift; sourceTree = "<group>"; };
+		9C4099922CE96D65003FACFA /* senpai.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = senpai.mp3; sourceTree = "<group>"; };
 		9CB593A72CBA893500F19431 /* EditableSpaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableSpaceView.swift; sourceTree = "<group>"; };
+		9CC2D7FF2CDD0184000C380C /* LibraryInteraction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryInteraction.swift; sourceTree = "<group>"; };
+		9CC2D8012CDD01BF000C380C /* InteractionLibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractionLibraryView.swift; sourceTree = "<group>"; };
 		9CC9F72A2CB978B40016BD85 /* ModelLibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelLibraryView.swift; sourceTree = "<group>"; };
 		9CC9F72C2CB97AD80016BD85 /* LibraryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryModel.swift; sourceTree = "<group>"; };
 		C2B3629C2C772A19003AEDA9 /* De3ign.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = De3ign.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -56,7 +66,6 @@
 		C2B362A72C772A19003AEDA9 /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
 		C2B362A92C772A19003AEDA9 /* ToggleImmersiveSpaceButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleImmersiveSpaceButton.swift; sourceTree = "<group>"; };
 		C2B362AB2C772A19003AEDA9 /* ImmersiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImmersiveView.swift; sourceTree = "<group>"; };
-		C2B362AD2C772A1B003AEDA9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C2B362B02C772A1B003AEDA9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		C2B362B22C772A1B003AEDA9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C2B362B72C772A1C003AEDA9 /* De3ignTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = De3ignTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -119,7 +128,10 @@
 		C2B3629E2C772A19003AEDA9 /* De3ign */ = {
 			isa = PBXGroup;
 			children = (
+				9C4099902CE95DBF003FACFA /* Chatter.swift */,
+				9CC2D7FF2CDD0184000C380C /* LibraryInteraction.swift */,
 				9CC9F72C2CB97AD80016BD85 /* LibraryModel.swift */,
+				9CC2D8012CDD01BF000C380C /* InteractionLibraryView.swift */,
 				9CC9F72A2CB978B40016BD85 /* ModelLibraryView.swift */,
 				C2F294202C787F6900A98088 /* marskybox.jpg */,
 				C2F2941E2C787DC600A98088 /* ImageBasedLighting.skybox */,
@@ -136,7 +148,7 @@
 				C2B362AB2C772A19003AEDA9 /* ImmersiveView.swift */,
 				C2B363652C785C72003AEDA9 /* OrnamentView.swift */,
 				C2F294132C78748E00A98088 /* Song.swift */,
-				C2B362AD2C772A1B003AEDA9 /* Assets.xcassets */,
+				9C21AED02CDD29E300500A43 /* Assets.xcassets */,
 				C2B362B22C772A1B003AEDA9 /* Info.plist */,
 				C2B362AF2C772A1B003AEDA9 /* Preview Content */,
 			);
@@ -183,6 +195,7 @@
 			isa = PBXGroup;
 			children = (
 				C2F294162C787B1500A98088 /* Jovita.mp3 */,
+				9C4099922CE96D65003FACFA /* senpai.mp3 */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -271,11 +284,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C4099932CE96D65003FACFA /* senpai.mp3 in Resources */,
 				C2B362B12C772A1B003AEDA9 /* Preview Assets.xcassets in Resources */,
 				C2F294172C787B1500A98088 /* Jovita.mp3 in Resources */,
 				C2F294212C787F6900A98088 /* marskybox.jpg in Resources */,
-				C2B362AE2C772A1B003AEDA9 /* Assets.xcassets in Resources */,
 				C2F2941F2C787DC600A98088 /* ImageBasedLighting.skybox in Resources */,
+				9C21AED22CDD29E300500A43 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,6 +297,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C21AED12CDD29E300500A43 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -295,6 +310,8 @@
 			files = (
 				C2B362CB2C783475003AEDA9 /* BasketballSpaceView.swift in Sources */,
 				C2B362AA2C772A19003AEDA9 /* ToggleImmersiveSpaceButton.swift in Sources */,
+				9CC2D8022CDD01CF000C380C /* InteractionLibraryView.swift in Sources */,
+				9CC2D8002CDD018F000C380C /* LibraryInteraction.swift in Sources */,
 				C2F2941D2C787D4A00A98088 /* ChatAPI.swift in Sources */,
 				C2B363662C785C72003AEDA9 /* OrnamentView.swift in Sources */,
 				C2B362A62C772A19003AEDA9 /* ContentView.swift in Sources */,
@@ -308,6 +325,7 @@
 				C2B362A42C772A19003AEDA9 /* De3ignApp.swift in Sources */,
 				9CC9F72D2CB97AF40016BD85 /* LibraryModel.swift in Sources */,
 				C2F2941A2C787D4000A98088 /* SpeechRecognizer.swift in Sources */,
+				9C4099912CE95DCD003FACFA /* Chatter.swift in Sources */,
 				C2F2941B2C787D4000A98088 /* SpeechSynthesizer.swift in Sources */,
 				9CB593A82CBA894700F19431 /* EditableSpaceView.swift in Sources */,
 				C2F294142C78748E00A98088 /* Song.swift in Sources */,

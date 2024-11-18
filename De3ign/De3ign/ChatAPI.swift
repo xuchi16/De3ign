@@ -17,6 +17,8 @@ struct ChatResponse: Codable {
 }
 
 func sendChatMessage(message: String, personality: String = "", completion: @escaping (String?) -> Void) {
+    completion("好的，\(message)，我是一个\(personality)")
+    return
     // Prepare the URL
     guard let url = URL(string: "http://124.222.130.161:15551/chat") else {
         print("Invalid URL")

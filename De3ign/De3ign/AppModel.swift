@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import RealityKit
+import RealityKitContent
 
 /// Maintains app-wide state
 @MainActor
@@ -23,14 +25,15 @@ class AppModel {
     var spaces: [DSpace] = []
     var songs: [Song] = []
     
-    var sceneLibraryModelList: [SceneLibraryModel] = [] {
+    var libraryEntities: [Entity] = [] {
         didSet (newValue) {
-            sceneLibraryModelListChangedCallback?(newValue)
+            libraryEntitiesChangedCallback?(newValue)
         }
     }
+    var isEditMode = false
     
     // didn't get the list to be observed, workaround here
-    var sceneLibraryModelListChangedCallback: (([SceneLibraryModel]) -> Void)?
+    var libraryEntitiesChangedCallback: (([Entity]) -> Void)?
 
     init() {
         spaces = [
