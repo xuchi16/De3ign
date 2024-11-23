@@ -22,7 +22,10 @@ struct OrnamentView: View {
                     Text("Open Model Library")
                 }
                 Button {
-                    appModel.libraryEntities = []
+                    while(!appModel.libraryEntities.isEmpty) {
+                        let _ = appModel.libraryEntities.popLast()
+                    }
+                    appModel.libraryEntitiesChangedCallback?()
                 } label: {
                     Text("Clear All")
                 }

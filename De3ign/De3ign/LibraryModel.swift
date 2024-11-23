@@ -38,6 +38,7 @@ struct LibraryModel: Identifiable {
 struct MetadataComponent: Component {
     let id: UUID
     let name: String
+    var isAttachmentInstalled: Bool = false
 }
 
 //extension ModelEntity {
@@ -84,6 +85,15 @@ extension Entity {
     
     var interaction: InteractionComponent? {
         return self.components[InteractionComponent.self]
+    }
+    
+    var isAttachmentInstalled: Bool {
+        get {
+            return self.components[MetadataComponent.self]?.isAttachmentInstalled ?? false
+        }
+        set(newValue) {
+            self.components[MetadataComponent.self]?.isAttachmentInstalled = newValue
+        }
     }
 }
 

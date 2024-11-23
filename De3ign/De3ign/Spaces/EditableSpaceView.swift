@@ -25,7 +25,7 @@ struct EditableSpaceView: View {
     }
     
     var body: some View {
-        RealityView { content in
+        RealityView { content, attachments in
             let scene = try! await Entity(named: "Editable", in: realityKitContentBundle)
             scene.scale = SIMD3<Float>(repeating: scale)
             scene.position = position
@@ -35,9 +35,38 @@ struct EditableSpaceView: View {
             
             placeLibraryModels(appModel.libraryEntities)
             
-            appModel.libraryEntitiesChangedCallback = { value in
+            appModel.libraryEntitiesChangedCallback = {
                 placeLibraryModels(appModel.libraryEntities)
             }
+        } update: { content, attachments in
+            self.libraryModelWrapper.children.forEach { child in
+                child.removeFromParent()
+            }
+            var cnt = 0
+            for item in self.models {
+                libraryModelWrapper.addChild(item)
+                if !item.isAttachmentInstalled {
+                    if let attachment = attachments.entity(for: "\(cnt)") {
+                        print("attach \(item.name) | \(cnt)")
+                        let offset = item.visualBounds(relativeTo: item).min.y
+                        item.addChild(attachment, preservingWorldTransform: true)
+                        
+                        print(offset)
+                        attachment.position = [0, offset, 0]
+                        
+                        item.isAttachmentInstalled = true
+                    }
+                }
+                cnt += 1
+            }
+        } attachments: {
+            ForEach(0..<100, id: \.self) { id in
+                Attachment(id: "\(id)") {
+                    Text("Item \(id)")
+                        .font(.extraLargeTitle)
+                }
+            }
+            
         }
         .simultaneousGesture(
             DragGesture()
@@ -49,7 +78,14 @@ struct EditableSpaceView: View {
                 }
         )
         .gesture(
-            TapGesture()
+            TapGesture(count: 2)
+                .targetedToAnyEntity()
+                .onEnded { event in
+                    print(event.entity.progenitor?.name)
+                }
+        )
+        .gesture(
+            TapGesture(count: 1)
                 .targetedToAnyEntity()
                 .onEnded({ event in
                     if let callback = event.entity.progenitor?.interaction?.gesture.tap {
@@ -57,16 +93,17 @@ struct EditableSpaceView: View {
                     }
                 })
         )
+        
     }
     
     func placeLibraryModels(_ models: [Entity]) {
         self.models = models
-        libraryModelWrapper.children.forEach { child in
-            child.removeFromParent()
-        }
-        for item in models {
-            libraryModelWrapper.addChild(item)
-        }
+//        libraryModelWrapper.children.forEach { child in
+//            child.removeFromParent()
+//        }
+//        for item in models {
+//            libraryModelWrapper.addChild(item)
+//        }
     }
 }
 
