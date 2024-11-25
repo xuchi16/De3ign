@@ -78,21 +78,3 @@ struct InteractionComponent: Component {
     }
 }
 
-func InteractionSelectorAttachment(id: Int) -> some View {
-    return (
-        HStack(spacing: 20) {
-            Button {
-                print(1)
-            } label: {
-                Text("1")
-            }
-            Button {
-                print(2)
-            } label: {
-                Text("2")
-            }
-        }
-            .padding()
-            .glassBackgroundEffect()
-    )
-}

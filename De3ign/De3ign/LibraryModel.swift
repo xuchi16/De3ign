@@ -38,31 +38,6 @@ struct MetadataComponent: Component {
     var isAttachmentInstalled: Bool = false
 }
 
-//extension ModelEntity {
-//    static func fromEntity(_ entity: Entity) -> ModelEntity? {
-//        for child in entity.children {
-//            if type(of: child) == ModelEntity.self {
-//                return (child as! ModelEntity)
-//            }
-//            else {
-//                return self.fromEntity(child)
-//            }
-//        }
-//        return nil
-//    }
-//    
-//    var metadata: MetadataComponent? {
-//        get {
-//            return self.components[MetadataComponent.self]
-//        }
-//        set (newValue) {
-//            if type(of: newValue) == MetadataComponent.self {
-//                self.components.set(newValue!)
-//            }
-//        }
-//    }
-//}
-
 // workaround, didn't manage to make class inheriting work
 extension Entity {
     // well, the ancestor which is a LibraryModel
@@ -113,24 +88,3 @@ extension [Entity] {
         }
     }
 }
-
-//struct SceneLibraryModel {
-//    let id = UUID()
-//    let name: String
-//    let entity: Entity
-//    let position: SIMD3<Float>
-//    let interaction: SceneInteraction?
-//    
-//    init(_ libraryModel: LibraryModel, interaction: SceneInteraction?) {
-//        self.name = libraryModel.name
-//        //let baseEntity = try! Entity.load(named: libraryModel.resourceName, in: realityKitContentBundle)
-//        //self.entity = ModelEntity.fromEntity(baseEntity)!
-//        self.entity = try! Entity.load(named: libraryModel.resourceName, in: realityKitContentBundle)
-//        self.position = [0, 0, 0]
-//        self.entity.position = self.position
-//        self.entity.scale *= 0.1
-//        self.interaction = interaction
-//        self.entity.components.set(MetadataComponent(id: self.id, name: self.name))
-//        print(self.entity)
-//    }
-//}
