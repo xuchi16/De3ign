@@ -42,31 +42,31 @@ struct EditableSpaceView: View {
             self.libraryModelWrapper.children.forEach { child in
                 child.removeFromParent()
             }
-            var cnt = 0
-            for item in self.models {
+            for (index, item) in self.models.enumerated() {
                 libraryModelWrapper.addChild(item)
                 if !item.isAttachmentInstalled {
-                    if let attachment = attachments.entity(for: "\(cnt)") {
-                        print("attach \(item.name) | \(cnt)")
-                        let offset = item.visualBounds(relativeTo: item).min.y
+                    if let attachment = attachments.entity(for: "\(index)") {
+                        let offset = /* bottom of entity */ item.visualBounds(relativeTo: item).min.y - /* ~attachment height */ 30
+                        
                         item.addChild(attachment, preservingWorldTransform: true)
                         
-                        print(offset)
                         attachment.position = [0, offset, 0]
+                        attachment.isEnabled = false
                         
                         item.isAttachmentInstalled = true
                     }
                 }
-                cnt += 1
             }
         } attachments: {
-            ForEach(0..<100, id: \.self) { id in
+            ForEach(0..<500, id: \.self) { id in
                 Attachment(id: "\(id)") {
-                    Text("Item \(id)")
-                        .font(.extraLargeTitle)
+                    InteractionSelectorAttachmentView(appModel: appModel, id: id)
                 }
             }
             
+        }
+        .onDisappear {
+            appModel.libraryEntities.disableAll()
         }
         .simultaneousGesture(
             DragGesture()
@@ -81,7 +81,11 @@ struct EditableSpaceView: View {
             TapGesture(count: 2)
                 .targetedToAnyEntity()
                 .onEnded { event in
-                    print(event.entity.progenitor?.name)
+                    if event.entity.progenitor?.isAttachmentInstalled ?? false {
+                        if let attachment = event.entity.progenitor!.attachment {
+                            attachment.isEnabled = !attachment.isEnabled
+                        }
+                    }
                 }
         )
         .gesture(

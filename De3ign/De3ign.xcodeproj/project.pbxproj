@@ -11,9 +11,9 @@
 		9C21AED22CDD29E300500A43 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C21AED02CDD29E300500A43 /* Assets.xcassets */; };
 		9C4099912CE95DCD003FACFA /* Chatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4099902CE95DBF003FACFA /* Chatter.swift */; };
 		9C4099932CE96D65003FACFA /* senpai.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9C4099922CE96D65003FACFA /* senpai.mp3 */; };
+		9C63418E2CF2420B00BDEAE2 /* InteractionSelectorAttachmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C63418D2CF241FF00BDEAE2 /* InteractionSelectorAttachmentView.swift */; };
 		9CB593A82CBA894700F19431 /* EditableSpaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB593A72CBA893500F19431 /* EditableSpaceView.swift */; };
 		9CC2D8002CDD018F000C380C /* LibraryInteraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC2D7FF2CDD0184000C380C /* LibraryInteraction.swift */; };
-		9CC2D8022CDD01CF000C380C /* InteractionLibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC2D8012CDD01BF000C380C /* InteractionLibraryView.swift */; };
 		9CC9F72B2CB978BE0016BD85 /* ModelLibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC9F72A2CB978B40016BD85 /* ModelLibraryView.swift */; };
 		9CC9F72D2CB97AF40016BD85 /* LibraryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC9F72C2CB97AD80016BD85 /* LibraryModel.swift */; };
 		C2B362A22C772A19003AEDA9 /* RealityKitContent in Frameworks */ = {isa = PBXBuildFile; productRef = C2B362A12C772A19003AEDA9 /* RealityKitContent */; };
@@ -54,9 +54,9 @@
 		9C21AED02CDD29E300500A43 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9C4099902CE95DBF003FACFA /* Chatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chatter.swift; sourceTree = "<group>"; };
 		9C4099922CE96D65003FACFA /* senpai.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = senpai.mp3; sourceTree = "<group>"; };
+		9C63418D2CF241FF00BDEAE2 /* InteractionSelectorAttachmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractionSelectorAttachmentView.swift; sourceTree = "<group>"; };
 		9CB593A72CBA893500F19431 /* EditableSpaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableSpaceView.swift; sourceTree = "<group>"; };
 		9CC2D7FF2CDD0184000C380C /* LibraryInteraction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryInteraction.swift; sourceTree = "<group>"; };
-		9CC2D8012CDD01BF000C380C /* InteractionLibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractionLibraryView.swift; sourceTree = "<group>"; };
 		9CC9F72A2CB978B40016BD85 /* ModelLibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelLibraryView.swift; sourceTree = "<group>"; };
 		9CC9F72C2CB97AD80016BD85 /* LibraryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryModel.swift; sourceTree = "<group>"; };
 		C2B3629C2C772A19003AEDA9 /* De3ign.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = De3ign.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -129,10 +129,10 @@
 			isa = PBXGroup;
 			children = (
 				9C4099902CE95DBF003FACFA /* Chatter.swift */,
-				9CC2D7FF2CDD0184000C380C /* LibraryInteraction.swift */,
 				9CC9F72C2CB97AD80016BD85 /* LibraryModel.swift */,
-				9CC2D8012CDD01BF000C380C /* InteractionLibraryView.swift */,
 				9CC9F72A2CB978B40016BD85 /* ModelLibraryView.swift */,
+				9CC2D7FF2CDD0184000C380C /* LibraryInteraction.swift */,
+				9C63418D2CF241FF00BDEAE2 /* InteractionSelectorAttachmentView.swift */,
 				C2F294202C787F6900A98088 /* marskybox.jpg */,
 				C2F2941E2C787DC600A98088 /* ImageBasedLighting.skybox */,
 				C2F2941C2C787D4A00A98088 /* ChatAPI.swift */,
@@ -310,7 +310,6 @@
 			files = (
 				C2B362CB2C783475003AEDA9 /* BasketballSpaceView.swift in Sources */,
 				C2B362AA2C772A19003AEDA9 /* ToggleImmersiveSpaceButton.swift in Sources */,
-				9CC2D8022CDD01CF000C380C /* InteractionLibraryView.swift in Sources */,
 				9CC2D8002CDD018F000C380C /* LibraryInteraction.swift in Sources */,
 				C2F2941D2C787D4A00A98088 /* ChatAPI.swift in Sources */,
 				C2B363662C785C72003AEDA9 /* OrnamentView.swift in Sources */,
@@ -320,6 +319,7 @@
 				C2B362C82C782591003AEDA9 /* Constants.swift in Sources */,
 				9CC9F72B2CB978BE0016BD85 /* ModelLibraryView.swift in Sources */,
 				C2B362CD2C78347E003AEDA9 /* SuperBrainSpaceView.swift in Sources */,
+				9C63418E2CF2420B00BDEAE2 /* InteractionSelectorAttachmentView.swift in Sources */,
 				C2B362CF2C78348A003AEDA9 /* TempleSpaceView.swift in Sources */,
 				C2B362A82C772A19003AEDA9 /* AppModel.swift in Sources */,
 				C2B362A42C772A19003AEDA9 /* De3ignApp.swift in Sources */,
