@@ -19,14 +19,11 @@ struct LibraryModel: Identifiable {
         self.resourceName = resourceName
     }
     
-    func asEntity(interaction: InteractionComponent?) -> Entity {
+    func asEntity() -> Entity {
         let entity = try! Entity.load(named: self.resourceName, in: realityKitContentBundle)
         entity.name = self.name
         entity.position = [0,0,0]
         entity.scale *= 0.1
-        if interaction != nil {
-            entity.components.set(interaction!)
-        }
         entity.components.set(MetadataComponent(id: self.id, name: self.name))
         entity.components.set(HoverEffectComponent())
         entity.components.set(InputTargetComponent())
@@ -38,6 +35,7 @@ struct LibraryModel: Identifiable {
 struct MetadataComponent: Component {
     let id: UUID
     let name: String
+    var isAttachmentInstalled: Bool = false
 }
 
 //extension ModelEntity {
@@ -84,6 +82,35 @@ extension Entity {
     
     var interaction: InteractionComponent? {
         return self.components[InteractionComponent.self]
+    }
+    
+    var isAttachmentInstalled: Bool {
+        get {
+            return self.components[MetadataComponent.self]?.isAttachmentInstalled ?? false
+        }
+        set(newValue) {
+            self.components[MetadataComponent.self]?.isAttachmentInstalled = newValue
+        }
+    }
+    
+    var attachment: ViewAttachmentEntity? {
+        for child in self.children {
+            if type(of: child) == ViewAttachmentEntity.self {
+                return child as? ViewAttachmentEntity
+            }
+            if let result = child.attachment {
+                return result
+            }
+        }
+        return nil
+    }
+}
+
+extension [Entity] {
+    func disableAll() {
+        for item in self {
+            item.isEnabled = false
+        }
     }
 }
 

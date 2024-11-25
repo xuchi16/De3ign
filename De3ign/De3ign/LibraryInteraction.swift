@@ -21,7 +21,6 @@ let availableInteractions: Dictionary<InteractionName, PredefinedGestures> = [
     .zoom: {
         var cnt = 1
         return .init { event in
-            print(cnt)
             if (cnt % 15 == 0) {
                 event.entity.progenitor?.scale /= 5
             }
@@ -77,4 +76,23 @@ struct InteractionComponent: Component {
         self.name = libraryInteraction.name
         self.gesture = availableInteractions[libraryInteraction.interactionName]!
     }
+}
+
+func InteractionSelectorAttachment(id: Int) -> some View {
+    return (
+        HStack(spacing: 20) {
+            Button {
+                print(1)
+            } label: {
+                Text("1")
+            }
+            Button {
+                print(2)
+            } label: {
+                Text("2")
+            }
+        }
+            .padding()
+            .glassBackgroundEffect()
+    )
 }

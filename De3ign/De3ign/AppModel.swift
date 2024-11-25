@@ -27,13 +27,13 @@ class AppModel {
     
     var libraryEntities: [Entity] = [] {
         didSet (newValue) {
-            libraryEntitiesChangedCallback?(newValue)
+            libraryEntitiesChangedCallback?()
         }
     }
     var isEditMode = false
     
     // didn't get the list to be observed, workaround here
-    var libraryEntitiesChangedCallback: (([Entity]) -> Void)?
+    var libraryEntitiesChangedCallback: (() -> Void)?
 
     init() {
         spaces = [

@@ -22,7 +22,8 @@ struct OrnamentView: View {
                     Text("Open Model Library")
                 }
                 Button {
-                    appModel.libraryEntities = []
+                    // workaround, clearing the array produces buggy behavior for attachments
+                    appModel.libraryEntities.disableAll()
                 } label: {
                     Text("Clear All")
                 }
@@ -31,6 +32,5 @@ struct OrnamentView: View {
                 ToggleImmersiveSpaceButton(name: spaceId)
             }
         }
-        .glassBackgroundEffect()
     }
 }
