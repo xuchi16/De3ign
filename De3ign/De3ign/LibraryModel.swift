@@ -9,7 +9,7 @@ import SwiftUI
 import RealityKit
 import RealityKitContent
 
-struct LibraryModel: Identifiable {
+class LibraryModel: Identifiable {
     let id = UUID()
     let name: String
     let resourceName: String
