@@ -19,7 +19,10 @@ class GenAIModel: ObservableObject, Identifiable {
         self.url = url
     }
     
-    func asEntity() -> Entity {
+    func asEntity() -> Entity? {
+        if self.url == nil {
+            return nil
+        }
         let entity = try! Entity.load(contentsOf: self.url!)
         entity.name = self.name
         entity.position = [0,0,0]
