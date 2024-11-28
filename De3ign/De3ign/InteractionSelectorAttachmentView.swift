@@ -45,7 +45,6 @@ struct InteractionSelectorAttachmentView: View {
                             self.target.components.set(InteractionComponent(item))
                         }
                     } label: {
-                        Text(item.name)
                         Image(item.iconName)
                             .resizable()
                             .aspectRatio(contentMode: .fit)
