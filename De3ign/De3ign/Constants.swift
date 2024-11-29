@@ -8,6 +8,7 @@
 import Foundation
 
 let modelLibrary = "modelLibrary"
+let saveRealmView = "saveRealmView"
 
 enum InteractionName: String {
     case none = "None"

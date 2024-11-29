@@ -14,6 +14,8 @@ struct ContentView: View {
     @Environment(\.openWindow) var openWindow
     @Environment(AppModel.self) var appModel
     
+    @State var savedRealms: [SavedRealm] = []
+    
     var body: some View {
         VStack {
             VStack {
@@ -61,6 +63,35 @@ struct ContentView: View {
                         }
                         .buttonStyle(.borderless)
                     }
+                    ForEach(self.savedRealms) { realm in
+                        Button {
+                            self.appModel.libraryEntities.disableAll()
+                            self.appModel.libraryEntities.append(contentsOf: loadRealm(realm))
+                            self.appModel.selectedSpace = appModel.spaces[0]
+                            openWindow(id: appModel.spaces[0].volumeName)
+                        } label: {
+                            VStack {
+                                Text(realm.name)
+                                    .font(.extraLargeTitle)
+                                    .frame(width: 300, height: 200)
+                                
+                                VStack(alignment: .leading) {
+                                    Text(realm.name)
+                                        .font(.title)
+                                    
+                                    Text("user created space")
+                                        .font(.headline)
+                                }
+                                .padding(cardPadding)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                            }
+                            .background(.ultraThinMaterial)
+                            .hoverEffect()
+                            .frame(width: 300)
+                            .clipShape(.rect(cornerRadius: 10.0))
+                        }
+                        .buttonStyle(.borderless)
+                    }
                 }
             }
             .frame(height: 350)
@@ -69,6 +100,12 @@ struct ContentView: View {
             
         }
         .padding()
+        .onAppear() {
+            self.savedRealms = listRealms()
+            appModel.savedRealmsChangedCallback = {
+                self.savedRealms = listRealms()
+            }
+        }
     }
 }
 

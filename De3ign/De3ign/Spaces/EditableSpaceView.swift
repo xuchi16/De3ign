@@ -25,7 +25,7 @@ struct EditableSpaceView: View {
     }
     
     var body: some View {
-        RealityView { content in
+        RealityView { content, attachments in
             let scene = try! await Entity(named: "Editable", in: realityKitContentBundle)
             scene.scale = SIMD3<Float>(repeating: scale)
             scene.position = position
@@ -35,9 +35,47 @@ struct EditableSpaceView: View {
             
             placeLibraryModels(appModel.libraryEntities)
             
-            appModel.libraryEntitiesChangedCallback = { value in
+            appModel.libraryEntitiesChangedCallback = {
                 placeLibraryModels(appModel.libraryEntities)
             }
+            
+            // force first update
+            Task {
+                try! await Task.sleep(nanoseconds: 500_000_000)
+                let blank = Entity()
+                blank.isEnabled = false
+                appModel.libraryEntities.append(blank)
+            }
+            
+        } update: { content, attachments in
+            self.libraryModelWrapper.children.forEach { child in
+                child.removeFromParent()
+            }
+            for (index, item) in self.models.enumerated() {
+                libraryModelWrapper.addChild(item)
+                if !item.isAttachmentInstalled {
+                    if let attachment = attachments.entity(for: "\(index)") {
+                        let offset = /* bottom of entity */ item.visualBounds(relativeTo: item).min.y - /* ~attachment height */ 30
+                        
+                        item.addChild(attachment, preservingWorldTransform: true)
+                        
+                        attachment.position = [0, offset, 0]
+                        attachment.isEnabled = false
+                        
+                        item.isAttachmentInstalled = true
+                    }
+                }
+            }
+        } attachments: {
+            ForEach(0..<500, id: \.self) { id in
+                Attachment(id: "\(id)") {
+                    InteractionSelectorAttachmentView(appModel: appModel, id: id)
+                }
+            }
+            
+        }
+        .onDisappear {
+            appModel.libraryEntities.disableAll()
         }
         .simultaneousGesture(
             DragGesture()
@@ -49,7 +87,18 @@ struct EditableSpaceView: View {
                 }
         )
         .gesture(
-            TapGesture()
+            TapGesture(count: 2)
+                .targetedToAnyEntity()
+                .onEnded { event in
+                    if event.entity.progenitor?.isAttachmentInstalled ?? false {
+                        if let attachment = event.entity.progenitor!.attachment {
+                            attachment.isEnabled = !attachment.isEnabled
+                        }
+                    }
+                }
+        )
+        .gesture(
+            TapGesture(count: 1)
                 .targetedToAnyEntity()
                 .onEnded({ event in
                     if let callback = event.entity.progenitor?.interaction?.gesture.tap {
@@ -57,16 +106,17 @@ struct EditableSpaceView: View {
                     }
                 })
         )
+        
     }
     
     func placeLibraryModels(_ models: [Entity]) {
         self.models = models
-        libraryModelWrapper.children.forEach { child in
-            child.removeFromParent()
-        }
-        for item in models {
-            libraryModelWrapper.addChild(item)
-        }
+//        libraryModelWrapper.children.forEach { child in
+//            child.removeFromParent()
+//        }
+//        for item in models {
+//            libraryModelWrapper.addChild(item)
+//        }
     }
 }
 
