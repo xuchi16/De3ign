@@ -9,7 +9,7 @@ import SwiftUI
 import RealityKit
 import RealityKitContent
 
-class GenAIModel: ObservableObject, Identifiable {
+class GenAIModel: ObservableObject, Identifiable, SceneUsable {
     let id = UUID()
     let name: String
     @Published var url: URL? = nil
@@ -27,7 +27,7 @@ class GenAIModel: ObservableObject, Identifiable {
         entity.name = self.name
         entity.position = [0,0,0]
         entity.scale *= 0.2
-        entity.components.set(MetadataComponent(id: self.id, name: self.name))
+        entity.components.set(MetadataComponent(id: self.id, name: self.name, source: .genAi(self)))
         entity.components.set(HoverEffectComponent())
         entity.components.set(InputTargetComponent())
         entity.generateCollisionShapes(recursive: true)
@@ -36,7 +36,7 @@ class GenAIModel: ObservableObject, Identifiable {
     
     static func listModels() -> [GenAIModel] {
         let fileManager = FileManager.default
-        let modelsDirectory = getModelsDirectory()
+        let modelsDirectory = getGenAiModelsDirectory()
         
         do {
             let fileURLs = try fileManager.contentsOfDirectory(at: modelsDirectory, includingPropertiesForKeys: nil, options: .skipsHiddenFiles)
@@ -81,7 +81,7 @@ private let baseURL = "http://124.222.130.161:19991"
 private let authToken = "LLL"
 private let modelsDirectoryName = "AIModels"
 
-private func getModelsDirectory() -> URL {
+func getGenAiModelsDirectory() -> URL {
     let fileManager = FileManager.default
     let documentsDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first!
     let modelsDirectory = documentsDirectory.appendingPathComponent(modelsDirectoryName)
@@ -157,7 +157,7 @@ private func downloadOutput(from outputPath: String, name: String) async throws 
     
     let (tempURL, _) = try await URLSession.shared.download(for: request)
     let fileManager = FileManager.default
-    let destinationDirectory = getModelsDirectory()
+    let destinationDirectory = getGenAiModelsDirectory()
     let destinationURL = destinationDirectory.appendingPathComponent(saveFileName)
     
     if fileManager.fileExists(atPath: destinationURL.path) {

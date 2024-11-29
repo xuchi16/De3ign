@@ -13,6 +13,10 @@ struct De3ignApp: App {
     @State private var appModel = AppModel()
     
     var body: some Scene {
+        
+        // debug
+        let _ = print(getGenAiModelsDirectory())
+        
         WindowGroup {
             ContentView()
                 .environment(appModel)
@@ -34,6 +38,12 @@ struct De3ignApp: App {
         // ====== Windows ======
         WindowGroup(id: modelLibrary) {
             ModelLibraryView()
+                .environment(appModel)
+        }
+        .windowStyle(.plain)
+        
+        WindowGroup(id: saveRealmView) {
+            SaveRealmView()
                 .environment(appModel)
         }
         .windowStyle(.plain)

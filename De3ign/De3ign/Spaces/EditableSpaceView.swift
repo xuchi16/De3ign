@@ -38,6 +38,15 @@ struct EditableSpaceView: View {
             appModel.libraryEntitiesChangedCallback = {
                 placeLibraryModels(appModel.libraryEntities)
             }
+            
+            // force first update
+            Task {
+                try! await Task.sleep(nanoseconds: 500_000_000)
+                let blank = Entity()
+                blank.isEnabled = false
+                appModel.libraryEntities.append(blank)
+            }
+            
         } update: { content, attachments in
             self.libraryModelWrapper.children.forEach { child in
                 child.removeFromParent()

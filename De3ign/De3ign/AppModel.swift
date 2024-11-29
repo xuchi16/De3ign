@@ -34,6 +34,9 @@ class AppModel {
     
     // didn't get the list to be observed, workaround here
     var libraryEntitiesChangedCallback: (() -> Void)?
+    
+    // and why not global callbacks
+    var savedRealmsChangedCallback: (() -> Void)?
 
     init() {
         spaces = [

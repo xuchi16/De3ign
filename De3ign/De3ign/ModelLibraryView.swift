@@ -54,8 +54,9 @@ struct PresetModelLibraryView: View {
                 ) {
                     ForEach (items) { item in
                         Button {
-                            let entity = item.asEntity()
-                            appModel.libraryEntities.append(entity)
+                            if let entity = item.asEntity() {
+                                appModel.libraryEntities.append(entity)
+                            }
                         } label: {
                             PresetItemBlock(item: item)
                         }
