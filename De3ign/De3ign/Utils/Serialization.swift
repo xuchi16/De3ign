@@ -7,6 +7,9 @@
 
 import Foundation
 
+let jsonE = JSONEncoder()
+let jsonD = JSONDecoder()
+
 extension String {
     func sanitized() -> String {
         let pattern = "[^\\p{L}\\p{N}]"
