@@ -29,7 +29,7 @@ struct JovitaSpaceView: View {
                 content.add(immersiveContentEntity)
                 
                 // 渲染到录屏中
-                captureModel.mrcManager.referenceEntity = immersiveContentEntity
+//                captureModel.mrcManager.referenceEntity = immersiveContentEntity
                 
                 if let player = immersiveContentEntity.findEntity(named: "Carvaan_Music_Player") {
                     print("Player found!")

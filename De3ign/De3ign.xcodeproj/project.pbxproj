@@ -36,8 +36,6 @@
 		C2B362CF2C78348A003AEDA9 /* TempleSpaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B362CE2C78348A003AEDA9 /* TempleSpaceView.swift */; };
 		C2B362DB2C78418B003AEDA9 /* SpaceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B362DA2C78418B003AEDA9 /* SpaceModel.swift */; };
 		C2B363662C785C72003AEDA9 /* OrnamentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B363652C785C72003AEDA9 /* OrnamentView.swift */; };
-		C2BB05F32CFD8CB3005ECA25 /* SwiftSocket in Frameworks */ = {isa = PBXBuildFile; productRef = C2BB05F22CFD8CB3005ECA25 /* SwiftSocket */; };
-		C2BB05F62CFD8CC4005ECA25 /* MixedRealityCapture in Frameworks */ = {isa = PBXBuildFile; productRef = C2BB05F52CFD8CC4005ECA25 /* MixedRealityCapture */; };
 		C2BB05F92CFD8D38005ECA25 /* CaptureModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2BB05F82CFD8D31005ECA25 /* CaptureModel.swift */; };
 		C2BB05FC2CFD8FE6005ECA25 /* SessionManagerModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2BB05FB2CFD8FE6005ECA25 /* SessionManagerModifier.swift */; };
 		C2BB06642CFDBB50005ECA25 /* EntityExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2BB06632CFDBB50005ECA25 /* EntityExtension.swift */; };
@@ -110,8 +108,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C2B362A22C772A19003AEDA9 /* RealityKitContent in Frameworks */,
-				C2BB05F62CFD8CC4005ECA25 /* MixedRealityCapture in Frameworks */,
-				C2BB05F32CFD8CB3005ECA25 /* SwiftSocket in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -128,7 +124,6 @@
 		C2B362932C772A19003AEDA9 = {
 			isa = PBXGroup;
 			children = (
-				C2F294152C787B0C00A98088 /* Resources */,
 				C2B3629E2C772A19003AEDA9 /* De3ign */,
 				C2B3629F2C772A19003AEDA9 /* Packages */,
 				C2B362BA2C772A1C003AEDA9 /* De3ignTests */,
@@ -155,9 +150,10 @@
 				C2BB05F72CFD8D20005ECA25 /* Models */,
 				C2BB06622CFDBB40005ECA25 /* Extensions */,
 				C2BB065F2CFDBA5F005ECA25 /* Utils */,
+				C2F294152C787B0C00A98088 /* Resources */,
+				C2B362A32C772A19003AEDA9 /* De3ignApp.swift */,
 				C2F294202C787F6900A98088 /* marskybox.jpg */,
 				C2F2941E2C787DC600A98088 /* ImageBasedLighting.skybox */,
-				C2B362A32C772A19003AEDA9 /* De3ignApp.swift */,
 				9C21AED02CDD29E300500A43 /* Assets.xcassets */,
 				C2B362B22C772A1B003AEDA9 /* Info.plist */,
 				C2B362AF2C772A1B003AEDA9 /* Preview Content */,
@@ -294,8 +290,6 @@
 			name = De3ign;
 			packageProductDependencies = (
 				C2B362A12C772A19003AEDA9 /* RealityKitContent */,
-				C2BB05F22CFD8CB3005ECA25 /* SwiftSocket */,
-				C2BB05F52CFD8CC4005ECA25 /* MixedRealityCapture */,
 			);
 			productName = De3ign;
 			productReference = C2B3629C2C772A19003AEDA9 /* De3ign.app */;
@@ -348,8 +342,6 @@
 			);
 			mainGroup = C2B362932C772A19003AEDA9;
 			packageReferences = (
-				C2BB05F12CFD8CB3005ECA25 /* XCRemoteSwiftPackageReference "SwiftSocket" */,
-				C2BB05F42CFD8CC4005ECA25 /* XCRemoteSwiftPackageReference "RealityMixerVisionPro" */,
 			);
 			productRefGroup = C2B3629D2C772A19003AEDA9 /* Products */;
 			projectDirPath = "";
@@ -689,39 +681,10 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCRemoteSwiftPackageReference section */
-		C2BB05F12CFD8CB3005ECA25 /* XCRemoteSwiftPackageReference "SwiftSocket" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/fabio914/SwiftSocket";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.1.1;
-			};
-		};
-		C2BB05F42CFD8CC4005ECA25 /* XCRemoteSwiftPackageReference "RealityMixerVisionPro" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/fabio914/RealityMixerVisionPro";
-			requirement = {
-				branch = main;
-				kind = branch;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
 /* Begin XCSwiftPackageProductDependency section */
 		C2B362A12C772A19003AEDA9 /* RealityKitContent */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = RealityKitContent;
-		};
-		C2BB05F22CFD8CB3005ECA25 /* SwiftSocket */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = C2BB05F12CFD8CB3005ECA25 /* XCRemoteSwiftPackageReference "SwiftSocket" */;
-			productName = SwiftSocket;
-		};
-		C2BB05F52CFD8CC4005ECA25 /* MixedRealityCapture */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = C2BB05F42CFD8CC4005ECA25 /* XCRemoteSwiftPackageReference "RealityMixerVisionPro" */;
-			productName = MixedRealityCapture;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

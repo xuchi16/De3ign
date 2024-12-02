@@ -16,29 +16,29 @@ struct SessionManagerModifier: ViewModifier {
 
     func body(content: Content) -> some View {
         content
-            .task {
-                do {
-                    if model.dataProvidersAreSupported && model.isReadyToRun {
-                        print("Try to connect!")
-                        try await model.session.run([model.imageTracking, model.worldTracking])
-                    } else {
-                        await dismissImmersiveSpace()
-                    }
-                } catch {
-                    logger.error("Failed to start session: \(error)")
-                    await dismissImmersiveSpace()
-                    openWindow(id: "error")
-                }
-            }
-            .task {
-                await model.processImageTrackingUpdates()
-            }
-            .task {
-                await model.monitorSessionEvents()
-            }
-            .onChange(of: model.hasError) {
-                openWindow(id: "error")
-            }
+//            .task {
+//                do {
+//                    if model.dataProvidersAreSupported && model.isReadyToRun {
+//                        print("Try to connect!")
+//                        try await model.session.run([model.imageTracking, model.worldTracking])
+//                    } else {
+//                        await dismissImmersiveSpace()
+//                    }
+//                } catch {
+//                    logger.error("Failed to start session: \(error)")
+//                    await dismissImmersiveSpace()
+//                    openWindow(id: "error")
+//                }
+//            }
+//            .task {
+//                await model.processImageTrackingUpdates()
+//            }
+//            .task {
+//                await model.monitorSessionEvents()
+//            }
+//            .onChange(of: model.hasError) {
+//                openWindow(id: "error")
+//            }
     }
 }
 
