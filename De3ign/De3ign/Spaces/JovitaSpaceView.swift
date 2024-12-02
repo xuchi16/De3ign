@@ -5,11 +5,13 @@
 //  Created by xuchi on 2024/8/22.
 //
 
-import SwiftUI
 import RealityKit
 import RealityKitContent
+import SwiftUI
 
 struct JovitaSpaceView: View {
+    // Camera
+    @Environment(CaptureModel.self) var captureModel
     
     // Volume: 0.15, Space: 0.3
     var scale: Float = 0.3
@@ -25,6 +27,9 @@ struct JovitaSpaceView: View {
                 immersiveContentEntity.scale = SIMD3<Float>(repeating: scale)
                 immersiveContentEntity.position = position
                 content.add(immersiveContentEntity)
+                
+                // 渲染到录屏中
+                captureModel.mrcManager.referenceEntity = immersiveContentEntity
                 
                 if let player = immersiveContentEntity.findEntity(named: "Carvaan_Music_Player") {
                     print("Player found!")
@@ -48,11 +53,12 @@ struct JovitaSpaceView: View {
         .gesture(
             TapGesture()
                 .targetedToAnyEntity()
-                .onEnded { value in
+                .onEnded { _ in
                     song.toggle()
                     
                     guard let particleEntity = self.particleEntity,
-                          var particle = particleEntity.components[ParticleEmitterComponent.self] else {
+                          var particle = particleEntity.components[ParticleEmitterComponent.self]
+                    else {
                         print("No particle")
                         return
                     }

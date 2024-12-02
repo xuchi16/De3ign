@@ -36,6 +36,10 @@
 		C2B362CF2C78348A003AEDA9 /* TempleSpaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B362CE2C78348A003AEDA9 /* TempleSpaceView.swift */; };
 		C2B362DB2C78418B003AEDA9 /* Space.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B362DA2C78418B003AEDA9 /* Space.swift */; };
 		C2B363662C785C72003AEDA9 /* OrnamentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B363652C785C72003AEDA9 /* OrnamentView.swift */; };
+		C2BB05F32CFD8CB3005ECA25 /* SwiftSocket in Frameworks */ = {isa = PBXBuildFile; productRef = C2BB05F22CFD8CB3005ECA25 /* SwiftSocket */; };
+		C2BB05F62CFD8CC4005ECA25 /* MixedRealityCapture in Frameworks */ = {isa = PBXBuildFile; productRef = C2BB05F52CFD8CC4005ECA25 /* MixedRealityCapture */; };
+		C2BB05F92CFD8D38005ECA25 /* CaptureModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2BB05F82CFD8D31005ECA25 /* CaptureModel.swift */; };
+		C2BB05FC2CFD8FE6005ECA25 /* SessionManagerModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2BB05FB2CFD8FE6005ECA25 /* SessionManagerModifier.swift */; };
 		C2F294142C78748E00A98088 /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F294132C78748E00A98088 /* Song.swift */; };
 		C2F294172C787B1500A98088 /* Jovita.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C2F294162C787B1500A98088 /* Jovita.mp3 */; };
 		C2F2941A2C787D4000A98088 /* SpeechRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F294182C787D4000A98088 /* SpeechRecognizer.swift */; };
@@ -87,6 +91,8 @@
 		C2B362CE2C78348A003AEDA9 /* TempleSpaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempleSpaceView.swift; sourceTree = "<group>"; };
 		C2B362DA2C78418B003AEDA9 /* Space.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Space.swift; sourceTree = "<group>"; };
 		C2B363652C785C72003AEDA9 /* OrnamentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrnamentView.swift; sourceTree = "<group>"; };
+		C2BB05F82CFD8D31005ECA25 /* CaptureModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureModel.swift; sourceTree = "<group>"; };
+		C2BB05FB2CFD8FE6005ECA25 /* SessionManagerModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManagerModifier.swift; sourceTree = "<group>"; };
 		C2F294132C78748E00A98088 /* Song.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
 		C2F294162C787B1500A98088 /* Jovita.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Jovita.mp3; sourceTree = "<group>"; };
 		C2F294182C787D4000A98088 /* SpeechRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechRecognizer.swift; sourceTree = "<group>"; };
@@ -102,6 +108,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				C2B362A22C772A19003AEDA9 /* RealityKitContent in Frameworks */,
+				C2BB05F62CFD8CC4005ECA25 /* MixedRealityCapture in Frameworks */,
+				C2BB05F32CFD8CB3005ECA25 /* SwiftSocket in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,6 +146,8 @@
 		C2B3629E2C772A19003AEDA9 /* De3ign */ = {
 			isa = PBXGroup;
 			children = (
+				C2BB05FA2CFD8FD6005ECA25 /* Modifiers */,
+				C2BB05F72CFD8D20005ECA25 /* Models */,
 				9C5DE54F2CF593B90096D1FB /* Util.swift */,
 				9C4099902CE95DBF003FACFA /* Chatter.swift */,
 				9C4E9D2C2CF810CA00052F7A /* SaveLoad.swift */,
@@ -158,7 +168,6 @@
 				C2B362C72C782591003AEDA9 /* Constants.swift */,
 				C2B362A32C772A19003AEDA9 /* De3ignApp.swift */,
 				C2B362A52C772A19003AEDA9 /* ContentView.swift */,
-				C2B362A72C772A19003AEDA9 /* AppModel.swift */,
 				C2B362A92C772A19003AEDA9 /* ToggleImmersiveSpaceButton.swift */,
 				C2B362AB2C772A19003AEDA9 /* ImmersiveView.swift */,
 				C2B363652C785C72003AEDA9 /* OrnamentView.swift */,
@@ -206,6 +215,23 @@
 			path = Spaces;
 			sourceTree = "<group>";
 		};
+		C2BB05F72CFD8D20005ECA25 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C2B362A72C772A19003AEDA9 /* AppModel.swift */,
+				C2BB05F82CFD8D31005ECA25 /* CaptureModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		C2BB05FA2CFD8FD6005ECA25 /* Modifiers */ = {
+			isa = PBXGroup;
+			children = (
+				C2BB05FB2CFD8FE6005ECA25 /* SessionManagerModifier.swift */,
+			);
+			path = Modifiers;
+			sourceTree = "<group>";
+		};
 		C2F294152C787B0C00A98088 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -233,6 +259,8 @@
 			name = De3ign;
 			packageProductDependencies = (
 				C2B362A12C772A19003AEDA9 /* RealityKitContent */,
+				C2BB05F22CFD8CB3005ECA25 /* SwiftSocket */,
+				C2BB05F52CFD8CC4005ECA25 /* MixedRealityCapture */,
 			);
 			productName = De3ign;
 			productReference = C2B3629C2C772A19003AEDA9 /* De3ign.app */;
@@ -284,6 +312,10 @@
 				Base,
 			);
 			mainGroup = C2B362932C772A19003AEDA9;
+			packageReferences = (
+				C2BB05F12CFD8CB3005ECA25 /* XCRemoteSwiftPackageReference "SwiftSocket" */,
+				C2BB05F42CFD8CC4005ECA25 /* XCRemoteSwiftPackageReference "RealityMixerVisionPro" */,
+			);
 			productRefGroup = C2B3629D2C772A19003AEDA9 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -327,6 +359,7 @@
 				9C42C5832CF9E8C100BD0FFC /* SaveRealmView.swift in Sources */,
 				C2B362CB2C783475003AEDA9 /* BasketballSpaceView.swift in Sources */,
 				C2B362AA2C772A19003AEDA9 /* ToggleImmersiveSpaceButton.swift in Sources */,
+				C2BB05F92CFD8D38005ECA25 /* CaptureModel.swift in Sources */,
 				9CC2D8002CDD018F000C380C /* LibraryInteraction.swift in Sources */,
 				C2F2941D2C787D4A00A98088 /* ChatAPI.swift in Sources */,
 				C2B363662C785C72003AEDA9 /* OrnamentView.swift in Sources */,
@@ -350,6 +383,7 @@
 				9CB593A82CBA894700F19431 /* EditableSpaceView.swift in Sources */,
 				C2F294142C78748E00A98088 /* Song.swift in Sources */,
 				C2B362DB2C78418B003AEDA9 /* Space.swift in Sources */,
+				C2BB05FC2CFD8FE6005ECA25 /* SessionManagerModifier.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -499,16 +533,18 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"De3ign/Preview Content\"";
-				DEVELOPMENT_TEAM = 5KVRUJ2FNN;
+				DEVELOPMENT_TEAM = 4B97U7G8A7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "$(TARGET_NAME)/Info.plist";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = 1919810;
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = 114514;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = pro.xuchi.De3ign;
+				PRODUCT_BUNDLE_IDENTIFIER = pro.xushijidi.De3ign;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "xros xrsimulator";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -525,16 +561,18 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"De3ign/Preview Content\"";
-				DEVELOPMENT_TEAM = 5KVRUJ2FNN;
+				DEVELOPMENT_TEAM = 4B97U7G8A7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "$(TARGET_NAME)/Info.plist";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = 1919810;
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = 114514;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = pro.xuchi.De3ign;
+				PRODUCT_BUNDLE_IDENTIFIER = pro.xushijidi.De3ign;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "xros xrsimulator";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -615,10 +653,39 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCRemoteSwiftPackageReference section */
+		C2BB05F12CFD8CB3005ECA25 /* XCRemoteSwiftPackageReference "SwiftSocket" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/fabio914/SwiftSocket";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.1.1;
+			};
+		};
+		C2BB05F42CFD8CC4005ECA25 /* XCRemoteSwiftPackageReference "RealityMixerVisionPro" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/fabio914/RealityMixerVisionPro";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
 /* Begin XCSwiftPackageProductDependency section */
 		C2B362A12C772A19003AEDA9 /* RealityKitContent */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = RealityKitContent;
+		};
+		C2BB05F22CFD8CB3005ECA25 /* SwiftSocket */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C2BB05F12CFD8CB3005ECA25 /* XCRemoteSwiftPackageReference "SwiftSocket" */;
+			productName = SwiftSocket;
+		};
+		C2BB05F52CFD8CC4005ECA25 /* MixedRealityCapture */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C2BB05F42CFD8CC4005ECA25 /* XCRemoteSwiftPackageReference "RealityMixerVisionPro" */;
+			productName = MixedRealityCapture;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

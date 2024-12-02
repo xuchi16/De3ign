@@ -6,12 +6,18 @@
 //
 
 import SwiftUI
+import MixedRealityCapture
+import OSLog
+
+@MainActor
+let logger = Logger(subsystem: "BasicApp", category: "general")
 
 @main
 struct De3ignApp: App {
     
     @State private var appModel = AppModel()
-    
+    @State private var captureModel = CaptureModel()
+
     var body: some Scene {
         
         // debug
@@ -61,10 +67,12 @@ struct De3ignApp: App {
         
         WindowGroup(id: jovitaVolume) {
             JovitaSpaceView(scale: 0.15, position: [0, -0.4, 0.3])
+                .environment(captureModel)
                 .ornament(attachmentAnchor: .scene(.bottomFront)) {
                     OrnamentView(spaceId: jovitaSpace)
                         .environment(appModel)
                 }
+                .sessionManager(model: captureModel)
         }
         .windowStyle(.volumetric)
         
@@ -99,6 +107,7 @@ struct De3ignApp: App {
         ImmersiveSpace(id: jovitaSpace) {
             JovitaSpaceView(scale: 2)
                 .environment(appModel)
+                .environment(captureModel)
                 .onAppear {
                     appModel.immersiveSpaceState = .open
                 }
