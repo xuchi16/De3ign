@@ -1,7 +1,7 @@
 //
 //  De3ignApp.swift
 //  De3ign
-//
+///Users/lemoc/Downloads/SnowGlobePractice/Packages/RealityKitContent/Sources/RealityKitContent/RealityKitContent.rkassets/Scene.usda
 //  Created by xuchi on 2024/8/22.
 //
 
