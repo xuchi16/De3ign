@@ -484,5 +484,37 @@ def Xform "Root"
             }
         }
     }
+
+    def "hint" (
+        active = true
+        customData = {
+            float3 rotationEulerHint = (1.5707954, 3.1415927, 0)
+        }
+        prepend references = @hint.usdc@
+    )
+    {
+        quatf xformOp:orient = (-3.0908623e-8, -3.090861e-8, 0.70710695, -0.7071066)
+        float3 xformOp:scale = (0.01, 0.01, 0.01)
+        float3 xformOp:translate = (0.54132485, 4, 0.8435266)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        over "env_light" (
+            active = false
+        )
+        {
+        }
+
+        over "Light" (
+            active = false
+        )
+        {
+        }
+
+        over "Camera" (
+            active = false
+        )
+        {
+        }
+    }
 }
 
