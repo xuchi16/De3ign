@@ -9,11 +9,11 @@ import SwiftUI
 import RealityKit
 import RealityKitContent
 
-struct PredefinedGestures {
+struct EditorPredefinedGesture {
     var tap: ((EntityTargetValue<TapGesture.Value>) -> Void)?
 }
 
-let availableInteractions: Dictionary<InteractionName, PredefinedGestures> = [
+let availableInteractions: Dictionary<InteractionName, EditorPredefinedGesture> = [
     .none: .init(),
     .disappear: .init{ event in
         event.entity.isEnabled = !event.entity.isEnabled
@@ -22,9 +22,9 @@ let availableInteractions: Dictionary<InteractionName, PredefinedGestures> = [
         var cnt = 1
         return .init { event in
             if (cnt % 15 == 0) {
-                event.entity.progenitor?.scale /= 5
+                event.entity.editorProgenitor?.scale /= 5
             }
-            event.entity.progenitor?.scale *= 1.1
+            event.entity.editorProgenitor?.scale *= 1.1
             cnt += 1
         }
     }(),
@@ -32,14 +32,14 @@ let availableInteractions: Dictionary<InteractionName, PredefinedGestures> = [
         var chatter = Chatter()
         return .init { event in
             if (!chatter.isRecording) {
-                event.entity.progenitor?.scale *= 1.25
+                event.entity.editorProgenitor?.scale *= 1.25
                 Task { @MainActor in
                     chatter.startRecognition()
                 }
             } else {
-                event.entity.progenitor?.scale *= 0.8
+                event.entity.editorProgenitor?.scale *= 0.8
                 Task { @MainActor in
-                    if let name = event.entity.progenitor?.name {
+                    if let name = event.entity.editorProgenitor?.name {
                         chatter.personality = name
                     }
                     chatter.endRecognition()
@@ -55,7 +55,7 @@ let availableInteractions: Dictionary<InteractionName, PredefinedGestures> = [
     }()
 ]
 
-struct LibraryInteraction: Identifiable {
+struct EditorInteraction: Identifiable {
     let id = UUID()
     let interactionName: InteractionName
     let iconName: String
@@ -68,11 +68,11 @@ struct LibraryInteraction: Identifiable {
     }
 }
 
-struct InteractionComponent: Component {
+struct EditorInteractionComponent: Component {
     let name: String
-    let gesture: PredefinedGestures
+    let gesture: EditorPredefinedGesture
     
-    init(_ libraryInteraction: LibraryInteraction) {
+    init(_ libraryInteraction: EditorInteraction) {
         self.name = libraryInteraction.name
         self.gesture = availableInteractions[libraryInteraction.interactionName]!
     }

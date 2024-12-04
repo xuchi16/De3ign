@@ -65,8 +65,8 @@ struct ContentView: View {
                     }
                     ForEach(self.savedRealms) { realm in
                         Button {
-                            self.appModel.libraryEntities.disableAll()
-                            self.appModel.libraryEntities.append(contentsOf: loadRealm(realm))
+                            self.appModel.editorEntities.disableAll()
+                            self.appModel.editorEntities.append(contentsOf: loadRealm(realm))
                             self.appModel.selectedSpace = appModel.spaces[0]
                             openWindow(id: appModel.spaces[0].volumeName)
                         } label: {

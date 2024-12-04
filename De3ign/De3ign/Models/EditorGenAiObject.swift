@@ -9,7 +9,7 @@ import SwiftUI
 import RealityKit
 import RealityKitContent
 
-class GenAIModel: ObservableObject, Identifiable, SceneUsable {
+class EditorGenAiObject: ObservableObject, Identifiable, EditorSceneUsing {
     let id = UUID()
     let name: String
     @Published var url: URL? = nil
@@ -27,14 +27,14 @@ class GenAIModel: ObservableObject, Identifiable, SceneUsable {
         entity.name = self.name
         entity.position = [0,0,0]
         entity.scale *= 0.2
-        entity.components.set(MetadataComponent(id: self.id, name: self.name, source: .genAi(self)))
+        entity.components.set(EditorMetadataComponent(id: self.id, name: self.name, source: .genAi(self)))
         entity.components.set(HoverEffectComponent())
         entity.components.set(InputTargetComponent())
         entity.generateCollisionShapes(recursive: true)
         return entity
     }
     
-    static func listModels() -> [GenAIModel] {
+    static func listModels() -> [EditorGenAiObject] {
         let fileManager = FileManager.default
         let modelsDirectory = getGenAiModelsDirectory()
         
@@ -51,8 +51,8 @@ class GenAIModel: ObservableObject, Identifiable, SceneUsable {
         }
     }
     
-    static func generate(prompt: String) -> GenAIModel {
-        let model = GenAIModel(name: prompt)
+    static func generate(prompt: String) -> EditorGenAiObject {
+        let model = EditorGenAiObject(name: prompt)
         
         Task {
             do {

@@ -33,10 +33,10 @@ struct EditableSpaceView: View {
             content.add(scene)
             content.add(libraryModelWrapper)
             
-            placeLibraryModels(appModel.libraryEntities)
+            placeLibraryModels(appModel.editorEntities)
             
-            appModel.libraryEntitiesChangedCallback = {
-                placeLibraryModels(appModel.libraryEntities)
+            appModel.editorEntitiesChangedCallback = {
+                placeLibraryModels(appModel.editorEntities)
             }
             
             // force first update
@@ -44,7 +44,7 @@ struct EditableSpaceView: View {
                 try! await Task.sleep(nanoseconds: 500_000_000)
                 let blank = Entity()
                 blank.isEnabled = false
-                appModel.libraryEntities.append(blank)
+                appModel.editorEntities.append(blank)
             }
             
         } update: { content, attachments in
@@ -75,13 +75,13 @@ struct EditableSpaceView: View {
             
         }
         .onDisappear {
-            appModel.libraryEntities.disableAll()
+            appModel.editorEntities.disableAll()
         }
         .simultaneousGesture(
             DragGesture()
                 .targetedToAnyEntity()
                 .onChanged { event in
-                    if let target = event.entity.progenitor {
+                    if let target = event.entity.editorProgenitor {
                         target.position = event.convert(event.location3D, from: .local, to: target.parent!)
                     }
                 }
@@ -90,8 +90,8 @@ struct EditableSpaceView: View {
             TapGesture(count: 2)
                 .targetedToAnyEntity()
                 .onEnded { event in
-                    if event.entity.progenitor?.isAttachmentInstalled ?? false {
-                        if let attachment = event.entity.progenitor!.attachment {
+                    if event.entity.editorProgenitor?.isAttachmentInstalled ?? false {
+                        if let attachment = event.entity.editorProgenitor!.attachment {
                             attachment.isEnabled = !attachment.isEnabled
                         }
                     }
@@ -101,7 +101,7 @@ struct EditableSpaceView: View {
             TapGesture(count: 1)
                 .targetedToAnyEntity()
                 .onEnded({ event in
-                    if let callback = event.entity.progenitor?.interaction?.gesture.tap {
+                    if let callback = event.entity.editorProgenitor?.editorInteraction?.gesture.tap {
                         callback(event)
                     }
                 })

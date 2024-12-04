@@ -10,8 +10,8 @@ import RealityKit
 import RealityKitContent
 
 enum EntitySource {
-    case library(LibraryModel)
-    case genAi(GenAIModel)
+    case library(EditorLibraryObject)
+    case genAi(EditorGenAiObject)
 }
 
 typealias EntityBaseData = [String: String]

@@ -24,7 +24,7 @@ struct OrnamentView: View {
                 }
                 Button {
                     // workaround, clearing the array produces buggy behavior for attachments
-                    appModel.libraryEntities.disableAll()
+                    appModel.editorEntities.disableAll()
                 } label: {
                     Text("Clear All")
                 }

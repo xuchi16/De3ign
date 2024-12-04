@@ -33,12 +33,12 @@ struct ModelLibraryView: View {
 struct PresetModelLibraryView: View {
     var appModel: AppModel
     
-    let items: [LibraryModel] = [
-        LibraryModel(name: "Iphone", resourceName: "iphone"),
-        LibraryModel(name: "Basketball", resourceName: "basketball"),
-        LibraryModel(name: "Frostnova", resourceName: "Arknights_Originite_Prime"),
-        LibraryModel(name: "Xiang", resourceName: "shangxiang"),
-        LibraryModel(name: "Music Player", resourceName: "Carvaan_Music_Player")
+    let items: [EditorLibraryObject] = [
+        EditorLibraryObject(name: "Iphone", resourceName: "iphone"),
+        EditorLibraryObject(name: "Basketball", resourceName: "basketball"),
+        EditorLibraryObject(name: "Frostnova", resourceName: "Arknights_Originite_Prime"),
+        EditorLibraryObject(name: "Xiang", resourceName: "shangxiang"),
+        EditorLibraryObject(name: "Music Player", resourceName: "Carvaan_Music_Player")
     ]
     
     var body: some View {
@@ -55,7 +55,7 @@ struct PresetModelLibraryView: View {
                     ForEach (items) { item in
                         Button {
                             if let entity = item.asEntity() {
-                                appModel.libraryEntities.append(entity)
+                                appModel.editorEntities.append(entity)
                             }
                         } label: {
                             PresetItemBlock(item: item)
@@ -71,7 +71,7 @@ struct PresetModelLibraryView: View {
 struct GenAIModelLibraryView: View {
     var appModel: AppModel
     
-    @State var items: [GenAIModel] = GenAIModel.listModels()
+    @State var items: [EditorGenAiObject] = EditorGenAiObject.listModels()
     
     @State var promptText = ""
     
@@ -89,7 +89,7 @@ struct GenAIModelLibraryView: View {
                     .frame(height: 20)
                 Button {
                     if (self.promptText != "") {
-                        self.items.append(GenAIModel.generate(prompt: self.promptText))
+                        self.items.append(EditorGenAiObject.generate(prompt: self.promptText))
                     }
                 } label: {
                     Image(systemName: "paperplane")
@@ -105,7 +105,7 @@ struct GenAIModelLibraryView: View {
                     ForEach (items) { item in
                         Button {
                             if let entity = item.asEntity() {
-                                appModel.libraryEntities.append(entity)
+                                appModel.editorEntities.append(entity)
                             }
                         } label: {
                             GenAIItemBlock(item: item)
@@ -119,7 +119,7 @@ struct GenAIModelLibraryView: View {
 }
 
 struct PresetItemBlock: View {
-    var item: LibraryModel
+    var item: EditorLibraryObject
     
     var body: some View {
         VStack {
@@ -143,7 +143,7 @@ struct PresetItemBlock: View {
 }
 
 struct GenAIItemBlock: View {
-    @ObservedObject var item: GenAIModel
+    @ObservedObject var item: EditorGenAiObject
     
     var body: some View {
         VStack {

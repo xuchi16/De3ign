@@ -13,19 +13,19 @@ struct InteractionSelectorAttachmentView: View {
     
     var appModel: AppModel
     
-    let itemNone = LibraryInteraction(.none)
+    let itemNone = EditorInteraction(.none)
     
-    var items: [LibraryInteraction] = [
+    var items: [EditorInteraction] = [
         .init(.disappear),
         .init(.zoom),
         .init(.chat),
         .init(.song)
     ]
     
-    @State var selectedItem: LibraryInteraction = LibraryInteraction(.none)
+    @State var selectedItem: EditorInteraction = EditorInteraction(.none)
     
     var target: Entity {
-        return self.appModel.libraryEntities[self.id]
+        return self.appModel.editorEntities[self.id]
     }
     
     var id: Int
@@ -39,10 +39,10 @@ struct InteractionSelectorAttachmentView: View {
                         // clicking on a selected item should deselect
                         if (isSelected) {
                             self.selectedItem = itemNone
-                            self.target.components.set(InteractionComponent(itemNone))
+                            self.target.components.set(EditorInteractionComponent(itemNone))
                         } else {
                             self.selectedItem = item
-                            self.target.components.set(InteractionComponent(item))
+                            self.target.components.set(EditorInteractionComponent(item))
                         }
                     } label: {
                         Image(item.iconName)

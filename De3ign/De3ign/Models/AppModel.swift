@@ -25,15 +25,14 @@ class AppModel {
     var spaces: [DSpace] = []
     var songs: [Song] = []
     
-    var libraryEntities: [Entity] = [] {
+    var editorEntities: [Entity] = [] {
         didSet (newValue) {
-            libraryEntitiesChangedCallback?()
+            editorEntitiesChangedCallback?()
         }
     }
-    var isEditMode = false
     
     // didn't get the list to be observed, workaround here
-    var libraryEntitiesChangedCallback: (() -> Void)?
+    var editorEntitiesChangedCallback: (() -> Void)?
     
     // and why not global callbacks
     var savedRealmsChangedCallback: (() -> Void)?
