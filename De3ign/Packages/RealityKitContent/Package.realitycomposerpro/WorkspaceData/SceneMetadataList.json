@@ -568,6 +568,15 @@
       },
       [
         "A38FDD40-5BAC-4463-808C-770B8CD1AF3A",
+        "Root",
+        "hint"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "A38FDD40-5BAC-4463-808C-770B8CD1AF3A",
         "Root"
       ],
       {
