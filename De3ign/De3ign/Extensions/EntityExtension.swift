@@ -10,6 +10,43 @@ import RealityKit
 import RealityKitContent
 
 /*
+ * util
+ */
+extension Entity {
+    func playAllAnimations() {
+        for animation in self.availableAnimations {
+            self.playAnimation(animation)
+        }
+    }
+    
+    func distance(to other: Entity) -> Float {
+        let posA = self.position(relativeTo: nil)
+        let posB = other.position(relativeTo: nil)
+        return simd_distance(posA, posB)
+    }
+}
+
+struct MetadataComponent: Component {
+    let name: String
+}
+
+extension Entity {
+    var progenitor: Entity? {
+        if let parent = self.parent {
+            if parent.metadata != nil {
+                return parent
+            }
+            return parent.progenitor
+        }
+        return nil
+    }
+    
+    var metadata: MetadataComponent? {
+        return self.components[MetadataComponent.self]
+    }
+}
+
+/*
  * editor
  */
 extension Entity {

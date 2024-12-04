@@ -17,6 +17,8 @@
 		9C5DE5502CF593C10096D1FB /* Serialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5DE54F2CF593B90096D1FB /* Serialization.swift */; };
 		9C5DE5532CF5B6570096D1FB /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5DE5522CF5B6530096D1FB /* SearchBar.swift */; };
 		9C63418E2CF2420B00BDEAE2 /* InteractionSelectorAttachmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C63418D2CF241FF00BDEAE2 /* InteractionSelectorAttachmentView.swift */; };
+		9C93CB6C2CFFDCA1005B7586 /* KeypadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C93CB6A2CFFDCA1005B7586 /* KeypadView.swift */; };
+		9C93CB6D2CFFDCA1005B7586 /* EscapeSpaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C93CB692CFFDCA1005B7586 /* EscapeSpaceView.swift */; };
 		9CB593A82CBA894700F19431 /* EditableSpaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB593A72CBA893500F19431 /* EditableSpaceView.swift */; };
 		9CC2D8002CDD018F000C380C /* EditorInteraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC2D7FF2CDD0184000C380C /* EditorInteraction.swift */; };
 		9CC9F72B2CB978BE0016BD85 /* ModelLibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC9F72A2CB978B40016BD85 /* ModelLibraryView.swift */; };
@@ -68,6 +70,8 @@
 		9C5DE54F2CF593B90096D1FB /* Serialization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Serialization.swift; sourceTree = "<group>"; };
 		9C5DE5522CF5B6530096D1FB /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		9C63418D2CF241FF00BDEAE2 /* InteractionSelectorAttachmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractionSelectorAttachmentView.swift; sourceTree = "<group>"; };
+		9C93CB692CFFDCA1005B7586 /* EscapeSpaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EscapeSpaceView.swift; sourceTree = "<group>"; };
+		9C93CB6A2CFFDCA1005B7586 /* KeypadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeypadView.swift; sourceTree = "<group>"; };
 		9CB593A72CBA893500F19431 /* EditableSpaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableSpaceView.swift; sourceTree = "<group>"; };
 		9CC2D7FF2CDD0184000C380C /* EditorInteraction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorInteraction.swift; sourceTree = "<group>"; };
 		9CC9F72A2CB978B40016BD85 /* ModelLibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelLibraryView.swift; sourceTree = "<group>"; };
@@ -121,6 +125,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9C93CB6B2CFFDCA1005B7586 /* Escape */ = {
+			isa = PBXGroup;
+			children = (
+				9C93CB692CFFDCA1005B7586 /* EscapeSpaceView.swift */,
+				9C93CB6A2CFFDCA1005B7586 /* KeypadView.swift */,
+			);
+			path = Escape;
+			sourceTree = "<group>";
+		};
 		C2B362932C772A19003AEDA9 = {
 			isa = PBXGroup;
 			children = (
@@ -188,6 +201,7 @@
 		C2B362C92C783465003AEDA9 /* Spaces */ = {
 			isa = PBXGroup;
 			children = (
+				9C93CB6B2CFFDCA1005B7586 /* Escape */,
 				9CB593A72CBA893500F19431 /* EditableSpaceView.swift */,
 				C2B362C52C7733CE003AEDA9 /* JovitaSpaceView.swift */,
 				C2B362CA2C783475003AEDA9 /* BasketballSpaceView.swift */,
@@ -395,6 +409,8 @@
 				9C5DE5532CF5B6570096D1FB /* SearchBar.swift in Sources */,
 				C2B362C62C7733CE003AEDA9 /* JovitaSpaceView.swift in Sources */,
 				C2B362C82C782591003AEDA9 /* Constants.swift in Sources */,
+				9C93CB6C2CFFDCA1005B7586 /* KeypadView.swift in Sources */,
+				9C93CB6D2CFFDCA1005B7586 /* EscapeSpaceView.swift in Sources */,
 				9CC9F72B2CB978BE0016BD85 /* ModelLibraryView.swift in Sources */,
 				C2B362CD2C78347E003AEDA9 /* SuperBrainSpaceView.swift in Sources */,
 				9C63418E2CF2420B00BDEAE2 /* InteractionSelectorAttachmentView.swift in Sources */,

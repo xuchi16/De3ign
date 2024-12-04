@@ -465,17 +465,12 @@ def Xform "Root" (
 
         def Material "DefaultMaterial"
         {
-            token outputs:mtlx:surface
-            token outputs:realitykit:vertex
             token outputs:surface.connect = </Root/Cube_4/DefaultMaterial/DefaultSurfaceShader.outputs:surface>
 
             def Shader "DefaultSurfaceShader"
             {
                 uniform token info:id = "UsdPreviewSurface"
                 color3f inputs:diffuseColor = (1, 1, 1)
-                color3f inputs:emissiveColor = (1, 1, 1) (
-                    colorSpace = "srgb_displayp3"
-                )
                 float inputs:roughness = 0.75
                 token outputs:surface
             }

@@ -1,0 +1,488 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "Reality Composer Pro Version 2.0 (448.0.16.0.3)"
+    }
+    defaultPrim = "Root"
+    metersPerUnit = 1
+    upAxis = "Y"
+)
+
+def Xform "Root"
+{
+    reorder nameChildren = ["floor", "wall1", "wall2", "wall3", "wall4", "door_animated", "wall5", "wall6", "PointLight", "ceiling", "safe_animated", "doorkey", "shangxiang", "Arknights_Originite_Prime", "_4000_x_1200", "Office_Chair_2", "Office_Chair_3", "doorlock"]
+    float3 xformOp:translate = (0, -0.079958215, 1.4528632e-7)
+    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+    def Cube "floor" (
+        active = true
+        prepend apiSchemas = ["MaterialBindingAPI"]
+    )
+    {
+        rel material:binding = </Root/floor/DefaultMaterial>
+        double size = 0.2
+        float3 xformOp:scale = (30, 0.1, 30)
+        float3 xformOp:translate = (5.401671e-8, 0, 1.3038516e-7)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Material "DefaultMaterial"
+        {
+            token outputs:mtlx:surface
+            token outputs:realitykit:vertex
+            token outputs:surface.connect = </Root/floor/DefaultMaterial/DefaultSurfaceShader.outputs:surface>
+
+            def Shader "DefaultSurfaceShader"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.24273579, 0.24518766, 0.24518766) (
+                    colorSpace = "srgb_displayp3"
+                )
+                float inputs:roughness = 0.75
+                token outputs:surface
+            }
+        }
+    }
+
+    def Cube "wall1" (
+        active = true
+        prepend apiSchemas = ["MaterialBindingAPI"]
+        customData = {
+            float3 rotationEulerHint = (0, 0, 0)
+        }
+    )
+    {
+        rel material:binding = </Root/wall1/DefaultMaterial>
+        double size = 0.2
+        float2 ui:nodegraph:node:pos = (20, 20)
+        int ui:nodegraph:node:stackingOrder = 1
+        quatf xformOp:orient = (1, 0, 0, 0)
+        float3 xformOp:scale = (0.1, 20, 30)
+        float3 xformOp:translate = (-3, 2, 1.3038516e-7)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Material "DefaultMaterial"
+        {
+            token outputs:mtlx:surface
+            token outputs:realitykit:vertex
+            token outputs:surface.connect = </Root/wall1/DefaultMaterial/DefaultSurfaceShader.outputs:surface>
+
+            def Shader "DefaultSurfaceShader"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.24273579, 0.24518766, 0.24518766) (
+                    colorSpace = "srgb_displayp3"
+                )
+                float inputs:roughness = 0.75
+                token outputs:surface
+            }
+        }
+    }
+
+    def Cube "wall2" (
+        active = true
+        prepend apiSchemas = ["MaterialBindingAPI"]
+        customData = {
+            float3 rotationEulerHint = (0, 0, 0)
+        }
+    )
+    {
+        rel material:binding = </Root/wall2/DefaultMaterial>
+        double size = 0.2
+        float2 ui:nodegraph:node:pos = (40, 40)
+        int ui:nodegraph:node:stackingOrder = 2
+        quatf xformOp:orient = (1, 0, 0, 0)
+        float3 xformOp:scale = (30, 20, 0.1)
+        float3 xformOp:translate = (0, 2, -3)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Material "DefaultMaterial"
+        {
+            token outputs:mtlx:surface
+            token outputs:realitykit:vertex
+            token outputs:surface.connect = </Root/wall2/DefaultMaterial/DefaultSurfaceShader.outputs:surface>
+
+            def Shader "DefaultSurfaceShader"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.24273579, 0.24518766, 0.24518766) (
+                    colorSpace = "srgb_displayp3"
+                )
+                float inputs:roughness = 0.75
+                token outputs:surface
+            }
+        }
+    }
+
+    def Cube "wall3" (
+        active = true
+        prepend apiSchemas = ["MaterialBindingAPI"]
+        customData = {
+            float3 rotationEulerHint = (0, 0, 0)
+        }
+    )
+    {
+        rel material:binding = </Root/wall3/DefaultMaterial>
+        double size = 0.2
+        float2 ui:nodegraph:node:pos = (40, 40)
+        int ui:nodegraph:node:stackingOrder = 2
+        quatf xformOp:orient = (1, 0, 0, 0)
+        float3 xformOp:scale = (0.1, 20, 30)
+        float3 xformOp:translate = (3, 2, 1.3038516e-7)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Material "DefaultMaterial"
+        {
+            token outputs:mtlx:surface
+            token outputs:realitykit:vertex
+            token outputs:surface.connect = </Root/wall3/DefaultMaterial/DefaultSurfaceShader.outputs:surface>
+
+            def Shader "DefaultSurfaceShader"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.24273579, 0.24518766, 0.24518766) (
+                    colorSpace = "srgb_displayp3"
+                )
+                float inputs:roughness = 0.75
+                token outputs:surface
+            }
+        }
+    }
+
+    def Cube "wall4" (
+        active = true
+        prepend apiSchemas = ["MaterialBindingAPI"]
+        customData = {
+            float3 rotationEulerHint = (0, 0, 0)
+        }
+    )
+    {
+        rel material:binding = </Root/wall4/DefaultMaterial>
+        double size = 0.2
+        float2 ui:nodegraph:node:pos = (60, 60)
+        int ui:nodegraph:node:stackingOrder = 3
+        quatf xformOp:orient = (1, 0, 0, 0)
+        float3 xformOp:scale = (30, 20, 0.1)
+        float3 xformOp:translate = (1.4564421, 2.000014, 3)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Material "DefaultMaterial"
+        {
+            token outputs:mtlx:surface
+            token outputs:realitykit:vertex
+            token outputs:surface.connect = </Root/wall4/DefaultMaterial/DefaultSurfaceShader.outputs:surface>
+
+            def Shader "DefaultSurfaceShader"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.24273579, 0.24518766, 0.24518766) (
+                    colorSpace = "srgb_displayp3"
+                )
+                float inputs:roughness = 0.75
+                token outputs:surface
+            }
+        }
+    }
+
+    def "door_animated" (
+        active = true
+        references = @door_animated.usdz@
+    )
+    {
+        float3 xformOp:scale = (0.01, 0.01, 0.01)
+        float3 xformOp:translate = (-2, 0, 3)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        over "Meshes"
+        {
+            quatf xformOp:orient = (1, 0, 0, 0)
+            float3 xformOp:scale = (100, 100, 100)
+            float3 xformOp:translate = (0, 9.536742e-7, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            over "Sketchfab_model"
+            {
+                quatf xformOp:orient = (0.70710677, -0.70710677, 0, 0)
+                float3 xformOp:scale = (0.9952349, 0.9952349, 0.9952349)
+                float3 xformOp:translate = (0, -7.450581e-9, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                over "b37afcbbf8564243bc40699160c032e0_fbx"
+                {
+                    quatf xformOp:orient = (0.70710677, 0.70710677, 0, 0)
+                    float3 xformOp:scale = (1, 1, 1)
+                    float3 xformOp:translate = (0, 4.7683716e-7, 0)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                    over "Object_2"
+                    {
+                        quatf xformOp:orient = (1, 0, 0, 0)
+                        float3 xformOp:scale = (1, 1, 1)
+                        float3 xformOp:translate = (0, 7.4505815e-9, 4.768372e-7)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                        over "RootNode"
+                        {
+                            quatf xformOp:orient = (1, 0, 0, 0)
+                            float3 xformOp:scale = (1, 1, 1)
+                            float3 xformOp:translate = (0, 0, 0)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                            over "Plane" (
+                                active = false
+                            )
+                            {
+                            }
+
+                            over "Plane_004" (
+                                active = false
+                            )
+                            {
+                            }
+
+                            over "Plane_002"
+                            {
+                                quatf xformOp:orient = (0.70710677, -0.70710677, 0, 0)
+                                float3 xformOp:scale = (1, 1, 1)
+                                float3 xformOp:translate = (0, 0, 0)
+                                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    def Cube "wall5" (
+        active = true
+        prepend apiSchemas = ["MaterialBindingAPI"]
+        customData = {
+            float3 rotationEulerHint = (0, 0, 0)
+        }
+    )
+    {
+        rel material:binding = </Root/wall5/DefaultMaterial>
+        double size = 0.2
+        float2 ui:nodegraph:node:pos = (80, 80)
+        int ui:nodegraph:node:stackingOrder = 4
+        quatf xformOp:orient = (1, 0, 0, 0)
+        float3 xformOp:scale = (10, 20, 0.1)
+        float3 xformOp:translate = (-3.4652734, 2, 3)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Material "DefaultMaterial"
+        {
+            token outputs:mtlx:surface
+            token outputs:realitykit:vertex
+            token outputs:surface.connect = </Root/wall5/DefaultMaterial/DefaultSurfaceShader.outputs:surface>
+
+            def Shader "DefaultSurfaceShader"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.24273579, 0.24518766, 0.24518766) (
+                    colorSpace = "srgb_displayp3"
+                )
+                float inputs:roughness = 0.75
+                token outputs:surface
+            }
+        }
+    }
+
+    def Cube "wall6" (
+        active = true
+        prepend apiSchemas = ["MaterialBindingAPI"]
+        customData = {
+            float3 rotationEulerHint = (0, 0, 0)
+        }
+    )
+    {
+        rel material:binding = </Root/wall6/DefaultMaterial>
+        double size = 0.2
+        float2 ui:nodegraph:node:pos = (100, 100)
+        int ui:nodegraph:node:stackingOrder = 5
+        quatf xformOp:orient = (1, 0, 0, 0)
+        float3 xformOp:scale = (10, 10, 0.1)
+        float3 xformOp:translate = (-1.9927579, 3.0293, 3)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Material "DefaultMaterial"
+        {
+            token outputs:mtlx:surface
+            token outputs:realitykit:vertex
+            token outputs:surface.connect = </Root/wall6/DefaultMaterial/DefaultSurfaceShader.outputs:surface>
+
+            def Shader "DefaultSurfaceShader"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.24273579, 0.24518766, 0.24518766) (
+                    colorSpace = "srgb_displayp3"
+                )
+                float inputs:roughness = 0.75
+                token outputs:surface
+            }
+        }
+    }
+
+    def Xform "PointLight"
+    {
+        float3 xformOp:translate = (0, 3, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def RealityKitComponent "PointLight"
+        {
+            float attenuationFalloffExponent = 0.3
+            float attenuationRadius = 10
+            float3 color = (0.9999908, 1, 1)
+            token info:id = "RealityKit.PointLight"
+            float intensity = 50000
+        }
+    }
+
+    def Cube "ceiling" (
+        prepend apiSchemas = ["MaterialBindingAPI"]
+    )
+    {
+        rel material:binding = </Root/ceiling/DefaultMaterial>
+        double size = 0.2
+        float2 ui:nodegraph:node:pos = (20, 20)
+        int ui:nodegraph:node:stackingOrder = 1
+        quatf xformOp:orient = (1, 0, 0, 0)
+        float3 xformOp:scale = (30, 0.1, 30)
+        float3 xformOp:translate = (1.8626451e-9, 4, -7.8231096e-8)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Material "DefaultMaterial"
+        {
+            token outputs:mtlx:surface
+            token outputs:realitykit:vertex
+            token outputs:surface.connect = </Root/ceiling/DefaultMaterial/DefaultSurfaceShader.outputs:surface>
+
+            def Shader "DefaultSurfaceShader"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.24273579, 0.24518766, 0.24518766) (
+                    colorSpace = "srgb_displayp3"
+                )
+                float inputs:roughness = 0.75
+                token outputs:surface
+            }
+        }
+    }
+
+    def "safe_animated" (
+        active = true
+        customData = {
+            float3 rotationEulerHint = (0, 1.5707963, 0)
+        }
+        references = @safe_animated.usdz@
+    )
+    {
+        quatf xformOp:orient = (0.70710677, 0, 0.70710677, 0)
+        float3 xformOp:scale = (0.4, 0.4, 0.4)
+        float3 xformOp:translate = (-0.054656625, -0.18117349, 2.5922964)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def "doorkey" (
+        active = true
+        customData = {
+            float3 rotationEulerHint = (1.5707959, 1.5707963, 0)
+        }
+        references = @doorkey.usdz@
+    )
+    {
+        quatf xformOp:orient = (-0.5, -0.5, -0.5, 0.5)
+        float3 xformOp:scale = (0.001, 0.001, 0.001)
+        float3 xformOp:translate = (-0.17232978, 0.1773368, 2.4865692)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def "shangxiang" (
+        active = true
+        references = @shangxiang.usda@</Chinese_Incense_Burner_LowPory_Material_test>
+    )
+    {
+        float3 xformOp:scale = (0.1, 0.1, 0.1)
+        float3 xformOp:translate = (0.07165372, 0.09842947, 2.7876914)
+    }
+
+    def "Arknights_Originite_Prime" (
+        active = true
+        references = @Arknights_Originite_Prime.usdz@
+    )
+    {
+        float3 xformOp:scale = (0.001, 0.001, 0.001)
+        float3 xformOp:translate = (-0.20419371, 0.19022243, 2.7755241)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def "_4000_x_1200" (
+        active = true
+        customData = {
+            float3 rotationEulerHint = (0, 1.5707963, 0)
+        }
+        references = @4000_x_1200.usdz@
+    )
+    {
+        quatf xformOp:orient = (0.70710677, 0, 0.70710677, 0)
+        float3 xformOp:scale = (0.003, 0.003, 0.003)
+        float3 xformOp:translate = (2.9496336, 0, 0.9867364)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def "Office_Chair_2" (
+        active = true
+        customData = {
+            float3 rotationEulerHint = (0, 1.5707963, 0)
+        }
+        references = @Office_Chair-2.usdz@
+    )
+    {
+        quatf xformOp:orient = (0.70710677, 0, 0.70710677, 0)
+        float3 xformOp:scale = (0.01, 0.01, 0.01)
+        float3 xformOp:translate = (1.4318252, 0, -1.9117694)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def "Office_Chair_3" (
+        active = true
+        customData = {
+            float3 rotationEulerHint = (-1.6755147, 1.9198616, 0)
+        }
+        references = @Office_Chair-2.usdz@
+    )
+    {
+        float2 ui:nodegraph:node:pos = (20, 20)
+        int ui:nodegraph:node:stackingOrder = 1
+        quatf xformOp:orient = (0.38379797, -0.42625025, 0.54812, 0.60874814)
+        float3 xformOp:scale = (0.01, 0.01, 0.01)
+        float3 xformOp:translate = (1.4354249, 0.3217929, -0.15372983)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def Sphere "doorlock" (
+        active = true
+        prepend apiSchemas = ["MaterialBindingAPI"]
+    )
+    {
+        rel material:binding = </Root/doorlock/DefaultMaterial>
+        double radius = 0.1
+        float3 xformOp:scale = (0.1, 0.1, 0.1)
+        float3 xformOp:translate = (-1.5751493, 0.95931506, 3)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Material "DefaultMaterial"
+        {
+            token outputs:surface.connect = </Root/doorlock/DefaultMaterial/DefaultSurfaceShader.outputs:surface>
+
+            def Shader "DefaultSurfaceShader"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (1, 1, 1)
+                float inputs:roughness = 0.75
+                token outputs:surface
+            }
+        }
+    }
+}
+
