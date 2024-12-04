@@ -24,6 +24,7 @@ let basketballVolume = "basketballVolume"
 let superBrainVolume = "superBrainVolume"
 let templeVolume = "templeVolume"
 
+let escapeSpace = "escapeSpace"
 let jovitaSpace = "jovitaSpace"
 let basketballSpace = "basketballSpace"
 let superBrainSpace = "superBrainSpace"

@@ -26,7 +26,7 @@ struct SaveRealmView: View {
                 
                 Button {
                     if enteredName != "" {
-                        saveRealm(appModel.libraryEntities, name: enteredName, appModel: appModel)
+                        saveRealm(appModel.editorEntities, name: enteredName, appModel: appModel)
                         dismiss()
                     }
                 } label: {

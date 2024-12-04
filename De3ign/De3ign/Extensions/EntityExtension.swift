@@ -9,10 +9,101 @@ import SwiftUI
 import RealityKit
 import RealityKitContent
 
+/*
+ * util
+ */
+extension Entity {
+    func playAllAnimations() {
+        for animation in self.availableAnimations {
+            self.playAnimation(animation)
+        }
+    }
+    
+    func distance(to other: Entity) -> Float {
+        let posA = self.position(relativeTo: nil)
+        let posB = other.position(relativeTo: nil)
+        return simd_distance(posA, posB)
+    }
+}
+
+struct MetadataComponent: Component {
+    let name: String
+}
+
+extension Entity {
+    var progenitor: Entity? {
+        if let parent = self.parent {
+            if parent.metadata != nil {
+                return parent
+            }
+            return parent.progenitor
+        }
+        return nil
+    }
+    
+    var metadata: MetadataComponent? {
+        return self.components[MetadataComponent.self]
+    }
+}
+
+/*
+ * editor
+ */
+extension Entity {
+    var editorProgenitor: Entity? {
+        if let parent = self.parent {
+            if parent.editorMetadata != nil {
+                return parent
+            }
+            return parent.editorProgenitor
+        }
+        return nil
+    }
+    
+    var editorMetadata: EditorMetadataComponent? {
+        return self.components[EditorMetadataComponent.self]
+    }
+    
+    var editorInteraction: EditorInteractionComponent? {
+        return self.components[EditorInteractionComponent.self]
+    }
+    
+    var isAttachmentInstalled: Bool {
+        get {
+            return self.components[EditorMetadataComponent.self]?.isAttachmentInstalled ?? false
+        }
+        set(newValue) {
+            self.components[EditorMetadataComponent.self]?.isAttachmentInstalled = newValue
+        }
+    }
+    
+    var attachment: ViewAttachmentEntity? {
+        for child in self.children {
+            if type(of: child) == ViewAttachmentEntity.self {
+                return child as? ViewAttachmentEntity
+            }
+            if let result = child.attachment {
+                return result
+            }
+        }
+        return nil
+    }
+}
+
+extension [Entity] {
+    func disableAll() {
+        for item in self {
+            item.isEnabled = false
+        }
+    }
+}
+
+/*
+ * save load
+ */
 extension Entity {
     func toBaseData() -> EntityBaseData? {
-        // workaround(?) didn't manage to create a type or something; so just hardcode
-        if let metadata = self.metadata {
+        if let metadata = self.editorMetadata {
             switch metadata.source {
                 
             case .library(let model):
@@ -30,29 +121,22 @@ extension Entity {
                     "transform": try! String(data: jsonE.encode(self.transform), encoding: .utf8)!
                 ]
             }
-            
-//            let data = try! JSONSerialization.data(withJSONObject: json)
-//
-//            let url = getSaveDirectory().appendingPathComponent("1.txt")
-//            try! data.write(to: url)
-//            print(url)
         }
         return nil
     }
     
-    // i know this is ugly but hopefully it runs anyway?
     static func fromBaseData(data: EntityBaseData) -> Entity? {
         if let type = data["type"] {
             var entity: Entity
             
             if (type == "library") {
-                entity = LibraryModel(
+                entity = EditorLibraryObject(
                     name: data["name"]!,
                     resourceName: data["resourceName"]!
                 ).asEntity()!
             }
             else if (type == "genAi") {
-                entity = GenAIModel(
+                entity = EditorGenAiObject(
                     name: data["name"]!,
                     url: getGenAiModelsDirectory().appendingPathComponent(data["fileName"]!)
                 ).asEntity()!

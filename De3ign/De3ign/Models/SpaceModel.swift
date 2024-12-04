@@ -9,7 +9,7 @@ import Foundation
 
 struct DSpace {
     var id: String
-    var volumeName: String
+    var spaceId: String
     
     var name: String
     var description: String

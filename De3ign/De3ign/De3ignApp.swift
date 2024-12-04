@@ -104,6 +104,18 @@ struct De3ignApp: App {
         .windowStyle(.volumetric)
         
         // ====== Spaces ======
+        ImmersiveSpace(id: escapeSpace) {
+            EscapeSpaceView()
+                .environment(appModel)
+                .onAppear {
+                    appModel.immersiveSpaceState = .open
+                }
+                .onDisappear {
+                    appModel.immersiveSpaceState = .closed
+                }
+        }
+        .immersionStyle(selection: .constant(.full), in: .full)
+        
         ImmersiveSpace(id: jovitaSpace) {
             JovitaSpaceView(scale: 2)
                 .environment(appModel)
