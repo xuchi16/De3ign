@@ -493,6 +493,7 @@ def Xform "Root" (
 
     def Xform "Transform"
     {
+        reorder nameChildren = ["SpotLight", "SpotLight_1", "SpotLight_2", "SpotLight_3", "SpotLight_4"]
         def Xform "SpotLight" (
             customData = {
                 float3 rotationEulerHint = (-1.5702474, -5.9604638e-8, 5.9571935e-8)

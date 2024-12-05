@@ -10,6 +10,7 @@ import SwiftUI
 @main
 struct De3ignApp: App {
     
+    @State private var playModel = PlayModel()
     @State private var appModel = AppModel()
     
     var body: some Scene {
@@ -50,7 +51,7 @@ struct De3ignApp: App {
         .windowStyle(.volumetric)
         
         WindowGroup(id: jovitaVolume) {
-            JovitaSpaceView(scale: 0.15, position: [0, -0.4, 0.3])
+            JovitaSpaceView(scale: 0.15, position: [0, -0.4, 0.3],playModel: playModel)
                 .ornament(attachmentAnchor: .scene(.bottomFront)) {
                     OrnamentView(spaceId: jovitaSpace)
                         .environment(appModel)
@@ -87,7 +88,7 @@ struct De3ignApp: App {
         
         // ====== Spaces ======
         ImmersiveSpace(id: jovitaSpace) {
-            JovitaSpaceView(scale: 2)
+            JovitaSpaceView(scale: 2,playModel: playModel)
                 .environment(appModel)
                 .onAppear {
                     appModel.immersiveSpaceState = .open

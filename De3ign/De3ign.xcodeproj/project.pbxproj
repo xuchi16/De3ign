@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 60;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -86,6 +86,11 @@
 		C2F294202C787F6900A98088 /* marskybox.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = marskybox.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		A9CC84332CFAF30500B28D0A /* Tv_video */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Tv_video; sourceTree = "<group>"; };
+		A9CC84432CFAFB7700B28D0A /* Other */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Other; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
+
 /* Begin PBXFrameworksBuildPhase section */
 		C2B362992C772A19003AEDA9 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
@@ -128,6 +133,8 @@
 		C2B3629E2C772A19003AEDA9 /* De3ign */ = {
 			isa = PBXGroup;
 			children = (
+				A9CC84432CFAFB7700B28D0A /* Other */,
+				A9CC84332CFAF30500B28D0A /* Tv_video */,
 				9C4099902CE95DBF003FACFA /* Chatter.swift */,
 				9CC2D7FF2CDD0184000C380C /* LibraryInteraction.swift */,
 				9CC9F72C2CB97AD80016BD85 /* LibraryModel.swift */,
@@ -214,6 +221,10 @@
 			buildRules = (
 			);
 			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				A9CC84332CFAF30500B28D0A /* Tv_video */,
+				A9CC84432CFAFB7700B28D0A /* Other */,
 			);
 			name = De3ign;
 			packageProductDependencies = (

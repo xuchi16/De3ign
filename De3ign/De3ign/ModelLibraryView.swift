@@ -21,7 +21,7 @@ struct ModelLibraryView: View {
         LibraryModel(name: "Xiang", resourceName: "shangxiang"),
         LibraryModel(name: "Music Player", resourceName: "Carvaan_Music_Player"),
         LibraryModel(name: "Robot", resourceName: "Cute_Home_Robot"),
-        LibraryModel(name: "T-Rex", resourceName: "Tyrannosarus_rex_Free_model")
+        LibraryModel(name: "T-Rex", resourceName: "Tyrannosarus_rex_Free_model"),
     ]
     
     var body: some View {
