@@ -18,17 +18,15 @@ enum InteractionName: String {
     case zoom = "Zoom"
 }
 
-let editableVolume = "EditableVolume"
-let jovitaVolume = "jovitaVolume"
-let basketballVolume = "basketballVolume"
-let superBrainVolume = "superBrainVolume"
-let templeVolume = "templeVolume"
+enum SpaceID: String {
+    case escapeSpace = "escapeSpace"
+    case whiteMythSpace = "whiteMythSpace"
 
-let escapeSpace = "escapeSpace"
-let jovitaSpace = "jovitaSpace"
-let basketballSpace = "basketballSpace"
-let superBrainSpace = "superBrainSpace"
-let templeSpace = "templeSpace"
+    case jovitaSpace = "jovitaSpace"
+    case basketballSpace = "basketballSpace"
+    case superBrainSpace = "superBrainSpace"
+    case templeSpace = "templeSpace"
+}
 
 let cornerRadius: Double = 10.0
 let cardPadding: Double = 30.0

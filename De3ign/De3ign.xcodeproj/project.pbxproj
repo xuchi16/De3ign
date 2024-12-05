@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 60;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -23,6 +23,7 @@
 		9CC2D8002CDD018F000C380C /* EditorInteraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC2D7FF2CDD0184000C380C /* EditorInteraction.swift */; };
 		9CC9F72B2CB978BE0016BD85 /* ModelLibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC9F72A2CB978B40016BD85 /* ModelLibraryView.swift */; };
 		9CC9F72D2CB97AF40016BD85 /* EditorLibraryObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC9F72C2CB97AD80016BD85 /* EditorLibraryObject.swift */; };
+		9CCCBDC52D01307F007AF089 /* EntityComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CCCBDC42D013075007AF089 /* EntityComponent.swift */; };
 		C2B362A22C772A19003AEDA9 /* RealityKitContent in Frameworks */ = {isa = PBXBuildFile; productRef = C2B362A12C772A19003AEDA9 /* RealityKitContent */; };
 		C2B362A42C772A19003AEDA9 /* De3ignApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B362A32C772A19003AEDA9 /* De3ignApp.swift */; };
 		C2B362A62C772A19003AEDA9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B362A52C772A19003AEDA9 /* ContentView.swift */; };
@@ -76,6 +77,7 @@
 		9CC2D7FF2CDD0184000C380C /* EditorInteraction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorInteraction.swift; sourceTree = "<group>"; };
 		9CC9F72A2CB978B40016BD85 /* ModelLibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelLibraryView.swift; sourceTree = "<group>"; };
 		9CC9F72C2CB97AD80016BD85 /* EditorLibraryObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorLibraryObject.swift; sourceTree = "<group>"; };
+		9CCCBDC42D013075007AF089 /* EntityComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityComponent.swift; sourceTree = "<group>"; };
 		C2B3629C2C772A19003AEDA9 /* De3ign.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = De3ign.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2B362A02C772A19003AEDA9 /* RealityKitContent */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = RealityKitContent; sourceTree = "<group>"; };
 		C2B362A32C772A19003AEDA9 /* De3ignApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = De3ignApp.swift; sourceTree = "<group>"; };
@@ -106,6 +108,10 @@
 		C2F294202C787F6900A98088 /* marskybox.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = marskybox.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		9CCCBDBE2D012F52007AF089 /* WhiteMyth */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = WhiteMyth; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
+
 /* Begin PBXFrameworksBuildPhase section */
 		C2B362992C772A19003AEDA9 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
@@ -132,6 +138,14 @@
 				9C93CB6A2CFFDCA1005B7586 /* KeypadView.swift */,
 			);
 			path = Escape;
+			sourceTree = "<group>";
+		};
+		9CCCBDC32D01305A007AF089 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				9CCCBDC42D013075007AF089 /* EntityComponent.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 		C2B362932C772A19003AEDA9 = {
@@ -161,6 +175,7 @@
 				C2BB05FA2CFD8FD6005ECA25 /* Modifiers */,
 				C2BB06612CFDBA95005ECA25 /* Services */,
 				C2BB05F72CFD8D20005ECA25 /* Models */,
+				9CCCBDC32D01305A007AF089 /* Components */,
 				C2BB06622CFDBB40005ECA25 /* Extensions */,
 				C2BB065F2CFDBA5F005ECA25 /* Utils */,
 				C2F294152C787B0C00A98088 /* Resources */,
@@ -201,6 +216,7 @@
 		C2B362C92C783465003AEDA9 /* Spaces */ = {
 			isa = PBXGroup;
 			children = (
+				9CCCBDBE2D012F52007AF089 /* WhiteMyth */,
 				9C93CB6B2CFFDCA1005B7586 /* Escape */,
 				9CB593A72CBA893500F19431 /* EditableSpaceView.swift */,
 				C2B362C52C7733CE003AEDA9 /* JovitaSpaceView.swift */,
@@ -300,6 +316,9 @@
 			buildRules = (
 			);
 			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				9CCCBDBE2D012F52007AF089 /* WhiteMyth */,
 			);
 			name = De3ign;
 			packageProductDependencies = (
@@ -414,6 +433,7 @@
 				9CC9F72B2CB978BE0016BD85 /* ModelLibraryView.swift in Sources */,
 				C2B362CD2C78347E003AEDA9 /* SuperBrainSpaceView.swift in Sources */,
 				9C63418E2CF2420B00BDEAE2 /* InteractionSelectorAttachmentView.swift in Sources */,
+				9CCCBDC52D01307F007AF089 /* EntityComponent.swift in Sources */,
 				C2BB06642CFDBB50005ECA25 /* EntityExtension.swift in Sources */,
 				C2B362CF2C78348A003AEDA9 /* TempleSpaceView.swift in Sources */,
 				C2B362A82C772A19003AEDA9 /* AppModel.swift in Sources */,
@@ -577,7 +597,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"De3ign/Preview Content\"";
-				DEVELOPMENT_TEAM = 4B97U7G8A7;
+				DEVELOPMENT_TEAM = 5KVRUJ2FNN;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "$(TARGET_NAME)/Info.plist";
@@ -605,7 +625,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"De3ign/Preview Content\"";
-				DEVELOPMENT_TEAM = 4B97U7G8A7;
+				DEVELOPMENT_TEAM = 5KVRUJ2FNN;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "$(TARGET_NAME)/Info.plist";
