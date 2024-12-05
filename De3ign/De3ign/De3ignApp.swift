@@ -1,18 +1,28 @@
 //
 //  De3ignApp.swift
 //  De3ign
-//
+///Users/lemoc/Downloads/SnowGlobePractice/Packages/RealityKitContent/Sources/RealityKitContent/RealityKitContent.rkassets/Scene.usda
 //  Created by xuchi on 2024/8/22.
 //
 
 import SwiftUI
+import MixedRealityCapture
+import OSLog
+
+@MainActor
+let logger = Logger(subsystem: "BasicApp", category: "general")
 
 @main
 struct De3ignApp: App {
     
     @State private var appModel = AppModel()
-    
+    @State private var captureModel = CaptureModel()
+
     var body: some Scene {
+        
+        // debug
+        let _ = print(getGenAiModelsDirectory())
+        
         WindowGroup {
             ContentView()
                 .environment(appModel)
@@ -38,6 +48,12 @@ struct De3ignApp: App {
         }
         .windowStyle(.plain)
         
+        WindowGroup(id: saveRealmView) {
+            SaveRealmView()
+                .environment(appModel)
+        }
+        .windowStyle(.plain)
+        
         // ====== Volumes ======
         WindowGroup(id: editableVolume) {
             EditableSpaceView(scale: 0.15, position: [-0.1, -0.3, 0])
@@ -51,10 +67,12 @@ struct De3ignApp: App {
         
         WindowGroup(id: jovitaVolume) {
             JovitaSpaceView(scale: 0.15, position: [0, -0.4, 0.3])
+                .environment(captureModel)
                 .ornament(attachmentAnchor: .scene(.bottomFront)) {
                     OrnamentView(spaceId: jovitaSpace)
                         .environment(appModel)
                 }
+                .sessionManager(model: captureModel)
         }
         .windowStyle(.volumetric)
         
@@ -86,9 +104,22 @@ struct De3ignApp: App {
         .windowStyle(.volumetric)
         
         // ====== Spaces ======
+        ImmersiveSpace(id: escapeSpace) {
+            EscapeSpaceView()
+                .environment(appModel)
+                .onAppear {
+                    appModel.immersiveSpaceState = .open
+                }
+                .onDisappear {
+                    appModel.immersiveSpaceState = .closed
+                }
+        }
+        .immersionStyle(selection: .constant(.full), in: .full)
+        
         ImmersiveSpace(id: jovitaSpace) {
             JovitaSpaceView(scale: 2)
                 .environment(appModel)
+                .environment(captureModel)
                 .onAppear {
                     appModel.immersiveSpaceState = .open
                 }

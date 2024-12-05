@@ -2,10 +2,17 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSMicrophoneUsageDescription</key>
-	<string>1919810</string>
-	<key>CFBundleIdentifier</key>
-	<string></string>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
+	<key>NSEnterpriseMCAMUsageDescription</key>
+	<string>Enterprise</string>
+	<key>NSHandsTrackingUsageDescription</key>
+	<string>Hand Track</string>
+	<key>NSWorldSensingUsageDescription</key>
+	<string>World Sense</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationPreferredDefaultSceneSessionRole</key>
@@ -23,12 +30,5 @@
 			</array>
 		</dict>
 	</dict>
-	<key>NSAppTransportSecurity</key>
-	<dict>
-		<key>NSAllowsArbitraryLoads</key>
-		<true/>
-	</dict>
-	<key>NSSpeechRecognitionUsageDescription</key>
-	<string>114514</string>
 </dict>
 </plist>

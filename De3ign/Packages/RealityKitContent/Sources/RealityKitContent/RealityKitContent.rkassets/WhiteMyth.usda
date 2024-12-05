@@ -1,0 +1,1129 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "Reality Composer Pro Version 2.0 (448.0.16.0.3)"
+    }
+    defaultPrim = "Root"
+    metersPerUnit = 1
+    upAxis = "Y"
+)
+
+def Xform "Root"
+{
+    reorder nameChildren = ["Cube", "ikea_bed", "Computer_Desk", "safe_animated", "Dresser", "Arknights_Originite_Prime", "door_animated", "Animated_Window_Systems", "wall1", "wall1_1", "wall1_2", "wall1_3", "wall1_4", "wall1_5", "wall1_6", "doorkey", "Picture_Frame", "Picture_Frame_1", "Picture_Frame_2", "wall1_7", "wall1_8", "Just_a_Candle", "SnowGlobe", "Basic_Lighter", "Paper", "AA_Battery", "dresserkey"]
+    def Cube "Cube" (
+        active = true
+        prepend apiSchemas = ["MaterialBindingAPI"]
+    )
+    {
+        rel material:binding = </Root/Cube/DefaultMaterial>
+        double size = 0.2
+        float3 xformOp:scale = (100, 1, 100)
+        float3 xformOp:translate = (0, -0.1, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Material "DefaultMaterial"
+        {
+            token inputs:frame:stPrimvarName = "st" (
+                customData = {
+                    dictionary realitykit = {
+                        bool hide = 1
+                    }
+                }
+            )
+            token outputs:mtlx:surface
+            token outputs:realitykit:vertex
+            prepend token outputs:surface.connect = </Root/Cube/DefaultMaterial/DefaultSurfaceShader.outputs:surface>
+
+            def Shader "DefaultSurfaceShader"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (1, 1, 1)
+                color3f inputs:diffuseColor.connect = </Root/Cube/DefaultMaterial/diffuseColor.outputs:rgb>
+                float inputs:roughness = 0.75
+                token outputs:surface
+            }
+
+            def Shader "diffuseColor"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @floormaterial.jpg@
+                float2 inputs:st.connect = </Root/Cube/DefaultMaterial/diffuseColor/TexCoordReader.outputs:result>
+                color3f outputs:rgb
+
+                def Shader "TexCoordReader"
+                {
+                    uniform token info:id = "UsdPrimvarReader_float2"
+                    token inputs:varname.connect = </Root/Cube/DefaultMaterial.inputs:frame:stPrimvarName>
+                    float2 outputs:result
+                }
+            }
+        }
+    }
+
+    def "ikea_bed" (
+        active = true
+        references = @ikea_bed.usdz@
+    )
+    {
+        float3 xformOp:scale = (0.06, 0.06, 0.06)
+        float3 xformOp:translate = (3.8924541, -0.024834827, 2.573936)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def "Computer_Desk" (
+        active = true
+        references = @Computer_Desk.usdz@
+    )
+    {
+        float3 xformOp:scale = (0.015, 0.015, 0.015)
+        float3 xformOp:translate = (-0.8005347, 4.3157754, -7.9243407)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def "safe_animated" (
+        active = true
+        customData = {
+            float3 rotationEulerHint = (0, -1.5707963, 0)
+        }
+        references = @safe_animated.usdz@
+    )
+    {
+        quatf xformOp:orient = (0.70710677, 0, -0.70710677, 0)
+        float3 xformOp:scale = (1.2, 1.2, 1.2)
+        float3 xformOp:translate = (1.303468, -0.5728197, -6.8233886)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def "Dresser" (
+        active = true
+        customData = {
+            float3 rotationEulerHint = (0, 1.5707963, 0)
+        }
+        references = @Dresser.usdz@
+    )
+    {
+        quatf xformOp:orient = (0.70710677, 0, 0.70710677, 0)
+        float3 xformOp:scale = (0.02, 0.02, 0.02)
+        float3 xformOp:translate = (-8.730837, 0.13082027, -1.8378868)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        over "Meshes"
+        {
+            over "Sketchfab_model"
+            {
+                over "ea1b8f8f6d7c4225ab4e678f6cf37aa9_fbx"
+                {
+                    over "Object_2"
+                    {
+                        quatf xformOp:orient = (1, 0, 0, 0)
+                        float3 xformOp:scale = (1, 1, 1)
+                        float3 xformOp:translate = (0, 0, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                        over "RootNode"
+                        {
+                            over "Object_4"
+                            {
+                                over "Object001"
+                                {
+                                    quatf xformOp:orient = (0.7071067, -0.7071068, 0, 0)
+                                    float3 xformOp:scale = (1, 1.0000001, 1.0000001)
+                                    float3 xformOp:translate = (-0.000091552734, 441.99997, 0.000002781579)
+                                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                                    over "Object_18"
+                                    {
+                                        quatf xformOp:orient = (1, 0, 0, 0)
+                                        float3 xformOp:scale = (1, 1, 1)
+                                        float3 xformOp:translate = (340, -390.00006, 419.99997)
+                                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                                        over "Object001_Tumb_0"
+                                        {
+                                            quatf xformOp:orient = (1, 0, 0, 0)
+                                            float3 xformOp:scale = (1, 1, 1)
+                                            float3 xformOp:translate = (0, 0, 0)
+                                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                                            over "Object001_Tumb_0"
+                                            {
+                                                float3 xformOp:translate = (0, 0, 0)
+                                                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        over "SkinnedMeshes"
+        {
+            quatf xformOp:orient = (1, 0, 0, 0)
+            float3 xformOp:scale = (0.2555575, 0.2555575, 0.2555575)
+            float3 xformOp:translate = (0, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            over "Sketchfab_model"
+            {
+                over "ea1b8f8f6d7c4225ab4e678f6cf37aa9_fbx"
+                {
+                    over "Object_2"
+                    {
+                        over "RootNode"
+                        {
+                            over "Object_4"
+                            {
+                                over "_rootJoint"
+                                {
+                                    over "skin0"
+                                    {
+                                        over "skeleton"
+                                        {
+                                            float3 xformOp:translate = (0, 0, 0)
+                                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    def "Arknights_Originite_Prime" (
+        active = true
+        references = @Arknights_Originite_Prime.usdz@
+    )
+    {
+        float3 xformOp:scale = (0.01, 0.01, 0.01)
+        float3 xformOp:translate = (-6.5766764, 1.4238255, -7.139119)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def "door_animated" (
+        active = true
+        customData = {
+            float3 rotationEulerHint = (0, -1.5707963, 0)
+        }
+        references = @door_animated.usdz@
+    )
+    {
+        quatf xformOp:orient = (0.70710677, 0, -0.70710677, 0)
+        float3 xformOp:scale = (0.04, 0.04, 0.04)
+        float3 xformOp:translate = (-10, 0, 4.9915037)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        over "Meshes"
+        {
+            over "Sketchfab_model"
+            {
+                over "b37afcbbf8564243bc40699160c032e0_fbx"
+                {
+                    over "Object_2"
+                    {
+                        over "RootNode"
+                        {
+                            over "Plane" (
+                                active = false
+                            )
+                            {
+                            }
+
+                            over "Plane_004" (
+                                active = false
+                            )
+                            {
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    def "Animated_Window_Systems" (
+        active = true
+        references = @Animated_Window_Systems.usdz@
+    )
+    {
+        float3 xformOp:scale = (0.07, 0.07, 0.07)
+        float3 xformOp:translate = (-7.430874, 3.8609557, 9.858309)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        over "Meshes"
+        {
+            over "Sketchfab_model"
+            {
+                over "c6e3e68a8e60493d934f2d46f3ca3045_fbx"
+                {
+                    over "Object_2"
+                    {
+                        over "RootNode"
+                        {
+                            over "fixed" (
+                                active = false
+                            )
+                            {
+                            }
+
+                            over "fixed_lattice" (
+                                active = false
+                            )
+                            {
+                            }
+
+                            over "revolving_frame" (
+                                active = false
+                            )
+                            {
+                            }
+
+                            over "revolving_door" (
+                                active = false
+                            )
+                            {
+                            }
+
+                            over "pivoting_lattice_frame" (
+                                active = false
+                            )
+                            {
+                            }
+
+                            over "pivoting_lattice_panel" (
+                                active = false
+                            )
+                            {
+                            }
+
+                            over "pivoting_lattice_window" (
+                                active = false
+                            )
+                            {
+                            }
+
+                            over "pivoting_handle" (
+                                active = false
+                            )
+                            {
+                            }
+
+                            over "pivoting_frame" (
+                                active = false
+                            )
+                            {
+                            }
+
+                            over "pivoting_panel" (
+                                active = false
+                            )
+                            {
+                            }
+
+                            over "awning_lattice_armature" (
+                                active = false
+                            )
+                            {
+                            }
+
+                            over "awning_lattice_frame" (
+                                active = false
+                            )
+                            {
+                            }
+
+                            over "awning_armature" (
+                                active = false
+                            )
+                            {
+                            }
+
+                            over "awning_frame" (
+                                active = false
+                            )
+                            {
+                            }
+
+                            over "casement_bridged_panelR" (
+                                active = false
+                            )
+                            {
+                            }
+
+                            over "casement_bridged_panelL" (
+                                active = false
+                            )
+                            {
+                            }
+
+                            over "casement_bridged_frame" (
+                                active = false
+                            )
+                            {
+                            }
+
+                            over "casement_panelR" (
+                                active = false
+                            )
+                            {
+                            }
+
+                            over "casement_panelL" (
+                                active = false
+                            )
+                            {
+                            }
+
+                            over "casement_frame" (
+                                active = false
+                            )
+                            {
+                            }
+
+                            over "sliding_vertical_lattice_windowT" (
+                                active = false
+                            )
+                            {
+                            }
+
+                            over "sliding_vertical_lattice_windowB" (
+                                active = false
+                            )
+                            {
+                            }
+
+                            over "sliding_vertical_lattice_frame" (
+                                active = false
+                            )
+                            {
+                            }
+
+                            over "sliding_horizontal_lattice_windowR" (
+                                active = false
+                            )
+                            {
+                            }
+
+                            over "sliding_horizontal_lattice_windowL" (
+                                active = false
+                            )
+                            {
+                            }
+
+                            over "sliding_horizontal_lattice_frame" (
+                                active = false
+                            )
+                            {
+                            }
+
+                            over "sliding_horizontal_4panels_windowR2" (
+                                active = false
+                            )
+                            {
+                            }
+
+                            over "sliding_horizontal_4panels_windowR1" (
+                                active = false
+                            )
+                            {
+                            }
+
+                            over "sliding_horizontal_4panels_windowL1" (
+                                active = false
+                            )
+                            {
+                            }
+
+                            over "sliding_horizontal_4panels_windowL2" (
+                                active = false
+                            )
+                            {
+                            }
+
+                            over "Jalousie_narrow_fincontrol"
+                            {
+                            }
+
+                            over "Jalousie_narrow_frame"
+                            {
+                            }
+
+                            over "Jalousie_narrow_fin1"
+                            {
+                            }
+
+                            over "Jalousie_narrow_fin2"
+                            {
+                            }
+
+                            over "Jalousie_narrow_fin3"
+                            {
+                            }
+
+                            over "Jalousie_narrow_fin4"
+                            {
+                            }
+
+                            over "Jalousie_narrow_fin5"
+                            {
+                            }
+
+                            over "Jalousie_narrow_fin6"
+                            {
+                            }
+
+                            over "Jalousie_narrow_fin7"
+                            {
+                            }
+
+                            over "Jalousie_narrow_fin8"
+                            {
+                            }
+
+                            over "Jalousie_narrow_finc9"
+                            {
+                            }
+
+                            over "Jalousie_narrow_fin10"
+                            {
+                            }
+
+                            over "Jalousie_narrow_fin11"
+                            {
+                            }
+
+                            over "Jalousie_narrow_fin12"
+                            {
+                            }
+
+                            over "Jalousie_narrow_fin13"
+                            {
+                            }
+
+                            over "Jalousie_narrow_fin14"
+                            {
+                            }
+
+                            over "Jalousie_narrow_fin15"
+                            {
+                            }
+
+                            over "Jalousie_narrow_fin16"
+                            {
+                            }
+
+                            over "Jalousie_narrow_fin17"
+                            {
+                            }
+
+                            over "Jalousie_narrow_fin18"
+                            {
+                            }
+
+                            over "Jalousie_wide_fincontrol" (
+                                active = false
+                            )
+                            {
+                            }
+
+                            over "Jalousie_wide_frame" (
+                                active = false
+                            )
+                            {
+                            }
+
+                            over "Jalousie_wide_fin1" (
+                                active = false
+                            )
+                            {
+                            }
+
+                            over "Jalousie_wide_fin2" (
+                                active = false
+                            )
+                            {
+                            }
+
+                            over "Jalousie_wide_fin3" (
+                                active = false
+                            )
+                            {
+                            }
+
+                            over "Jalousie_wide_fin4" (
+                                active = false
+                            )
+                            {
+                            }
+
+                            over "Jalousie_wide_fin5" (
+                                active = false
+                            )
+                            {
+                            }
+
+                            over "Jalousie_wide_fin6" (
+                                active = false
+                            )
+                            {
+                            }
+
+                            over "Jalousie_wide_fin7" (
+                                active = false
+                            )
+                            {
+                            }
+
+                            over "Jalousie_wide_fin8" (
+                                active = false
+                            )
+                            {
+                            }
+
+                            over "Jalousie_wide_fin9" (
+                                active = false
+                            )
+                            {
+                            }
+
+                            over "sliding_vertical_frame" (
+                                active = false
+                            )
+                            {
+                            }
+
+                            over "sliding_vertical_windowT" (
+                                active = false
+                            )
+                            {
+                            }
+
+                            over "sliding_vertical_windowB" (
+                                active = false
+                            )
+                            {
+                            }
+
+                            over "sliding_horizontal_frame" (
+                                active = false
+                            )
+                            {
+                            }
+
+                            over "sliding_horizontal_windowL" (
+                                active = false
+                            )
+                            {
+                            }
+
+                            over "sliding_horizontal_windowR" (
+                                active = false
+                            )
+                            {
+                            }
+
+                            over "holding_frame" (
+                                active = false
+                            )
+                            {
+                            }
+
+                            over "holding_panels" (
+                                active = false
+                            )
+                            {
+                            }
+
+                            over "sliding_horizontal_4panels_frame" (
+                                active = false
+                            )
+                            {
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        over "Materials"
+        {
+            over "frame2"
+            {
+                token outputs:mtlx:surface
+                token outputs:realitykit:vertex
+
+                over "pbr_shader"
+                {
+                    color3f inputs:diffuseColor = (0.205842, 0.197005, 0.20089)
+                }
+            }
+
+            over "glass"
+            {
+                token outputs:mtlx:surface
+                token outputs:realitykit:vertex
+
+                over "pbr_shader"
+                {
+                    float inputs:opacity = 0.8
+                }
+            }
+        }
+    }
+
+    def Cube "wall1" (
+        active = true
+        prepend apiSchemas = ["MaterialBindingAPI"]
+    )
+    {
+        rel material:binding = </Root/wall1/DefaultMaterial>
+        double size = 0.2
+        float3 xformOp:scale = (1, 100, 100)
+        float3 xformOp:translate = (10, 9, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Material "DefaultMaterial"
+        {
+            token outputs:surface.connect = </Root/wall1/DefaultMaterial/DefaultSurfaceShader.outputs:surface>
+
+            def Shader "DefaultSurfaceShader"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (1, 1, 1)
+                float inputs:roughness = 0.75
+                token outputs:surface
+            }
+        }
+    }
+
+    def Cube "wall1_1" (
+        active = true
+        prepend apiSchemas = ["MaterialBindingAPI"]
+    )
+    {
+        rel material:binding = </Root/wall1_1/DefaultMaterial>
+        double size = 0.2
+        float2 ui:nodegraph:node:pos = (20, 20)
+        int ui:nodegraph:node:stackingOrder = 1
+        quatf xformOp:orient = (1, 0, 0, 0)
+        float3 xformOp:scale = (1, 100, 15)
+        float3 xformOp:translate = (-10.000035, 9, 8.411353)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Material "DefaultMaterial"
+        {
+            token outputs:surface.connect = </Root/wall1_1/DefaultMaterial/DefaultSurfaceShader.outputs:surface>
+
+            def Shader "DefaultSurfaceShader"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (1, 1, 1)
+                float inputs:roughness = 0.75
+                token outputs:surface
+            }
+        }
+    }
+
+    def Cube "wall1_2" (
+        prepend apiSchemas = ["MaterialBindingAPI"]
+    )
+    {
+        rel material:binding = </Root/wall1_2/DefaultMaterial>
+        double size = 0.2
+        float2 ui:nodegraph:node:pos = (40, 40)
+        int ui:nodegraph:node:stackingOrder = 2
+        quatf xformOp:orient = (1, 0, 0, 0)
+        float3 xformOp:scale = (100, 100, 1)
+        float3 xformOp:translate = (10.859726, 9, 10)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Material "DefaultMaterial"
+        {
+            token outputs:surface.connect = </Root/wall1_2/DefaultMaterial/DefaultSurfaceShader.outputs:surface>
+
+            def Shader "DefaultSurfaceShader"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (1, 1, 1)
+                float inputs:roughness = 0.75
+                token outputs:surface
+            }
+        }
+    }
+
+    def Cube "wall1_3" (
+        prepend apiSchemas = ["MaterialBindingAPI"]
+    )
+    {
+        rel material:binding = </Root/wall1_3/DefaultMaterial>
+        double size = 0.2
+        float2 ui:nodegraph:node:pos = (60, 60)
+        int ui:nodegraph:node:stackingOrder = 3
+        quatf xformOp:orient = (1, 0, 0, 0)
+        float3 xformOp:scale = (100, 100, 1)
+        float3 xformOp:translate = (0, 9, -10)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Material "DefaultMaterial"
+        {
+            token outputs:surface.connect = </Root/wall1_3/DefaultMaterial/DefaultSurfaceShader.outputs:surface>
+
+            def Shader "DefaultSurfaceShader"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (1, 1, 1)
+                float inputs:roughness = 0.75
+                token outputs:surface
+            }
+        }
+    }
+
+    def Cube "wall1_4" (
+        prepend apiSchemas = ["MaterialBindingAPI"]
+    )
+    {
+        rel material:binding = </Root/wall1_4/DefaultMaterial>
+        double size = 0.2
+        float2 ui:nodegraph:node:pos = (60, 60)
+        int ui:nodegraph:node:stackingOrder = 3
+        quatf xformOp:orient = (1, 0, 0, 0)
+        float3 xformOp:scale = (100, 100, 1)
+        float3 xformOp:translate = (-14.365906, 9, 10)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Material "DefaultMaterial"
+        {
+            token outputs:surface.connect = </Root/wall1_4/DefaultMaterial/DefaultSurfaceShader.outputs:surface>
+
+            def Shader "DefaultSurfaceShader"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (1, 1, 1)
+                float inputs:roughness = 0.75
+                token outputs:surface
+            }
+        }
+    }
+
+    def Cube "wall1_5" (
+        prepend apiSchemas = ["MaterialBindingAPI"]
+    )
+    {
+        rel material:binding = </Root/wall1_5/DefaultMaterial>
+        double size = 0.2
+        float2 ui:nodegraph:node:pos = (80, 80)
+        int ui:nodegraph:node:stackingOrder = 4
+        quatf xformOp:orient = (1, 0, 0, 0)
+        float3 xformOp:scale = (40, 40, 1)
+        float3 xformOp:translate = (-1.935185, 16.671219, 10)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Material "DefaultMaterial"
+        {
+            token outputs:surface.connect = </Root/wall1_5/DefaultMaterial/DefaultSurfaceShader.outputs:surface>
+
+            def Shader "DefaultSurfaceShader"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (1, 1, 1)
+                float inputs:roughness = 0.75
+                token outputs:surface
+            }
+        }
+    }
+
+    def Cube "wall1_6" (
+        prepend apiSchemas = ["MaterialBindingAPI"]
+    )
+    {
+        rel material:binding = </Root/wall1_6/DefaultMaterial>
+        double size = 0.2
+        float2 ui:nodegraph:node:pos = (100, 100)
+        int ui:nodegraph:node:stackingOrder = 5
+        quatf xformOp:orient = (1, 0, 0, 0)
+        float3 xformOp:scale = (40, 40, 1)
+        float3 xformOp:translate = (-1.935185, 2.101435, 10)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Material "DefaultMaterial"
+        {
+            token outputs:surface.connect = </Root/wall1_6/DefaultMaterial/DefaultSurfaceShader.outputs:surface>
+
+            def Shader "DefaultSurfaceShader"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (1, 1, 1)
+                float inputs:roughness = 0.75
+                token outputs:surface
+            }
+        }
+    }
+
+    def "doorkey" (
+        active = true
+        customData = {
+            float3 rotationEulerHint = (-1.570796, 1.5707963, 0)
+        }
+        references = @doorkey.usdz@
+    )
+    {
+        quatf xformOp:orient = (-0.5, 0.5, -0.5, -0.5)
+        float3 xformOp:scale = (0.005, 0.005, 0.005)
+        float3 xformOp:translate = (1.2965595, 0.4533006, -6.9869146)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def "Picture_Frame" (
+        active = true
+        customData = {
+            float3 rotationEulerHint = (0, 3.1415927, 0)
+        }
+        references = @Picture_Frame.usdz@
+    )
+    {
+        quatf xformOp:orient = (-4.371139e-8, 0, 1, 0)
+        float3 xformOp:scale = (0.01, 0.01, 0.01)
+        float3 xformOp:translate = (9.949999, 6.452865, -4.3155627)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        over "Materials"
+        {
+            over "_D_Oak___Semigloss_001"
+            {
+                token outputs:mtlx:surface
+                token outputs:realitykit:vertex
+            }
+
+            over "_D_Oak___Semigloss_004"
+            {
+                token outputs:mtlx:surface
+                token outputs:realitykit:vertex
+            }
+        }
+    }
+
+    def "Picture_Frame_1" (
+        active = true
+        customData = {
+            float3 rotationEulerHint = (0, 3.1415927, 0)
+        }
+        references = @Picture_Frame.usdz@
+    )
+    {
+        float2 ui:nodegraph:node:pos = (20, 20)
+        int ui:nodegraph:node:stackingOrder = 1
+        quatf xformOp:orient = (-4.371139e-8, 0, 1, 0)
+        float3 xformOp:scale = (0.01, 0.01, 0.01)
+        float3 xformOp:translate = (9.949999, 6.452865, -0.22934914)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        over "Materials"
+        {
+            over "_D_Oak___Semigloss_001"
+            {
+                token outputs:mtlx:surface
+                token outputs:realitykit:vertex
+            }
+
+            over "_D_Oak___Semigloss_004"
+            {
+                token outputs:mtlx:surface
+                token outputs:realitykit:vertex
+            }
+        }
+    }
+
+    def "Picture_Frame_2" (
+        active = true
+        customData = {
+            float3 rotationEulerHint = (0, 3.1415927, 0)
+        }
+        references = @Picture_Frame.usdz@
+    )
+    {
+        float2 ui:nodegraph:node:pos = (20, 20)
+        int ui:nodegraph:node:stackingOrder = 1
+        quatf xformOp:orient = (-4.371139e-8, 0, 1, 0)
+        float3 xformOp:scale = (0.01, 0.01, 0.01)
+        float3 xformOp:translate = (9.949999, 6.452865, 3.8996384)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        over "Materials"
+        {
+            over "_D_Oak___Semigloss_001"
+            {
+                token outputs:mtlx:surface
+                token outputs:realitykit:vertex
+            }
+
+            over "_D_Oak___Semigloss_004"
+            {
+                token outputs:mtlx:surface
+                token outputs:realitykit:vertex
+            }
+        }
+    }
+
+    def Cube "wall1_7" (
+        active = true
+        prepend apiSchemas = ["MaterialBindingAPI"]
+    )
+    {
+        rel material:binding = </Root/wall1_7/DefaultMaterial>
+        double size = 0.2
+        float2 ui:nodegraph:node:pos = (40, 40)
+        int ui:nodegraph:node:stackingOrder = 2
+        quatf xformOp:orient = (1, 0, 0, 0)
+        float3 xformOp:scale = (1, 100, 100)
+        float3 xformOp:translate = (-10, 9, -6.924946)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Material "DefaultMaterial"
+        {
+            token outputs:surface.connect = </Root/wall1_7/DefaultMaterial/DefaultSurfaceShader.outputs:surface>
+
+            def Shader "DefaultSurfaceShader"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (1, 1, 1)
+                float inputs:roughness = 0.75
+                token outputs:surface
+            }
+        }
+    }
+
+    def Cube "wall1_8" (
+        prepend apiSchemas = ["MaterialBindingAPI"]
+        customData = {
+            float3 rotationEulerHint = (0, 1.5707963, 0)
+        }
+    )
+    {
+        rel material:binding = </Root/wall1_8/DefaultMaterial>
+        double size = 0.2
+        float2 ui:nodegraph:node:pos = (100, 100)
+        int ui:nodegraph:node:stackingOrder = 5
+        quatf xformOp:orient = (0.70710677, 0, 0.70710677, 0)
+        float3 xformOp:scale = (40, 60, 1)
+        float3 xformOp:translate = (-10, 14.154373, 6.5270553)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Material "DefaultMaterial"
+        {
+            token outputs:surface.connect = </Root/wall1_8/DefaultMaterial/DefaultSurfaceShader.outputs:surface>
+
+            def Shader "DefaultSurfaceShader"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (1, 1, 1)
+                float inputs:roughness = 0.75
+                token outputs:surface
+            }
+        }
+    }
+
+    def "Just_a_Candle" (
+        active = true
+        references = @Just_a_Candle.usdz@
+    )
+    {
+        float3 xformOp:scale = (0.005, 0.005, 0.005)
+        float3 xformOp:translate = (1.5416013, 4.4002023, -8.203297)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        over "Meshes"
+        {
+            over "Sketchfab_model"
+            {
+                over "root"
+                {
+                    over "GLTF_SceneRootNode"
+                    {
+                        over "BezierCurve_001_5"
+                        {
+                        }
+
+                        over "_4_04_1_001_4" (
+                            active = false
+                        )
+                        {
+                        }
+
+                        over "_4_04_1_002_3" (
+                            active = false
+                        )
+                        {
+                        }
+
+                        over "_4_04_1_2" (
+                            active = false
+                        )
+                        {
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    def "SnowGlobe" (
+        active = true
+        references = @SnowGlobe.usda@
+    )
+    {
+        float3 xformOp:scale = (5, 5, 5)
+        float3 xformOp:translate = (-2.674568, 4.3246017, -8.094515)
+    }
+
+    def "Basic_Lighter" (
+        active = true
+        customData = {
+            float3 rotationEulerHint = (1.5707959, 1.5707963, 0)
+        }
+        references = @Basic_Lighter.usdz@
+    )
+    {
+        quatf xformOp:orient = (-0.5, -0.5, -0.5, 0.5)
+        float3 xformOp:scale = (0.003, 0.003, 0.003)
+        float3 xformOp:translate = (0.20283432, 6.521773, 9.858768)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def "Paper" (
+        active = true
+        references = @Paper.usdz@
+    )
+    {
+        float3 xformOp:scale = (0.02, 0.02, 0.02)
+        float3 xformOp:translate = (-7.9615555, 2.7442079, -1.033165)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def "AA_Battery" (
+        active = true
+        references = @AA_Battery.usdz@
+    )
+    {
+        float3 xformOp:scale = (0.05, 0.05, 0.05)
+        float3 xformOp:translate = (-7.973802, 3.7401204, -1.3480883)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def "dresserkey" (
+        active = true
+        references = @Key_with_Tag.usdz@
+    )
+    {
+        float3 xformOp:scale = (0.1, 0.1, 0.1)
+        float3 xformOp:translate = (5.381999, 0.085773006, -2.335832)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+}
+

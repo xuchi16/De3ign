@@ -25,7 +25,7 @@ struct EditableSpaceView: View {
     }
     
     var body: some View {
-        RealityView { content in
+        RealityView { content, attachments in
             let scene = try! await Entity(named: "Editable", in: realityKitContentBundle)
             scene.scale = SIMD3<Float>(repeating: scale)
             scene.position = position
@@ -33,40 +33,90 @@ struct EditableSpaceView: View {
             content.add(scene)
             content.add(libraryModelWrapper)
             
-            placeLibraryModels(appModel.libraryEntities)
+            placeLibraryModels(appModel.editorEntities)
             
-            appModel.libraryEntitiesChangedCallback = { value in
-                placeLibraryModels(appModel.libraryEntities)
+            appModel.editorEntitiesChangedCallback = {
+                placeLibraryModels(appModel.editorEntities)
             }
+            
+            // force first update
+            Task {
+                try! await Task.sleep(nanoseconds: 500_000_000)
+                let blank = Entity()
+                blank.isEnabled = false
+                appModel.editorEntities.append(blank)
+            }
+            
+        } update: { content, attachments in
+            self.libraryModelWrapper.children.forEach { child in
+                child.removeFromParent()
+            }
+            for (index, item) in self.models.enumerated() {
+                libraryModelWrapper.addChild(item)
+                if !item.isAttachmentInstalled {
+                    if let attachment = attachments.entity(for: "\(index)") {
+                        let offset = /* bottom of entity */ item.visualBounds(relativeTo: item).min.y - /* ~attachment height */ 30
+                        
+                        item.addChild(attachment, preservingWorldTransform: true)
+                        
+                        attachment.position = [0, offset, 0]
+                        attachment.isEnabled = false
+                        
+                        item.isAttachmentInstalled = true
+                    }
+                }
+            }
+        } attachments: {
+            ForEach(0..<500, id: \.self) { id in
+                Attachment(id: "\(id)") {
+                    InteractionSelectorAttachmentView(appModel: appModel, id: id)
+                }
+            }
+            
+        }
+        .onDisappear {
+            appModel.editorEntities.disableAll()
         }
         .simultaneousGesture(
             DragGesture()
                 .targetedToAnyEntity()
                 .onChanged { event in
-                    if let target = event.entity.progenitor {
+                    if let target = event.entity.editorProgenitor {
                         target.position = event.convert(event.location3D, from: .local, to: target.parent!)
                     }
                 }
         )
         .gesture(
-            TapGesture()
+            TapGesture(count: 2)
+                .targetedToAnyEntity()
+                .onEnded { event in
+                    if event.entity.editorProgenitor?.isAttachmentInstalled ?? false {
+                        if let attachment = event.entity.editorProgenitor!.attachment {
+                            attachment.isEnabled = !attachment.isEnabled
+                        }
+                    }
+                }
+        )
+        .gesture(
+            TapGesture(count: 1)
                 .targetedToAnyEntity()
                 .onEnded({ event in
-                    if let callback = event.entity.progenitor?.interaction?.gesture.tap {
+                    if let callback = event.entity.editorProgenitor?.editorInteraction?.gesture.tap {
                         callback(event)
                     }
                 })
         )
+        
     }
     
     func placeLibraryModels(_ models: [Entity]) {
         self.models = models
-        libraryModelWrapper.children.forEach { child in
-            child.removeFromParent()
-        }
-        for item in models {
-            libraryModelWrapper.addChild(item)
-        }
+//        libraryModelWrapper.children.forEach { child in
+//            child.removeFromParent()
+//        }
+//        for item in models {
+//            libraryModelWrapper.addChild(item)
+//        }
     }
 }
 
