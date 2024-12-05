@@ -6,7 +6,7 @@
 //
 
 import ARKit
-import MixedRealityCapture
+//import MixedRealityCapture
 import OSLog
 import RealityKit
 import SwiftUI

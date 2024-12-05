@@ -18,7 +18,7 @@ struct WhiteMythSpaceView: View {
         self.position = position ?? self.position
     }
     
-    let PASSWORD = "371682"
+    let PASSWORD = "123456"
 
     @State var windowEntity = Entity()
     @State var lighterEntity = Entity()

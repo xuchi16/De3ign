@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import MixedRealityCapture
+//import MixedRealityCapture
 import OSLog
 
 @MainActor

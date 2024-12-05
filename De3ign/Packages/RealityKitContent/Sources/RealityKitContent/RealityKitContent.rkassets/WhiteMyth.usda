@@ -11,6 +11,9 @@
 def Xform "Root"
 {
     reorder nameChildren = ["floor", "ikea_bed", "Computer_Desk", "safe_animated", "dresser", "door_animated", "window_animated", "wall1", "wall1_1", "wall1_2", "wall1_3", "wall1_4", "wall1_5", "wall1_6", "doorkey", "Picture_Frame", "Picture_Frame_1", "Picture_Frame_2", "wall1_7", "wall1_8", "candle", "snowglobe", "lighter", "paper", "battery", "dresserkey", "hammer", "Indoor_Plant_with_pot_a", "breakablefloor", "ceiling", "Ceiling_Light", "PointLight", "SkyDome_1", "Macbook", "photoframe", "anchor_doorlock", "candlefire"]
+    float3 xformOp:scale = (0.1, 0.1, 0.1)
+    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
     def Cube "floor" (
         active = true
         prepend apiSchemas = ["MaterialBindingAPI"]
@@ -47,7 +50,7 @@ def Xform "Root"
             def Shader "diffuseColor"
             {
                 uniform token info:id = "UsdUVTexture"
-                asset inputs:file = @floormaterial.jpg@
+                asset inputs:file = @2145.jpg@
                 float2 inputs:st.connect = </Root/floor/DefaultMaterial/diffuseColor/TexCoordReader.outputs:result>
                 color3f outputs:rgb
 
