@@ -1,0 +1,1988 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "Reality Composer Pro Version 2.0 (448.0.16.0.3)"
+    }
+    defaultPrim = "Root"
+    metersPerUnit = 1
+    upAxis = "Y"
+)
+
+def Xform "Root"
+{
+    reorder nameChildren = ["floor", "ikea_bed", "Computer_Desk", "safe_animated", "dresser", "door_animated", "window_animated", "wall1", "wall1_1", "wall1_2", "wall1_3", "wall1_4", "wall1_5", "wall1_6", "doorkey", "Picture_Frame", "Picture_Frame_1", "Picture_Frame_2", "wall1_7", "wall1_8", "candle", "snowglobe", "lighter", "paper", "battery", "dresserkey", "hammer", "Indoor_Plant_with_pot_a", "breakablefloor", "ceiling", "Ceiling_Light", "PointLight", "SkyDome_1", "Macbook", "photoframe", "anchor_doorlock", "candlefire"]
+    def Cube "floor" (
+        active = true
+        prepend apiSchemas = ["MaterialBindingAPI"]
+    )
+    {
+        rel material:binding = </Root/floor/DefaultMaterial>
+        double size = 0.2
+        float3 xformOp:scale = (100, 1, 100)
+        float3 xformOp:translate = (0, -0.1, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Material "DefaultMaterial"
+        {
+            token inputs:frame:stPrimvarName = "st" (
+                customData = {
+                    dictionary realitykit = {
+                        bool hide = 1
+                    }
+                }
+            )
+            token outputs:mtlx:surface
+            token outputs:realitykit:vertex
+            token outputs:surface.connect = </Root/floor/DefaultMaterial/DefaultSurfaceShader.outputs:surface>
+
+            def Shader "DefaultSurfaceShader"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (1, 1, 1)
+                color3f inputs:diffuseColor.connect = </Root/floor/DefaultMaterial/diffuseColor.outputs:rgb>
+                float inputs:roughness = 0.75
+                token outputs:surface
+            }
+
+            def Shader "diffuseColor"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @floormaterial.jpg@
+                float2 inputs:st.connect = </Root/floor/DefaultMaterial/diffuseColor/TexCoordReader.outputs:result>
+                color3f outputs:rgb
+
+                def Shader "TexCoordReader"
+                {
+                    uniform token info:id = "UsdPrimvarReader_float2"
+                    token inputs:varname.connect = </Root/floor/DefaultMaterial.inputs:frame:stPrimvarName>
+                    float2 outputs:result
+                }
+            }
+        }
+
+        def RealityKitComponent "Collider"
+        {
+            uint group = 1
+            uniform token info:id = "RealityKit.Collider"
+            uint mask = 4294967295
+            token type = "Default"
+
+            def RealityKitStruct "Shape"
+            {
+                float3 extent = (0.2, 0.2, 0.2)
+                token shapeType = "Box"
+
+                def RealityKitStruct "pose"
+                {
+                }
+            }
+        }
+    }
+
+    def "ikea_bed" (
+        active = true
+        references = @ikea_bed.usdz@
+    )
+    {
+        float3 xformOp:scale = (0.06, 0.06, 0.06)
+        float3 xformOp:translate = (3.8924541, -0.024834827, 2.573936)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def RealityKitComponent "Collider"
+        {
+            uint group = 1
+            uniform token info:id = "RealityKit.Collider"
+            uint mask = 4294967295
+            token type = "Default"
+
+            def RealityKitStruct "Shape"
+            {
+                float3 extent = (126.256676, 111.999985, 206.99997)
+                token shapeType = "Box"
+
+                def RealityKitStruct "pose"
+                {
+                    float3 position = (48.63963, 55.999992, -103.499985)
+                }
+            }
+        }
+    }
+
+    def "Computer_Desk" (
+        active = true
+        references = @Computer_Desk.usdz@
+    )
+    {
+        float3 xformOp:scale = (0.015, 0.015, 0.015)
+        float3 xformOp:translate = (-0.8005347, 4.3157754, -7.9243407)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def RealityKitComponent "Collider"
+        {
+            uint group = 1
+            uniform token info:id = "RealityKit.Collider"
+            uint mask = 4294967295
+            token type = "Default"
+
+            def RealityKitStruct "Shape"
+            {
+                float3 extent = (480.00003, 298, 260)
+                token shapeType = "Box"
+
+                def RealityKitStruct "pose"
+                {
+                    float3 position = (0, -144, -0.0000076293945)
+                }
+            }
+        }
+    }
+
+    def "safe_animated" (
+        active = true
+        customData = {
+            float3 rotationEulerHint = (0, -1.5707963, 0)
+        }
+        references = @safe_animated.usdz@
+    )
+    {
+        quatf xformOp:orient = (0.70710677, 0, -0.70710677, 0)
+        float3 xformOp:scale = (1.2, 1.2, 1.2)
+        float3 xformOp:translate = (1.303468, -0.5728197, -6.8233886)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def RealityKitComponent "InputTarget"
+        {
+            uniform token info:id = "RealityKit.InputTarget"
+        }
+
+        def RealityKitComponent "Collider"
+        {
+            uint group = 1
+            uniform token info:id = "RealityKit.Collider"
+            uint mask = 4294967295
+            token type = "Default"
+
+            def RealityKitStruct "Shape"
+            {
+                float3 extent = (1.8037767, 2.1131752, 1.4136784)
+                float height = 2.1131752
+                float radius = 1.0565876
+                token shapeType = "Box"
+
+                def RealityKitStruct "pose"
+                {
+                    float3 position = (-0.051440686, 1.4995152, 0)
+                }
+            }
+        }
+    }
+
+    def "dresser" (
+        active = true
+        customData = {
+            float3 rotationEulerHint = (0, 1.5707963, 0)
+        }
+        references = @Dresser.usdz@
+    )
+    {
+        quatf xformOp:orient = (0.70710677, 0, 0.70710677, 0)
+        float3 xformOp:scale = (0.02, 0.02, 0.02)
+        float3 xformOp:translate = (-8.730837, 0.13082027, -1.8378868)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        over "Meshes"
+        {
+            over "Sketchfab_model"
+            {
+                over "ea1b8f8f6d7c4225ab4e678f6cf37aa9_fbx"
+                {
+                    over "Object_2"
+                    {
+                        quatf xformOp:orient = (1, 0, 0, 0)
+                        float3 xformOp:scale = (1, 1, 1)
+                        float3 xformOp:translate = (0, 0, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                        over "RootNode"
+                        {
+                            over "Object_4"
+                            {
+                                over "Object001"
+                                {
+                                    quatf xformOp:orient = (0.7071067, -0.7071068, 0, 0)
+                                    float3 xformOp:scale = (1, 1.0000001, 1.0000001)
+                                    float3 xformOp:translate = (-0.000091552734, 441.99997, 0.000002781579)
+                                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                                    over "Object_18"
+                                    {
+                                        quatf xformOp:orient = (1, 0, 0, 0)
+                                        float3 xformOp:scale = (1, 1, 1)
+                                        float3 xformOp:translate = (340, -390.00006, 419.99997)
+                                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                                        over "Object001_Tumb_0"
+                                        {
+                                            quatf xformOp:orient = (1, 0, 0, 0)
+                                            float3 xformOp:scale = (1, 1, 1)
+                                            float3 xformOp:translate = (0, 0, 0)
+                                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                                            over "Object001_Tumb_0"
+                                            {
+                                                float3 xformOp:translate = (0, 0, 0)
+                                                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        over "SkinnedMeshes"
+        {
+            quatf xformOp:orient = (1, 0, 0, 0)
+            float3 xformOp:scale = (0.2555575, 0.2555575, 0.2555575)
+            float3 xformOp:translate = (0, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            over "Sketchfab_model"
+            {
+                over "ea1b8f8f6d7c4225ab4e678f6cf37aa9_fbx"
+                {
+                    over "Object_2"
+                    {
+                        over "RootNode"
+                        {
+                            over "Object_4"
+                            {
+                                over "_rootJoint"
+                                {
+                                    over "skin0"
+                                    {
+                                        over "skeleton"
+                                        {
+                                            float3 xformOp:translate = (0, 0, 0)
+                                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        def RealityKitComponent "Collider"
+        {
+            uint group = 1
+            uniform token info:id = "RealityKit.Collider"
+            uint mask = 4294967295
+            token type = "Default"
+
+            def RealityKitStruct "Shape"
+            {
+                float3 extent = (256.0686, 225.91278, 115.23196)
+                token shapeType = "Box"
+
+                def RealityKitStruct "pose"
+                {
+                    float3 position = (-0.000022888184, 112.956375, 2.9266472)
+                }
+            }
+        }
+    }
+
+    def "door_animated" (
+        active = true
+        customData = {
+            float3 rotationEulerHint = (0, -1.5707963, 0)
+        }
+        references = @door_animated.usdz@
+    )
+    {
+        quatf xformOp:orient = (0.70710677, 0, -0.70710677, 0)
+        float3 xformOp:scale = (0.04, 0.04, 0.04)
+        float3 xformOp:translate = (-10, 0, 4.9915037)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        over "Meshes"
+        {
+            over "Sketchfab_model"
+            {
+                over "b37afcbbf8564243bc40699160c032e0_fbx"
+                {
+                    over "Object_2"
+                    {
+                        over "RootNode"
+                        {
+                            over "Plane" (
+                                active = false
+                            )
+                            {
+                            }
+
+                            over "Plane_004" (
+                                active = false
+                            )
+                            {
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        def RealityKitComponent "Collider"
+        {
+            uint group = 1
+            uniform token info:id = "RealityKit.Collider"
+            uint mask = 4294967295
+            token type = "Default"
+
+            def RealityKitStruct "Shape"
+            {
+                float3 extent = (96.53779, 205.01837, 25.90781)
+                token shapeType = "Box"
+
+                def RealityKitStruct "pose"
+                {
+                    float3 position = (-0.0000038146973, 102.509155, 3.9924145)
+                }
+            }
+        }
+    }
+
+    def "window_animated" (
+        active = true
+        references = @Animated_Window_Systems.usdz@
+    )
+    {
+        float3 xformOp:scale = (0.07, 0.07, 0.07)
+        float3 xformOp:translate = (-7.430874, 3.8609557, 9.858309)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        over "Meshes"
+        {
+            over "Sketchfab_model"
+            {
+                over "c6e3e68a8e60493d934f2d46f3ca3045_fbx"
+                {
+                    over "Object_2"
+                    {
+                        over "RootNode"
+                        {
+                            over "fixed" (
+                                active = false
+                            )
+                            {
+                            }
+
+                            over "fixed_lattice" (
+                                active = false
+                            )
+                            {
+                            }
+
+                            over "revolving_frame" (
+                                active = false
+                            )
+                            {
+                            }
+
+                            over "revolving_door" (
+                                active = false
+                            )
+                            {
+                            }
+
+                            over "pivoting_lattice_frame" (
+                                active = false
+                            )
+                            {
+                            }
+
+                            over "pivoting_lattice_panel" (
+                                active = false
+                            )
+                            {
+                            }
+
+                            over "pivoting_lattice_window" (
+                                active = false
+                            )
+                            {
+                            }
+
+                            over "pivoting_handle" (
+                                active = false
+                            )
+                            {
+                            }
+
+                            over "pivoting_frame" (
+                                active = false
+                            )
+                            {
+                            }
+
+                            over "pivoting_panel" (
+                                active = false
+                            )
+                            {
+                            }
+
+                            over "awning_lattice_armature" (
+                                active = false
+                            )
+                            {
+                            }
+
+                            over "awning_lattice_frame" (
+                                active = false
+                            )
+                            {
+                            }
+
+                            over "awning_armature" (
+                                active = false
+                            )
+                            {
+                            }
+
+                            over "awning_frame" (
+                                active = false
+                            )
+                            {
+                            }
+
+                            over "casement_bridged_panelR" (
+                                active = false
+                            )
+                            {
+                            }
+
+                            over "casement_bridged_panelL" (
+                                active = false
+                            )
+                            {
+                            }
+
+                            over "casement_bridged_frame" (
+                                active = false
+                            )
+                            {
+                            }
+
+                            over "casement_panelR" (
+                                active = false
+                            )
+                            {
+                            }
+
+                            over "casement_panelL" (
+                                active = false
+                            )
+                            {
+                            }
+
+                            over "casement_frame" (
+                                active = false
+                            )
+                            {
+                            }
+
+                            over "sliding_vertical_lattice_windowT" (
+                                active = false
+                            )
+                            {
+                            }
+
+                            over "sliding_vertical_lattice_windowB" (
+                                active = false
+                            )
+                            {
+                            }
+
+                            over "sliding_vertical_lattice_frame" (
+                                active = false
+                            )
+                            {
+                            }
+
+                            over "sliding_horizontal_lattice_windowR" (
+                                active = false
+                            )
+                            {
+                            }
+
+                            over "sliding_horizontal_lattice_windowL" (
+                                active = false
+                            )
+                            {
+                            }
+
+                            over "sliding_horizontal_lattice_frame" (
+                                active = false
+                            )
+                            {
+                            }
+
+                            over "sliding_horizontal_4panels_windowR2" (
+                                active = false
+                            )
+                            {
+                            }
+
+                            over "sliding_horizontal_4panels_windowR1" (
+                                active = false
+                            )
+                            {
+                            }
+
+                            over "sliding_horizontal_4panels_windowL1" (
+                                active = false
+                            )
+                            {
+                            }
+
+                            over "sliding_horizontal_4panels_windowL2" (
+                                active = false
+                            )
+                            {
+                            }
+
+                            over "Jalousie_narrow_fincontrol"
+                            {
+                            }
+
+                            over "Jalousie_narrow_frame"
+                            {
+                            }
+
+                            over "Jalousie_narrow_fin1"
+                            {
+                            }
+
+                            over "Jalousie_narrow_fin2"
+                            {
+                            }
+
+                            over "Jalousie_narrow_fin3"
+                            {
+                            }
+
+                            over "Jalousie_narrow_fin4"
+                            {
+                            }
+
+                            over "Jalousie_narrow_fin5"
+                            {
+                            }
+
+                            over "Jalousie_narrow_fin6"
+                            {
+                            }
+
+                            over "Jalousie_narrow_fin7"
+                            {
+                            }
+
+                            over "Jalousie_narrow_fin8"
+                            {
+                            }
+
+                            over "Jalousie_narrow_finc9"
+                            {
+                            }
+
+                            over "Jalousie_narrow_fin10"
+                            {
+                            }
+
+                            over "Jalousie_narrow_fin11"
+                            {
+                            }
+
+                            over "Jalousie_narrow_fin12"
+                            {
+                            }
+
+                            over "Jalousie_narrow_fin13"
+                            {
+                            }
+
+                            over "Jalousie_narrow_fin14"
+                            {
+                            }
+
+                            over "Jalousie_narrow_fin15"
+                            {
+                            }
+
+                            over "Jalousie_narrow_fin16"
+                            {
+                            }
+
+                            over "Jalousie_narrow_fin17"
+                            {
+                            }
+
+                            over "Jalousie_narrow_fin18"
+                            {
+                            }
+
+                            over "Jalousie_wide_fincontrol" (
+                                active = false
+                            )
+                            {
+                            }
+
+                            over "Jalousie_wide_frame" (
+                                active = false
+                            )
+                            {
+                            }
+
+                            over "Jalousie_wide_fin1" (
+                                active = false
+                            )
+                            {
+                            }
+
+                            over "Jalousie_wide_fin2" (
+                                active = false
+                            )
+                            {
+                            }
+
+                            over "Jalousie_wide_fin3" (
+                                active = false
+                            )
+                            {
+                            }
+
+                            over "Jalousie_wide_fin4" (
+                                active = false
+                            )
+                            {
+                            }
+
+                            over "Jalousie_wide_fin5" (
+                                active = false
+                            )
+                            {
+                            }
+
+                            over "Jalousie_wide_fin6" (
+                                active = false
+                            )
+                            {
+                            }
+
+                            over "Jalousie_wide_fin7" (
+                                active = false
+                            )
+                            {
+                            }
+
+                            over "Jalousie_wide_fin8" (
+                                active = false
+                            )
+                            {
+                            }
+
+                            over "Jalousie_wide_fin9" (
+                                active = false
+                            )
+                            {
+                            }
+
+                            over "sliding_vertical_frame" (
+                                active = false
+                            )
+                            {
+                            }
+
+                            over "sliding_vertical_windowT" (
+                                active = false
+                            )
+                            {
+                            }
+
+                            over "sliding_vertical_windowB" (
+                                active = false
+                            )
+                            {
+                            }
+
+                            over "sliding_horizontal_frame" (
+                                active = false
+                            )
+                            {
+                            }
+
+                            over "sliding_horizontal_windowL" (
+                                active = false
+                            )
+                            {
+                            }
+
+                            over "sliding_horizontal_windowR" (
+                                active = false
+                            )
+                            {
+                            }
+
+                            over "holding_frame" (
+                                active = false
+                            )
+                            {
+                            }
+
+                            over "holding_panels" (
+                                active = false
+                            )
+                            {
+                            }
+
+                            over "sliding_horizontal_4panels_frame" (
+                                active = false
+                            )
+                            {
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        over "Materials"
+        {
+            over "frame2"
+            {
+                token outputs:mtlx:surface
+                token outputs:realitykit:vertex
+
+                over "pbr_shader"
+                {
+                    color3f inputs:diffuseColor = (0.205842, 0.197005, 0.20089)
+                }
+            }
+
+            over "glass"
+            {
+                token outputs:mtlx:surface
+                token outputs:realitykit:vertex
+
+                over "pbr_shader"
+                {
+                    float inputs:opacity = 0.8
+                }
+            }
+        }
+
+        def RealityKitComponent "InputTarget"
+        {
+            uniform token info:id = "RealityKit.InputTarget"
+        }
+
+        def RealityKitComponent "Collider"
+        {
+            uint group = 1
+            uniform token info:id = "RealityKit.Collider"
+            uint mask = 4294967295
+            token type = "Default"
+
+            def RealityKitStruct "Shape"
+            {
+                float3 extent = (77.0141, 95.55675, 7.582357)
+                token shapeType = "Box"
+
+                def RealityKitStruct "pose"
+                {
+                    float3 position = (81.22035, 79.10398, 1.1094744)
+                }
+            }
+        }
+    }
+
+    def Cube "wall1" (
+        active = true
+        prepend apiSchemas = ["MaterialBindingAPI"]
+    )
+    {
+        rel material:binding = </Root/wall1/DefaultMaterial>
+        double size = 0.2
+        float3 xformOp:scale = (1, 100, 100)
+        float3 xformOp:translate = (10, 9, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Material "DefaultMaterial"
+        {
+            token outputs:surface.connect = </Root/wall1/DefaultMaterial/DefaultSurfaceShader.outputs:surface>
+
+            def Shader "DefaultSurfaceShader"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (1, 1, 1)
+                float inputs:roughness = 0.75
+                token outputs:surface
+            }
+        }
+
+        def RealityKitComponent "Collider"
+        {
+            uint group = 1
+            uniform token info:id = "RealityKit.Collider"
+            uint mask = 4294967295
+            token type = "Default"
+
+            def RealityKitStruct "Shape"
+            {
+                float3 extent = (0.2, 0.2, 0.2)
+                token shapeType = "Box"
+
+                def RealityKitStruct "pose"
+                {
+                }
+            }
+        }
+    }
+
+    def Cube "wall1_1" (
+        active = true
+        prepend apiSchemas = ["MaterialBindingAPI"]
+    )
+    {
+        rel material:binding = </Root/wall1_1/DefaultMaterial>
+        double size = 0.2
+        float2 ui:nodegraph:node:pos = (20, 20)
+        int ui:nodegraph:node:stackingOrder = 1
+        quatf xformOp:orient = (1, 0, 0, 0)
+        float3 xformOp:scale = (1, 100, 15)
+        float3 xformOp:translate = (-10.000035, 9, 8.411353)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Material "DefaultMaterial"
+        {
+            token outputs:surface.connect = </Root/wall1_1/DefaultMaterial/DefaultSurfaceShader.outputs:surface>
+
+            def Shader "DefaultSurfaceShader"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (1, 1, 1)
+                float inputs:roughness = 0.75
+                token outputs:surface
+            }
+        }
+
+        def RealityKitComponent "Collider"
+        {
+            uint group = 1
+            uniform token info:id = "RealityKit.Collider"
+            uint mask = 4294967295
+            token type = "Default"
+
+            def RealityKitStruct "Shape"
+            {
+                float3 extent = (0.2, 0.2, 0.2)
+                token shapeType = "Box"
+
+                def RealityKitStruct "pose"
+                {
+                }
+            }
+        }
+    }
+
+    def Cube "wall1_2" (
+        prepend apiSchemas = ["MaterialBindingAPI"]
+    )
+    {
+        rel material:binding = </Root/wall1_2/DefaultMaterial>
+        double size = 0.2
+        float2 ui:nodegraph:node:pos = (40, 40)
+        int ui:nodegraph:node:stackingOrder = 2
+        quatf xformOp:orient = (1, 0, 0, 0)
+        float3 xformOp:scale = (100, 100, 1)
+        float3 xformOp:translate = (10.859726, 9, 10)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Material "DefaultMaterial"
+        {
+            token outputs:surface.connect = </Root/wall1_2/DefaultMaterial/DefaultSurfaceShader.outputs:surface>
+
+            def Shader "DefaultSurfaceShader"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (1, 1, 1)
+                float inputs:roughness = 0.75
+                token outputs:surface
+            }
+        }
+
+        def RealityKitComponent "Collider"
+        {
+            uint group = 1
+            uniform token info:id = "RealityKit.Collider"
+            uint mask = 4294967295
+            token type = "Default"
+
+            def RealityKitStruct "Shape"
+            {
+                float3 extent = (0.2, 0.2, 0.2)
+                token shapeType = "Box"
+
+                def RealityKitStruct "pose"
+                {
+                }
+            }
+        }
+    }
+
+    def Cube "wall1_3" (
+        prepend apiSchemas = ["MaterialBindingAPI"]
+    )
+    {
+        rel material:binding = </Root/wall1_3/DefaultMaterial>
+        double size = 0.2
+        float2 ui:nodegraph:node:pos = (60, 60)
+        int ui:nodegraph:node:stackingOrder = 3
+        quatf xformOp:orient = (1, 0, 0, 0)
+        float3 xformOp:scale = (100, 100, 1)
+        float3 xformOp:translate = (0, 9, -10)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Material "DefaultMaterial"
+        {
+            token outputs:surface.connect = </Root/wall1_3/DefaultMaterial/DefaultSurfaceShader.outputs:surface>
+
+            def Shader "DefaultSurfaceShader"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (1, 1, 1)
+                float inputs:roughness = 0.75
+                token outputs:surface
+            }
+        }
+
+        def RealityKitComponent "Collider"
+        {
+            uint group = 1
+            uniform token info:id = "RealityKit.Collider"
+            uint mask = 4294967295
+            token type = "Default"
+
+            def RealityKitStruct "Shape"
+            {
+                float3 extent = (0.2, 0.2, 0.2)
+                token shapeType = "Box"
+
+                def RealityKitStruct "pose"
+                {
+                }
+            }
+        }
+    }
+
+    def Cube "wall1_4" (
+        prepend apiSchemas = ["MaterialBindingAPI"]
+    )
+    {
+        rel material:binding = </Root/wall1_4/DefaultMaterial>
+        double size = 0.2
+        float2 ui:nodegraph:node:pos = (60, 60)
+        int ui:nodegraph:node:stackingOrder = 3
+        quatf xformOp:orient = (1, 0, 0, 0)
+        float3 xformOp:scale = (100, 100, 1)
+        float3 xformOp:translate = (-14.365906, 9, 10)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Material "DefaultMaterial"
+        {
+            token outputs:surface.connect = </Root/wall1_4/DefaultMaterial/DefaultSurfaceShader.outputs:surface>
+
+            def Shader "DefaultSurfaceShader"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (1, 1, 1)
+                float inputs:roughness = 0.75
+                token outputs:surface
+            }
+        }
+
+        def RealityKitComponent "Collider"
+        {
+            uint group = 1
+            uniform token info:id = "RealityKit.Collider"
+            uint mask = 4294967295
+            token type = "Default"
+
+            def RealityKitStruct "Shape"
+            {
+                float3 extent = (0.2, 0.2, 0.2)
+                token shapeType = "Box"
+
+                def RealityKitStruct "pose"
+                {
+                }
+            }
+        }
+    }
+
+    def Cube "wall1_5" (
+        prepend apiSchemas = ["MaterialBindingAPI"]
+    )
+    {
+        rel material:binding = </Root/wall1_5/DefaultMaterial>
+        double size = 0.2
+        float2 ui:nodegraph:node:pos = (80, 80)
+        int ui:nodegraph:node:stackingOrder = 4
+        quatf xformOp:orient = (1, 0, 0, 0)
+        float3 xformOp:scale = (40, 40, 1)
+        float3 xformOp:translate = (-1.935185, 16.671219, 10)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Material "DefaultMaterial"
+        {
+            token outputs:surface.connect = </Root/wall1_5/DefaultMaterial/DefaultSurfaceShader.outputs:surface>
+
+            def Shader "DefaultSurfaceShader"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (1, 1, 1)
+                float inputs:roughness = 0.75
+                token outputs:surface
+            }
+        }
+
+        def RealityKitComponent "Collider"
+        {
+            uint group = 1
+            uniform token info:id = "RealityKit.Collider"
+            uint mask = 4294967295
+            token type = "Default"
+
+            def RealityKitStruct "Shape"
+            {
+                float3 extent = (0.2, 0.2, 0.2)
+                token shapeType = "Box"
+
+                def RealityKitStruct "pose"
+                {
+                }
+            }
+        }
+    }
+
+    def Cube "wall1_6" (
+        prepend apiSchemas = ["MaterialBindingAPI"]
+    )
+    {
+        rel material:binding = </Root/wall1_6/DefaultMaterial>
+        double size = 0.2
+        float2 ui:nodegraph:node:pos = (100, 100)
+        int ui:nodegraph:node:stackingOrder = 5
+        quatf xformOp:orient = (1, 0, 0, 0)
+        float3 xformOp:scale = (40, 40, 1)
+        float3 xformOp:translate = (-1.935185, 2.101435, 10)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Material "DefaultMaterial"
+        {
+            token outputs:surface.connect = </Root/wall1_6/DefaultMaterial/DefaultSurfaceShader.outputs:surface>
+
+            def Shader "DefaultSurfaceShader"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (1, 1, 1)
+                float inputs:roughness = 0.75
+                token outputs:surface
+            }
+        }
+
+        def RealityKitComponent "Collider"
+        {
+            uint group = 1
+            uniform token info:id = "RealityKit.Collider"
+            uint mask = 4294967295
+            token type = "Default"
+
+            def RealityKitStruct "Shape"
+            {
+                float3 extent = (0.2, 0.2, 0.2)
+                token shapeType = "Box"
+
+                def RealityKitStruct "pose"
+                {
+                }
+            }
+        }
+    }
+
+    def "doorkey" (
+        active = true
+        customData = {
+            float3 rotationEulerHint = (-1.570796, 1.5707963, 0)
+        }
+        references = @doorkey.usdz@
+    )
+    {
+        quatf xformOp:orient = (-0.5, 0.5, -0.5, -0.5)
+        float3 xformOp:scale = (0.005, 0.005, 0.005)
+        float3 xformOp:translate = (1.2965595, 0.4533006, -6.9869146)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def RealityKitComponent "InputTarget"
+        {
+            uniform token info:id = "RealityKit.InputTarget"
+        }
+
+        def RealityKitComponent "Collider"
+        {
+            uint group = 1
+            uniform token info:id = "RealityKit.Collider"
+            uint mask = 4294967295
+            token type = "Default"
+
+            def RealityKitStruct "Shape"
+            {
+                float3 extent = (85.32535, 188.8411, 12.094473)
+                token shapeType = "Box"
+
+                def RealityKitStruct "pose"
+                {
+                    float3 position = (-0.619606, 22.26102, -0.0000026226044)
+                }
+            }
+        }
+    }
+
+    def "Picture_Frame" (
+        active = true
+        customData = {
+            float3 rotationEulerHint = (0, 3.1415927, 0)
+        }
+        references = @Picture_Frame.usdz@
+    )
+    {
+        quatf xformOp:orient = (-4.371139e-8, 0, 1, 0)
+        float3 xformOp:scale = (0.01, 0.01, 0.01)
+        float3 xformOp:translate = (9.949999, 6.452865, -4.3155627)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        over "Materials"
+        {
+            over "_D_Oak___Semigloss_001"
+            {
+                token outputs:mtlx:surface
+                token outputs:realitykit:vertex
+            }
+
+            over "_D_Oak___Semigloss_004"
+            {
+                token outputs:mtlx:surface
+                token outputs:realitykit:vertex
+            }
+        }
+    }
+
+    def "Picture_Frame_1" (
+        active = true
+        customData = {
+            float3 rotationEulerHint = (0, 3.1415927, 0)
+        }
+        references = @Picture_Frame.usdz@
+    )
+    {
+        float2 ui:nodegraph:node:pos = (20, 20)
+        int ui:nodegraph:node:stackingOrder = 1
+        quatf xformOp:orient = (-4.371139e-8, 0, 1, 0)
+        float3 xformOp:scale = (0.01, 0.01, 0.01)
+        float3 xformOp:translate = (9.949999, 6.452865, -0.22934914)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        over "Materials"
+        {
+            over "_D_Oak___Semigloss_001"
+            {
+                token outputs:mtlx:surface
+                token outputs:realitykit:vertex
+            }
+
+            over "_D_Oak___Semigloss_004"
+            {
+                token outputs:mtlx:surface
+                token outputs:realitykit:vertex
+            }
+        }
+    }
+
+    def "Picture_Frame_2" (
+        active = true
+        customData = {
+            float3 rotationEulerHint = (0, 3.1415927, 0)
+        }
+        references = @Picture_Frame.usdz@
+    )
+    {
+        float2 ui:nodegraph:node:pos = (20, 20)
+        int ui:nodegraph:node:stackingOrder = 1
+        quatf xformOp:orient = (-4.371139e-8, 0, 1, 0)
+        float3 xformOp:scale = (0.01, 0.01, 0.01)
+        float3 xformOp:translate = (9.949999, 6.452865, 3.8996384)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        over "Materials"
+        {
+            over "_D_Oak___Semigloss_001"
+            {
+                token outputs:mtlx:surface
+                token outputs:realitykit:vertex
+            }
+
+            over "_D_Oak___Semigloss_004"
+            {
+                token outputs:mtlx:surface
+                token outputs:realitykit:vertex
+            }
+        }
+    }
+
+    def Cube "wall1_7" (
+        active = true
+        prepend apiSchemas = ["MaterialBindingAPI"]
+    )
+    {
+        rel material:binding = </Root/wall1_7/DefaultMaterial>
+        double size = 0.2
+        float2 ui:nodegraph:node:pos = (40, 40)
+        int ui:nodegraph:node:stackingOrder = 2
+        quatf xformOp:orient = (1, 0, 0, 0)
+        float3 xformOp:scale = (1, 100, 100)
+        float3 xformOp:translate = (-10, 9, -6.924946)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Material "DefaultMaterial"
+        {
+            token outputs:surface.connect = </Root/wall1_7/DefaultMaterial/DefaultSurfaceShader.outputs:surface>
+
+            def Shader "DefaultSurfaceShader"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (1, 1, 1)
+                float inputs:roughness = 0.75
+                token outputs:surface
+            }
+        }
+    }
+
+    def Cube "wall1_8" (
+        prepend apiSchemas = ["MaterialBindingAPI"]
+        customData = {
+            float3 rotationEulerHint = (0, 1.5707963, 0)
+        }
+    )
+    {
+        rel material:binding = </Root/wall1_8/DefaultMaterial>
+        double size = 0.2
+        float2 ui:nodegraph:node:pos = (100, 100)
+        int ui:nodegraph:node:stackingOrder = 5
+        quatf xformOp:orient = (0.70710677, 0, 0.70710677, 0)
+        float3 xformOp:scale = (40, 60, 1)
+        float3 xformOp:translate = (-10, 14.154373, 6.5270553)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Material "DefaultMaterial"
+        {
+            token outputs:surface.connect = </Root/wall1_8/DefaultMaterial/DefaultSurfaceShader.outputs:surface>
+
+            def Shader "DefaultSurfaceShader"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (1, 1, 1)
+                float inputs:roughness = 0.75
+                token outputs:surface
+            }
+        }
+    }
+
+    def "candle" (
+        active = true
+        prepend apiSchemas = ["MaterialBindingAPI"]
+        references = @Just_a_Candle.usdz@
+    )
+    {
+        rel material:binding = None (
+            bindMaterialAs = "weakerThanDescendants"
+        )
+        float3 xformOp:scale = (0.005, 0.005, 0.005)
+        float3 xformOp:translate = (1.5416013, 4.4002023, -8.203297)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        over "Meshes"
+        {
+            over "Sketchfab_model"
+            {
+                over "root"
+                {
+                    over "GLTF_SceneRootNode"
+                    {
+                        over "BezierCurve_001_5"
+                        {
+                        }
+
+                        over "_4_04_1_001_4" (
+                            active = false
+                        )
+                        {
+                        }
+
+                        over "_4_04_1_002_3" (
+                            active = false
+                        )
+                        {
+                        }
+
+                        over "_4_04_1_2" (
+                            active = false
+                        )
+                        {
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    def "snowglobe" (
+        active = true
+        references = @SnowGlobe.usda@
+    )
+    {
+        float3 xformOp:scale = (5, 5, 5)
+        float3 xformOp:translate = (-2.674568, 4.3246017, -8.094515)
+    }
+
+    def "lighter" (
+        active = true
+        customData = {
+            float3 rotationEulerHint = (1.5707959, 1.5707963, 0)
+        }
+        references = @Basic_Lighter.usdz@
+    )
+    {
+        quatf xformOp:orient = (-0.5, -0.5, -0.5, 0.5)
+        float3 xformOp:scale = (0.003, 0.003, 0.003)
+        float3 xformOp:translate = (-7.319337, 1.6814046, -7.513867)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def RealityKitComponent "InputTarget"
+        {
+            uniform token info:id = "RealityKit.InputTarget"
+        }
+
+        def RealityKitComponent "Collider"
+        {
+            uint group = 1
+            uniform token info:id = "RealityKit.Collider"
+            uint mask = 4294967295
+            token type = "Default"
+
+            def RealityKitStruct "Shape"
+            {
+                float3 extent = (67.42833, 200.73346, 31.816551)
+                token shapeType = "Box"
+
+                def RealityKitStruct "pose"
+                {
+                    float3 position = (-4.1116323, -0.124607086, 2.558857)
+                }
+            }
+        }
+    }
+
+    def "paper" (
+        active = true
+        references = @Paper.usdz@
+    )
+    {
+        float3 xformOp:scale = (0.02, 0.02, 0.02)
+        float3 xformOp:translate = (-7.9615555, 2.7442079, -1.033165)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def RealityKitComponent "InputTarget"
+        {
+            uniform token info:id = "RealityKit.InputTarget"
+        }
+
+        def RealityKitComponent "Collider"
+        {
+            uint group = 1
+            uniform token info:id = "RealityKit.Collider"
+            uint mask = 4294967295
+            token type = "Default"
+
+            def RealityKitStruct "Shape"
+            {
+                float3 extent = (56.09731, 1.8264961, 43.199997)
+                token shapeType = "Box"
+
+                def RealityKitStruct "pose"
+                {
+                    float3 position = (-17.110044, -26.656013, 17.200264)
+                }
+            }
+        }
+    }
+
+    def "battery" (
+        active = true
+        references = @AA_Battery.usdz@
+    )
+    {
+        float3 xformOp:scale = (0.05, 0.05, 0.05)
+        float3 xformOp:translate = (-7.973802, 3.7401204, -1.3480883)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def RealityKitComponent "InputTarget"
+        {
+            uniform token info:id = "RealityKit.InputTarget"
+        }
+
+        def RealityKitComponent "Collider"
+        {
+            uint group = 1
+            uniform token info:id = "RealityKit.Collider"
+            uint mask = 4294967295
+            token type = "Default"
+
+            def RealityKitStruct "Shape"
+            {
+                float3 extent = (6.6752467, 4.4928484, 4.473871)
+                token shapeType = "Box"
+
+                def RealityKitStruct "pose"
+                {
+                    float3 position = (2.792031, 1.9591256, 1.5007515)
+                }
+            }
+        }
+    }
+
+    def "dresserkey" (
+        active = true
+        references = @Key_with_Tag.usdz@
+    )
+    {
+        float3 xformOp:scale = (0.1, 0.1, 0.1)
+        float3 xformOp:translate = (-2.1779606, 0.08577338, 0.5299448)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def "hammer" (
+        active = true
+        customData = {
+            float3 rotationEulerHint = (5.7735242e-8, -5.9575342e-8, -1.5394276)
+        }
+        references = @Hammer.usdz@
+    )
+    {
+        quatf xformOp:orient = (0.71810985, -1.3322676e-15, -4.1480654e-8, -0.6959297)
+        float3 xformOp:scale = (0.04, 0.04, 0.04)
+        float3 xformOp:translate = (6.2401524, 0.1630596, -0.8815422)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def RealityKitComponent "InputTarget"
+        {
+            uniform token info:id = "RealityKit.InputTarget"
+        }
+
+        def RealityKitComponent "Collider"
+        {
+            uint group = 1
+            uniform token info:id = "RealityKit.Collider"
+            uint mask = 4294967295
+            token type = "Default"
+
+            def RealityKitStruct "Shape"
+            {
+                float3 extent = (2.3246782, 25.81861, 26.817879)
+                token shapeType = "Box"
+
+                def RealityKitStruct "pose"
+                {
+                    float3 position = (0, 12.977073, -0.47081566)
+                }
+            }
+        }
+
+        def RealityKitComponent "RigidBody"
+        {
+            uniform token info:id = "RealityKit.RigidBody"
+
+            def RealityKitStruct "massFrame"
+            {
+                def RealityKitStruct "m_pose"
+                {
+                }
+            }
+
+            def RealityKitStruct "material"
+            {
+            }
+        }
+    }
+
+    def "Indoor_Plant_with_pot_a" (
+        active = true
+        references = @Indoor_Plant_with_pot_a.usdz@
+    )
+    {
+        float3 xformOp:scale = (0.07, 0.07, 0.07)
+        float3 xformOp:translate = (-6.963738, 0, -7.0316033)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def RealityKitComponent "Collider"
+        {
+            uint group = 1
+            uniform token info:id = "RealityKit.Collider"
+            uint mask = 4294967295
+            token type = "Default"
+
+            def RealityKitStruct "Shape"
+            {
+                float3 extent = (70.48496, 100.15296, 54.5345)
+                token shapeType = "Box"
+
+                def RealityKitStruct "pose"
+                {
+                    float3 position = (-6.2446632, 50.06937, 2.7801428)
+                }
+            }
+        }
+    }
+
+    def Cube "breakablefloor" (
+        active = true
+        prepend apiSchemas = ["MaterialBindingAPI"]
+    )
+    {
+        rel material:binding = </Root/breakablefloor/DefaultMaterial>
+        double size = 0.2
+        float3 xformOp:scale = (30, 1, 20)
+        float3 xformOp:translate = (-2.0153122, 0.1, 0.12557745)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Material "DefaultMaterial"
+        {
+            token inputs:frame:stPrimvarName = "st" (
+                customData = {
+                    dictionary realitykit = {
+                        bool hide = 1
+                    }
+                }
+            )
+            token outputs:mtlx:surface
+            token outputs:realitykit:vertex
+            token outputs:surface.connect = </Root/breakablefloor/DefaultMaterial/DefaultSurfaceShader.outputs:surface>
+
+            def Shader "DefaultSurfaceShader"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (1, 1, 1)
+                color3f inputs:diffuseColor.connect = </Root/breakablefloor/DefaultMaterial/diffuseColor.outputs:rgb>
+                float inputs:roughness = 0.75
+                token outputs:surface
+            }
+
+            def Shader "diffuseColor"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @OIP-C.1WYz-TOaUIpWOHgg6LRGxQHaEo.jpeg@
+                float2 inputs:st.connect = </Root/breakablefloor/DefaultMaterial/diffuseColor/TexCoordReader.outputs:result>
+                color3f outputs:rgb
+
+                def Shader "TexCoordReader"
+                {
+                    uniform token info:id = "UsdPrimvarReader_float2"
+                    token inputs:varname.connect = </Root/breakablefloor/DefaultMaterial.inputs:frame:stPrimvarName>
+                    float2 outputs:result
+                }
+            }
+        }
+
+        def RealityKitComponent "InputTarget"
+        {
+            uniform token info:id = "RealityKit.InputTarget"
+        }
+
+        def RealityKitComponent "Collider"
+        {
+            uint group = 1
+            uniform token info:id = "RealityKit.Collider"
+            uint mask = 4294967295
+            token type = "Default"
+
+            def RealityKitStruct "Shape"
+            {
+                float3 extent = (0.2, 0.2, 0.2)
+                token shapeType = "Box"
+
+                def RealityKitStruct "pose"
+                {
+                }
+            }
+        }
+    }
+
+    def Cube "ceiling" (
+        prepend apiSchemas = ["MaterialBindingAPI"]
+    )
+    {
+        rel material:binding = </Root/ceiling/DefaultMaterial>
+        double size = 0.2
+        float2 ui:nodegraph:node:pos = (20, 20)
+        int ui:nodegraph:node:stackingOrder = 1
+        quatf xformOp:orient = (1, 0, 0, 0)
+        float3 xformOp:scale = (100, 1, 100)
+        float3 xformOp:translate = (0, 18.9, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Material "DefaultMaterial"
+        {
+            token inputs:frame:stPrimvarName = "st" (
+                customData = {
+                    dictionary realitykit = {
+                        bool hide = 1
+                    }
+                }
+            )
+            token outputs:mtlx:surface
+            token outputs:realitykit:vertex
+            token outputs:surface.connect = </Root/ceiling/DefaultMaterial/DefaultSurfaceShader.outputs:surface>
+
+            def Shader "DefaultSurfaceShader"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (1, 1, 1)
+                float inputs:roughness = 0.75
+                token outputs:surface
+            }
+
+            def Shader "diffuseColor"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @floormaterial.jpg@
+                float2 inputs:st.connect = </Root/ceiling/DefaultMaterial/diffuseColor/TexCoordReader.outputs:result>
+                color3f outputs:rgb
+
+                def Shader "TexCoordReader"
+                {
+                    uniform token info:id = "UsdPrimvarReader_float2"
+                    token inputs:varname.connect = </Root/ceiling/DefaultMaterial.inputs:frame:stPrimvarName>
+                    float2 outputs:result
+                }
+            }
+        }
+    }
+
+    def "Ceiling_Light" (
+        active = true
+        references = @Ceiling_Light.usdz@
+    )
+    {
+        float3 xformOp:scale = (0.01, 0.01, 0.01)
+        float3 xformOp:translate = (0, 18.763926, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def Xform "PointLight"
+    {
+        float3 xformOp:translate = (0, 18.502285, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def RealityKitComponent "PointLight"
+        {
+            float attenuationFalloffExponent = 0.2
+            float attenuationRadius = 100
+            token info:id = "RealityKit.PointLight"
+            float intensity = 30000
+        }
+    }
+
+    def "SkyDome_1" (
+        active = true
+        references = @SkyDome 1.usdz@
+    )
+    {
+        float3 xformOp:scale = (1, 1, 1)
+        float3 xformOp:translate = (0, -0.2, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        over "Looks"
+        {
+            over "DomeMATSG"
+            {
+                token inputs:frame:stPrimvarName = "st" (
+                    customData = {
+                        dictionary realitykit = {
+                            bool hide = 1
+                        }
+                    }
+                )
+                token outputs:mtlx:surface
+                token outputs:realitykit:vertex
+
+                def Shader "diffuseColor"
+                {
+                    uniform token info:id = "UsdUVTexture"
+                    asset inputs:file = @R-C.a44cc98d07b87f0cf6c09a4e0b390c2d.jpeg@
+                    float2 inputs:st.connect = </Root/SkyDome_1/Looks/DomeMATSG/diffuseColor/TexCoordReader.outputs:result>
+                    color3f outputs:rgb
+
+                    def Shader "TexCoordReader"
+                    {
+                        uniform token info:id = "UsdPrimvarReader_float2"
+                        token inputs:varname.connect = </Root/SkyDome_1/Looks/DomeMATSG.inputs:frame:stPrimvarName>
+                        float2 outputs:result
+                    }
+                }
+
+                over "DomeMAT"
+                {
+                    color3f inputs:diffuseColor.connect = </Root/SkyDome_1/Looks/DomeMATSG/diffuseColor.outputs:rgb>
+                }
+            }
+
+            over "GroundMATSG"
+            {
+                token inputs:frame:stPrimvarName = "st" (
+                    customData = {
+                        dictionary realitykit = {
+                            bool hide = 1
+                        }
+                    }
+                )
+                token outputs:mtlx:surface
+                token outputs:realitykit:vertex
+
+                def Shader "diffuseColor"
+                {
+                    uniform token info:id = "UsdUVTexture"
+                    asset inputs:file = @Snow004_2K-JPG_Color.jpg@
+                    float2 inputs:st.connect = </Root/SkyDome_1/Looks/GroundMATSG/diffuseColor/TexCoordReader.outputs:result>
+                    color3f outputs:rgb
+
+                    def Shader "TexCoordReader"
+                    {
+                        uniform token info:id = "UsdPrimvarReader_float2"
+                        token inputs:varname.connect = </Root/SkyDome_1/Looks/GroundMATSG.inputs:frame:stPrimvarName>
+                        float2 outputs:result
+                    }
+                }
+
+                over "GroundMAT"
+                {
+                    color3f inputs:diffuseColor.connect = </Root/SkyDome_1/Looks/GroundMATSG/diffuseColor.outputs:rgb>
+                }
+            }
+
+            over "GridMATSG"
+            {
+                token outputs:mtlx:surface
+                token outputs:realitykit:vertex
+            }
+        }
+
+        over "Grid" (
+            active = false
+        )
+        {
+        }
+    }
+
+    def "Macbook" (
+        active = true
+        customData = {
+            float3 rotationEulerHint = (0, 3.1415927, 0)
+        }
+        references = @Macbook.usdz@
+    )
+    {
+        quatf xformOp:orient = (-4.371139e-8, 0, 1, 0)
+        float3 xformOp:scale = (0.3, 0.3, 0.3)
+        float3 xformOp:translate = (0.7586512, -60.770546, 105.7376)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def "photoframe" (
+        active = true
+        customData = {
+            float3 rotationEulerHint = (0, 1.2217305, 0)
+        }
+        references = @Photo_Frame_Low_Poly_Speed_Model.usdz@
+    )
+    {
+        quatf xformOp:orient = (0.81915206, 0, 0.5735764, 0)
+        float3 xformOp:scale = (0.08, 0.08, 0.08)
+        float3 xformOp:translate = (-8.924436, 4.6601515, -3.5231736)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        over "Materials"
+        {
+            over "PhotoFrame_MAT"
+            {
+                token inputs:frame:stPrimvarName = "st" (
+                    customData = {
+                        dictionary realitykit = {
+                            bool hide = 1
+                        }
+                    }
+                )
+                token outputs:mtlx:surface
+                token outputs:realitykit:vertex
+
+                over "pbr_shader"
+                {
+                }
+
+                def Shader "diffuseColor"
+                {
+                    uniform token info:id = "UsdUVTexture"
+                    asset inputs:file = @PhotoFrame_D.tga.png@
+                    float2 inputs:st.connect = </Root/photoframe/Materials/PhotoFrame_MAT/diffuseColor/TexCoordReader.outputs:result>
+                    color3f outputs:rgb
+
+                    def Shader "TexCoordReader"
+                    {
+                        uniform token info:id = "UsdPrimvarReader_float2"
+                        token inputs:varname.connect = </Root/photoframe/Materials/PhotoFrame_MAT.inputs:frame:stPrimvarName>
+                        float2 outputs:result
+                    }
+                }
+            }
+        }
+
+        over "Meshes"
+        {
+            over "Sketchfab_model"
+            {
+                over "_d02fca520344323bdee7be5e4cf798b_fbx"
+                {
+                    over "RootNode"
+                    {
+                        over "PhotoFrame"
+                        {
+                            over "PhotoFrame_PhotoFrame_MAT_0"
+                            {
+                                over "PhotoFrame_PhotoFrame_MAT_0" (
+                                    prepend apiSchemas = ["MaterialBindingAPI"]
+                                )
+                                {
+                                    rel material:binding = </Root/photoframe/Materials/PhotoFrame_MAT> (
+                                        bindMaterialAs = "weakerThanDescendants"
+                                    )
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    def Sphere "anchor_doorlock" (
+        active = true
+        prepend apiSchemas = ["MaterialBindingAPI"]
+    )
+    {
+        rel material:binding = </Root/anchor_doorlock/DefaultMaterial>
+        double radius = 0.1
+        float3 xformOp:scale = (0.1, 0.1, 0.1)
+        float3 xformOp:translate = (-10.140333, 3.8511975, 6.6673875)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Material "DefaultMaterial"
+        {
+            token outputs:surface.connect = </Root/anchor_doorlock/DefaultMaterial/DefaultSurfaceShader.outputs:surface>
+
+            def Shader "DefaultSurfaceShader"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (1, 1, 1)
+                float inputs:roughness = 0.75
+                token outputs:surface
+            }
+        }
+    }
+
+    def Xform "candlefire" (
+        customData = {
+            float3 rotationEulerHint = (0, 0, 0)
+        }
+    )
+    {
+        float2 ui:nodegraph:node:pos = (40, 40)
+        int ui:nodegraph:node:stackingOrder = 2
+        quatf xformOp:orient = (1, 0, 0, 0)
+        float3 xformOp:scale = (5, 5, 5)
+        float3 xformOp:translate = (1.540212, 5.649168, -8.229863)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def RealityKitComponent "VFXEmitter"
+        {
+            token info:id = "RealityKit.VFXEmitter"
+
+            def RealityKitStruct "currentState"
+            {
+                token birthDirection = "Normal"
+                int64 burstCount = 150
+                double emissionDuration = 1
+                token emitterShape = "Cone"
+                bool isEmitting = 1
+                bool isLocal = 1
+                bool isLocalFields = 1
+                float particleSpeed = 0.01
+                float3 shapeSize = (0.04, 0.04, 0.04)
+                bool spawnInheritParentColor = 0
+                token spawnOccasion = "OnDeath"
+
+                def RealityKitStruct "mainEmitter"
+                {
+                    token billboardMode = "Billboard"
+                    float birthRate = 100
+                    token blendMode = "Alpha"
+                    float colorEvolutionPower = 1
+                    float4 endColorA = (0.96828645, 0.7533718, 0.01695968, 1)
+                    bool isLightingEnabled = 0
+                    float noiseAnimationSpeed = 0
+                    float noiseScale = 1
+                    float noiseStrength = 0.05
+                    token opacityOverLife = "Constant"
+                    float particleAngle = 0
+                    double particleLifeSpan = 2
+                    float particleSize = 0.01
+                    float3 radialGravityCenter = (0, 1, 0)
+                    float radialGravityStrength = 0.05
+                    float sizeMultiplierAtEndOfLifespan = 0.5
+                    float4 startColorA = (1, 0.030250736, 0, 1)
+                    bool useEndColor = 1
+                    bool useEndColorRange = 0
+                    bool useStartColorRange = 0
+                }
+
+                def RealityKitStruct "spawnedEmitter"
+                {
+                }
+            }
+        }
+    }
+}
+

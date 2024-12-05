@@ -5,17 +5,51 @@
 //  Created by xuchi on 2024/12/2.
 //
 
-import SwiftUI
 import RealityKit
 import RealityKitContent
+import SwiftUI
 
 /*
  * util
  */
 extension Entity {
     func playAllAnimations() {
+        var controllers: [AnimationPlaybackController] = []
         for animation in self.availableAnimations {
-            self.playAnimation(animation)
+            let controller = self.playAnimation(animation)
+            controllers.append(controller)
+        }
+        self.components.set(AnimationStateComponent(isPlaying: true, controllers: controllers))
+    }
+    
+    func pauseAllAnimations() {
+        if let component = self.components[AnimationStateComponent.self] {
+            for controller in component.controllers {
+                controller.pause()
+            }
+            self.components.set(AnimationStateComponent(isPlaying: false, controllers: component.controllers))
+        }
+    }
+    
+    
+    
+    func toggleAllAnimations() {
+        if let component = self.components[AnimationStateComponent.self] {
+            if component.isPlaying {
+                pauseAllAnimations()
+            } else {
+                playAllAnimations()
+            }
+        } else {
+            playAllAnimations()
+        }
+    }
+    
+    func resumeAllAnimations() {
+        if let component = self.components[AnimationStateComponent.self] {
+            for controller in component.controllers {
+                controller.resume()
+            }
         }
     }
     
@@ -26,16 +60,12 @@ extension Entity {
     }
 }
 
-struct MetadataComponent: Component {
-    let name: String
-}
-
 extension Entity {
     var progenitor: Entity? {
+        if self.metadata != nil {
+            return self
+        }
         if let parent = self.parent {
-            if parent.metadata != nil {
-                return parent
-            }
             return parent.progenitor
         }
         return nil
@@ -43,6 +73,54 @@ extension Entity {
     
     var metadata: MetadataComponent? {
         return self.components[MetadataComponent.self]
+    }
+    
+    func findChildAndSetMetadata(named name: String) -> Entity {
+        print(name)
+        let entity = self.findEntity(named: name)!
+        entity.setMetadata(name: name)
+        return entity
+    }
+    
+    @discardableResult
+    func setMetadata(name: String) -> Entity {
+        self.components.set(MetadataComponent(name: name))
+        return self
+    }
+    
+    @discardableResult
+    func draggable() -> Entity {
+        self.components.set(DragToMoveComponent(target: self))
+        return self
+    }
+    
+    @discardableResult
+    func whenDistance(to other: Entity, within threshold: Float, do callback: @escaping () -> Void) -> Entity {
+        self.components.set(InteractOnDistanceComponent(other: other, threshold: threshold, callback: callback))
+        return self
+    }
+    
+    @discardableResult
+    func whenDistance(
+        to other: Entity, within threshold: Float, always multipleTrigger: Bool, do callback: @escaping () -> Void
+    ) -> Entity {
+        self.components.set(
+            InteractOnDistanceComponent(
+                other: other, threshold: threshold, callback: callback, multipleTrigger: multipleTrigger
+            )
+        )
+        return self
+    }
+    
+    @discardableResult
+    func whenTapped(do callback: @escaping () -> Void) -> Entity {
+        self.components.set(RespondTapComponent(target: self, callback: callback))
+        return self
+    }
+    
+    func unfocus() {
+        self.components.remove(InputTargetComponent.self)
+        self.components.remove(HoverEffectComponent.self)
     }
 }
 
@@ -105,7 +183,6 @@ extension Entity {
     func toBaseData() -> EntityBaseData? {
         if let metadata = self.editorMetadata {
             switch metadata.source {
-                
             case .library(let model):
                 return [
                     "type": "library",
@@ -129,13 +206,13 @@ extension Entity {
         if let type = data["type"] {
             var entity: Entity
             
-            if (type == "library") {
+            if type == "library" {
                 entity = EditorLibraryObject(
                     name: data["name"]!,
                     resourceName: data["resourceName"]!
                 ).asEntity()!
             }
-            else if (type == "genAi") {
+            else if type == "genAi" {
                 entity = EditorGenAiObject(
                     name: data["name"]!,
                     url: getGenAiModelsDirectory().appendingPathComponent(data["fileName"]!)
