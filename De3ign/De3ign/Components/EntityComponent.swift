@@ -5,9 +5,9 @@
 //  Created by Lemocuber on 2024/12/5.
 //
 
-import SwiftUI
 import RealityKit
 import RealityKitContent
+import SwiftUI
 
 struct MetadataComponent: Component {
     let name: String
@@ -37,6 +37,7 @@ struct DragToMoveComponent: Component {
             }
         }
     }
+
     func handleEnd(_ event: EntityTargetValue<DragGesture.Value>) {
         if var physicsBody = target.components[PhysicsBodyComponent.self] {
             physicsBody.isAffectedByGravity = true
@@ -51,13 +52,13 @@ class CollisionHandlerComponent: Component {
     let content: RealityViewContent
     let callback: () -> Void
     private var handler: EventSubscription?
-    
+
     init(target: Entity, other: Entity, content: RealityViewContent, callback: @escaping () -> Void) {
         self.target = target
         self.other = other
         self.content = content
         self.callback = callback
-        
+
         self.handler = content.subscribe(to: CollisionEvents.Began.self, on: target) { event in
             if event.entityB == other {
                 callback()

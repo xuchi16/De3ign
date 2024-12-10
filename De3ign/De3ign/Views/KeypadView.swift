@@ -22,13 +22,13 @@ struct SafeKeypadView: View {
         ["7", "8", "9"],
         ["*", "0", "#"]
     ]
-    
+
     var body: some View {
         VStack {
             Text(">    \(input)")
                 .font(.title2)
                 .padding()
-            
+
             LazyVGrid(columns: gridItems, spacing: 35) {
                 ForEach(keypadNumbers, id: \.self) { row in
                     ForEach(row, id: \.self) { key in
@@ -40,7 +40,7 @@ struct SafeKeypadView: View {
                                 .frame(width: 80, height: 80)
                                 .foregroundColor(.white)
                                 .cornerRadius(8)
-                        } .tint(.black)
+                        }.tint(.black)
                     }
                 }
             }
@@ -48,7 +48,7 @@ struct SafeKeypadView: View {
         .frame(width: 330)
         .padding()
     }
-    
+
     private func buttonTapped(_ key: String) {
         switch key {
         case "*":

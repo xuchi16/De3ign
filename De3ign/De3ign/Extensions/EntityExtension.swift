@@ -46,8 +46,6 @@ extension Entity {
         }
     }
     
-    
-    
     func toggleAllAnimations() {
         if let component = self.components[AnimationStateComponent.self] {
             if component.isPlaying {
@@ -263,14 +261,12 @@ extension Entity {
                     name: data["name"]!,
                     resourceName: data["resourceName"]!
                 ).asEntity()!
-            }
-            else if type == "genAi" {
+            } else if type == "genAi" {
                 entity = EditorGenAiObject(
                     name: data["name"]!,
                     url: getGenAiModelsDirectory().appendingPathComponent(data["fileName"]!)
                 ).asEntity()!
-            }
-            else {
+            } else {
                 return nil
             }
             

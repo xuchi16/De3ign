@@ -1,12 +1,13 @@
 //
 //  De3ignApp.swift
 //  De3ign
-///Users/lemoc/Downloads/SnowGlobePractice/Packages/RealityKitContent/Sources/RealityKitContent/RealityKitContent.rkassets/Scene.usda
+/// Users/lemoc/Downloads/SnowGlobePractice/Packages/RealityKitContent/Sources/RealityKitContent/RealityKitContent.rkassets/Scene.usda
 //  Created by xuchi on 2024/8/22.
 //
 
 import SwiftUI
-//import MixedRealityCapture
+
+// import MixedRealityCapture
 import OSLog
 
 @MainActor
@@ -14,12 +15,10 @@ let logger = Logger(subsystem: "BasicApp", category: "general")
 
 @main
 struct De3ignApp: App {
-    
     @State private var appModel = AppModel()
     @State private var captureModel = CaptureModel()
 
     var body: some Scene {
-        
         // debug
         let _ = print(getGenAiModelsDirectory())
         

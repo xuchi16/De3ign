@@ -86,7 +86,7 @@ struct WhiteMythSpaceView: View {
             candleFireEntity.isEnabled = false
             
             paperEntity.firstModelEntity()!.model!.materials = [
-                SimpleMaterial(color: .white, isMetallic: false) // hide message with blank material
+                SimpleMaterial(color: .white, isMetallic: false), // hide message with blank material
             ]
             
             snowGlobeEntity.findParticleEmittingEntity()!.isEnabled = false
@@ -161,9 +161,9 @@ struct WhiteMythSpaceView: View {
                 cockroachEntity.playAllAnimations(loop: true)
                 Task {
                     try! await Task.sleep(nanoseconds: 3_000_000_000)
-                    for i in 1...200 {
+                    for i in 1 ... 200 {
                         cockroachEntity.scale *= 0.98
-                        iphoneEntity.scale *= (0.98 * (pow(-1, Float(i))))
+                        iphoneEntity.scale *= (0.98 * pow(-1, Float(i)))
                         try! await Task.sleep(nanoseconds: 0_100_000_000)
                     }
                     cockroachEntity.isEnabled = false
@@ -172,7 +172,7 @@ struct WhiteMythSpaceView: View {
             }
             
             batteryEntity.draggable().whenDistance(to: snowGlobeEntity, within: 0.3) {
-                Task { @MainActor in
+                Task {
                     batteryEntity.components.remove(DragToMoveComponent.self)
                     await batteryEntity.magneticMove(to: snowGlobeEntity, duration: 3)
                     batteryEntity.isEnabled = false
@@ -211,7 +211,7 @@ struct WhiteMythSpaceView: View {
                 print("escape success!")
             }
             
-        } update: { content, _ in
+        } update: { _, _ in
             if self.safeKeypadInput == PASSWORD {
                 safeAttachment.isEnabled = false
                 safeEntity.playAllAnimations()
