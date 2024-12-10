@@ -16,7 +16,7 @@ struct OrnamentView: View {
 
     var body: some View {
         HStack(spacing: 20) {
-            if (spaceId == editableVolume) {
+            if (spaceId == "") {
                 Button {
                     openWindow(id: modelLibrary)
                 } label: {

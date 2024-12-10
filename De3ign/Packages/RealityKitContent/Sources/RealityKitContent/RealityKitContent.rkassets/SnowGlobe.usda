@@ -14,6 +14,68 @@ def Xform "Root"
     float3 xformOp:translate = (-0.06457275, 0, 0)
     uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
+    def "base_with_smart_uv" (
+        active = true
+        customData = {
+            float3 rotationEulerHint = (-1.5776473, -5.9603245e-8, 6.0012994e-8)
+        }
+        references = @base_with_smart_uv.usdc@
+    )
+    {
+        quatf xformOp:orient = (0.70468044, -0.7095248, -4.2290974e-8, 0)
+        float3 xformOp:scale = (0.5, 0.5, 0.5)
+        float3 xformOp:translate = (2.0580733, 8.940697e-8, 1.17579475e-7)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        over "root"
+        {
+            over "Root"
+            {
+                over "Scenes"
+                {
+                    over "Scene"
+                    {
+                        over "snow_globe_base"
+                        {
+                            over "Geometry_130"
+                            {
+                                quatf xformOp:orient = (0.7071069, 1.1717822e-15, 0.70710665, -1.1717819e-15)
+                                float3 xformOp:scale = (0.5359673, 0.5347822, 0.5322226)
+                                float3 xformOp:translate = (-482.5999, -509.4137, 60.124886)
+                                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                            }
+
+                            over "snow_on_grass" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Root/Cube/DefaultMaterial> (
+                                    bindMaterialAs = "weakerThanDescendants"
+                                )
+                                quatf xformOp:orient = (0.7071069, 0, 0.70710665, 0)
+                                float3 xformOp:scale = (0.5296113, 0.5347822, 0.50399214)
+                                float3 xformOp:translate = (-482.5999, -495.21387, 60.124886)
+                                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                                over "Geometry_134"
+                                {
+                                    over "Geometry_134" (
+                                        prepend apiSchemas = ["MaterialBindingAPI"]
+                                    )
+                                    {
+                                        rel material:binding = </Root/Globe/Base/_materials/Material_Snow> (
+                                            bindMaterialAs = "weakerThanDescendants"
+                                        )
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     def Xform "Globe" (
         active = true
     )
