@@ -76,7 +76,7 @@ struct De3ignApp: App {
                     appModel.immersiveSpaceState = .closed
                 }
         }
-        .immersionStyle(selection: .constant(.full), in: .full)
+        .immersionStyle(selection: .constant(.mixed), in: .mixed)
         
         ImmersiveSpace(id: SpaceID.jovitaSpace.rawValue) {
             JovitaSpaceView(scale: 2)

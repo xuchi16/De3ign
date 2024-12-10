@@ -1391,7 +1391,7 @@ def Xform "Root"
     {
         quatf xformOp:orient = (0.71810985, -1.3322676e-15, -4.1480654e-8, -0.6959297)
         float3 xformOp:scale = (0.05, 0.05, 0.05)
-        float3 xformOp:translate = (5.327705, 0.707584, -0.88154227)
+        float3 xformOp:translate = (4.2295465, 0.85841143, -2.7975123)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
         def RealityKitComponent "InputTarget"
@@ -2071,7 +2071,7 @@ def Xform "Root"
 
             def RealityKitStruct "Shape"
             {
-                float3 extent = (0.2, 0.3, 0.2)
+                float3 extent = (0.2, 0.25, 0.2)
                 token shapeType = "Box"
 
                 def RealityKitStruct "pose"
@@ -2167,7 +2167,7 @@ def Xform "Root"
 
             def RealityKitStruct "Shape"
             {
-                float3 extent = (0.2, 0.3, 0.2)
+                float3 extent = (0.2, 0.25, 0.2)
                 token shapeType = "Box"
 
                 def RealityKitStruct "pose"
@@ -2263,7 +2263,7 @@ def Xform "Root"
 
             def RealityKitStruct "Shape"
             {
-                float3 extent = (0.2, 0.3, 0.2)
+                float3 extent = (0.2, 0.25, 0.2)
                 token shapeType = "Box"
 
                 def RealityKitStruct "pose"
@@ -2360,7 +2360,7 @@ def Xform "Root"
 
             def RealityKitStruct "Shape"
             {
-                float3 extent = (0.2, 0.3, 0.2)
+                float3 extent = (0.2, 0.25, 0.2)
                 token shapeType = "Box"
 
                 def RealityKitStruct "pose"
@@ -2604,7 +2604,7 @@ def Xform "Root"
 
             def RealityKitStruct "Shape"
             {
-                float3 extent = (0.2, 0.3, 0.2)
+                float3 extent = (0.2, 0.25, 0.2)
                 token shapeType = "Box"
 
                 def RealityKitStruct "pose"
@@ -4234,6 +4234,86 @@ def Xform "Root"
         float3 xformOp:scale = (0.1, 0.1, 0.12)
         float3 xformOp:translate = (32.349678, 2.0632653, 37.969868)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def "Poster_Basic__Low_Poly" (
+        active = true
+        prepend references = @Poster_Basic__Low_Poly.usdz@
+    )
+    {
+        float3 xformOp:scale = (0.016, 0.008, 0.008)
+        float3 xformOp:translate = (-1.0964534, 6.2510476, -9.891981)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        over "Materials"
+        {
+            over "Paper_Material"
+            {
+                token inputs:frame:stPrimvarName = "st" (
+                    customData = {
+                        dictionary realitykit = {
+                            bool hide = 1
+                        }
+                    }
+                )
+                token outputs:mtlx:surface
+                token outputs:realitykit:vertex
+
+                over "pbr_shader"
+                {
+                    color3f inputs:diffuseColor.connect = </Root/Poster_Basic__Low_Poly/Materials/Paper_Material/diffuseColor.outputs:rgb>
+                }
+
+                def Shader "diffuseColor"
+                {
+                    uniform token info:id = "UsdUVTexture"
+                    asset inputs:file = @binarytable.png@
+                    float2 inputs:st.connect = </Root/Poster_Basic__Low_Poly/Materials/Paper_Material/diffuseColor/TexCoordReader.outputs:result>
+                    color3f outputs:rgb
+
+                    def Shader "TexCoordReader"
+                    {
+                        uniform token info:id = "UsdPrimvarReader_float2"
+                        token inputs:varname.connect = </Root/Poster_Basic__Low_Poly/Materials/Paper_Material.inputs:frame:stPrimvarName>
+                        float2 outputs:result
+                    }
+                }
+            }
+
+            over "Material_001"
+            {
+                token outputs:mtlx:surface
+                token outputs:realitykit:vertex
+            }
+        }
+
+        over "Meshes"
+        {
+            over "Sketchfab_model"
+            {
+                over "da03915a871f41d8bf8134affa9a6448_fbx"
+                {
+                    over "RootNode"
+                    {
+                        over "Tape_L"
+                        {
+                            quatf xformOp:orient = (0.65447104, -0.65447104, -0.26770815, -0.26770812)
+                            float3 xformOp:scale = (20, 10.582916, 125)
+                            float3 xformOp:translate = (-150.5843, 0.7531739, 111.93383)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                        }
+
+                        over "Tape_R"
+                        {
+                            quatf xformOp:orient = (-0.32764134, 0.32764134, 0.62661886, 0.62661886)
+                            float3 xformOp:scale = (20, 10.5824995, 125)
+                            float3 xformOp:translate = (-152.2477, 3.2272952, -112.55375)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                        }
+                    }
+                }
+            }
+        }
     }
 }
 
