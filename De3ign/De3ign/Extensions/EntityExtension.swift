@@ -13,9 +13,24 @@ import SwiftUI
  * util
  */
 extension Entity {
-    func playAllAnimations() {
+    func playAnimationWithName(_ name: String, speed: Float = 1) {
+        for anim in self.availableAnimations {
+            if anim.name == name {
+                let controller = self.playAnimation(anim)
+                controller.speed = speed
+                return
+            }
+        }
+        fatalError("animation \(name) not found on \(self.name)")
+    }
+    
+    func playAllAnimations(loop repeated: Bool = false) {
         var controllers: [AnimationPlaybackController] = []
-        for animation in self.availableAnimations {
+        for anim in self.availableAnimations {
+            var animation = anim
+            if repeated {
+                animation = anim.repeat(count: .max)
+            }
             let controller = self.playAnimation(animation)
             controllers.append(controller)
         }
@@ -58,6 +73,16 @@ extension Entity {
         let posB = other.position(relativeTo: nil)
         return simd_distance(posA, posB)
     }
+    
+    func magneticMove(to other: Entity, duration seconds: Float) async {
+        let transform = Transform(
+            scale: self.scale(relativeTo: nil),
+            rotation: self.transform.rotation,
+            translation: other.position(relativeTo: nil)
+        )
+        self.move(to: transform, relativeTo: nil, duration: .init(floatLiteral: Double(seconds)), timingFunction: .easeOut)
+        try! await Task.sleep(nanoseconds: UInt64(seconds * 1_000_000_000))
+    }
 }
 
 extension Entity {
@@ -76,10 +101,33 @@ extension Entity {
     }
     
     func findChildAndSetMetadata(named name: String) -> Entity {
-        print(name)
         let entity = self.findEntity(named: name)!
         entity.setMetadata(name: name)
         return entity
+    }
+    
+    func firstModelEntity() -> ModelEntity? {
+        if type(of: self) == ModelEntity.self {
+            return self as? ModelEntity
+        }
+        for child in self.children {
+            if let result = child.firstModelEntity() {
+                return result
+            }
+        }
+        return nil
+    }
+    
+    func findParticleEmittingEntity() -> Entity? {
+        if self.components[ParticleEmitterComponent.self] != nil {
+            return self
+        }
+        for child in self.children {
+            if let entity = child.findParticleEmittingEntity() {
+                return entity
+            }
+        }
+        return nil
     }
     
     @discardableResult
@@ -95,14 +143,8 @@ extension Entity {
     }
     
     @discardableResult
-    func whenDistance(to other: Entity, within threshold: Float, do callback: @escaping () -> Void) -> Entity {
-        self.components.set(InteractOnDistanceComponent(other: other, threshold: threshold, callback: callback))
-        return self
-    }
-    
-    @discardableResult
     func whenDistance(
-        to other: Entity, within threshold: Float, always multipleTrigger: Bool, do callback: @escaping () -> Void
+        to other: Entity, within threshold: Float, always multipleTrigger: Bool = false, do callback: @escaping () -> Void
     ) -> Entity {
         self.components.set(
             InteractOnDistanceComponent(
@@ -115,6 +157,16 @@ extension Entity {
     @discardableResult
     func whenTapped(do callback: @escaping () -> Void) -> Entity {
         self.components.set(RespondTapComponent(target: self, callback: callback))
+        return self
+    }
+    
+    @discardableResult
+    func whenCollided(with other: Entity, content: RealityViewContent, do callback: @escaping () -> Void) -> Entity {
+        self.components.set(
+            CollisionHandlerComponent(
+                target: self, other: other, content: content, callback: callback
+            )
+        )
         return self
     }
     
