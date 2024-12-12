@@ -211,15 +211,17 @@ struct WhiteMythSpaceView: View {
                 print("escape success!")
             }
             
-        } update: { _, _ in
-            if self.safeKeypadInput == PASSWORD {
-                safeAttachment.isEnabled = false
-                safeEntity.playAllAnimations()
-                safeEntity.unfocus()
-            }
         } attachments: {
             Attachment(id: "safe_keypad") {
-                SafeKeypadView(input: $safeKeypadInput)
+                SafeKeypadView(input: $safeKeypadInput, maxLength: 6) { _ in
+                    if safeKeypadInput == PASSWORD {
+                        safeAttachment.isEnabled = false
+                        safeEntity.playAllAnimations()
+                        safeEntity.unfocus()
+                        return true
+                    }
+                    return false
+                }
             }
         }
         .simultaneousGesture(
