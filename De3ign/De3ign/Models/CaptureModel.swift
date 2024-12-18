@@ -6,7 +6,7 @@
 //
 
 import ARKit
-import MixedRealityCapture
+//import MixedRealityCapture
 import OSLog
 import RealityKit
 import SwiftUI
@@ -14,7 +14,7 @@ import SwiftUI
 @Observable
 @MainActor
 class CaptureModel {
-//    
+//
 //    private(set) var externalCameraEntity = Entity()
 //
 //    let session = ARKitSession()

@@ -23,6 +23,8 @@
 		9CC2D8002CDD018F000C380C /* EditorInteraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC2D7FF2CDD0184000C380C /* EditorInteraction.swift */; };
 		9CC9F72B2CB978BE0016BD85 /* ModelLibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC9F72A2CB978B40016BD85 /* ModelLibraryView.swift */; };
 		9CC9F72D2CB97AF40016BD85 /* EditorLibraryObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC9F72C2CB97AD80016BD85 /* EditorLibraryObject.swift */; };
+		A96C29772D12984600EEE5E9 /* YogaSpace.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96C29762D12984600EEE5E9 /* YogaSpace.swift */; };
+		A96C29782D12984600EEE5E9 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96C29752D12984600EEE5E9 /* AudioPlayer.swift */; };
 		C2B362A22C772A19003AEDA9 /* RealityKitContent in Frameworks */ = {isa = PBXBuildFile; productRef = C2B362A12C772A19003AEDA9 /* RealityKitContent */; };
 		C2B362A42C772A19003AEDA9 /* De3ignApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B362A32C772A19003AEDA9 /* De3ignApp.swift */; };
 		C2B362A62C772A19003AEDA9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B362A52C772A19003AEDA9 /* ContentView.swift */; };
@@ -76,6 +78,8 @@
 		9CC2D7FF2CDD0184000C380C /* EditorInteraction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorInteraction.swift; sourceTree = "<group>"; };
 		9CC9F72A2CB978B40016BD85 /* ModelLibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelLibraryView.swift; sourceTree = "<group>"; };
 		9CC9F72C2CB97AD80016BD85 /* EditorLibraryObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorLibraryObject.swift; sourceTree = "<group>"; };
+		A96C29752D12984600EEE5E9 /* AudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
+		A96C29762D12984600EEE5E9 /* YogaSpace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YogaSpace.swift; sourceTree = "<group>"; };
 		C2B3629C2C772A19003AEDA9 /* De3ign.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = De3ign.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2B362A02C772A19003AEDA9 /* RealityKitContent */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = RealityKitContent; sourceTree = "<group>"; };
 		C2B362A32C772A19003AEDA9 /* De3ignApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = De3ignApp.swift; sourceTree = "<group>"; };
@@ -207,6 +211,7 @@
 				C2B362CA2C783475003AEDA9 /* BasketballSpaceView.swift */,
 				C2B362CC2C78347E003AEDA9 /* SuperBrainSpaceView.swift */,
 				C2B362CE2C78348A003AEDA9 /* TempleSpaceView.swift */,
+				A96C29762D12984600EEE5E9 /* YogaSpace.swift */,
 			);
 			path = Spaces;
 			sourceTree = "<group>";
@@ -214,6 +219,7 @@
 		C2BB05F72CFD8D20005ECA25 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				A96C29752D12984600EEE5E9 /* AudioPlayer.swift */,
 				C2B362A72C772A19003AEDA9 /* AppModel.swift */,
 				C2BB05F82CFD8D31005ECA25 /* CaptureModel.swift */,
 				9C5DE54B2CF582B90096D1FB /* EditorGenAiObject.swift */,
@@ -401,6 +407,8 @@
 				C2B362CB2C783475003AEDA9 /* BasketballSpaceView.swift in Sources */,
 				C2B362AA2C772A19003AEDA9 /* ToggleImmersiveSpaceButton.swift in Sources */,
 				C2BB05F92CFD8D38005ECA25 /* CaptureModel.swift in Sources */,
+				A96C29772D12984600EEE5E9 /* YogaSpace.swift in Sources */,
+				A96C29782D12984600EEE5E9 /* AudioPlayer.swift in Sources */,
 				9CC2D8002CDD018F000C380C /* EditorInteraction.swift in Sources */,
 				C2F2941D2C787D4A00A98088 /* ChatAPI.swift in Sources */,
 				C2B363662C785C72003AEDA9 /* OrnamentView.swift in Sources */,

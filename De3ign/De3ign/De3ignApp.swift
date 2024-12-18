@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import MixedRealityCapture
+//import MixedRealityCapture
 import OSLog
 
 @MainActor
@@ -106,6 +106,18 @@ struct De3ignApp: App {
         // ====== Spaces ======
         ImmersiveSpace(id: escapeSpace) {
             EscapeSpaceView()
+                .environment(appModel)
+                .onAppear {
+                    appModel.immersiveSpaceState = .open
+                }
+                .onDisappear {
+                    appModel.immersiveSpaceState = .closed
+                }
+        }
+        .immersionStyle(selection: .constant(.full), in: .full)
+        
+        ImmersiveSpace(id: yogaSpace) {
+            YogaSpace()
                 .environment(appModel)
                 .onAppear {
                     appModel.immersiveSpaceState = .open
