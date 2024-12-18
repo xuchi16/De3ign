@@ -38,10 +38,3 @@ class EditorLibraryObject: Identifiable, EditorSceneUsing {
         return entity
     }
 }
-
-struct EditorMetadataComponent: Component {
-    let id: UUID
-    let name: String
-    var isAttachmentInstalled: Bool = false
-    let source: EntitySource
-}

@@ -58,16 +58,18 @@ struct EscapeSpaceView: View {
             
             doorLockEntity = sceneEntity.findEntity(named: "doorlock")!
             doorEntity = sceneEntity.findEntity(named: "door_animated")!
-        } update: { _, _ in
-            if self.safeKeypadInput == "314159" {
-                safeAttachment!.isEnabled = false
-                safeEntity!.playAllAnimations()
-                safeEntity!.components.remove(InputTargetComponent.self)
-                safeEntity!.components.remove(HoverEffectComponent.self)
-            }
         } attachments: {
             Attachment(id: "safe_keypad") {
-                SafeKeypadView(input: $safeKeypadInput)
+                SafeKeypadView(input: $safeKeypadInput, maxLength: 6) { _ in
+                    if safeKeypadInput == "314159" {
+                        safeAttachment!.isEnabled = false
+                        safeEntity!.playAllAnimations()
+                        safeEntity!.components.remove(InputTargetComponent.self)
+                        safeEntity!.components.remove(HoverEffectComponent.self)
+                        return true
+                    }
+                    return false
+                }
             }
         }
         .simultaneousGesture(
