@@ -66,6 +66,27 @@ extension Entity {
         }
     }
     
+    func playAudioWithName(_ name: String, speed: Float = 1, volume: Float = 0.0) {
+        let library = self.components[AudioLibraryComponent.self]!
+        let resource = library.resources[name]!
+        let controller = self.playAudio(resource)
+        controller.speed = Double(speed)
+        controller.gain = Double(volume)
+    }
+    
+    func playAllAudios(loop repeated: Bool = false) {
+        if let library = self.components[AudioLibraryComponent.self] {
+            for resource in library.resources.values {
+                let controller = self.playAudio(resource)
+                if repeated {
+                    controller.completionHandler = {
+                        controller.play()
+                    }
+                }
+            }
+        }
+    }
+    
     func distance(to other: Entity) -> Float {
         let posA = self.position(relativeTo: nil)
         let posB = other.position(relativeTo: nil)
@@ -128,6 +149,10 @@ extension Entity {
         return nil
     }
     
+    func particleBurst() {
+        self.findParticleEmittingEntity()?.components[ParticleEmitterComponent.self]!.burst()
+    }
+    
     @discardableResult
     func setMetadata(name: String) -> Entity {
         self.components.set(MetadataComponent(name: name))
@@ -159,10 +184,10 @@ extension Entity {
     }
     
     @discardableResult
-    func whenCollided(with other: Entity, content: RealityViewContent, do callback: @escaping () -> Void) -> Entity {
+    func whenCollided(with other: Entity, content: RealityViewContent, withSoundEffect sfxName: String? = nil, do callback: @escaping () -> Void) -> Entity {
         self.components.set(
             CollisionHandlerComponent(
-                target: self, other: other, content: content, callback: callback
+                target: self, other: other, content: content, sfxName: sfxName, callback: callback
             )
         )
         return self

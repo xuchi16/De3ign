@@ -9,30 +9,41 @@ import AVFoundation
 
 struct Song {
     let name: String
-    var audioPlayer: AVAudioPlayer?
+    var audioPlayer: AVAudioPlayer
     
     init(name: String) {
         self.name = name
-        guard let url = Bundle.main.url(forResource: name, withExtension: "mp3") else {
-            print("Music file not found")
-            return
-        }
-        do {
-            audioPlayer = try AVAudioPlayer(contentsOf: url)
-        } catch {
-            print("Error playing music: \(error.localizedDescription)")
-            return
-        }
+        let url = Bundle.main.url(forResource: name, withExtension: "mp3")!
+        audioPlayer = try! AVAudioPlayer(contentsOf: url)
     }
     
     func toggle() {
-        guard let audioPlayer else {
-            return
-        }
         if audioPlayer.isPlaying {
             audioPlayer.pause()
         } else {
             audioPlayer.play()
         }
+    }
+    
+    @discardableResult
+    func volume(_ value: Float) -> Song {
+        audioPlayer.volume = value
+        return self
+    }
+    
+    @discardableResult
+    func loop() -> Song {
+        audioPlayer.numberOfLoops = -1
+        return self
+    }
+    
+    @discardableResult
+    func play() -> Song {
+        audioPlayer.play()
+        return self
+    }
+    
+    func stop() {
+        audioPlayer.stop()
     }
 }

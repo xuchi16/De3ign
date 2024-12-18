@@ -18,6 +18,7 @@ struct WhiteMythSpaceView: View {
         self.position = position ?? self.position
     }
     
+    @State var backgroundMusic: Song? = nil
     let PASSWORD = "371653"
 
     @State var safeEntity = Entity()
@@ -105,7 +106,9 @@ struct WhiteMythSpaceView: View {
             }
             
             windowSwitchEntity.whenTapped {
+                windowSwitchEntity.playAllAudios()
                 self.isWindowOpen.toggle()
+                windowEntity.playAudioWithName("turn", volume: -10)
                 if isWindowOpen {
                     windowSwitchEntity.playAnimationWithName("on", speed: 100)
                     windowEntity.playAnimationWithName("open", speed: 2)
@@ -116,6 +119,7 @@ struct WhiteMythSpaceView: View {
             }
             
             lightSwitchEntity.whenTapped {
+                lightSwitchEntity.playAllAudios()
                 self.isLightOn.toggle()
                 if isLightOn {
                     lightSwitchEntity.playAnimationWithName("on", speed: 100)
@@ -128,7 +132,14 @@ struct WhiteMythSpaceView: View {
             
             lighterEntity.draggable().whenDistance(to: candleFireEntity, within: 0.2) {
                 print("on fire!")
-                candleFireEntity.isEnabled = true
+                Task {
+                    lighterEntity.playAllAudios()
+                    candleFireEntity.particleBurst()
+                    try! await Task.sleep(nanoseconds: 0_600_000_000)
+                    lighterEntity.isEnabled = false
+                    candleFireEntity.isEnabled = true
+                    candleFireEntity.playAllAudios(loop: true)
+                }
                 isCandleLit = true
             }
             
@@ -146,6 +157,7 @@ struct WhiteMythSpaceView: View {
             dresserKeyEntity.draggable().whenDistance(to: dresserLockEntity, within: 0.2) {
                 Task {
                     await dresserKeyEntity.magneticMove(to: dresserLockEntity, duration: 2)
+                    dresserLockEntity.playAllAudios()
                     dresserKeyEntity.isEnabled = false
                     dresserEntity.playAllAnimations()
                     try! await Task.sleep(nanoseconds: 1_300_000_000)
@@ -180,6 +192,8 @@ struct WhiteMythSpaceView: View {
                     ceilingEntity.isEnabled = false
                     ceilingSnowEntity.isEnabled = true
                     
+                    backgroundMusic?.stop()
+                    backgroundMusic = Song(name: "whitemyth_alt").volume(0.5).loop().play()
                     photoFrameAltImageEntity.isEnabled = true
                 }
             }
@@ -195,10 +209,14 @@ struct WhiteMythSpaceView: View {
                 }
             }
             
-            hammerEntity.draggable().whenCollided(with: breakableFloorEntity, content: content) {
+            hammerEntity.draggable().whenCollided(with: breakableFloorEntity, content: content, withSoundEffect: "thump") {
                 print("break")
-                hammerEntity.isEnabled = false
-                breakableFloorEntity.isEnabled = false
+                Task {
+                    breakableFloorEntity.playAudioWithName("crack")
+                    try! await Task.sleep(nanoseconds: 0_500_000_000)
+                    breakableFloorEntity.isEnabled = false
+                    hammerEntity.isEnabled = false
+                }
             }
             
             safeEntity.whenTapped {
@@ -207,19 +225,30 @@ struct WhiteMythSpaceView: View {
             
             doorkeyEntity.draggable().whenDistance(to: doorLockAnchorEntity, within: 0.3) {
                 doorkeyEntity.isEnabled = false
-                doorEntity.playAllAnimations()
+                doorLockAnchorEntity.playAllAudios()
+                doorEntity.playAnimationWithName("open")
                 print("escape success!")
             }
             
-        } update: { _, _ in
-            if self.safeKeypadInput == PASSWORD {
-                safeAttachment.isEnabled = false
-                safeEntity.playAllAnimations()
-                safeEntity.unfocus()
-            }
         } attachments: {
             Attachment(id: "safe_keypad") {
-                SafeKeypadView(input: $safeKeypadInput)
+                SafeKeypadView(
+                    input: $safeKeypadInput,
+                    maxLength: 6,
+                    verify: { _ in
+                        if safeKeypadInput == PASSWORD {
+                            safeAttachment.isEnabled = false
+                            safeEntity.playAudioWithName("open", speed: 0.6)
+                            safeEntity.playAllAnimations()
+                            safeEntity.unfocus()
+                            return true
+                        }
+                        return false
+                    },
+                    onInput: { _ in
+                        safeEntity.playAudioWithName("keypad_click", speed: 1.5, volume: -3)
+                    }
+                )
             }
         }
         .simultaneousGesture(
@@ -251,5 +280,9 @@ struct WhiteMythSpaceView: View {
                     }
                 }
         )
+        .onAppear {
+            backgroundMusic?.stop()
+            backgroundMusic = Song(name: "whitemyth_bg").volume(0.3).loop().play()
+        }
     }
 }
