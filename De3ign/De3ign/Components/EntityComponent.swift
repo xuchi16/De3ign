@@ -34,39 +34,9 @@ struct DragToMoveComponent: Component {
     
     func handleChange(_ event: EntityTargetValue<DragGesture.Value>) {
         // move by force if has physics
-        if var physicsBody = target.components[PhysicsBodyComponent.self] {
-            physicsBody.isAffectedByGravity = false
-            
-            if (target.components[StartPositionComponent.self]?.value == nil) {
-                target.components.set(StartPositionComponent(value: target.position(relativeTo: nil)))
-            }
-            let startPosition = target.components[StartPositionComponent.self]!.value!
-            let targetPosition = event.convert(event.location3D, from: .local, to: .scene)
-            let eventPosition = startPosition + targetPosition
-            let entityPosition = target.position(relativeTo: nil)
-            
-            print("\(entityPosition)-\(eventPosition)")
-            
-            let direction = eventPosition - entityPosition
-            var strength = length(direction)
-            
-            if strength < 1.0 {
-                strength *= strength
-            }
-            
-            print("\(direction):\(strength)")
-            
-            let forceFactor: Float = 0.01
-            let force = forceFactor * simd_normalize(direction)
-            
-            print(force)
-            
-            (target as! HasPhysicsBody).addForce(force, relativeTo: nil)
-        }
-        // move by setting position otherwise
-        else {
+//        s
             target.position = event.convert(event.location3D, from: .local, to: target.parent!)
-        }
+//        }
         // trigger on distance event when applicable
         if let interaction = target.components[InteractOnDistanceComponent.self] {
             if target.distance(to: interaction.other) < interaction.threshold {
