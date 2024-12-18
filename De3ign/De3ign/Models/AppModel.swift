@@ -45,7 +45,7 @@ class AppModel {
             DSpace(id: "superbrain", volumeName: superBrainVolume, name: "超脑 AI", description: "想了解我们在超脑 AI 的旅程吗？看过来！"),
             DSpace(id: "temple", volumeName: templeVolume, name: "Myth Zone", description: "这里你可以获得平静，平静和平静")*/
             DSpace(id: "escape", spaceId: escapeSpace, name: "密室", description: "逃出这里..."),
-            DSpace(id: "YogaSpace", spaceId: yogaSpace, name: "冥想房", description: "只是冥想")
+            DSpace(id: "YogaSpace", spaceId: yogaSpace, name: "冥想房", description: "只是冥想"),
             DSpace(id: "whiteMyth", spaceId: SpaceID.whiteMythSpace.rawValue, name: "白神话", description: "这又是哪")
         ]
         
