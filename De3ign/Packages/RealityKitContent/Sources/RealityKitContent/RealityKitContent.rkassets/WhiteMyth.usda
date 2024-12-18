@@ -1388,6 +1388,17 @@ def Xform "Root"
                 double staticFriction = 0.6
             }
         }
+
+        def RealityKitComponent "AudioLibrary"
+        {
+            uniform token info:id = "RealityKit.AudioLibrary"
+
+            def RealityKitDict "resources"
+            {
+                string[] keys = ["crack"]
+                rel values = </Root/SFX/crack_wav>
+            }
+        }
     }
 
     def Xform "Walls" (
@@ -3277,6 +3288,17 @@ def Xform "Root"
                     double staticFriction = 0.4
                 }
             }
+
+            def RealityKitComponent "AudioLibrary"
+            {
+                uniform token info:id = "RealityKit.AudioLibrary"
+
+                def RealityKitDict "resources"
+                {
+                    string[] keys = ["thump"]
+                    rel values = </Root/SFX/thump_wav>
+                }
+            }
         }
 
         def "iphone" (
@@ -3608,6 +3630,17 @@ def Xform "Root"
             float3 xformOp:scale = (0.012999999, 0.013, 0.012999999)
             float3 xformOp:translate = (-7.5392957, 3.7508392, -2.0966103)
             uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            def RealityKitComponent "AudioLibrary"
+            {
+                uniform token info:id = "RealityKit.AudioLibrary"
+
+                def RealityKitDict "resources"
+                {
+                    string[] keys = ["unlock"]
+                    rel values = </Root/SFX/key_wav>
+                }
+            }
         }
 
         def "door_animated" (
@@ -3667,6 +3700,18 @@ def Xform "Root"
                     {
                         float3 position = (-0.0000038146973, 102.509155, 3.9924145)
                     }
+                }
+            }
+
+            def RealityKitComponent "AnimationLibrary"
+            {
+                uniform token info:id = "RealityKit.AnimationLibrary"
+
+                def RealityKitClipDefinition "Clip_default_subtree_animation"
+                {
+                    uniform string[] clipNames = ["open", "close"]
+                    uniform string sourceAnimationName = "default subtree animation"
+                    uniform double[] startTimes = [0, 4.146888888888889]
                 }
             }
         }
@@ -4636,6 +4681,17 @@ def Xform "Root"
                     token outputs:surface
                 }
             }
+
+            def RealityKitComponent "AudioLibrary"
+            {
+                uniform token info:id = "RealityKit.AudioLibrary"
+
+                def RealityKitDict "resources"
+                {
+                    string[] keys = ["open"]
+                    rel values = </Root/SFX/door_wav>
+                }
+            }
         }
 
         def Xform "candlefire" (
@@ -4716,7 +4772,7 @@ def Xform "Root"
         active = true
     )
     {
-        reorder nameChildren = ["blinds_wav", "switch_wav", "switch_wav2", "fire_wav", "vault_wav", "beep_wav", "lighter_wav"]
+        reorder nameChildren = ["blinds_wav", "switch_wav", "switch_wav2", "fire_wav", "vault_wav", "beep_wav", "lighter_wav", "door_wav", "key_wav", "thump_wav", "crack_wav"]
         def RealityKitAudioFile "blinds_wav"
         {
             uniform asset file = @WhiteMyth/sfx/blinds.wav@
@@ -4756,6 +4812,30 @@ def Xform "Root"
         def RealityKitAudioFile "lighter_wav"
         {
             uniform asset file = @WhiteMyth/sfx/lighter.wav@
+            uniform bool shouldLoop = 0
+        }
+
+        def RealityKitAudioFile "door_wav"
+        {
+            uniform asset file = @WhiteMyth/sfx/door.wav@
+            uniform bool shouldLoop = 0
+        }
+
+        def RealityKitAudioFile "key_wav"
+        {
+            uniform asset file = @WhiteMyth/sfx/key.wav@
+            uniform bool shouldLoop = 0
+        }
+
+        def RealityKitAudioFile "thump_wav"
+        {
+            uniform asset file = @WhiteMyth/sfx/thump.wav@
+            uniform bool shouldLoop = 0
+        }
+
+        def RealityKitAudioFile "crack_wav"
+        {
+            uniform asset file = @WhiteMyth/sfx/crack.wav@
             uniform bool shouldLoop = 0
         }
     }

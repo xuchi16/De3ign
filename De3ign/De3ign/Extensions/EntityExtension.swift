@@ -184,10 +184,10 @@ extension Entity {
     }
     
     @discardableResult
-    func whenCollided(with other: Entity, content: RealityViewContent, do callback: @escaping () -> Void) -> Entity {
+    func whenCollided(with other: Entity, content: RealityViewContent, withSoundEffect sfxName: String? = nil, do callback: @escaping () -> Void) -> Entity {
         self.components.set(
             CollisionHandlerComponent(
-                target: self, other: other, content: content, callback: callback
+                target: self, other: other, content: content, sfxName: sfxName, callback: callback
             )
         )
         return self
