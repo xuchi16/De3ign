@@ -14,7 +14,7 @@ import SwiftUI
 @Observable
 @MainActor
 class CaptureModel {
-//    
+//
 //    private(set) var externalCameraEntity = Entity()
 //
 //    let session = ARKitSession()

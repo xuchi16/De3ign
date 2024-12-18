@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-
 // import MixedRealityCapture
 import OSLog
 
@@ -77,6 +76,18 @@ struct De3ignApp: App {
                 }
         }
         .immersionStyle(selection: .constant(.mixed), in: .mixed)
+        
+        ImmersiveSpace(id: yogaSpace) {
+            YogaSpace()
+                .environment(appModel)
+                .onAppear {
+                    appModel.immersiveSpaceState = .open
+                }
+                .onDisappear {
+                    appModel.immersiveSpaceState = .closed
+                }
+        }
+        .immersionStyle(selection: .constant(.full), in: .full)
         
         ImmersiveSpace(id: SpaceID.jovitaSpace.rawValue) {
             JovitaSpaceView(scale: 2)
