@@ -105,7 +105,9 @@ struct WhiteMythSpaceView: View {
             }
             
             windowSwitchEntity.whenTapped {
+                windowSwitchEntity.playAllAudios()
                 self.isWindowOpen.toggle()
+                windowEntity.playAudioWithName("turn", volume: -10)
                 if isWindowOpen {
                     windowSwitchEntity.playAnimationWithName("on", speed: 100)
                     windowEntity.playAnimationWithName("open", speed: 2)
@@ -116,6 +118,7 @@ struct WhiteMythSpaceView: View {
             }
             
             lightSwitchEntity.whenTapped {
+                lightSwitchEntity.playAllAudios()
                 self.isLightOn.toggle()
                 if isLightOn {
                     lightSwitchEntity.playAnimationWithName("on", speed: 100)
@@ -128,7 +131,14 @@ struct WhiteMythSpaceView: View {
             
             lighterEntity.draggable().whenDistance(to: candleFireEntity, within: 0.2) {
                 print("on fire!")
-                candleFireEntity.isEnabled = true
+                Task {
+                    lighterEntity.playAllAudios()
+                    candleFireEntity.particleBurst()
+                    try! await Task.sleep(nanoseconds: 0_600_000_000)
+                    lighterEntity.isEnabled = false
+                    candleFireEntity.isEnabled = true
+                    candleFireEntity.playAllAudios(loop: true)
+                }
                 isCandleLit = true
             }
             
@@ -213,15 +223,23 @@ struct WhiteMythSpaceView: View {
             
         } attachments: {
             Attachment(id: "safe_keypad") {
-                SafeKeypadView(input: $safeKeypadInput, maxLength: 6) { _ in
-                    if safeKeypadInput == PASSWORD {
-                        safeAttachment.isEnabled = false
-                        safeEntity.playAllAnimations()
-                        safeEntity.unfocus()
-                        return true
+                SafeKeypadView(
+                    input: $safeKeypadInput,
+                    maxLength: 6,
+                    verify: { _ in
+                        if safeKeypadInput == PASSWORD {
+                            safeAttachment.isEnabled = false
+                            safeEntity.playAudioWithName("open", speed: 0.6)
+                            safeEntity.playAllAnimations()
+                            safeEntity.unfocus()
+                            return true
+                        }
+                        return false
+                    },
+                    onInput: { _ in
+                        safeEntity.playAudioWithName("keypad_click", speed: 1.5, volume: -5)
                     }
-                    return false
-                }
+                )
             }
         }
         .simultaneousGesture(

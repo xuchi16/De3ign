@@ -11,6 +11,7 @@ struct SafeKeypadView: View {
     @Binding var input: String
     let maxLength: Int
     let verify: (String) -> Bool
+    var onInput: ((String) -> Void)? = nil
 
     private let gridItems = [
         GridItem(.flexible()),
@@ -58,6 +59,7 @@ struct SafeKeypadView: View {
     }
 
     private func buttonTapped(_ key: String) {
+        onInput?(key)
         switch key {
         case "*":
             input = ""

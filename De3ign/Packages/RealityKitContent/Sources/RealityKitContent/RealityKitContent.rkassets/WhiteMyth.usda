@@ -175,6 +175,20 @@ def Xform "Root"
                 }
             }
         }
+
+        def RealityKitComponent "AudioLibrary"
+        {
+            uniform token info:id = "RealityKit.AudioLibrary"
+
+            def RealityKitDict "resources"
+            {
+                string[] keys = ["open", "keypad_click"]
+                rel values = [
+                    </Root/_445100__lezaarth__vault_wav>,
+                    </Root/_426892__thisusernameis__beep5_wav>,
+                ]
+            }
+        }
     }
 
     def "dresser" (
@@ -1789,7 +1803,7 @@ def Xform "Root"
             def RealityKitStruct "currentState"
             {
                 token birthDirection = "Normal"
-                int64 burstCount = 150
+                int64 burstCount = 500
                 double emissionDuration = 1
                 token emitterShape = "Cone"
                 bool isEmitting = 1
@@ -1827,6 +1841,17 @@ def Xform "Root"
                 def RealityKitStruct "spawnedEmitter"
                 {
                 }
+            }
+        }
+
+        def RealityKitComponent "AudioLibrary"
+        {
+            uniform token info:id = "RealityKit.AudioLibrary"
+
+            def RealityKitDict "resources"
+            {
+                string[] keys = ["fire"]
+                rel values = </Root/_104957__glaneur_de_sons__petit_feu_little_fire_1_wav>
             }
         }
     }
@@ -2968,12 +2993,18 @@ def Xform "Root"
         references = @Animated_Window_Systems.usdz@
     )
     {
+        reorder nameChildren = ["Sphere", "Materials", "Meshes", "AnimationLibrary"]
         float3 xformOp:scale = (0.06, 0.06, 0.06)
-        float3 xformOp:translate = (-8.163747, 39.55093, 48.6)
+        float3 xformOp:translate = (-1.2598422, 9.2472, 9.572421)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
         over "Meshes"
         {
+            quatf xformOp:orient = (1, 0, 0, 0)
+            float3 xformOp:scale = (100, 100, 100)
+            float3 xformOp:translate = (-115.319496, 505.267, 649.6759)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
             over "Sketchfab_model"
             {
                 over "c6e3e68a8e60493d934f2d46f3ca3045_fbx"
@@ -3434,6 +3465,17 @@ def Xform "Root"
                 uniform double[] startTimes = [0, 2.021777777777778]
             }
         }
+
+        def RealityKitComponent "AudioLibrary"
+        {
+            uniform token info:id = "RealityKit.AudioLibrary"
+
+            def RealityKitDict "resources"
+            {
+                string[] keys = ["turn"]
+                rel values = </Root/_347891__newagesoup__window_blinds_raise_02_wav>
+            }
+        }
     }
 
     def "switch_window" (
@@ -3521,6 +3563,17 @@ def Xform "Root"
                 {
                     float3 position = (0.041469097, 10.837724, 1.1510781)
                 }
+            }
+        }
+
+        def RealityKitComponent "AudioLibrary"
+        {
+            uniform token info:id = "RealityKit.AudioLibrary"
+
+            def RealityKitDict "resources"
+            {
+                string[] keys = ["switch"]
+                rel values = </Root/_368745__matrixxx__button_switch_on_wav2>
             }
         }
     }
@@ -3617,6 +3670,17 @@ def Xform "Root"
                 {
                     float3 position = (0, 10.837724, 1.1510781)
                 }
+            }
+        }
+
+        def RealityKitComponent "AudioLibrary"
+        {
+            uniform token info:id = "RealityKit.AudioLibrary"
+
+            def RealityKitDict "resources"
+            {
+                string[] keys = ["switch"]
+                rel values = </Root/_368745__matrixxx__button_switch_on_wav>
             }
         }
     }
@@ -4406,7 +4470,9 @@ def Xform "Root"
             }
         }
 
-        def RealityKitComponent "RigidBody"
+        def RealityKitComponent "RigidBody" (
+            active = false
+        )
         {
             bool gravityEnabled = 1
             uniform token info:id = "RealityKit.RigidBody"
@@ -4702,6 +4768,17 @@ def Xform "Root"
             float3 xformOp:translate = (-6.7889037, -0.36807254, 0.115551)
             uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
         }
+
+        def RealityKitComponent "AudioLibrary"
+        {
+            uniform token info:id = "RealityKit.AudioLibrary"
+
+            def RealityKitDict "resources"
+            {
+                string[] keys = ["strike"]
+                rel values = </Root/_524101__spacejoe__lighter_7_wav>
+            }
+        }
     }
 
     def "Computer_Desk" (
@@ -4888,6 +4965,48 @@ def Xform "Root"
                 }
             }
         }
+    }
+
+    def RealityKitAudioFile "_368745__matrixxx__button_switch_on_wav"
+    {
+        uniform asset file = @368745__matrixxx__button-switch-on.wav@
+        uniform bool shouldLoop = 0
+    }
+
+    def RealityKitAudioFile "_368745__matrixxx__button_switch_on_wav2"
+    {
+        uniform asset file = @368745__matrixxx__button-switch-on.wav@
+        uniform bool shouldLoop = 0
+    }
+
+    def RealityKitAudioFile "_347891__newagesoup__window_blinds_raise_02_wav"
+    {
+        uniform asset file = @347891__newagesoup__window-blinds-raise-02.wav@
+        uniform bool shouldLoop = 0
+    }
+
+    def RealityKitAudioFile "_445100__lezaarth__vault_wav"
+    {
+        uniform asset file = @445100__lezaarth__vault.wav@
+        uniform bool shouldLoop = 0
+    }
+
+    def RealityKitAudioFile "_426892__thisusernameis__beep5_wav"
+    {
+        uniform asset file = @426892__thisusernameis__beep5.wav@
+        uniform bool shouldLoop = 0
+    }
+
+    def RealityKitAudioFile "_104957__glaneur_de_sons__petit_feu_little_fire_1_wav"
+    {
+        uniform asset file = @104957__glaneur-de-sons__petit-feu-little-fire-1.wav@
+        uniform bool shouldLoop = 0
+    }
+
+    def RealityKitAudioFile "_524101__spacejoe__lighter_7_wav"
+    {
+        uniform asset file = @524101__spacejoe__lighter-7.wav@
+        uniform bool shouldLoop = 0
     }
 }
 
