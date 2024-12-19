@@ -284,5 +284,8 @@ struct WhiteMythSpaceView: View {
             backgroundMusic?.stop()
             backgroundMusic = Song(name: "whitemyth_bg").volume(0.3).loop().play()
         }
+        .onDisappear {
+            backgroundMusic?.stop()
+        }
     }
 }
