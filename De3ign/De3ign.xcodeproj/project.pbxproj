@@ -21,13 +21,14 @@
 		9C93CB6D2CFFDCA1005B7586 /* EscapeSpaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C93CB692CFFDCA1005B7586 /* EscapeSpaceView.swift */; };
 		9CB593A82CBA894700F19431 /* EditableSpaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB593A72CBA893500F19431 /* EditableSpaceView.swift */; };
 		9CC2D8002CDD018F000C380C /* EditorInteraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC2D7FF2CDD0184000C380C /* EditorInteraction.swift */; };
+		9CC5ABB52D13C3D500188867 /* EntitySystem_.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC5ABB42D13C3D400188867 /* EntitySystem_.swift */; };
 		9CC9F72B2CB978BE0016BD85 /* ModelLibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC9F72A2CB978B40016BD85 /* ModelLibraryView.swift */; };
 		9CC9F72D2CB97AF40016BD85 /* EditorLibraryObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC9F72C2CB97AD80016BD85 /* EditorLibraryObject.swift */; };
-		A96C29772D12984600EEE5E9 /* YogaSpace.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96C29762D12984600EEE5E9 /* YogaSpace.swift */; };
-		A96C29782D12984600EEE5E9 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96C29752D12984600EEE5E9 /* AudioPlayer.swift */; };
 		9CCCBDC52D01307F007AF089 /* EntityComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CCCBDC42D013075007AF089 /* EntityComponent.swift */; };
 		9CD177FB2D12B9D5002E4082 /* whitemyth_bg.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9CD177FA2D12B9D5002E4082 /* whitemyth_bg.mp3 */; };
 		9CD177FD2D12B9F5002E4082 /* whitemyth_alt.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9CD177FC2D12B9F5002E4082 /* whitemyth_alt.mp3 */; };
+		A96C29772D12984600EEE5E9 /* YogaSpace.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96C29762D12984600EEE5E9 /* YogaSpace.swift */; };
+		A96C29782D12984600EEE5E9 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96C29752D12984600EEE5E9 /* AudioPlayer.swift */; };
 		C2B362A22C772A19003AEDA9 /* RealityKitContent in Frameworks */ = {isa = PBXBuildFile; productRef = C2B362A12C772A19003AEDA9 /* RealityKitContent */; };
 		C2B362A42C772A19003AEDA9 /* De3ignApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B362A32C772A19003AEDA9 /* De3ignApp.swift */; };
 		C2B362A62C772A19003AEDA9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B362A52C772A19003AEDA9 /* ContentView.swift */; };
@@ -79,13 +80,14 @@
 		9C93CB6A2CFFDCA1005B7586 /* KeypadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeypadView.swift; sourceTree = "<group>"; };
 		9CB593A72CBA893500F19431 /* EditableSpaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableSpaceView.swift; sourceTree = "<group>"; };
 		9CC2D7FF2CDD0184000C380C /* EditorInteraction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorInteraction.swift; sourceTree = "<group>"; };
+		9CC5ABB42D13C3D400188867 /* EntitySystem_.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntitySystem_.swift; sourceTree = "<group>"; };
 		9CC9F72A2CB978B40016BD85 /* ModelLibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelLibraryView.swift; sourceTree = "<group>"; };
 		9CC9F72C2CB97AD80016BD85 /* EditorLibraryObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorLibraryObject.swift; sourceTree = "<group>"; };
-		A96C29752D12984600EEE5E9 /* AudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
-		A96C29762D12984600EEE5E9 /* YogaSpace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YogaSpace.swift; sourceTree = "<group>"; };
 		9CCCBDC42D013075007AF089 /* EntityComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityComponent.swift; sourceTree = "<group>"; };
 		9CD177FA2D12B9D5002E4082 /* whitemyth_bg.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = whitemyth_bg.mp3; sourceTree = "<group>"; };
 		9CD177FC2D12B9F5002E4082 /* whitemyth_alt.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = whitemyth_alt.mp3; sourceTree = "<group>"; };
+		A96C29752D12984600EEE5E9 /* AudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
+		A96C29762D12984600EEE5E9 /* YogaSpace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YogaSpace.swift; sourceTree = "<group>"; };
 		C2B3629C2C772A19003AEDA9 /* De3ign.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = De3ign.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2B362A02C772A19003AEDA9 /* RealityKitContent */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = RealityKitContent; sourceTree = "<group>"; };
 		C2B362A32C772A19003AEDA9 /* De3ignApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = De3ignApp.swift; sourceTree = "<group>"; };
@@ -147,6 +149,14 @@
 			path = Escape;
 			sourceTree = "<group>";
 		};
+		9CC5ABB32D13C3CC00188867 /* Systems */ = {
+			isa = PBXGroup;
+			children = (
+				9CC5ABB42D13C3D400188867 /* EntitySystem_.swift */,
+			);
+			path = Systems;
+			sourceTree = "<group>";
+		};
 		9CCCBDC32D01305A007AF089 /* Components */ = {
 			isa = PBXGroup;
 			children = (
@@ -183,6 +193,7 @@
 				C2BB06612CFDBA95005ECA25 /* Services */,
 				C2BB05F72CFD8D20005ECA25 /* Models */,
 				9CCCBDC32D01305A007AF089 /* Components */,
+				9CC5ABB32D13C3CC00188867 /* Systems */,
 				C2BB06622CFDBB40005ECA25 /* Extensions */,
 				C2BB065F2CFDBA5F005ECA25 /* Utils */,
 				C2F294152C787B0C00A98088 /* Resources */,
@@ -459,6 +470,7 @@
 				9C4099912CE95DCD003FACFA /* Chatter.swift in Sources */,
 				C2F2941B2C787D4000A98088 /* SpeechSynthesizer.swift in Sources */,
 				9C5DE5502CF593C10096D1FB /* Serialization.swift in Sources */,
+				9CC5ABB52D13C3D500188867 /* EntitySystem_.swift in Sources */,
 				9C5DE54C2CF582C70096D1FB /* EditorGenAiObject.swift in Sources */,
 				9CB593A82CBA894700F19431 /* EditableSpaceView.swift in Sources */,
 				C2F294142C78748E00A98088 /* Song.swift in Sources */,
