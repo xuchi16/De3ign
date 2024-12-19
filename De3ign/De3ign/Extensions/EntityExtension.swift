@@ -160,8 +160,15 @@ extension Entity {
     }
     
     @discardableResult
-    func draggable() -> Entity {
-        self.components.set(DragToMoveComponent(target: self))
+    func draggable(_ outOfBoundChecker: ((SIMD3<Float>) -> Bool)? = nil) -> Entity {
+        let dragComponent = DragToMoveComponent(target: self)
+        self.components.set(dragComponent)
+        if dragComponent.isUsingPhysics && outOfBoundChecker != nil {
+            self.components.set(PositionGuardComponent(
+                initialPosition: self.position,
+                checkIsOutOfBoundary: outOfBoundChecker!
+            ))
+        }
         return self
     }
     

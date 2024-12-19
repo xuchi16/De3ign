@@ -16,6 +16,20 @@ struct WhiteMythSpaceView: View {
     init(scale: Float?, position: SIMD3<Float>?) {
         self.scale = scale ?? self.scale
         self.position = position ?? self.position
+        
+        PositionGuardSystem.registerSystem()
+    }
+    
+    func outOfBoundChecker(pos: SIMD3<Float>) -> Bool {
+        if
+            pos.y < -1 ||
+            abs(pos.x) > 13 ||
+            abs(pos.z) > 13 ||
+            pos.y > 22
+        {
+            return true
+        }
+        return false
     }
     
     @State var backgroundMusic: Song? = nil
@@ -130,32 +144,34 @@ struct WhiteMythSpaceView: View {
                 }
             }
             
-            lighterEntity.draggable().whenDistance(to: candleFireEntity, within: 0.2) {
-                print("on fire!")
-                Task {
-                    lighterEntity.playAllAudios()
-                    candleFireEntity.particleBurst()
-                    try! await Task.sleep(nanoseconds: 0_600_000_000)
-                    lighterEntity.isEnabled = false
-                    candleFireEntity.isEnabled = true
-                    candleFireEntity.playAllAudios(loop: true)
+            lighterEntity.draggable(outOfBoundChecker)
+                .whenDistance(to: candleFireEntity, within: 0.2) {
+                    print("on fire!")
+                    Task {
+                        lighterEntity.playAllAudios()
+                        candleFireEntity.particleBurst()
+                        try! await Task.sleep(nanoseconds: 0_600_000_000)
+                        lighterEntity.isEnabled = false
+                        candleFireEntity.isEnabled = true
+                        candleFireEntity.playAllAudios(loop: true)
+                    }
+                    isCandleLit = true
                 }
-                isCandleLit = true
-            }
             
-            paperEntity.draggable().whenDistance(to: candleFireEntity, within: 0.2, always: true) {
-                if !isCandleLit {
-                    print("candle unlit")
-                    return
+            paperEntity.draggable(outOfBoundChecker)
+                .whenDistance(to: candleFireEntity, within: 0.2, always: true) {
+                    if !isCandleLit {
+                        print("candle unlit")
+                        return
+                    }
+                    paperEntity.firstModelEntity()!.model!.materials = paperHiddenMaterial
+                    print("paper says 16")
+                    paperEntity.components.remove(InteractOnDistanceComponent.self)
                 }
-                paperEntity.firstModelEntity()!.model!.materials = paperHiddenMaterial
-                print("paper says 16")
-                paperEntity.components.remove(InteractOnDistanceComponent.self)
-            }
             
-            // dresserKeyEntity.draggable().whenCollided(with: dresserEntity, content: content) {
-            dresserKeyEntity.draggable().whenDistance(to: dresserLockEntity, within: 0.2) {
+            dresserKeyEntity.draggable().whenDistance(to: dresserLockEntity, within: 0.4) {
                 Task {
+                    dresserKeyEntity.components.remove(DragToMoveComponent.self)
                     await dresserKeyEntity.magneticMove(to: dresserLockEntity, duration: 2)
                     dresserLockEntity.playAllAudios()
                     dresserKeyEntity.isEnabled = false
@@ -172,14 +188,10 @@ struct WhiteMythSpaceView: View {
             iphoneEntity.draggable().whenDistance(to: cockroachEntity, within: 0.3) {
                 cockroachEntity.playAllAnimations(loop: true)
                 Task {
-                    try! await Task.sleep(nanoseconds: 3_000_000_000)
-                    for i in 1 ... 200 {
-                        cockroachEntity.scale *= 0.98
-                        iphoneEntity.scale *= (0.98 * pow(-1, Float(i)))
-                        try! await Task.sleep(nanoseconds: 0_100_000_000)
+                    while true {
+                        cockroachEntity.transform.rotation *= simd_quatf(angle: 0.03, axis: [0, 1, 0])
+                        try! await Task.sleep(nanoseconds: 0_050_000_000)
                     }
-                    cockroachEntity.isEnabled = false
-                    iphoneEntity.isEnabled = false
                 }
             }
             
@@ -193,31 +205,21 @@ struct WhiteMythSpaceView: View {
                     ceilingSnowEntity.isEnabled = true
                     
                     backgroundMusic?.stop()
-                    backgroundMusic = Song(name: "whitemyth_alt").volume(0.5).loop().play()
+                    backgroundMusic = Song(name: "whitemyth_alt").volume(0.4).loop().play()
                     photoFrameAltImageEntity.isEnabled = true
                 }
             }
             
-            // prevent hammer falling out of scene
-            Task {
-                while true {
-                    if hammerEntity.position.y < -1 {
-                        (hammerEntity as! HasPhysicsBody).resetPhysicsTransform(recursive: true)
-                        hammerEntity.position = [5.33, 0.7, -0.88]
+            hammerEntity.draggable(outOfBoundChecker)
+                .whenCollided(with: breakableFloorEntity, content: content, withSoundEffect: "thump") {
+                    print("break")
+                    Task {
+                        breakableFloorEntity.playAudioWithName("crack")
+                        try! await Task.sleep(nanoseconds: 0_500_000_000)
+                        breakableFloorEntity.isEnabled = false
+                        hammerEntity.isEnabled = false
                     }
-                    try! await Task.sleep(nanoseconds: 0_200_000_000)
                 }
-            }
-            
-            hammerEntity.draggable().whenCollided(with: breakableFloorEntity, content: content, withSoundEffect: "thump") {
-                print("break")
-                Task {
-                    breakableFloorEntity.playAudioWithName("crack")
-                    try! await Task.sleep(nanoseconds: 0_500_000_000)
-                    breakableFloorEntity.isEnabled = false
-                    hammerEntity.isEnabled = false
-                }
-            }
             
             safeEntity.whenTapped {
                 safeAttachment.isEnabled = true
@@ -283,6 +285,9 @@ struct WhiteMythSpaceView: View {
         .onAppear {
             backgroundMusic?.stop()
             backgroundMusic = Song(name: "whitemyth_bg").volume(0.3).loop().play()
+        }
+        .onDisappear {
+            backgroundMusic?.stop()
         }
     }
 }

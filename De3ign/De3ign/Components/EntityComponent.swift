@@ -20,22 +20,36 @@ struct EditorMetadataComponent: Component {
     let source: EntitySource
 }
 
-private struct StartPositionComponent: Component {
-    var value: SIMD3<Float>? = nil
-}
-
-struct DragToMoveComponent: Component {
+class DragToMoveComponent: Component {
     let target: Entity
+    let forceFactor: Float
+    let isUsingPhysics: Bool
+    private var prevPosition: SIMD3<Float>?
+    private var currentPosition: SIMD3<Float>?
+    private var storedPhysicsBody: PhysicsBodyComponent?
 
-    init(target: Entity) {
+    init(target: Entity, forceFactor: Float = 1.0) {
         self.target = target
-        target.components.set(StartPositionComponent())
+        self.forceFactor = forceFactor
+        isUsingPhysics = target.components[PhysicsBodyComponent.self] != nil
     }
 
     func handleChange(_ event: EntityTargetValue<DragGesture.Value>) {
-        // move by force if has physics
+        // hard set position
         target.position = event.convert(event.location3D, from: .local, to: target.parent!)
-
+        // record state if target has physics
+        if isUsingPhysics {
+            if prevPosition == nil {
+                prevPosition = target.position
+            } else {
+                prevPosition = currentPosition
+            }
+            currentPosition = target.position
+            if storedPhysicsBody == nil {
+                storedPhysicsBody = target.components[PhysicsBodyComponent.self]
+                target.components.remove(PhysicsBodyComponent.self)
+            }
+        }
         // trigger on distance event when applicable
         if let interaction = target.components[InteractOnDistanceComponent.self] {
             if target.distance(to: interaction.other) < interaction.threshold {
@@ -48,12 +62,26 @@ struct DragToMoveComponent: Component {
     }
 
     func handleEnd(_ event: EntityTargetValue<DragGesture.Value>) {
-        target.components.set(StartPositionComponent())
-        if var physicsBody = target.components[PhysicsBodyComponent.self] {
-            physicsBody.isAffectedByGravity = true
-            target.components.set(physicsBody)
+        // apply momentum when has physics
+        if isUsingPhysics {
+            target.components.set(storedPhysicsBody!)
+
+            if let currentPosition, let prevPosition {
+                let direction = currentPosition - prevPosition
+
+                let force = direction * forceFactor
+                (target as! HasPhysicsBody).addForce(force, relativeTo: nil)
+            }
+            self.storedPhysicsBody = nil
+            self.prevPosition = nil
+            self.currentPosition = nil
         }
     }
+}
+
+struct PositionGuardComponent: Component {
+    let initialPosition: SIMD3<Float>
+    let checkIsOutOfBoundary: (SIMD3<Float>) -> Bool
 }
 
 class CollisionHandlerComponent: Component {
