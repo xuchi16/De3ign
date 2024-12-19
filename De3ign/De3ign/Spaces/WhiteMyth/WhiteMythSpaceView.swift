@@ -21,12 +21,12 @@ struct WhiteMythSpaceView: View {
     }
     
     func outOfBoundChecker(pos: SIMD3<Float>) -> Bool {
-        if (
+        if
             pos.y < -1 ||
             abs(pos.x) > 13 ||
             abs(pos.z) > 13 ||
             pos.y > 22
-        ) {
+        {
             return true
         }
         return false
@@ -169,8 +169,9 @@ struct WhiteMythSpaceView: View {
                     paperEntity.components.remove(InteractOnDistanceComponent.self)
                 }
             
-            dresserKeyEntity.draggable().whenDistance(to: dresserLockEntity, within: 0.2) {
+            dresserKeyEntity.draggable().whenDistance(to: dresserLockEntity, within: 0.4) {
                 Task {
+                    dresserKeyEntity.components.remove(DragToMoveComponent.self)
                     await dresserKeyEntity.magneticMove(to: dresserLockEntity, duration: 2)
                     dresserLockEntity.playAllAudios()
                     dresserKeyEntity.isEnabled = false
@@ -187,14 +188,10 @@ struct WhiteMythSpaceView: View {
             iphoneEntity.draggable().whenDistance(to: cockroachEntity, within: 0.3) {
                 cockroachEntity.playAllAnimations(loop: true)
                 Task {
-                    try! await Task.sleep(nanoseconds: 3_000_000_000)
-                    for i in 1 ... 200 {
-                        cockroachEntity.scale *= 0.98
-                        iphoneEntity.scale *= (0.98 * pow(-1, Float(i)))
-                        try! await Task.sleep(nanoseconds: 0_100_000_000)
+                    while true {
+                        cockroachEntity.transform.rotation *= simd_quatf(angle: 0.03, axis: [0, 1, 0])
+                        try! await Task.sleep(nanoseconds: 0_050_000_000)
                     }
-                    cockroachEntity.isEnabled = false
-                    iphoneEntity.isEnabled = false
                 }
             }
             
@@ -207,11 +204,11 @@ struct WhiteMythSpaceView: View {
                     ceilingEntity.isEnabled = false
                     ceilingSnowEntity.isEnabled = true
                     
-                        backgroundMusic?.stop()
-                        backgroundMusic = Song(name: "whitemyth_alt").volume(0.5).loop().play()
-                        photoFrameAltImageEntity.isEnabled = true
-                    }
+                    backgroundMusic?.stop()
+                    backgroundMusic = Song(name: "whitemyth_alt").volume(0.4).loop().play()
+                    photoFrameAltImageEntity.isEnabled = true
                 }
+            }
             
             hammerEntity.draggable(outOfBoundChecker)
                 .whenCollided(with: breakableFloorEntity, content: content, withSoundEffect: "thump") {
