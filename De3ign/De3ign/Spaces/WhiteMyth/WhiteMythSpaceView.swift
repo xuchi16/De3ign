@@ -169,18 +169,19 @@ struct WhiteMythSpaceView: View {
                     paperEntity.components.remove(InteractOnDistanceComponent.self)
                 }
             
-            dresserKeyEntity.draggable().whenDistance(to: dresserLockEntity, within: 0.4) {
-                Task {
-                    dresserKeyEntity.components.remove(DragToMoveComponent.self)
-                    await dresserKeyEntity.magneticMove(to: dresserLockEntity, duration: 2)
-                    dresserLockEntity.playAllAudios()
-                    dresserKeyEntity.isEnabled = false
-                    dresserEntity.playAllAnimations()
-                    try! await Task.sleep(nanoseconds: 1_300_000_000)
-                    dresserEntity.pauseAllAnimations()
-                    dresserEntity.unfocus()
+            dresserKeyEntity.draggable(outOfBoundChecker)
+                .whenDistance(to: dresserLockEntity, within: 0.4) {
+                    Task {
+                        dresserKeyEntity.components.remove(DragToMoveComponent.self)
+                        await dresserKeyEntity.magneticMove(to: dresserLockEntity, duration: 2)
+                        dresserLockEntity.playAllAudios()
+                        dresserKeyEntity.isEnabled = false
+                        dresserEntity.playAllAnimations()
+                        try! await Task.sleep(nanoseconds: 1_300_000_000)
+                        dresserEntity.pauseAllAnimations()
+                        dresserEntity.unfocus()
+                    }
                 }
-            }
             
             // hidden COCKROOOOOOAAACH
             let cockroachEntity = sceneEntity.findChildAndSetMetadata(named: "cockroach")
