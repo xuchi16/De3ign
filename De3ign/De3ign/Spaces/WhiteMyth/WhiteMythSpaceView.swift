@@ -22,10 +22,10 @@ struct WhiteMythSpaceView: View {
     
     func outOfBoundChecker(pos: SIMD3<Float>) -> Bool {
         if
-            pos.y < -1 ||
-            abs(pos.x) > 13 ||
-            abs(pos.z) > 13 ||
-            pos.y > 22
+            pos.y < -2 ||
+            abs(pos.x) > 12.5 ||
+            abs(pos.z) > 12.5 ||
+            pos.y > 21
         {
             return true
         }
