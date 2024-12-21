@@ -77,12 +77,13 @@ struct WhiteMythSpaceView: View {
             
             // place attachment
             safeAttachment = attachments.entity(for: "safe_keypad")!
-            safeEntity.addChild(safeAttachment, preservingWorldTransform: true)
-            safeAttachment.position = [
-                safeEntity.visualBounds(relativeTo: safeEntity).max.x - 0.1,
+            safeEntity.addChild(safeAttachment)
+            safeAttachment.scale *= 2
+            safeAttachment.setPosition([
+                safeEntity.visualBounds(relativeTo: safeEntity).max.x + 0.001,
                 safeEntity.visualBounds(relativeTo: safeEntity).max.y - 0.52,
                 0,
-            ]
+            ], relativeTo: safeEntity)
             safeAttachment.transform.rotation = simd_quatf(angle: .pi / 2, axis: [0, 1, 0])
             
             /*
