@@ -10,7 +10,7 @@
 
 def Xform "Root"
 {
-    reorder nameChildren = ["floor", "SFX", "Floors", "Walls", "Ceiling", "breakablefloor", "Outdoor", "StaticFurniture", "Interactable", "MovableItems", "SkyDome_1"]
+    reorder nameChildren = ["floor", "SFX", "Floors", "Walls", "Ceiling", "breakablefloor", "Outdoor", "StaticFurniture", "Interactable", "MovableItems", "SkyDome_1", "DUMMY", "invis"]
     float3 xformOp:scale = (0.2, 0.2, 0.2)
     float3 xformOp:translate = (3.7252903e-9, 7.450581e-9, 0)
     uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
@@ -377,7 +377,7 @@ def Xform "Root"
 
                 def RealityKitStruct "Shape"
                 {
-                    float3 extent = (0.2, 0.25, 0.2)
+                    float3 extent = (0.2, 0.21, 0.2)
                     token shapeType = "Box"
 
                     def RealityKitStruct "pose"
@@ -403,7 +403,7 @@ def Xform "Root"
                 def RealityKitStruct "massFrame"
                 {
                     float3 m_inertia = (0, 0, 0)
-                    float m_mass = 0.001
+                    float m_mass = 1
 
                     def RealityKitStruct "m_pose"
                     {
@@ -479,7 +479,7 @@ def Xform "Root"
 
                 def RealityKitStruct "Shape"
                 {
-                    float3 extent = (0.2, 0.25, 0.2)
+                    float3 extent = (0.2, 0.21, 0.2)
                     token shapeType = "Box"
 
                     def RealityKitStruct "pose"
@@ -505,7 +505,7 @@ def Xform "Root"
                 def RealityKitStruct "massFrame"
                 {
                     float3 m_inertia = (0, 0, 0)
-                    float m_mass = 0.001
+                    float m_mass = 1
 
                     def RealityKitStruct "m_pose"
                     {
@@ -581,7 +581,7 @@ def Xform "Root"
 
                 def RealityKitStruct "Shape"
                 {
-                    float3 extent = (0.2, 0.25, 0.2)
+                    float3 extent = (0.2, 0.21, 0.2)
                     token shapeType = "Box"
 
                     def RealityKitStruct "pose"
@@ -607,7 +607,7 @@ def Xform "Root"
                 def RealityKitStruct "massFrame"
                 {
                     float3 m_inertia = (0, 0, 0)
-                    float m_mass = 0.001
+                    float m_mass = 1
 
                     def RealityKitStruct "m_pose"
                     {
@@ -684,7 +684,7 @@ def Xform "Root"
 
                 def RealityKitStruct "Shape"
                 {
-                    float3 extent = (0.2, 0.25, 0.2)
+                    float3 extent = (0.2, 0.21, 0.2)
                     token shapeType = "Box"
 
                     def RealityKitStruct "pose"
@@ -710,7 +710,7 @@ def Xform "Root"
                 def RealityKitStruct "massFrame"
                 {
                     float3 m_inertia = (0, 0, 0)
-                    float m_mass = 0.001
+                    float m_mass = 1
 
                     def RealityKitStruct "m_pose"
                     {
@@ -789,7 +789,7 @@ def Xform "Root"
 
                 def RealityKitStruct "Shape"
                 {
-                    float3 extent = (0.2, 0.25, 0.2)
+                    float3 extent = (0.2, 0.21, 0.2)
                     token shapeType = "Box"
 
                     def RealityKitStruct "pose"
@@ -815,7 +815,7 @@ def Xform "Root"
                 def RealityKitStruct "massFrame"
                 {
                     float3 m_inertia = (0, 0, 0)
-                    float m_mass = 0.001
+                    float m_mass = 1
 
                     def RealityKitStruct "m_pose"
                     {
@@ -1405,13 +1405,15 @@ def Xform "Root"
         active = true
     )
     {
-        reorder nameChildren = ["wall1", "wall1_1", "wall1_2", "wall1_3", "wall1_4", "wall1_5", "wall1_6", "wall1_7", "wall1_8"]
+        reorder nameChildren = ["WoodPlank", "wall1_9", "SmoothConcrete", "NaturalCork", "Material", "wall1", "wall1_1", "wall1_2", "wall1_3", "wall1_4", "wall1_5", "wall1_6", "wall1_7", "wall1_8"]
         def Cube "wall1" (
             active = true
             prepend apiSchemas = ["MaterialBindingAPI"]
         )
         {
-            rel material:binding = </Root/Walls/wall1/DefaultMaterial>
+            rel material:binding = </Root/Walls/SmoothConcrete> (
+                bindMaterialAs = "weakerThanDescendants"
+            )
             double size = 0.2
             quatf xformOp:orient = (1, 0, 0, 0)
             float3 xformOp:scale = (0.99999994, 100, 100)
@@ -1453,6 +1455,7 @@ def Xform "Root"
             {
                 bool gravityEnabled = 0
                 uniform token info:id = "RealityKit.RigidBody"
+                bool isCCDEnabled = 0
                 bool lockRotationX = 1
                 bool lockRotationY = 1
                 bool lockRotationZ = 1
@@ -1479,13 +1482,15 @@ def Xform "Root"
             prepend apiSchemas = ["MaterialBindingAPI"]
         )
         {
-            rel material:binding = </Root/Walls/wall1_1/DefaultMaterial>
+            rel material:binding = </Root/Walls/SmoothConcrete> (
+                bindMaterialAs = "weakerThanDescendants"
+            )
             double size = 0.2
             float2 ui:nodegraph:node:pos = (20, 20)
             int ui:nodegraph:node:stackingOrder = 1
             quatf xformOp:orient = (1, 0, 0, 0)
             float3 xformOp:scale = (0.99999994, 100, 10)
-            float3 xformOp:translate = (-10.000034, 8.999999, 8.817832)
+            float3 xformOp:translate = (-10, 8.999999, 8.817832)
             uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
             def Material "DefaultMaterial"
@@ -1523,6 +1528,7 @@ def Xform "Root"
             {
                 bool gravityEnabled = 0
                 uniform token info:id = "RealityKit.RigidBody"
+                bool isCCDEnabled = 0
                 bool lockRotationX = 1
                 bool lockRotationY = 1
                 bool lockRotationZ = 1
@@ -1548,7 +1554,9 @@ def Xform "Root"
             prepend apiSchemas = ["MaterialBindingAPI"]
         )
         {
-            rel material:binding = </Root/Walls/wall1_2/DefaultMaterial>
+            rel material:binding = </Root/Walls/SmoothConcrete> (
+                bindMaterialAs = "weakerThanDescendants"
+            )
             double size = 0.2
             float2 ui:nodegraph:node:pos = (40, 40)
             int ui:nodegraph:node:stackingOrder = 2
@@ -1592,6 +1600,7 @@ def Xform "Root"
             {
                 bool gravityEnabled = 0
                 uniform token info:id = "RealityKit.RigidBody"
+                bool isCCDEnabled = 0
                 bool lockRotationX = 1
                 bool lockRotationY = 1
                 bool lockRotationZ = 1
@@ -1617,7 +1626,9 @@ def Xform "Root"
             prepend apiSchemas = ["MaterialBindingAPI"]
         )
         {
-            rel material:binding = </Root/Walls/wall1_3/DefaultMaterial>
+            rel material:binding = </Root/Walls/SmoothConcrete> (
+                bindMaterialAs = "weakerThanDescendants"
+            )
             double size = 0.2
             float2 ui:nodegraph:node:pos = (60, 60)
             int ui:nodegraph:node:stackingOrder = 3
@@ -1661,6 +1672,7 @@ def Xform "Root"
             {
                 bool gravityEnabled = 0
                 uniform token info:id = "RealityKit.RigidBody"
+                bool isCCDEnabled = 0
                 bool lockRotationX = 1
                 bool lockRotationY = 1
                 bool lockRotationZ = 1
@@ -1686,7 +1698,9 @@ def Xform "Root"
             prepend apiSchemas = ["MaterialBindingAPI"]
         )
         {
-            rel material:binding = </Root/Walls/wall1_4/DefaultMaterial>
+            rel material:binding = </Root/Walls/SmoothConcrete> (
+                bindMaterialAs = "weakerThanDescendants"
+            )
             double size = 0.2
             float2 ui:nodegraph:node:pos = (60, 60)
             int ui:nodegraph:node:stackingOrder = 3
@@ -1730,6 +1744,7 @@ def Xform "Root"
             {
                 bool gravityEnabled = 0
                 uniform token info:id = "RealityKit.RigidBody"
+                bool isCCDEnabled = 0
                 bool lockRotationX = 1
                 bool lockRotationY = 1
                 bool lockRotationZ = 1
@@ -1755,13 +1770,15 @@ def Xform "Root"
             prepend apiSchemas = ["MaterialBindingAPI"]
         )
         {
-            rel material:binding = </Root/Walls/wall1_5/DefaultMaterial>
+            rel material:binding = </Root/Walls/SmoothConcrete> (
+                bindMaterialAs = "weakerThanDescendants"
+            )
             double size = 0.2
             float2 ui:nodegraph:node:pos = (80, 80)
             int ui:nodegraph:node:stackingOrder = 4
             quatf xformOp:orient = (1, 0, 0, 0)
-            float3 xformOp:scale = (40, 40, 0.99999994)
-            float3 xformOp:translate = (-1.935185, 16.777418, 10)
+            float3 xformOp:scale = (100, 100, 0.99999994)
+            float3 xformOp:translate = (-1.9351978, 20.751648, 10.0001)
             uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
             def Material "DefaultMaterial"
@@ -1799,6 +1816,7 @@ def Xform "Root"
             {
                 bool gravityEnabled = 0
                 uniform token info:id = "RealityKit.RigidBody"
+                bool isCCDEnabled = 0
                 bool lockRotationX = 1
                 bool lockRotationY = 1
                 bool lockRotationZ = 1
@@ -1824,13 +1842,15 @@ def Xform "Root"
             prepend apiSchemas = ["MaterialBindingAPI"]
         )
         {
-            rel material:binding = </Root/Walls/wall1_6/DefaultMaterial>
+            rel material:binding = </Root/Walls/SmoothConcrete> (
+                bindMaterialAs = "weakerThanDescendants"
+            )
             double size = 0.2
             float2 ui:nodegraph:node:pos = (100, 100)
             int ui:nodegraph:node:stackingOrder = 5
             quatf xformOp:orient = (1, 0, 0, 0)
             float3 xformOp:scale = (40, 40, 0.99999994)
-            float3 xformOp:translate = (-1.935185, 2.9958737, 10)
+            float3 xformOp:translate = (-1.9351851, 0.9265346, 10.0001)
             uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
             def Material "DefaultMaterial"
@@ -1868,6 +1888,7 @@ def Xform "Root"
             {
                 bool gravityEnabled = 0
                 uniform token info:id = "RealityKit.RigidBody"
+                bool isCCDEnabled = 0
                 bool lockRotationX = 1
                 bool lockRotationY = 1
                 bool lockRotationZ = 1
@@ -1894,7 +1915,9 @@ def Xform "Root"
             prepend apiSchemas = ["MaterialBindingAPI"]
         )
         {
-            rel material:binding = </Root/Walls/wall1_7/DefaultMaterial>
+            rel material:binding = </Root/Walls/SmoothConcrete> (
+                bindMaterialAs = "weakerThanDescendants"
+            )
             double size = 0.2
             float2 ui:nodegraph:node:pos = (40, 40)
             int ui:nodegraph:node:stackingOrder = 2
@@ -1905,7 +1928,10 @@ def Xform "Root"
 
             def Material "DefaultMaterial"
             {
+                token outputs:mtlx:surface
+                token outputs:realitykit:vertex
                 token outputs:surface.connect = </Root/Walls/wall1_7/DefaultMaterial/DefaultSurfaceShader.outputs:surface>
+                float2 ui:nodegraph:realitykit:subgraphOutputs:pos = (0, 110.5)
 
                 def Shader "DefaultSurfaceShader"
                 {
@@ -1920,6 +1946,7 @@ def Xform "Root"
             {
                 bool gravityEnabled = 0
                 uniform token info:id = "RealityKit.RigidBody"
+                bool isCCDEnabled = 0
                 bool lockRotationX = 1
                 bool lockRotationY = 1
                 bool lockRotationZ = 1
@@ -1966,13 +1993,16 @@ def Xform "Root"
             }
         )
         {
-            rel material:binding = </Root/Walls/wall1_8/DefaultMaterial>
+            reorder nameChildren = ["DefaultMaterial", "RigidBody", "Collider"]
+            rel material:binding = </Root/Walls/SmoothConcrete> (
+                bindMaterialAs = "weakerThanDescendants"
+            )
             double size = 0.2
             float2 ui:nodegraph:node:pos = (100, 100)
             int ui:nodegraph:node:stackingOrder = 5
             quatf xformOp:orient = (0.7071067, 0, 0.7071068, 0)
             float3 xformOp:scale = (39.999992, 59.999996, 0.9999999)
-            float3 xformOp:translate = (-10, 18.168121, 5.487335)
+            float3 xformOp:translate = (-10.0001, 18.168121, 5.487335)
             uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
             def Material "DefaultMaterial"
@@ -1992,6 +2022,7 @@ def Xform "Root"
             {
                 bool gravityEnabled = 0
                 uniform token info:id = "RealityKit.RigidBody"
+                bool isCCDEnabled = 0
                 bool lockRotationX = 1
                 bool lockRotationY = 1
                 bool lockRotationZ = 1
@@ -2030,15 +2061,85 @@ def Xform "Root"
                 }
             }
         }
+
+        def Material "Material" (
+            references = None
+        )
+        {
+            token inputs:frame:stPrimvarName = "st" (
+                customData = {
+                    dictionary realitykit = {
+                        bool hide = 1
+                    }
+                }
+            )
+            token outputs:mtlx:surface.connect = </Root/Walls/Material/PreviewSurface.outputs:out>
+            token outputs:realitykit:vertex
+            token outputs:surface.connect = </Root/Walls/Material/UsdPreviewSurface.outputs:surface>
+            float2 ui:nodegraph:realitykit:subgraphOutputs:pos = (335.25, 100.5)
+
+            def Shader "PreviewSurface" (
+                active = false
+            )
+            {
+                uniform token info:id = "ND_UsdPreviewSurface_surfaceshader"
+                token outputs:out
+                float2 ui:nodegraph:node:pos = (93.5, 100.5)
+            }
+
+            def Shader "UsdPreviewSurface"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.18, 0.18, 0.18)
+                color3f inputs:diffuseColor.connect = </Root/Walls/Material/diffuseColor.outputs:rgb>
+                token outputs:surface
+            }
+
+            def Shader "diffuseColor"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @WhiteMyth/texture/abstract-gray-concrete-wall-background.jpg@
+                float2 inputs:st.connect = </Root/Walls/Material/diffuseColor/TexCoordReader.outputs:result>
+                color3f outputs:rgb
+
+                def Shader "TexCoordReader"
+                {
+                    uniform token info:id = "UsdPrimvarReader_float2"
+                    token inputs:varname.connect = </Root/Walls/Material.inputs:frame:stPrimvarName>
+                    float2 outputs:result
+                }
+            }
+        }
+
+        def "SmoothConcrete" (
+            active = true
+            references = @WhiteMyth/material/SmoothConcrete.usdz@
+        )
+        {
+        }
+
+        def "NaturalCork" (
+            active = true
+            references = @WhiteMyth/material/NaturalCork.usdz@
+        )
+        {
+        }
+
+        def "WoodPlank" (
+            active = true
+            references = @WhiteMyth/material/WoodPlank.usdz@
+        )
+        {
+        }
     }
 
     def Scope "StaticFurniture" (
         active = true
     )
     {
-        reorder nameChildren = ["ikea_bed", "Computer_Desk", "Poster_Basic__Low_Poly", "Picture_Frame", "Picture_Frame_1", "Picture_Frame_2", "Indoor_Plant_with_pot_a", "Snacksinabox"]
+        reorder nameChildren = ["ikea_bed", "Old_Bed", "Computer_Desk", "Poster_Basic__Low_Poly", "Picture_Frame", "Picture_Frame_1", "Picture_Frame_2", "Indoor_Plant_with_pot_a", "Snacksinabox"]
         def "ikea_bed" (
-            active = true
+            active = false
             references = @WhiteMyth/model/ikea_bed.usdz@
         )
         {
@@ -2074,28 +2175,9 @@ def Xform "Root"
         )
         {
             quatf xformOp:orient = (1, 0, 0, 0)
-            float3 xformOp:scale = (0.015, 0.015, 0.015)
-            float3 xformOp:translate = (-0.8005347, 4.315775, -7.9243407)
+            float3 xformOp:scale = (0.018, 0.018, 0.018)
+            float3 xformOp:translate = (-1.3462317, 4.935238, -7.674088)
             uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
-
-            def RealityKitComponent "Collider"
-            {
-                uint group = 1
-                uniform token info:id = "RealityKit.Collider"
-                uint mask = 4294967295
-                token type = "Default"
-
-                def RealityKitStruct "Shape"
-                {
-                    float3 extent = (480.00003, 298, 260)
-                    token shapeType = "Box"
-
-                    def RealityKitStruct "pose"
-                    {
-                        float3 position = (0, -144, -0.0000076293945)
-                    }
-                }
-            }
 
             over "Meshes"
             {
@@ -2133,8 +2215,8 @@ def Xform "Root"
 
                                 def RealityKitStruct "material"
                                 {
-                                    double dynamicFriction = 0.6
-                                    double staticFriction = 0.6
+                                    double dynamicFriction = 0.4
+                                    double staticFriction = 0.4
                                 }
                             }
 
@@ -2272,7 +2354,7 @@ def Xform "Root"
             reorder nameChildren = ["Materials", "Meshes"]
             quatf xformOp:orient = (1, 0, 0, 0)
             float3 xformOp:scale = (0.016, 0.008, 0.008)
-            float3 xformOp:translate = (-1.0964534, 6.251047, -9.89198)
+            float3 xformOp:translate = (-2.0181386, 6.653496, -9.891981)
             uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
             over "Materials"
@@ -2767,8 +2849,8 @@ def Xform "Root"
         )
         {
             quatf xformOp:orient = (1, 0, 0, 0)
-            float3 xformOp:scale = (0.07, 0.07, 0.07)
-            float3 xformOp:translate = (-6.9637375, 0, -7.031603)
+            float3 xformOp:scale = (0.05, 0.05, 0.05)
+            float3 xformOp:translate = (-7.567941, 0.047985286, -6.6063123)
             uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
             over "Meshes"
@@ -2811,7 +2893,7 @@ def Xform "Root"
                                         {
                                             bool gravityEnabled = 0
                                             uniform token info:id = "RealityKit.RigidBody"
-                                            bool isCCDEnabled = 1
+                                            bool isCCDEnabled = 0
                                             bool lockRotationX = 1
                                             bool lockRotationY = 1
                                             bool lockRotationZ = 1
@@ -2852,8 +2934,233 @@ def Xform "Root"
         {
             quatf xformOp:orient = (0.70710677, 0, 0, 0.70710677)
             float3 xformOp:scale = (0.005999999, 0.005999999, 0.005999999)
-            float3 xformOp:translate = (-7.7409067, 3.7830229, -0.8584741)
+            float3 xformOp:translate = (-7.6031823, 4.0701423, -0.20719881)
             uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+        }
+
+        def "Old_Bed" (
+            active = true
+            references = @Old_Bed.usdz@
+        )
+        {
+            quatf xformOp:orient = (1, 0, 0, 0)
+            float3 xformOp:scale = (0.08, 0.08, 0.08)
+            float3 xformOp:translate = (6.6801667, -0.5318588, -2.8804545)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            def RealityKitComponent "Collider"
+            {
+                uint group = 1
+                uniform token info:id = "RealityKit.Collider"
+                uint mask = 4294967295
+                token type = "Default"
+
+                def RealityKitStruct "Shape"
+                {
+                    float3 extent = (78.63655, 16, 175.57343)
+                    token shapeType = "Box"
+
+                    def RealityKitStruct "pose"
+                    {
+                        float3 position = (0, 34.136288, -0.0000038146973)
+                    }
+                }
+            }
+
+            over "Meshes"
+            {
+                reorder nameChildren = ["invis", "Sketchfab_model"]
+                quatf xformOp:orient = (1, 0, 0, 0)
+                float3 xformOp:scale = (100, 100, 100)
+                float3 xformOp:translate = (0.0005874634, 7.747566, -0.0005493164)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                def Cube "invis" (
+                    active = true
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                    customData = {
+                        float3 rotationEulerHint = (-0.8191915, 4.8120364e-7, 3.7374326e-7)
+                    }
+                )
+                {
+                    rel material:binding = </Root/StaticFurniture/Old_Bed/Meshes/invis/DefaultMaterial> (
+                        bindMaterialAs = "weakerThanDescendants"
+                    )
+                    double size = 0.2
+                    float2 ui:nodegraph:node:pos = (-419.65826, 87.94941)
+                    int ui:nodegraph:node:stackingOrder = 1
+                    quatf xformOp:orient = (0.9172819, -0.39823857, 1.462802e-7, 2.6723086e-7)
+                    float3 xformOp:scale = (4, 2, 0.2)
+                    float3 xformOp:translate = (0.009912432, 0.48003, -0.6947274)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                    def Material "DefaultMaterial"
+                    {
+                        token outputs:mtlx:surface
+                        token outputs:realitykit:vertex
+                        token outputs:surface.connect = </Root/StaticFurniture/Old_Bed/Meshes/invis/DefaultMaterial/DefaultSurfaceShader.outputs:surface>
+
+                        def Shader "DefaultSurfaceShader"
+                        {
+                            uniform token info:id = "UsdPreviewSurface"
+                            float inputs:clearcoatRoughness = 0.01
+                            color3f inputs:diffuseColor = (1, 1, 1)
+                            float inputs:metallic = 1
+                            float inputs:opacity = 0
+                            float inputs:roughness = 0
+                            token outputs:surface
+                        }
+                    }
+
+                    def RealityKitComponent "Collider"
+                    {
+                        uint group = 1
+                        uniform token info:id = "RealityKit.Collider"
+                        uint mask = 4294967295
+                        token type = "Default"
+
+                        def RealityKitStruct "Shape"
+                        {
+                            float3 extent = (0.2, 0.2, 0.2)
+                            token shapeType = "Box"
+
+                            def RealityKitStruct "pose"
+                            {
+                            }
+                        }
+                    }
+
+                    def RealityKitComponent "RigidBody"
+                    {
+                        bool gravityEnabled = 0
+                        uniform token info:id = "RealityKit.RigidBody"
+                        bool lockRotationX = 1
+                        bool lockRotationY = 1
+                        bool lockRotationZ = 1
+                        bool lockTranslationX = 1
+                        bool lockTranslationY = 1
+                        bool lockTranslationZ = 1
+                        token motionType = "Static"
+
+                        def RealityKitStruct "massFrame"
+                        {
+                            def RealityKitStruct "m_pose"
+                            {
+                            }
+                        }
+
+                        def RealityKitStruct "material"
+                        {
+                        }
+                    }
+                }
+
+                def Cube "invis_1" (
+                    active = true
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                    customData = {
+                        float3 rotationEulerHint = (0, 0, 0)
+                    }
+                )
+                {
+                    rel material:binding = </Root/StaticFurniture/Old_Bed/Meshes/invis_1/DefaultMaterial> (
+                        bindMaterialAs = "weakerThanDescendants"
+                    )
+                    double size = 0.2
+                    float2 ui:nodegraph:node:pos = (-399.65826, 107.94941)
+                    int ui:nodegraph:node:stackingOrder = 2
+                    quatf xformOp:orient = (1, 0, 0, 0)
+                    float3 xformOp:scale = (4, 2, 0.5)
+                    float3 xformOp:translate = (0.009900392, 0.46978965, -0.82056606)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                    def Material "DefaultMaterial"
+                    {
+                        token outputs:mtlx:surface
+                        token outputs:realitykit:vertex
+                        token outputs:surface.connect = </Root/StaticFurniture/Old_Bed/Meshes/invis_1/DefaultMaterial/DefaultSurfaceShader.outputs:surface>
+
+                        def Shader "DefaultSurfaceShader"
+                        {
+                            uniform token info:id = "UsdPreviewSurface"
+                            color3f inputs:diffuseColor = (1, 1, 1)
+                            float inputs:metallic = 1
+                            float inputs:opacity = 0
+                            float inputs:roughness = 0
+                            token outputs:surface
+                        }
+                    }
+
+                    def RealityKitComponent "Collider"
+                    {
+                        uint group = 1
+                        uniform token info:id = "RealityKit.Collider"
+                        uint mask = 4294967295
+                        token type = "Default"
+
+                        def RealityKitStruct "Shape"
+                        {
+                            float3 extent = (0.2, 0.2, 0.2)
+                            token shapeType = "Box"
+
+                            def RealityKitStruct "pose"
+                            {
+                            }
+                        }
+                    }
+
+                    def RealityKitComponent "RigidBody"
+                    {
+                        bool gravityEnabled = 0
+                        uniform token info:id = "RealityKit.RigidBody"
+                        bool lockRotationX = 1
+                        bool lockRotationY = 1
+                        bool lockRotationZ = 1
+                        bool lockTranslationX = 1
+                        bool lockTranslationY = 1
+                        bool lockTranslationZ = 1
+                        token motionType = "Static"
+
+                        def RealityKitStruct "massFrame"
+                        {
+                            def RealityKitStruct "m_pose"
+                            {
+                            }
+                        }
+
+                        def RealityKitStruct "material"
+                        {
+                        }
+                    }
+                }
+            }
+
+            def RealityKitComponent "RigidBody"
+            {
+                bool gravityEnabled = 0
+                uniform token info:id = "RealityKit.RigidBody"
+                bool lockRotationX = 1
+                bool lockRotationY = 1
+                bool lockRotationZ = 1
+                bool lockTranslationX = 1
+                bool lockTranslationY = 1
+                bool lockTranslationZ = 1
+                token motionType = "Static"
+
+                def RealityKitStruct "massFrame"
+                {
+                    def RealityKitStruct "m_pose"
+                    {
+                    }
+                }
+
+                def RealityKitStruct "material"
+                {
+                    double dynamicFriction = 0.5
+                    double restitution = 0.01
+                    double staticFriction = 0.5
+                }
+            }
         }
     }
 
@@ -2861,13 +3168,15 @@ def Xform "Root"
         active = true
     )
     {
-        reorder nameChildren = ["ceiling", "ceilinglight", "ceiling_snow"]
+        reorder nameChildren = ["Material", "ceiling", "ceilinglight", "ceiling_snow"]
         def Cube "ceiling" (
             prepend apiSchemas = ["MaterialBindingAPI"]
         )
         {
             reorder nameChildren = ["DefaultMaterial", "Ceiling_Light"]
-            rel material:binding = </Root/Ceiling/ceiling/DefaultMaterial>
+            rel material:binding = </Root/Ceiling/Material> (
+                bindMaterialAs = "weakerThanDescendants"
+            )
             double size = 0.2
             float2 ui:nodegraph:node:pos = (20, 20)
             int ui:nodegraph:node:stackingOrder = 1
@@ -2934,10 +3243,10 @@ def Xform "Root"
 
             def RealityKitComponent "PointLight"
             {
-                float attenuationFalloffExponent = 0.2
+                float attenuationFalloffExponent = 0.5
                 float attenuationRadius = 100
                 token info:id = "RealityKit.PointLight"
-                float intensity = 30000
+                float intensity = 5000
             }
         }
 
@@ -2951,8 +3260,8 @@ def Xform "Root"
             float2 ui:nodegraph:node:pos = (40, 40)
             int ui:nodegraph:node:stackingOrder = 2
             quatf xformOp:orient = (1, 0, 0, 0)
-            float3 xformOp:scale = (149.99997, 0.99999964, 149.99997)
-            float3 xformOp:translate = (0, 22.914392, 0)
+            float3 xformOp:scale = (149.99997, 0.99999964, 200)
+            float3 xformOp:translate = (-0.0000011548402, 22.914394, 2.5)
             uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
             def Material "DefaultMaterial"
@@ -2972,8 +3281,10 @@ def Xform "Root"
                 {
                     uniform token info:id = "UsdPreviewSurface"
                     color3f inputs:diffuseColor = (1, 1, 1)
+                    float inputs:metallic = 1
+                    normal3f inputs:normal = (0, 0, 1)
                     float inputs:opacity = 0
-                    float inputs:roughness = 0.75
+                    float inputs:roughness = 0
                     token outputs:surface
                 }
 
@@ -3013,13 +3324,15 @@ def Xform "Root"
 
                     def RealityKitStruct "mainEmitter"
                     {
-                        float birthRate = 200
+                        float birthRate = 300
                         float4 endColorA = (0.0013006331, 0.032195132, 1, 1)
                         float noiseAnimationSpeed = 0.05
                         float noiseScale = 0.05
                         float noiseStrength = 0.05
                         token opacityOverLife = "LinearFadeOut"
-                        double particleLifeSpan = 8
+                        double particleLifeSpan = 9
+                        float particleMass = 1
+                        float sizeMultiplierAtEndOfLifespan = 0.8
                         float4 startColorA = (0.9999908, 1, 1, 1)
                         float4 startColorB = (1, 1, 1, 1)
                         bool useEndColor = 0
@@ -3033,13 +3346,52 @@ def Xform "Root"
                 }
             }
         }
+
+        def Material "Material"
+        {
+            token outputs:mtlx:surface.connect = </Root/Ceiling/Material/PreviewSurface.outputs:out>
+            token outputs:realitykit:vertex
+            float2 ui:nodegraph:realitykit:subgraphOutputs:pos = (335.25, 100.5)
+
+            def Shader "PreviewSurface"
+            {
+                uniform token info:id = "ND_UsdPreviewSurface_surfaceshader"
+                color3f inputs:diffuseColor.connect = </Root/Ceiling/Material/HSVAdjust.outputs:out>
+                float inputs:metallic
+                float inputs:opacity
+                float inputs:roughness
+                token outputs:out
+                float2 ui:nodegraph:node:pos = (93.5, 100.5)
+                int ui:nodegraph:node:stackingOrder = 2
+            }
+
+            def Shader "HSVAdjust"
+            {
+                uniform token info:id = "ND_hsvadjust_color3"
+                float3 inputs:amount = (0, 1, 0.8)
+                color3f inputs:in.connect = </Root/Ceiling/Material/Image.outputs:out>
+                color3f outputs:out
+                float2 ui:nodegraph:node:pos = (-160.24802, 288.27573)
+                int ui:nodegraph:node:stackingOrder = 29
+            }
+
+            def Shader "Image"
+            {
+                uniform token info:id = "ND_image_color3"
+                asset inputs:file = @WhiteMyth/texture/abstract-gray-concrete-wall-background.jpg@
+                string inputs:filtertype
+                color3f outputs:out
+                float2 ui:nodegraph:node:pos = (-418.34775, 83.75445)
+                int ui:nodegraph:node:stackingOrder = 14
+            }
+        }
     }
 
     def Scope "MovableItems" (
         active = true
     )
     {
-        reorder nameChildren = ["doorkey", "paper", "battery", "dresserkey", "hammer", "iphone", "lighter"]
+        reorder nameChildren = ["doorkey", "paper", "battery", "dresserkey", "hammer", "iphone", "lighter", "lighter"]
         def "doorkey" (
             active = true
             customData = {
@@ -3076,6 +3428,11 @@ def Xform "Root"
                     }
                 }
             }
+
+            def RealityKitCustomComponent "RealityKitContent_HasHoverEffectComponent"
+            {
+                uniform token info:id = "RealityKitContent.HasHoverEffectComponent"
+            }
         }
 
         def Cube "paper" (
@@ -3090,7 +3447,7 @@ def Xform "Root"
             double size = 0.2
             quatf xformOp:orient = (0.96592575, 0, -0.25881913, 0)
             float3 xformOp:scale = (4.9999995, 0.019999998, 2.9999998)
-            float3 xformOp:translate = (-8.724094, 4.6943345, 0.02015602)
+            float3 xformOp:translate = (-8.840135, 5.0868235, 0.36021754)
             uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
             def Material "DefaultMaterial"
@@ -3153,6 +3510,33 @@ def Xform "Root"
                     }
                 }
             }
+
+            def RealityKitComponent "RigidBody"
+            {
+                uniform token info:id = "RealityKit.RigidBody"
+                bool isCCDEnabled = 1
+
+                def RealityKitStruct "massFrame"
+                {
+                    float3 m_inertia = (0.04, 0.04, 0.04)
+                    float m_mass = 0.03
+
+                    def RealityKitStruct "m_pose"
+                    {
+                    }
+                }
+
+                def RealityKitStruct "material"
+                {
+                    double dynamicFriction = 0.2
+                    double staticFriction = 0.2
+                }
+            }
+
+            def RealityKitCustomComponent "RealityKitContent_HasHoverEffectComponent"
+            {
+                uniform token info:id = "RealityKitContent.HasHoverEffectComponent"
+            }
         }
 
         def "battery" (
@@ -3161,8 +3545,8 @@ def Xform "Root"
         )
         {
             quatf xformOp:orient = (1, 0, 0, 0)
-            float3 xformOp:scale = (0.04999999, 0.04999999, 0.04999999)
-            float3 xformOp:translate = (-8.514946, 1.9588088, -3.25526)
+            float3 xformOp:scale = (0.06, 0.06, 0.06)
+            float3 xformOp:translate = (-8.467713, 2.0955126, -3.2552602)
             uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
             def RealityKitComponent "InputTarget"
@@ -3188,6 +3572,11 @@ def Xform "Root"
                     }
                 }
             }
+
+            def RealityKitCustomComponent "RealityKitContent_HasHoverEffectComponent"
+            {
+                uniform token info:id = "RealityKitContent.HasHoverEffectComponent"
+            }
         }
 
         def "dresserkey" (
@@ -3197,7 +3586,7 @@ def Xform "Root"
         {
             quatf xformOp:orient = (1, 0, 0, 0)
             float3 xformOp:scale = (0.09999998, 0.09999998, 0.09999998)
-            float3 xformOp:translate = (-1.483298, -0.8858973, 0.14278959)
+            float3 xformOp:translate = (-1.4832981, -0.8444014, 0.14278962)
             uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
             def RealityKitComponent "InputTarget"
@@ -3223,19 +3612,49 @@ def Xform "Root"
                     }
                 }
             }
+
+            def RealityKitComponent "RigidBody"
+            {
+                uniform token info:id = "RealityKit.RigidBody"
+                bool isCCDEnabled = 1
+                bool lockRotationX = 0
+                bool lockTranslationX = 0
+                bool lockTranslationY = 0
+
+                def RealityKitStruct "massFrame"
+                {
+                    float m_mass = 0.1
+
+                    def RealityKitStruct "m_pose"
+                    {
+                    }
+                }
+
+                def RealityKitStruct "material"
+                {
+                    double dynamicFriction = 0.4
+                    double restitution = 0.05
+                    double staticFriction = 0.4
+                }
+            }
+
+            def RealityKitCustomComponent "RealityKitContent_HasHoverEffectComponent"
+            {
+                uniform token info:id = "RealityKitContent.HasHoverEffectComponent"
+            }
         }
 
         def "hammer" (
             active = true
             customData = {
-                float3 rotationEulerHint = (5.9604645e-8, -5.9575342e-8, -1.5394276)
+                float3 rotationEulerHint = (-1.0358242, 8.940697e-8, -1.5394278)
             }
             references = @WhiteMyth/model/Hammer.usdz@
         )
         {
-            quatf xformOp:orient = (0.71810985, 2.4736562e-15, -4.1480657e-8, -0.69592977)
+            quatf xformOp:orient = (0.62393314, -0.35551256, 0.344532, -0.6046619)
             float3 xformOp:scale = (0.05, 0.05, 0.05)
-            float3 xformOp:translate = (4.229546, 0.8584114, -2.797512)
+            float3 xformOp:translate = (6.434096, 0.36904827, -2.538613)
             uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
             def RealityKitComponent "InputTarget"
@@ -3252,12 +3671,12 @@ def Xform "Root"
 
                 def RealityKitStruct "Shape"
                 {
-                    float3 extent = (2.3246782, 25.81861, 26.817879)
+                    float3 extent = (2.4, 37, 14.5)
                     token shapeType = "Box"
 
                     def RealityKitStruct "pose"
                     {
-                        float3 position = (0, 12.977073, -0.47081566)
+                        float3 position = (0.00013637543, -1.2163525, -0.69519234)
                     }
                 }
             }
@@ -3266,25 +3685,25 @@ def Xform "Root"
             {
                 bool gravityEnabled = 1
                 uniform token info:id = "RealityKit.RigidBody"
-                bool isCCDEnabled = 0
-                bool lockRotationY = 1
-                bool lockRotationZ = 1
+                bool isCCDEnabled = 1
+                bool lockRotationY = 0
+                bool lockRotationZ = 0
 
                 def RealityKitStruct "massFrame"
                 {
-                    float m_mass = 0.5
+                    float m_mass = 1
 
                     def RealityKitStruct "m_pose"
                     {
                         quatf orientation = (1, 0, 0, 0)
-                        float3 position = (0, 22, -8)
+                        float3 position = (0, 12, -1.5)
                     }
                 }
 
                 def RealityKitStruct "material"
                 {
                     double dynamicFriction = 0.4
-                    double restitution = 0.05
+                    double restitution = 0.02
                     double staticFriction = 0.4
                 }
             }
@@ -3299,6 +3718,23 @@ def Xform "Root"
                     rel values = </Root/SFX/thump_wav>
                 }
             }
+
+            over "Meshes" (
+                customData = {
+                    float3 rotationEulerHint = (0.6981317, 0, 0)
+                }
+            )
+            {
+                quatf xformOp:orient = (0.9396926, 0.34202012, 0, 0)
+                float3 xformOp:scale = (100, 100, 100)
+                float3 xformOp:translate = (0.00013637544, -11.46, -9.741651)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def RealityKitCustomComponent "RealityKitContent_HasHoverEffectComponent"
+            {
+                uniform token info:id = "RealityKitContent.HasHoverEffectComponent"
+            }
         }
 
         def "iphone" (
@@ -3311,7 +3747,7 @@ def Xform "Root"
         {
             quatf xformOp:orient = (0.8349477, 0.14722387, 0.092080615, 0.5222152)
             float3 xformOp:scale = (0.004, 0.004, 0.004)
-            float3 xformOp:translate = (-8.234035, 3.8582332, -0.24072003)
+            float3 xformOp:translate = (-8.096311, 4.145354, 0.41055545)
             uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
             over "Meshes"
@@ -3355,20 +3791,35 @@ def Xform "Root"
                     }
                 }
             }
+
+            def RealityKitCustomComponent "RealityKitContent_HasHoverEffectComponent"
+            {
+                uniform token info:id = "RealityKitContent.HasHoverEffectComponent"
+            }
         }
 
-        def "lighter" (
-            customData = {
-                float3 rotationEulerHint = (1.5707959, 1.5707963, 0)
-            }
-            references = @WhiteMyth/model/Basic_Lighter.usdz@
+        def Xform "lighter" (
+            active = true
         )
         {
-            reorder nameChildren = ["strike", "Materials", "Meshes", "Collider", "AudioLibrary"]
-            quatf xformOp:orient = (0.49209684, 0.50778025, 0.49209672, -0.5077803)
-            float3 xformOp:scale = (0.0030000005, 0.0029999996, 0.0029999996)
-            float3 xformOp:translate = (-6.990871, 1.7795321, -7.580843)
+            quatf xformOp:orient = (1, 0, 0, 0)
+            float3 xformOp:scale = (0.99999964, 0.99999964, 0.99999964)
+            float3 xformOp:translate = (-7.4605827, 1.4364902, -6.9990973)
             uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            def "lighter__" (
+                customData = {
+                    float3 rotationEulerHint = (1.5707964, 1.5707963, 0)
+                }
+                references = @WhiteMyth/model/Basic_Lighter.usdz@
+            )
+            {
+                reorder nameChildren = ["strike", "Materials", "Meshes", "Collider", "AudioLibrary"]
+                quatf xformOp:orient = (0.5, 0.50000006, 0.49999994, -0.49999994)
+                float3 xformOp:scale = (0.0030000017, 0.0030000007, 0.0030000007)
+                float3 xformOp:translate = (-0.06537008, 0.0029366016, -0.0008420944)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
 
             def RealityKitComponent "Collider"
             {
@@ -3379,13 +3830,35 @@ def Xform "Root"
 
                 def RealityKitStruct "Shape"
                 {
-                    float3 extent = (80, 220, 38)
+                    float3 extent = (0.65, 0.12, 0.23)
                     token shapeType = "Box"
 
                     def RealityKitStruct "pose"
                     {
-                        float3 position = (-4.1116323, -0.124607086, 2.558857)
+                        float3 position = (-0.06574391, -0.004739972, 0.011492815)
                     }
+                }
+            }
+
+            def RealityKitComponent "RigidBody"
+            {
+                uniform token info:id = "RealityKit.RigidBody"
+                bool isCCDEnabled = 1
+
+                def RealityKitStruct "massFrame"
+                {
+                    float m_mass = 0.1
+
+                    def RealityKitStruct "m_pose"
+                    {
+                    }
+                }
+
+                def RealityKitStruct "material"
+                {
+                    double dynamicFriction = 0.4
+                    double restitution = 0.01
+                    double staticFriction = 0.4
                 }
             }
 
@@ -3395,7 +3868,7 @@ def Xform "Root"
 
                 def RealityKitDict "resources"
                 {
-                    string[] keys = ["lighter.wav"]
+                    string[] keys = ["ignite"]
                     rel values = </Root/SFX/lighter_wav>
                 }
             }
@@ -3403,6 +3876,11 @@ def Xform "Root"
             def RealityKitComponent "InputTarget"
             {
                 uniform token info:id = "RealityKit.InputTarget"
+            }
+
+            def RealityKitCustomComponent "RealityKitContent_HasHoverEffectComponent"
+            {
+                uniform token info:id = "RealityKitContent.HasHoverEffectComponent"
             }
         }
     }
@@ -3421,8 +3899,8 @@ def Xform "Root"
         )
         {
             quatf xformOp:orient = (0.70710677, 0, -0.7071068, 0)
-            float3 xformOp:scale = (1.2, 1.2, 1.2)
-            float3 xformOp:translate = (1.3034679, -0.5728197, -6.8233886)
+            float3 xformOp:scale = (1.3, 1.3, 1.3)
+            float3 xformOp:translate = (1.6861356, -0.5197541, -6.8233895)
             uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
             def RealityKitComponent "InputTarget"
@@ -3464,6 +3942,37 @@ def Xform "Root"
                     ]
                 }
             }
+
+            def RealityKitComponent "RigidBody"
+            {
+                bool gravityEnabled = 0
+                uniform token info:id = "RealityKit.RigidBody"
+                bool lockRotationX = 1
+                bool lockRotationY = 1
+                bool lockRotationZ = 1
+                bool lockTranslationX = 1
+                bool lockTranslationY = 1
+                bool lockTranslationZ = 1
+                token motionType = "Static"
+
+                def RealityKitStruct "massFrame"
+                {
+                    float m_mass = 10
+
+                    def RealityKitStruct "m_pose"
+                    {
+                    }
+                }
+
+                def RealityKitStruct "material"
+                {
+                }
+            }
+
+            def RealityKitCustomComponent "RealityKitContent_HasHoverEffectComponent"
+            {
+                uniform token info:id = "RealityKitContent.HasHoverEffectComponent"
+            }
         }
 
         def "dresser" (
@@ -3476,8 +3985,8 @@ def Xform "Root"
         {
             reorder nameChildren = ["Materials", "Meshes", "SkinnedMeshes", "Collider", "InputTarget"]
             quatf xformOp:orient = (0.70710677, 0, 0.7071067, 0)
-            float3 xformOp:scale = (0.019999996, 0.019999996, 0.019999996)
-            float3 xformOp:translate = (-8.730837, 0.13082026, -1.8378867)
+            float3 xformOp:scale = (0.022, 0.022, 0.022)
+            float3 xformOp:translate = (-8.682722, 0.070068665, -1.3361847)
             uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
             over "Meshes"
@@ -3588,11 +4097,6 @@ def Xform "Root"
                 }
             }
 
-            def RealityKitComponent "InputTarget"
-            {
-                uniform token info:id = "RealityKit.InputTarget"
-            }
-
             def RealityKitComponent "RigidBody"
             {
                 bool gravityEnabled = 0
@@ -3614,6 +4118,8 @@ def Xform "Root"
 
                 def RealityKitStruct "material"
                 {
+                    double dynamicFriction = 0.4
+                    double staticFriction = 0.4
                 }
             }
         }
@@ -3621,14 +4127,14 @@ def Xform "Root"
         def "dresserlock" (
             active = true
             customData = {
-                float3 rotationEulerHint = (0, 0.52359885, 0)
+                float3 rotationEulerHint = (0, 0.8726645, 0)
             }
             references = @WhiteMyth/model/Lock_And_Key.usdz@
         )
         {
-            quatf xformOp:orient = (0.9659258, 0, 0.2588191, 0)
-            float3 xformOp:scale = (0.012999999, 0.013, 0.012999999)
-            float3 xformOp:translate = (-7.5392957, 3.7508392, -2.0966103)
+            quatf xformOp:orient = (0.9063078, 0, 0.4226182, 0)
+            float3 xformOp:scale = (0.02, 0.020000001, 0.02)
+            float3 xformOp:translate = (-7.3788295, 3.935375, -1.4878078)
             uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
             def RealityKitComponent "AudioLibrary"
@@ -3714,11 +4220,39 @@ def Xform "Root"
                     uniform double[] startTimes = [0, 4.146888888888889]
                 }
             }
+
+            def RealityKitComponent "RigidBody"
+            {
+                bool gravityEnabled = 0
+                uniform token info:id = "RealityKit.RigidBody"
+                bool lockRotationX = 1
+                bool lockRotationY = 1
+                bool lockRotationZ = 1
+                bool lockTranslationX = 1
+                bool lockTranslationY = 1
+                bool lockTranslationZ = 1
+                token motionType = "Static"
+
+                def RealityKitStruct "massFrame"
+                {
+                    def RealityKitStruct "m_pose"
+                    {
+                    }
+                }
+
+                def RealityKitStruct "material"
+                {
+                    double restitution = 0.1
+                }
+            }
         }
 
         def "candle" (
             active = true
             prepend apiSchemas = ["MaterialBindingAPI"]
+            customData = {
+                float3 rotationEulerHint = (0, 2.1713371, 0)
+            }
             references = @WhiteMyth/model/Just_a_Candle.usdz@
         )
         {
@@ -3726,9 +4260,9 @@ def Xform "Root"
             rel material:binding = None (
                 bindMaterialAs = "weakerThanDescendants"
             )
-            quatf xformOp:orient = (1, 0, 0, 0)
+            quatf xformOp:orient = (0.46632123, 0, 0.8846154, 0)
             float3 xformOp:scale = (0.0049999994, 0.0049999994, 0.0049999994)
-            float3 xformOp:translate = (1.5416013, 4.4002023, -8.203297)
+            float3 xformOp:translate = (1.4476032, 4.977586, -8.06998)
             uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
             over "Meshes"
@@ -3764,6 +4298,54 @@ def Xform "Root"
                     }
                 }
             }
+
+            def RealityKitComponent "Collider"
+            {
+                uint group = 1
+                uniform token info:id = "RealityKit.Collider"
+                uint mask = 4294967295
+                token type = "Default"
+
+                def RealityKitStruct "Shape"
+                {
+                    float3 extent = (120, 230, 130)
+                    float height = 248.36281
+                    float radius = 81.57518
+                    token shapeType = "Box"
+
+                    def RealityKitStruct "pose"
+                    {
+                        float3 position = (0.26971054, 124.271095, -2.521656)
+                    }
+                }
+            }
+
+            def RealityKitComponent "RigidBody"
+            {
+                bool gravityEnabled = 0
+                uniform token info:id = "RealityKit.RigidBody"
+                bool lockRotationX = 1
+                bool lockRotationY = 1
+                bool lockRotationZ = 1
+                bool lockTranslationX = 1
+                bool lockTranslationY = 1
+                bool lockTranslationZ = 1
+                token motionType = "Static"
+
+                def RealityKitStruct "massFrame"
+                {
+                    def RealityKitStruct "m_pose"
+                    {
+                    }
+                }
+
+                def RealityKitStruct "material"
+                {
+                    double dynamicFriction = 0.3
+                    double restitution = 0.1
+                    double staticFriction = 0.3
+                }
+            }
         }
 
         def "snowglobe" (
@@ -3773,12 +4355,62 @@ def Xform "Root"
         {
             quatf xformOp:orient = (1, 0, 0, 0)
             float3 xformOp:scale = (5, 5, 5)
-            float3 xformOp:translate = (-2.674568, 4.324601, -8.094515)
+            float3 xformOp:translate = (-3.9718125, 4.9603744, -7.582679)
 
             over "base_with_smart_uv" (
                 active = false
             )
             {
+            }
+
+            def RealityKitComponent "Collider"
+            {
+                uint group = 1
+                uniform token info:id = "RealityKit.Collider"
+                uint mask = 4294967295
+                token type = "Default"
+
+                def RealityKitStruct "Shape"
+                {
+                    float3 extent = (0.29868275, 0.26803192, 0.29868275)
+                    float height = 0.4
+                    float radius = 0.14934137
+                    token shapeType = "Sphere"
+
+                    def RealityKitStruct "pose"
+                    {
+                        float3 position = (-0.00046154857, 0.13737477, 0.003406614)
+                    }
+                }
+            }
+
+            def RealityKitComponent "RigidBody"
+            {
+                bool gravityEnabled = 0
+                uniform token info:id = "RealityKit.RigidBody"
+                bool lockRotationX = 1
+                bool lockRotationY = 1
+                bool lockRotationZ = 1
+                bool lockTranslationX = 1
+                bool lockTranslationY = 1
+                bool lockTranslationZ = 1
+                token motionType = "Static"
+
+                def RealityKitStruct "massFrame"
+                {
+                    float m_mass = 0.5
+
+                    def RealityKitStruct "m_pose"
+                    {
+                    }
+                }
+
+                def RealityKitStruct "material"
+                {
+                    double dynamicFriction = 0.3
+                    double restitution = 0.1
+                    double staticFriction = 0.3
+                }
             }
         }
 
@@ -3790,7 +4422,7 @@ def Xform "Root"
             reorder nameChildren = ["Sphere", "Materials", "Meshes", "AnimationLibrary"]
             quatf xformOp:orient = (1, 0, 0, 0)
             float3 xformOp:scale = (0.06, 0.06, 0.06)
-            float3 xformOp:translate = (-1.259842, 9.2472, 9.57242)
+            float3 xformOp:translate = (-1.2598422, 7.1939607, 9.572421)
             uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
             over "Meshes"
@@ -4271,6 +4903,50 @@ def Xform "Root"
                     rel values = </Root/SFX/blinds_wav>
                 }
             }
+
+            def RealityKitComponent "Collider"
+            {
+                uint group = 1
+                uniform token info:id = "RealityKit.Collider"
+                uint mask = 4294967295
+                token type = "Default"
+
+                def RealityKitStruct "Shape"
+                {
+                    float3 extent = (77.01409, 98.47671, 7.5823574)
+                    token shapeType = "Box"
+
+                    def RealityKitStruct "pose"
+                    {
+                        float3 position = (0.043491364, 10.483974, 7.4263687)
+                    }
+                }
+            }
+
+            def RealityKitComponent "RigidBody"
+            {
+                bool gravityEnabled = 0
+                uniform token info:id = "RealityKit.RigidBody"
+                bool lockRotationX = 1
+                bool lockRotationY = 1
+                bool lockRotationZ = 1
+                bool lockTranslationX = 1
+                bool lockTranslationY = 1
+                bool lockTranslationZ = 1
+                token motionType = "Static"
+
+                def RealityKitStruct "massFrame"
+                {
+                    def RealityKitStruct "m_pose"
+                    {
+                    }
+                }
+
+                def RealityKitStruct "material"
+                {
+                    double restitution = 0.1
+                }
+            }
         }
 
         def "switch_window" (
@@ -4283,7 +4959,7 @@ def Xform "Root"
         {
             quatf xformOp:orient = (-4.371139e-8, 0, 1, 0)
             float3 xformOp:scale = (0.06, 0.06, 0.06)
-            float3 xformOp:translate = (-4.7547507, 7.75, 9.909227)
+            float3 xformOp:translate = (-4.754751, 6.1004076, 9.909228)
             uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
             def RealityKitComponent "AnimationLibrary"
@@ -4371,6 +5047,11 @@ def Xform "Root"
                     rel values = </Root/SFX/switch_wav>
                 }
             }
+
+            def RealityKitCustomComponent "RealityKitContent_HasHoverEffectComponent"
+            {
+                uniform token info:id = "RealityKitContent.HasHoverEffectComponent"
+            }
         }
 
         def "switch_light" (
@@ -4385,7 +5066,7 @@ def Xform "Root"
             int ui:nodegraph:node:stackingOrder = 1
             quatf xformOp:orient = (0.70710677, 0, 0.70710677, 0)
             float3 xformOp:scale = (0.05999999, 0.05999999, 0.05999999)
-            float3 xformOp:translate = (-9.913357, 7.75, 1.1543391)
+            float3 xformOp:translate = (-9.913357, 6.1, 1.1543391)
             uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
             def RealityKitComponent "AnimationLibrary"
@@ -4478,6 +5159,11 @@ def Xform "Root"
                     rel values = </Root/SFX/switch_wav2>
                 }
             }
+
+            def RealityKitCustomComponent "RealityKitContent_HasHoverEffectComponent"
+            {
+                uniform token info:id = "RealityKitContent.HasHoverEffectComponent"
+            }
         }
 
         def "photoframe" (
@@ -4491,7 +5177,7 @@ def Xform "Root"
             reorder nameChildren = ["secondphoto", "Materials", "Meshes"]
             quatf xformOp:orient = (0.9396926, 0, -0.34202012, 0)
             float3 xformOp:scale = (0.005, 0.0049999994, 0.005)
-            float3 xformOp:translate = (-9.014824, 4.6344295, -3.586894)
+            float3 xformOp:translate = (-8.939784, 5.026952, -3.381839)
             uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
             over "Materials"
@@ -4641,6 +5327,54 @@ def Xform "Root"
                     }
                 }
             }
+
+            def RealityKitComponent "Collider"
+            {
+                uint group = 1
+                uniform token info:id = "RealityKit.Collider"
+                uint mask = 4294967295
+                token type = "Default"
+
+                def RealityKitStruct "Shape"
+                {
+                    float3 extent = (168.2597, 267.89075, 222.00418)
+                    token shapeType = "Box"
+
+                    def RealityKitStruct "pose"
+                    {
+                        float3 position = (-17.316128, 133.1893, -0.3276863)
+                    }
+                }
+            }
+
+            def RealityKitComponent "RigidBody"
+            {
+                bool gravityEnabled = 0
+                uniform token info:id = "RealityKit.RigidBody"
+                bool lockRotationX = 1
+                bool lockRotationY = 1
+                bool lockRotationZ = 1
+                bool lockTranslationX = 1
+                bool lockTranslationY = 1
+                bool lockTranslationZ = 1
+                token motionType = "Static"
+
+                def RealityKitStruct "massFrame"
+                {
+                    float m_mass = 0.2
+
+                    def RealityKitStruct "m_pose"
+                    {
+                    }
+                }
+
+                def RealityKitStruct "material"
+                {
+                    double dynamicFriction = 0.3
+                    double restitution = 0.1
+                    double staticFriction = 0.3
+                }
+            }
         }
 
         def "cockroach" (
@@ -4653,7 +5387,7 @@ def Xform "Root"
         {
             quatf xformOp:orient = (0.5735765, 0, 0.81915194, 0)
             float3 xformOp:scale = (0.0015000002, 0.0015000002, 0.0015000002)
-            float3 xformOp:translate = (-8.197012, 3.6577759, -0.23353697)
+            float3 xformOp:translate = (-8.059289, 3.9448953, 0.4177384)
             uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
         }
 
@@ -4696,15 +5430,15 @@ def Xform "Root"
 
         def Xform "candlefire" (
             customData = {
-                float3 rotationEulerHint = (0, 0, 0)
+                float3 rotationEulerHint = (0, 2.1713371, 0)
             }
         )
         {
             float2 ui:nodegraph:node:pos = (40, 40)
             int ui:nodegraph:node:stackingOrder = 2
-            quatf xformOp:orient = (1, 0, 0, 0)
+            quatf xformOp:orient = (0.46632123, 0, 0.8846154, 0)
             float3 xformOp:scale = (5, 5, 5)
-            float3 xformOp:translate = (1.540212, 5.649168, -8.229862)
+            float3 xformOp:translate = (1.4462138, 6.2265496, -8.096544)
             uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
             def RealityKitComponent "VFXEmitter"
@@ -4772,7 +5506,7 @@ def Xform "Root"
         active = true
     )
     {
-        reorder nameChildren = ["blinds_wav", "switch_wav", "switch_wav2", "fire_wav", "vault_wav", "beep_wav", "lighter_wav", "door_wav", "key_wav", "thump_wav", "crack_wav"]
+        reorder nameChildren = ["blinds_wav", "switch_wav", "switch_wav2", "fire_wav", "vault_wav", "beep_wav", "door_wav", "key_wav", "thump_wav", "crack_wav", "lighter_wav"]
         def RealityKitAudioFile "blinds_wav"
         {
             uniform asset file = @WhiteMyth/sfx/blinds.wav@
@@ -4809,12 +5543,6 @@ def Xform "Root"
             uniform bool shouldLoop = 0
         }
 
-        def RealityKitAudioFile "lighter_wav"
-        {
-            uniform asset file = @WhiteMyth/sfx/lighter.wav@
-            uniform bool shouldLoop = 0
-        }
-
         def RealityKitAudioFile "door_wav"
         {
             uniform asset file = @WhiteMyth/sfx/door.wav@
@@ -4838,6 +5566,22 @@ def Xform "Root"
             uniform asset file = @WhiteMyth/sfx/crack.wav@
             uniform bool shouldLoop = 0
         }
+
+        def RealityKitAudioFile "lighter_wav"
+        {
+            uniform asset file = @WhiteMyth/sfx/lighter.wav@
+            uniform bool shouldLoop = 0
+        }
+    }
+
+    def "DUMMY" (
+        active = false
+        references = @Roblox_RTHRO_Dummy.usdz@
+    )
+    {
+        float3 xformOp:scale = (0.05, 0.05, 0.05)
+        float3 xformOp:translate = (0, 0.14034277, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
     }
 }
 

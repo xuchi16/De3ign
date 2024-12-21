@@ -8,6 +8,7 @@
 import SwiftUI
 // import MixedRealityCapture
 import OSLog
+import RealityKitContent
 
 @MainActor
 let logger = Logger(subsystem: "BasicApp", category: "general")
@@ -17,6 +18,10 @@ struct De3ignApp: App {
     @State private var appModel = AppModel()
     @State private var captureModel = CaptureModel()
 
+    init() {
+        RealityKitContent.HasHoverEffectComponent.registerComponent()
+    }
+    
     var body: some Scene {
         // debug
         let _ = print(getGenAiModelsDirectory())

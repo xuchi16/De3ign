@@ -31,6 +31,7 @@ struct SafeKeypadView: View {
             Text(input + String(repeating: "*", count: maxLength - input.count))
                 .font(.largeTitle)
                 .fontDesign(.monospaced)
+                .underline(true, color: .white)
                 .padding(.horizontal, 35)
                 .padding(.vertical, 20)
                 .background(.black)
@@ -48,8 +49,10 @@ struct SafeKeypadView: View {
                                 .font(.title)
                                 .frame(width: 80, height: 80)
                                 .foregroundColor(.white)
-                                .clipShape(.capsule)
-                        }.tint(.black)
+                                .background(.black)
+                                .clipShape(.circle)
+                        }
+                        .buttonStyle(.plain)
                     }
                 }
             }
