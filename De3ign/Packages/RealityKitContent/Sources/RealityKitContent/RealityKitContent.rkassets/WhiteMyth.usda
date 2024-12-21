@@ -3428,6 +3428,11 @@ def Xform "Root"
                     }
                 }
             }
+
+            def RealityKitCustomComponent "RealityKitContent_HasHoverEffectComponent"
+            {
+                uniform token info:id = "RealityKitContent.HasHoverEffectComponent"
+            }
         }
 
         def Cube "paper" (
@@ -3527,6 +3532,11 @@ def Xform "Root"
                     double staticFriction = 0.2
                 }
             }
+
+            def RealityKitCustomComponent "RealityKitContent_HasHoverEffectComponent"
+            {
+                uniform token info:id = "RealityKitContent.HasHoverEffectComponent"
+            }
         }
 
         def "battery" (
@@ -3561,6 +3571,11 @@ def Xform "Root"
                         float3 position = (2.792031, 1.9591256, 1.5007515)
                     }
                 }
+            }
+
+            def RealityKitCustomComponent "RealityKitContent_HasHoverEffectComponent"
+            {
+                uniform token info:id = "RealityKitContent.HasHoverEffectComponent"
             }
         }
 
@@ -3621,6 +3636,11 @@ def Xform "Root"
                     double restitution = 0.05
                     double staticFriction = 0.4
                 }
+            }
+
+            def RealityKitCustomComponent "RealityKitContent_HasHoverEffectComponent"
+            {
+                uniform token info:id = "RealityKitContent.HasHoverEffectComponent"
             }
         }
 
@@ -3710,6 +3730,11 @@ def Xform "Root"
                 float3 xformOp:translate = (0.00013637544, -11.46, -9.741651)
                 uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
             }
+
+            def RealityKitCustomComponent "RealityKitContent_HasHoverEffectComponent"
+            {
+                uniform token info:id = "RealityKitContent.HasHoverEffectComponent"
+            }
         }
 
         def "iphone" (
@@ -3765,6 +3790,11 @@ def Xform "Root"
                         float3 position = (-1.2266798, -0.0000038146973, 0.13624)
                     }
                 }
+            }
+
+            def RealityKitCustomComponent "RealityKitContent_HasHoverEffectComponent"
+            {
+                uniform token info:id = "RealityKitContent.HasHoverEffectComponent"
             }
         }
 
@@ -3846,6 +3876,11 @@ def Xform "Root"
             def RealityKitComponent "InputTarget"
             {
                 uniform token info:id = "RealityKit.InputTarget"
+            }
+
+            def RealityKitCustomComponent "RealityKitContent_HasHoverEffectComponent"
+            {
+                uniform token info:id = "RealityKitContent.HasHoverEffectComponent"
             }
         }
     }
@@ -3932,6 +3967,11 @@ def Xform "Root"
                 def RealityKitStruct "material"
                 {
                 }
+            }
+
+            def RealityKitCustomComponent "RealityKitContent_HasHoverEffectComponent"
+            {
+                uniform token info:id = "RealityKitContent.HasHoverEffectComponent"
             }
         }
 
@@ -5007,6 +5047,11 @@ def Xform "Root"
                     rel values = </Root/SFX/switch_wav>
                 }
             }
+
+            def RealityKitCustomComponent "RealityKitContent_HasHoverEffectComponent"
+            {
+                uniform token info:id = "RealityKitContent.HasHoverEffectComponent"
+            }
         }
 
         def "switch_light" (
@@ -5113,6 +5158,11 @@ def Xform "Root"
                     string[] keys = ["switch"]
                     rel values = </Root/SFX/switch_wav2>
                 }
+            }
+
+            def RealityKitCustomComponent "RealityKitContent_HasHoverEffectComponent"
+            {
+                uniform token info:id = "RealityKitContent.HasHoverEffectComponent"
             }
         }
 

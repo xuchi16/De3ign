@@ -102,6 +102,25 @@ extension Entity {
         self.move(to: transform, relativeTo: nil, duration: .init(floatLiteral: Double(seconds)), timingFunction: .easeOut)
         try! await Task.sleep(nanoseconds: UInt64(seconds * 1_000_000_000))
     }
+    
+    func findAllChildrenWithComponent<T: Component>(_ componentType: T.Type, excludingDescendants: Bool = true) -> [Entity]  {
+        var result: [Entity] = []
+        
+        if self.components[componentType] != nil {
+            result.append(self)
+            
+            // return early when we assume an entity having the given component won't have any child that does so
+            if excludingDescendants {
+                return result
+            }
+        }
+        
+        for child in self.children {
+            result.append(contentsOf: child.findAllChildrenWithComponent(componentType, excludingDescendants: excludingDescendants))
+        }
+        
+        return result
+    }
 }
 
 extension Entity {

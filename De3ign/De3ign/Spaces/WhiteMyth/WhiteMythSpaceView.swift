@@ -49,6 +49,14 @@ struct WhiteMythSpaceView: View {
             sceneEntity.scale = SIMD3<Float>(repeating: scale)
             sceneEntity.position = position
             content.add(sceneEntity)
+            
+            // grant hover effects
+            let hoverableEntities = sceneEntity.findAllChildrenWithComponent(
+                HasHoverEffectComponent.self, excludingDescendants: true
+            )
+            for entity in hoverableEntities {
+                entity.components.set(HoverEffectComponent())
+            }
 
             // grab entities
             let windowEntity = sceneEntity.findChildAndSetMetadata(named: "window_animated")
